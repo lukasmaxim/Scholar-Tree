@@ -1561,6 +1561,8 @@ var RenderingView = Backbone.View.extend({
         	var img_id = "#" + e;
         	$(img_id).attr('src', img_src);
         }
+        $("#tree3").attr('src', tree_img_url["tree2"]);
+        $("#tree4").attr('src', tree_img_url["tree1"]);
         
         $("#tree_result").show();
 		$("#no_preview").hide();
