@@ -1,0 +1,4320 @@
+<?xml version="1.0"?>
+<dblpperson name="Kwan-Liu Ma" n="284">
+<person key="homepages/93/5838" mdate="2009-06-10">
+<author>Kwan-Liu Ma</author>
+</person>
+<r><article key="journals/cga/WangTLM15" mdate="2015-07-25">
+<author>Shimin Wang</author>
+<author>Yuzuru Tanahashi</author>
+<author>Nick Leaf</author>
+<author>Kwan-Liu Ma</author>
+<title>Design and Effects of Personal Visualizations.</title>
+<pages>82-93</pages>
+<year>2015</year>
+<volume>35</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>4</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2015.74</ee>
+<url>db/journals/cga/cga35.html#WangTLM15</url>
+</article>
+</r>
+<r><article key="journals/tvcg/TanahashiHM15" mdate="2015-05-08">
+<author>Yuzuru Tanahashi</author>
+<author>Chien-Hsin Hsueh</author>
+<author>Kwan-Liu Ma</author>
+<title>An Efficient Framework for Generating Storyline Visualizations from Streaming Data.</title>
+<pages>730-742</pages>
+<year>2015</year>
+<volume>21</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://dx.doi.org/10.1109/TVCG.2015.2392771</ee>
+<url>db/journals/tvcg/tvcg21.html#TanahashiHM15</url>
+</article>
+</r>
+<r><article key="journals/tvcg/YuXMKC15" mdate="2015-09-07">
+<author>Hongfeng Yu</author>
+<author>Jinrong Xie</author>
+<author>Kwan-Liu Ma</author>
+<author>Hemanth Kolla</author>
+<author>Jacqueline H. Chen</author>
+<title>Scalable Parallel Distance Field Construction for Large-Scale Applications.</title>
+<pages>1187-1200</pages>
+<year>2015</year>
+<volume>21</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>10</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2015.2417572</ee>
+<url>db/journals/tvcg/tvcg21.html#YuXMKC15</url>
+</article>
+</r>
+<r><article key="journals/vc/XiaoJNWSM15" mdate="2015-01-22">
+<author>Chunxia Xiao</author>
+<author>Liqiang Jin</author>
+<author>Yongwei Nie</author>
+<author>Renfang Wang</author>
+<author>Hanqiu Sun</author>
+<author>Kwan-Liu Ma</author>
+<title>Content-aware model resizing with symmetry-preservation.</title>
+<pages>155-167</pages>
+<year>2015</year>
+<volume>31</volume>
+<journal>The Visual Computer</journal>
+<number>2</number>
+<ee>http://dx.doi.org/10.1007/s00371-014-0919-4</ee>
+<url>db/journals/vc/vc31.html#XiaoJNWSM15</url>
+</article>
+</r>
+<r><inproceedings key="conf/apvis/KwonMLM15" mdate="2015-07-24">
+<author>Oh-Hyun Kwon</author>
+<author>Chris Muelder</author>
+<author>Kyungwon Lee</author>
+<author>Kwan-Liu Ma</author>
+<title>Spherical layout and rendering methods for immersive graph visualization.</title>
+<pages>63-67</pages>
+<year>2015</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PACIFICVIS.2015.7156357</ee>
+<crossref>conf/apvis/2015</crossref>
+<url>db/conf/apvis/pacificvis2015.html#KwonMLM15</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/ShihZM15" mdate="2015-07-24">
+<author>Min Shih</author>
+<author>Yubo Zhang</author>
+<author>Kwan-Liu Ma</author>
+<title>Advanced lighting for unstructured-grid data visualization.</title>
+<pages>239-246</pages>
+<year>2015</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PACIFICVIS.2015.7156383</ee>
+<crossref>conf/apvis/2015</crossref>
+<url>db/conf/apvis/pacificvis2015.html#ShihZM15</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/chi/TanahashiM15" mdate="2015-04-19">
+<author>Yuzuru Tanahashi</author>
+<author>Kwan-Liu Ma</author>
+<title>Stock Lamp: An Engagement-Versatile Visualization Design.</title>
+<pages>595-604</pages>
+<year>2015</year>
+<booktitle>CHI</booktitle>
+<ee>http://doi.acm.org/10.1145/2702123.2702323</ee>
+<crossref>conf/chi/2015</crossref>
+<url>db/conf/chi/chi2015.html#TanahashiM15</url>
+</inproceedings>
+</r>
+<r><article key="journals/cga/ZhengCBM14" mdate="2014-11-20">
+<author>Lin Zheng</author>
+<author>Abhijit J. Chaudhari</author>
+<author>Ramsey Derek Badawi</author>
+<author>Kwan-Liu Ma</author>
+<title>Using Global Illumination in Volume Visualization of Rheumatoid Arthritis CT Data.</title>
+<pages>16-23</pages>
+<year>2014</year>
+<volume>34</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>6</number>
+<ee>http://dx.doi.org/10.1109/MCG.2014.120</ee>
+<url>db/journals/cga/cga34.html#ZhengCBM14</url>
+</article>
+</r>
+<r><article key="journals/socnet/CrnovrsaninMFFM14" mdate="2014-01-30">
+<author>Tarik Crnovrsanin</author>
+<author>Chris Muelder</author>
+<author>Robert Faris</author>
+<author>Diane Felmlee</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualization techniques for categorical analysis of social networks with multiple edge sets.</title>
+<pages>56-64</pages>
+<year>2014</year>
+<volume>37</volume>
+<journal>Social Networks</journal>
+<ee>http://dx.doi.org/10.1016/j.socnet.2013.12.002</ee>
+<url>db/journals/socnet/socnet37.html#CrnovrsaninMFFM14</url>
+</article>
+</r>
+<r><article key="journals/tcsv/XiaoLXDM14" mdate="2014-02-25">
+<author>Chunxia Xiao</author>
+<author>Meng Liu</author>
+<author>Donglin Xiao</author>
+<author>Zhao Dong</author>
+<author>Kwan-Liu Ma</author>
+<title>Fast Closed-Form Matting Using a Hierarchical Data Structure.</title>
+<pages>49-62</pages>
+<year>2014</year>
+<volume>24</volume>
+<journal>IEEE Trans. Circuits Syst. Video Techn.</journal>
+<number>1</number>
+<ee>http://dx.doi.org/10.1109/TCSVT.2013.2276153</ee>
+<url>db/journals/tcsv/tcsv24.html#XiaoLXDM14</url>
+</article>
+</r>
+<r><article key="journals/tiis/ChanCM14" mdate="2014-06-04">
+<author>Yu-Hsuan Chan</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Regression Cube: A Technique for Multidimensional Visual Exploration and Interactive Pattern Finding.</title>
+<pages>7</pages>
+<year>2014</year>
+<volume>4</volume>
+<journal>TiiS</journal>
+<number>1</number>
+<ee>http://doi.acm.org/10.1145/2590349</ee>
+<url>db/journals/tiis/tiis4.html#ChanCM14</url>
+</article>
+</r>
+<r><article key="journals/tvcg/NieSLXM14" mdate="2014-07-31">
+<author>Yongwei Nie</author>
+<author>Hanqiu Sun</author>
+<author>Ping Li</author>
+<author>Chunxia Xiao</author>
+<author>Kwan-Liu Ma</author>
+<title>Object Movements Synopsis viaPart Assembling and Stitching.</title>
+<pages>1303-1315</pages>
+<year>2014</year>
+<volume>20</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>9</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2013.2297931</ee>
+<url>db/journals/tvcg/tvcg20.html#NieSLXM14</url>
+</article>
+</r>
+<r><article key="journals/tvcg/HeroHM14" mdate="2014-07-31">
+<author>Robert Hero</author>
+<author>Chris Ho</author>
+<author>Kwan-Liu Ma</author>
+<title>Volume Rendering of Curvilinear-Grid Data Using Low-Dimensional Deformation Textures.</title>
+<pages>1330-1343</pages>
+<year>2014</year>
+<volume>20</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>9</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2013.264</ee>
+<url>db/journals/tvcg/tvcg20.html#HeroHM14</url>
+</article>
+</r>
+<r><article key="journals/tvcg/ChenCMLZCGM14" mdate="2014-11-13">
+<author>Haidong Chen</author>
+<author>Wei Chen</author>
+<author>Honghui Mei</author>
+<author>Zhiqi Liu</author>
+<author>Kun Zhou</author>
+<author>Weifeng Chen</author>
+<author>Wentao Gu</author>
+<author>Kwan-Liu Ma</author>
+<title>Visual Abstraction and Exploration of Multi-class Scatterplots.</title>
+<pages>1683-1692</pages>
+<year>2014</year>
+<volume>20</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>12</number>
+<ee>http://dx.doi.org/10.1109/TVCG.2014.2346594</ee>
+<url>db/journals/tvcg/tvcg20.html#ChenCMLZCGM14</url>
+</article>
+</r>
+<r><article key="journals/tvcg/FreySME14" mdate="2014-11-13">
+<author>Steffen Frey</author>
+<author>Filip Sadlo</author>
+<author>Kwan-Liu Ma</author>
+<author>Thomas Ertl</author>
+<title>Interactive Progressive Visualization with Space-Time Error Control.</title>
+<pages>2397-2406</pages>
+<year>2014</year>
+<volume>20</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>12</number>
+<ee>http://dx.doi.org/10.1109/TVCG.2014.2346319</ee>
+<url>db/journals/tvcg/tvcg20.html#FreySME14</url>
+</article>
+</r>
+<r><article key="journals/tvcg/SauerYM14" mdate="2014-11-13">
+<author>Franz Sauer</author>
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<title>Trajectory-Based Flow Feature Tracking in Joint Particle/Volume Datasets.</title>
+<pages>2565-2574</pages>
+<year>2014</year>
+<volume>20</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>12</number>
+<ee>http://dx.doi.org/10.1109/TVCG.2014.2346423</ee>
+<url>db/journals/tvcg/tvcg20.html#SauerYM14</url>
+</article>
+</r>
+<r><inproceedings key="conf/apvis/CuiWLRMMG14" mdate="2014-09-24">
+<author>Weiwei Cui</author>
+<author>Xiting Wang</author>
+<author>Shixia Liu</author>
+<author>Nathalie Henry Riche</author>
+<author>Tara M. Madhyastha</author>
+<author>Kwan-Liu Ma</author>
+<author>Baining Guo</author>
+<title>Let It Flow: A Static Method for Exploring Dynamic Graphs.</title>
+<pages>121-128</pages>
+<year>2014</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PacificVis.2014.48</ee>
+<crossref>conf/apvis/2014</crossref>
+<url>db/conf/apvis/pacificvis2014.html#CuiWLRMMG14</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/bibm/WangLMHL14" mdate="2015-01-20">
+<author>Chun-Fu Wang</author>
+<author>Jianping Li</author>
+<author>Kwan-Liu Ma</author>
+<author>Chih-Wei Huang</author>
+<author>Yu-Chuan Li</author>
+<title>A visual analysis approach to cohort study of electronic patient records.</title>
+<pages>521-528</pages>
+<year>2014</year>
+<booktitle>BIBM</booktitle>
+<ee>http://dx.doi.org/10.1109/BIBM.2014.6999214</ee>
+<crossref>conf/bibm/2014</crossref>
+<url>db/conf/bibm/bibm2014.html#WangLMHL14</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/chi/CrnovrsaninWM14" mdate="2014-04-26">
+<author>Tarik Crnovrsanin</author>
+<author>Yang Wang</author>
+<author>Kwan-Liu Ma</author>
+<title>Stimulating a blink: reduction of eye fatigue with visual stimulus.</title>
+<pages>2055-2064</pages>
+<year>2014</year>
+<booktitle>CHI</booktitle>
+<ee>http://doi.acm.org/10.1145/2556288.2557129</ee>
+<crossref>conf/chi/2014</crossref>
+<url>db/conf/chi/chi2014.html#CrnovrsaninWM14</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/egpgv/BiOMWI14" mdate="2014-07-23">
+<author>Chongke Bi</author>
+<author>Kenji Ono</author>
+<author>Kwan-Liu Ma</author>
+<author>Haiyuan Wu</author>
+<author>Toshiyuki Imamura</author>
+<title>A Study of Parallel Data Compression Using Proper Orthogonal Decomposition on the K Computer.</title>
+<pages>1-8</pages>
+<year>2014</year>
+<booktitle>EGPGV</booktitle>
+<ee>http://dx.doi.org/10.2312/pgv.20141078</ee>
+<crossref>conf/egpgv/2014</crossref>
+<url>db/conf/egpgv/egpgv2014.html#BiOMWI14</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/egpgv/MillerMM14" mdate="2014-07-23">
+<author>Robert Miller</author>
+<author>Kenneth Moreland</author>
+<author>Kwan-Liu Ma</author>
+<title>Finely-Threaded History-Based Topology Computation.</title>
+<pages>41-48</pages>
+<year>2014</year>
+<booktitle>EGPGV</booktitle>
+<ee>http://dx.doi.org/10.2312/pgv.20141083</ee>
+<crossref>conf/egpgv/2014</crossref>
+<url>db/conf/egpgv/egpgv2014.html#MillerMM14</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ieeevast/CrnovrsaninMM14" mdate="2015-02-28">
+<author>Tarik Crnovrsanin</author>
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<title>A system for visual analysis of radio signal data.</title>
+<pages>33-42</pages>
+<year>2014</year>
+<booktitle>IEEE VAST</booktitle>
+<ee>http://dx.doi.org/10.1109/VAST.2014.7042479</ee>
+<crossref>conf/ieeevast/2014</crossref>
+<url>db/conf/ieeevast/ieeevast2014.html#CrnovrsaninMM14</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ldav/XieYM14" mdate="2015-01-29">
+<author>Jinrong Xie</author>
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualizing large 3D geodesic grid data with massively distributed GPUs.</title>
+<pages>3-10</pages>
+<year>2014</year>
+<booktitle>LDAV</booktitle>
+<ee>http://dx.doi.org/10.1109/LDAV.2014.7013198</ee>
+<crossref>conf/ldav/2014</crossref>
+<url>db/conf/ldav/ldav2014.html#XieYM14</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ldav/ShihZMSM14" mdate="2015-01-29">
+<author>Min Shih</author>
+<author>Yubo Zhang</author>
+<author>Kwan-Liu Ma</author>
+<author>Jayanarayanan Sitaraman</author>
+<author>Dimitri J. Mavriplis</author>
+<title>Out-of-core visualization of time-varying hybrid-grid volume data.</title>
+<pages>93-100</pages>
+<year>2014</year>
+<booktitle>LDAV</booktitle>
+<ee>http://dx.doi.org/10.1109/LDAV.2014.7013209</ee>
+<crossref>conf/ldav/2014</crossref>
+<url>db/conf/ldav/ldav2014.html#ShihZMSM14</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sg/LiaoHM14" mdate="2014-09-16">
+<author>Isaac Liao</author>
+<author>Wei-Hsien Hsu</author>
+<author>Kwan-Liu Ma</author>
+<title>Storytelling via Navigation: A Novel Approach to Animation for Scientific Visualization.</title>
+<pages>1-14</pages>
+<year>2014</year>
+<booktitle>Smart Graphics</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-319-11650-1_1</ee>
+<crossref>conf/sg/2014</crossref>
+<url>db/conf/sg/sg2014.html#LiaoHM14</url>
+</inproceedings>
+</r>
+<r><article publtype="informal publication" key="journals/corr/MuelderLSM14" mdate="2014-09-12">
+<author>Chris W. Muelder</author>
+<author>Nick Leaf</author>
+<author>Carmen Sigovan</author>
+<author>Kwan-Liu Ma</author>
+<title>A Moving Least Squares Based Approach for Contour Visualization of Multi-Dimensional Data.</title>
+<year>2014</year>
+<volume>abs/1408.0677</volume>
+<journal>CoRR</journal>
+<ee>http://arxiv.org/abs/1408.0677</ee>
+<url>db/journals/corr/corr1408.html#MuelderLSM14</url>
+</article>
+</r>
+<r><article publtype="informal publication" key="journals/corr/SallaberryFHM14" mdate="2014-12-01">
+<author>Arnaud Sallaberry</author>
+<author>Yang-chih Fu</author>
+<author>Hwai-Chung Ho</author>
+<author>Kwan-Liu Ma</author>
+<title>ContactTrees: A Technique for Studying Personal Network Data.</title>
+<year>2014</year>
+<volume>abs/1411.0052</volume>
+<journal>CoRR</journal>
+<ee>http://arxiv.org/abs/1411.0052</ee>
+<url>db/journals/corr/corr1411.html#SallaberryFHM14</url>
+</article>
+</r>
+<r><article key="journals/cga/KeimQM13" mdate="2013-07-25">
+<author>Daniel A. Keim</author>
+<author>Huamin Qu</author>
+<author>Kwan-Liu Ma</author>
+<title>Big-Data Visualization.</title>
+<pages>20-21</pages>
+<year>2013</year>
+<volume>33</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>4</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2013.54</ee>
+<url>db/journals/cga/cga33.html#KeimQM13</url>
+</article>
+</r>
+<r><article key="journals/cgf/SigovanMM13" mdate="2013-08-18">
+<author>Carmen Sigovan</author>
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualizing Large-scale Parallel Communication Traces Using a Particle Animation Technique.</title>
+<pages>141-150</pages>
+<year>2013</year>
+<volume>32</volume>
+<journal>Comput. Graph. Forum</journal>
+<number>3</number>
+<ee>http://dx.doi.org/10.1111/cgf.12101</ee>
+<url>db/journals/cgf/cgf32.html#SigovanMM13</url>
+</article>
+</r>
+<r><article key="journals/cgf/XieYM13" mdate="2013-08-18">
+<author>Jinrong Xie</author>
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<title>Interactive Ray Casting of Geodesic Grids.</title>
+<pages>481-490</pages>
+<year>2013</year>
+<volume>32</volume>
+<journal>Comput. Graph. Forum</journal>
+<number>3</number>
+<ee>http://dx.doi.org/10.1111/cgf.12135</ee>
+<url>db/journals/cgf/cgf32.html#XieYM13</url>
+</article>
+</r>
+<r><article key="journals/cgf/XiaoSXM13" mdate="2014-01-04">
+<author>Chunxia Xiao</author>
+<author>Ruiyun She</author>
+<author>Donglin Xiao</author>
+<author>Kwan-Liu Ma</author>
+<title>Fast Shadow Removal Using Adaptive Multi-Scale Illumination Transfer.</title>
+<pages>207-218</pages>
+<year>2013</year>
+<volume>32</volume>
+<journal>Comput. Graph. Forum</journal>
+<number>8</number>
+<ee>http://dx.doi.org/10.1111/cgf.12198</ee>
+<url>db/journals/cgf/cgf32.html#XiaoSXM13</url>
+</article>
+</r>
+<r><article key="journals/computer/MaM13" mdate="2013-08-27">
+<author>Kwan-Liu Ma</author>
+<author>Chris Muelder</author>
+<title>Large-Scale Graph Visualization and Analytics.</title>
+<pages>39-46</pages>
+<year>2013</year>
+<volume>46</volume>
+<journal>IEEE Computer</journal>
+<number>7</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MC.2013.242</ee>
+<url>db/journals/computer/computer46.html#MaM13</url>
+</article>
+</r>
+<r><article key="journals/tog/ZhangM13" mdate="2015-04-21">
+<author>Yubo Zhang</author>
+<author>Kwan-Liu Ma</author>
+<title>Spatio-temporal extrapolation for fluid animation.</title>
+<pages>183:1-183:8</pages>
+<year>2013</year>
+<volume>32</volume>
+<journal>ACM Trans. Graph.</journal>
+<number>6</number>
+<ee>http://doi.acm.org/10.1145/2508363.2508401</ee>
+<url>db/journals/tog/tog32.html#ZhangM13</url>
+</article>
+</r>
+<r><article key="journals/tvcg/WuLLM13" mdate="2012-12-12">
+<author>Yingcai Wu</author>
+<author>Xiaotong Liu</author>
+<author>Shixia Liu</author>
+<author>Kwan-Liu Ma</author>
+<title>ViSizer: A Visualization Resizing Framework.</title>
+<pages>278-290</pages>
+<year>2013</year>
+<volume>19</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>2</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2012.114</ee>
+<url>db/journals/tvcg/tvcg19.html#WuLLM13</url>
+</article>
+</r>
+<r><article key="journals/tvcg/ZhengWM13" mdate="2013-01-14">
+<author>Lin Zheng</author>
+<author>Yingcai Wu</author>
+<author>Kwan-Liu Ma</author>
+<title>Perceptually-Based Depth-Ordering Enhancement for Direct Volume Rendering.</title>
+<pages>446-459</pages>
+<year>2013</year>
+<volume>19</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>3</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2012.144</ee>
+<url>db/journals/tvcg/tvcg19.html#ZhengWM13</url>
+</article>
+</r>
+<r><article key="journals/tvcg/ZhangDM13" mdate="2013-06-18">
+<author>Yubo Zhang</author>
+<author>Zhao Dong</author>
+<author>Kwan-Liu Ma</author>
+<title>Real-Time Volume Rendering in Dynamic Lighting Environments Using Precomputed Photon Mapping.</title>
+<pages>1317-1330</pages>
+<year>2013</year>
+<volume>19</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>8</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2013.17</ee>
+<url>db/journals/tvcg/tvcg19.html#ZhangDM13</url>
+</article>
+</r>
+<r><article key="journals/tvcg/ChanCM13" mdate="2013-08-22">
+<author>Yu-Hsuan Chan</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>The Generalized Sensitivity Scatterplot.</title>
+<pages>1768-1781</pages>
+<year>2013</year>
+<volume>19</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>10</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2013.20</ee>
+<url>db/journals/tvcg/tvcg19.html#ChanCM13</url>
+</article>
+</r>
+<r><article key="journals/tvcg/HsuZM13" mdate="2013-11-15">
+<author>Wei-Hsien Hsu</author>
+<author>Yubo Zhang</author>
+<author>Kwan-Liu Ma</author>
+<title>A Multi-Criteria Approach to Camera Motion Design for Volume Data Animation.</title>
+<pages>2792-2801</pages>
+<year>2013</year>
+<volume>19</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>12</number>
+<ee>http://dx.doi.org/10.1109/TVCG.2013.123</ee>
+<url>db/journals/tvcg/tvcg19.html#HsuZM13</url>
+</article>
+</r>
+<r><article key="journals/tvcg/ZhangM13" mdate="2013-11-15">
+<author>Yubo Zhang</author>
+<author>Kwan-Liu Ma</author>
+<title>Lighting Design for Globally Illuminated Volume Rendering.</title>
+<pages>2946-2955</pages>
+<year>2013</year>
+<volume>19</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>12</number>
+<ee>http://dx.doi.org/10.1109/TVCG.2013.172</ee>
+<url>db/journals/tvcg/tvcg19.html#ZhangM13</url>
+</article>
+</r>
+<r><inproceedings key="conf/asunam/BryanMF13" mdate="2014-01-08">
+<author>Chris Bryan</author>
+<author>Kwan-Liu Ma</author>
+<author>Yang-chih Fu</author>
+<title>An interactive visualization interface for studying egocentric, categorical, contact diary datasets.</title>
+<pages>771-778</pages>
+<year>2013</year>
+<booktitle>ASONAM</booktitle>
+<ee>http://doi.acm.org/10.1145/2492517.2492636</ee>
+<crossref>conf/asunam/2013</crossref>
+<url>db/conf/asunam/asonam2013.html#BryanMF13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/asunam/WuFM13" mdate="2014-01-08">
+<author>Meng Qi Yelena Wu</author>
+<author>Robert Faris</author>
+<author>Kwan-Liu Ma</author>
+<title>Visual exploration of academic career paths.</title>
+<pages>779-786</pages>
+<year>2013</year>
+<booktitle>ASONAM</booktitle>
+<ee>http://doi.acm.org/10.1145/2492517.2492638</ee>
+<crossref>conf/asunam/2013</crossref>
+<url>db/conf/asunam/asonam2013.html#WuFM13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/bibm/ZhengCM13" mdate="2014-06-05">
+<author>Lin Zheng</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Visibility guided multimodal volume visualization.</title>
+<pages>297-304</pages>
+<year>2013</year>
+<booktitle>BIBM</booktitle>
+<ee>http://dx.doi.org/10.1109/BIBM.2013.6732506</ee>
+<crossref>conf/bibm/2013</crossref>
+<url>db/conf/bibm/bibm2013.html#ZhengCM13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/bigdataconf/MuelderCSM13" mdate="2014-01-12">
+<author>Chris Muelder</author>
+<author>Tarik Crnovrsanin</author>
+<author>Arnaud Sallaberry</author>
+<author>Kwan-Liu Ma</author>
+<title>Egocentric storylines for visual analysis of large dynamic graphs.</title>
+<pages>56-62</pages>
+<year>2013</year>
+<booktitle>BigData Conference</booktitle>
+<ee>http://dx.doi.org/10.1109/BigData.2013.6691715</ee>
+<crossref>conf/bigdataconf/2013</crossref>
+<url>db/conf/bigdataconf/bigdataconf2013.html#MuelderCSM13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/cw/TanahashiM13" mdate="2015-05-20">
+<author>Yuzuru Tanahashi</author>
+<author>Kwan-Liu Ma</author>
+<title>OnMyWay: A Task-Oriented Visualization and Interface Design for Planning Road Trip Itinerary.</title>
+<pages>199-205</pages>
+<year>2013</year>
+<booktitle>CW</booktitle>
+<ee>http://dx.doi.org/10.1109/CW.2013.16</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/CW.2013.16</ee>
+<crossref>conf/cw/2013</crossref>
+<url>db/conf/cw/cw2013.html#TanahashiM13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/cw/ChouLMY13" mdate="2015-05-20">
+<author>Jia-Kai Chou</author>
+<author>Isaac Liao</author>
+<author>Kwan-Liu Ma</author>
+<author>Chuan-Kai Yang</author>
+<title>A Study on Enhancing Timeline-Like Visualization with Verbal Text.</title>
+<pages>206-213</pages>
+<year>2013</year>
+<booktitle>CW</booktitle>
+<ee>http://dx.doi.org/10.1109/CW.2013.36</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/CW.2013.36</ee>
+<crossref>conf/cw/2013</crossref>
+<url>db/conf/cw/cw2013.html#ChouLMY13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/dagstuhl/MuelderGMZ13" mdate="2014-04-30">
+<author>Chris Muelder</author>
+<author>Liang Gou</author>
+<author>Kwan-Liu Ma</author>
+<author>Michelle X. Zhou</author>
+<title>Multivariate Social Network Visual Analytics.</title>
+<pages>37-59</pages>
+<year>2013</year>
+<booktitle>Multivariate Network Visualization</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-319-06793-3_3</ee>
+<crossref>conf/dagstuhl/2013mnv</crossref>
+<url>db/conf/dagstuhl/mnv2013.html#MuelderGMZ13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/dagstuhl/ArchambaultAKKMMMT13" mdate="2014-04-30">
+<author>Daniel Archambault</author>
+<author>James Abello</author>
+<author>Jessie Kennedy</author>
+<author>Stephen G. Kobourov</author>
+<author>Kwan-Liu Ma</author>
+<author>Silvia Miksch</author>
+<author>Chris Muelder</author>
+<author>Alexandru C. Telea</author>
+<title>Temporal Multivariate Networks.</title>
+<pages>151-174</pages>
+<year>2013</year>
+<booktitle>Multivariate Network Visualization</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-319-06793-3_8</ee>
+<crossref>conf/dagstuhl/2013mnv</crossref>
+<url>db/conf/dagstuhl/mnv2013.html#ArchambaultAKKMMMT13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/egpgv/YeMM13" mdate="2013-05-21">
+<author>Yucong Ye</author>
+<author>Robert Miller</author>
+<author>Kwan-Liu Ma</author>
+<title>In Situ Pathtube Visualization with Explorable Images.</title>
+<pages>9-16</pages>
+<year>2013</year>
+<booktitle>EGPGV</booktitle>
+<ee>http://dx.doi.org/10.2312/EGPGV/EGPGV13/009-016</ee>
+<crossref>conf/egpgv/2013</crossref>
+<url>db/conf/egpgv/egpgv2013.html#YeMM13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/egpgv/WangYM13" mdate="2013-05-21">
+<author>Yang Wang</author>
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<title>Scalable Parallel Feature Extraction and Tracking for Large Time-varying 3D Volume Data.</title>
+<pages>17-24</pages>
+<year>2013</year>
+<booktitle>EGPGV</booktitle>
+<ee>http://dx.doi.org/10.2312/EGPGV/EGPGV13/017-024</ee>
+<crossref>conf/egpgv/2013</crossref>
+<url>db/conf/egpgv/egpgv2013.html#WangYM13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ipps/SigovanMMCIR13" mdate="2014-08-03">
+<author>Carmen Sigovan</author>
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<author>Jason Cope</author>
+<author>Kamil Iskra</author>
+<author>Robert B. Ross</author>
+<title>A Visual Network Analysis Method for Large-Scale Parallel I/O Systems.</title>
+<pages>308-319</pages>
+<year>2013</year>
+<booktitle>IPDPS</booktitle>
+<ee>http://dx.doi.org/10.1109/IPDPS.2013.96</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/IPDPS.2013.96</ee>
+<crossref>conf/ipps/2013</crossref>
+<url>db/conf/ipps/ipdps2013.html#SigovanMMCIR13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ldav/LeafVIHPM13" mdate="2014-03-31">
+<author>Nick Leaf</author>
+<author>Venkatram Vishwanath</author>
+<author>Joseph A. Insley</author>
+<author>Mark Hereld</author>
+<author>Michael E. Papka</author>
+<author>Kwan-Liu Ma</author>
+<title>Efficient parallel volume rendering of large-scale adaptive mesh refinement data.</title>
+<pages>35-42</pages>
+<year>2013</year>
+<booktitle>LDAV</booktitle>
+<ee>http://dx.doi.org/10.1109/LDAV.2013.6675156</ee>
+<crossref>conf/ldav/2013</crossref>
+<url>db/conf/ldav/ldav2013.html#LeafVIHPM13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ldav/BiOMWI13" mdate="2014-03-31">
+<author>Chongke Bi</author>
+<author>Kenji Ono</author>
+<author>Kwan-Liu Ma</author>
+<author>Haiyuan Wu</author>
+<author>Toshiyuki Imamura</author>
+<title>Proper orthogonal decomposition based parallel compression for visualizing big data on the K computer.</title>
+<pages>121-122</pages>
+<year>2013</year>
+<booktitle>LDAV</booktitle>
+<ee>http://dx.doi.org/10.1109/LDAV.2013.6675169</ee>
+<crossref>conf/ldav/2013</crossref>
+<url>db/conf/ldav/ldav2013.html#BiOMWI13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/SauerYM13" mdate="2015-08-19">
+<author>Franz Sauer</author>
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<title>An analytical framework for particle and volume data of large-scale combustion simulations.</title>
+<pages>1:1-1:8</pages>
+<year>2013</year>
+<booktitle>UltraVis@SC</booktitle>
+<ee>http://doi.acm.org/10.1145/2535571.2535590</ee>
+<crossref>conf/sc/2013ultravis</crossref>
+<url>db/conf/sc/ultravis2013.html#SauerYM13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/MorelandGMM13" mdate="2015-08-19">
+<author>Kenneth Moreland</author>
+<author>Berk Geveci</author>
+<author>Kwan-Liu Ma</author>
+<author>Robert Maynard</author>
+<title>A classification of scientific visualization algorithms for massive threading.</title>
+<pages>2:1-2:10</pages>
+<year>2013</year>
+<booktitle>UltraVis@SC</booktitle>
+<ee>http://doi.acm.org/10.1145/2535571.2535591</ee>
+<crossref>conf/sc/2013ultravis</crossref>
+<url>db/conf/sc/ultravis2013.html#MorelandGMM13</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/si3d/ZhangM13" mdate="2013-05-03">
+<author>Yubo Zhang</author>
+<author>Kwan-Liu Ma</author>
+<title>Fast global illumination for interactive volume visualization.</title>
+<pages>55-62</pages>
+<year>2013</year>
+<booktitle>I3D</booktitle>
+<ee>http://doi.acm.org/10.1145/2448196.2448205</ee>
+<crossref>conf/si3d/2013</crossref>
+<url>db/conf/si3d/si3d2013.html#ZhangM13</url>
+</inproceedings>
+</r>
+<r><proceedings key="conf/sc/2013ultravis" mdate="2015-08-19">
+<editor>Kwan-Liu Ma</editor>
+<editor>Venkatram Vishwanath</editor>
+<editor>Hongfeng Yu</editor>
+<title>Proceedings of the 8th International Workshop on Ultrascale Visualization, UltraVis 2013, Denver, Colorado, USA, November 17-21, 2013</title>
+<booktitle>UltraVis@SC</booktitle>
+<publisher>ACM</publisher>
+<year>2013</year>
+<isbn>978-1-4503-2500-4</isbn>
+<ee>http://doi.acm.org/10.1145/2535571</ee>
+<url>db/conf/sc/ultravis2013.html</url>
+</proceedings>
+</r>
+<r><proceedings key="conf/vizsec/2013" mdate="2014-07-10">
+<editor>John R. Goodall</editor>
+<editor>Kwan-Liu Ma</editor>
+<editor>Sophie Engle</editor>
+<editor>Fabian Fischer</editor>
+<title>Visualization for Cyber Security, VizSec '13, Atlanta, GA, USA, October 14, 2013</title>
+<publisher>ACM</publisher>
+<year>2013</year>
+<isbn>978-1-4503-2173-0</isbn>
+<ee>http://dl.acm.org/citation.cfm?id=2517957</ee>
+<booktitle>VizSEC</booktitle>
+<url>db/conf/vizsec/vizsec2013.html</url>
+</proceedings>
+</r>
+<r><article key="journals/cga/MaLFHK12" mdate="2012-01-17">
+<author>Kwan-Liu Ma</author>
+<author>Isaac Liao</author>
+<author>Jennifer Frazier</author>
+<author>Helwig Hauser</author>
+<author>Helen-Nicole Kostis</author>
+<title>Scientific Storytelling Using Visualization.</title>
+<pages>12-19</pages>
+<year>2012</year>
+<volume>32</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>1</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2012.24</ee>
+<url>db/journals/cga/cga32.html#MaLFHK12</url>
+</article>
+</r>
+<r><article key="journals/cga/WeiYGCM12" mdate="2012-01-17">
+<author>Jishang Wei</author>
+<author>Hongfeng Yu</author>
+<author>Ray W. Grout</author>
+<author>Jacqueline Chen</author>
+<author>Kwan-Liu Ma</author>
+<title>Visual Analysis of Particle Behaviors to Understand Combustion Simulations.</title>
+<pages>22-33</pages>
+<year>2012</year>
+<volume>32</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>1</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2011.108</ee>
+<url>db/journals/cga/cga32.html#WeiYGCM12</url>
+</article>
+</r>
+<r><article key="journals/tvcg/CorreaCM12" mdate="2011-11-17">
+<author>Carlos D. Correa</author>
+<author>Tarik Crnovrsanin</author>
+<author>Kwan-Liu Ma</author>
+<title>Visual Reasoning about Social Networks Using Centrality Sensitivity.</title>
+<pages>106-120</pages>
+<year>2012</year>
+<volume>18</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>1</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2010.260</ee>
+<url>db/journals/tvcg/tvcg18.html#CorreaCM12</url>
+</article>
+</r>
+<r><article key="journals/tvcg/LiWYM12" mdate="2011-12-19">
+<author>Zhuwen Li</author>
+<author>Song Wang</author>
+<author>Jinhui Yu</author>
+<author>Kwan-Liu Ma</author>
+<title>Restoration of Brick and Stone Relief from Single Rubbing Images.</title>
+<pages>177-187</pages>
+<year>2012</year>
+<volume>18</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>2</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2011.26</ee>
+<url>db/journals/tvcg/tvcg18.html#LiWYM12</url>
+</article>
+</r>
+<r><article key="journals/tvcg/LuoLCM12" mdate="2012-03-21">
+<author>Sheng-Jie Luo</author>
+<author>Chun-Liang Liu</author>
+<author>Bing-Yu Chen</author>
+<author>Kwan-Liu Ma</author>
+<title>Ambiguity-Free Edge-Bundling for Interactive Graph Visualization.</title>
+<pages>810-821</pages>
+<year>2012</year>
+<volume>18</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>5</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2011.104</ee>
+<url>db/journals/tvcg/tvcg18.html#LuoLCM12</url>
+</article>
+</r>
+<r><article key="journals/tvcg/FoutM12" mdate="2012-10-29">
+<author>Nathaniel Fout</author>
+<author>Kwan-Liu Ma</author>
+<title>An Adaptive Prediction-Based Approach to Lossless Compression of Floating-Point Volume Data.</title>
+<pages>2295-2304</pages>
+<year>2012</year>
+<volume>18</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>12</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2012.194</ee>
+<url>db/journals/tvcg/tvcg18.html#FoutM12</url>
+</article>
+</r>
+<r><article key="journals/tvcg/FoutM12a" mdate="2012-10-29">
+<author>Nathaniel Fout</author>
+<author>Kwan-Liu Ma</author>
+<title>Fuzzy Volume Rendering.</title>
+<pages>2335-2344</pages>
+<year>2012</year>
+<volume>18</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>12</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2012.227</ee>
+<url>db/journals/tvcg/tvcg18.html#FoutM12a</url>
+</article>
+</r>
+<r><article key="journals/tvcg/WuYM12" mdate="2012-10-29">
+<author>Yingcai Wu</author>
+<author>Guo-Xun Yuan</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualizing Flow of Uncertainty through Analytical Processes.</title>
+<pages>2526-2535</pages>
+<year>2012</year>
+<volume>18</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>12</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2012.285</ee>
+<url>db/journals/tvcg/tvcg18.html#WuYM12</url>
+</article>
+</r>
+<r><article key="journals/tvcg/TanahashiM12" mdate="2012-10-18">
+<author>Yuzuru Tanahashi</author>
+<author>Kwan-Liu Ma</author>
+<title>Design Considerations for Optimizing Storyline Visualizations.</title>
+<pages>2679-2688</pages>
+<year>2012</year>
+<volume>18</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>12</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2012.212</ee>
+<url>db/journals/tvcg/tvcg18.html#TanahashiM12</url>
+</article>
+</r>
+<r><article key="journals/tvcg/MaLMF12" mdate="2012-10-18">
+<author>Joyce Ma</author>
+<author>Isaac Liao</author>
+<author>Kwan-Liu Ma</author>
+<author>Jennifer Frazier</author>
+<title>Living Liquid: Design and Evaluation of an Exploratory Visualization Tool for Museum Visitors.</title>
+<pages>2799-2808</pages>
+<year>2012</year>
+<volume>18</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>12</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2012.244</ee>
+<url>db/journals/tvcg/tvcg18.html#MaLMF12</url>
+</article>
+</r>
+<r><inproceedings key="conf/chi/HuLWWSM12" mdate="2012-05-07">
+<author>Mengdie Hu</author>
+<author>Shixia Liu</author>
+<author>Furu Wei</author>
+<author>Yingcai Wu</author>
+<author>John T. Stasko</author>
+<author>Kwan-Liu Ma</author>
+<title>Breaking news on twitter.</title>
+<pages>2751-2754</pages>
+<year>2012</year>
+<booktitle>CHI</booktitle>
+<ee>http://doi.acm.org/10.1145/2207676.2208672</ee>
+<crossref>conf/chi/2012</crossref>
+<url>db/conf/chi/chi2012.html#HuLWWSM12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/cluster/HsuWMYC12" mdate="2014-11-04">
+<author>Wei-Hsien Hsu</author>
+<author>Chun-Fu Wang</author>
+<author>Kwan-Liu Ma</author>
+<author>Hongfeng Yu</author>
+<author>Jacqueline H. Chen</author>
+<title>A Job Scheduling Design for Visualization Services Using GPU Clusters.</title>
+<pages>523-533</pages>
+<year>2012</year>
+<booktitle>CLUSTER</booktitle>
+<ee>http://dx.doi.org/10.1109/CLUSTER.2012.63</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/CLUSTER.2012.63</ee>
+<crossref>conf/cluster/2012</crossref>
+<url>db/conf/cluster/cluster2012.html#HsuWMYC12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/cybersecurity/SongMM12" mdate="2015-08-10">
+<author>Hanchen Song</author>
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<title>Crucial Nodes Centric Visual Monitoring and Analysis of Computer Networks.</title>
+<pages>16-23</pages>
+<year>2012</year>
+<booktitle>CyberSecurity</booktitle>
+<ee>http://dx.doi.org/10.1109/CyberSecurity.2012.9</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/CyberSecurity.2012.9</ee>
+<crossref>conf/cybersecurity/2012</crossref>
+<url>db/conf/cybersecurity/cybersecurity2012.html#SongMM12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/gd/SallaberryMM12" mdate="2013-02-18">
+<author>Arnaud Sallaberry</author>
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<title>Clustering, Visualizing, and Navigating for Large Dynamic Graphs.</title>
+<pages>487-498</pages>
+<year>2012</year>
+<booktitle>Graph Drawing</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-642-36763-2_43</ee>
+<crossref>conf/gd/2012</crossref>
+<url>db/conf/gd/gd2012.html#SallaberryMM12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/icdm/YuanM12" mdate="2014-09-17">
+<author>Guo-Xun Yuan</author>
+<author>Kwan-Liu Ma</author>
+<title>Scalable Training of Sparse Linear SVMs.</title>
+<pages>775-784</pages>
+<year>2012</year>
+<booktitle>ICDM</booktitle>
+<ee>http://dx.doi.org/10.1109/ICDM.2012.157</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/ICDM.2012.157</ee>
+<crossref>conf/icdm/2012</crossref>
+<url>db/conf/icdm/icdm2012.html#YuanM12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ieeevast/WeiSSM12" mdate="2014-11-18">
+<author>Jishang Wei</author>
+<author>Zeqian Shen</author>
+<author>Neel Sundaresan</author>
+<author>Kwan-Liu Ma</author>
+<title>Visual cluster exploration of web clickstream data.</title>
+<pages>3-12</pages>
+<year>2012</year>
+<booktitle>IEEE VAST</booktitle>
+<ee>http://dx.doi.org/10.1109/VAST.2012.6400494</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VAST.2012.6400494</ee>
+<crossref>conf/ieeevast/2012</crossref>
+<url>db/conf/ieeevast/ieeevast2012.html#WeiSSM12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ldav/ShenWSM12" mdate="2013-09-18">
+<author>Zeqian Shen</author>
+<author>Jishang Wei</author>
+<author>Neel Sundaresan</author>
+<author>Kwan-Liu Ma</author>
+<title>Visual analysis of massive web session data.</title>
+<pages>65-72</pages>
+<year>2012</year>
+<booktitle>LDAV</booktitle>
+<ee>http://dx.doi.org/10.1109/LDAV.2012.6378977</ee>
+<crossref>conf/ldav/2012</crossref>
+<url>db/conf/ldav/ldav2012.html#ShenWSM12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ldav/OzerWSMM12" mdate="2013-09-18">
+<author>Sedat Ozer</author>
+<author>Jishang Wei</author>
+<author>Deborah Silver</author>
+<author>Kwan-Liu Ma</author>
+<author>Pino Martin</author>
+<title>Group dynamics in scientific visualization.</title>
+<pages>97-104</pages>
+<year>2012</year>
+<booktitle>LDAV</booktitle>
+<ee>http://dx.doi.org/10.1109/LDAV.2012.6378982</ee>
+<crossref>conf/ldav/2012</crossref>
+<url>db/conf/ldav/ldav2012.html#OzerWSMM12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/momm/TanahashiRNM12" mdate="2013-01-15">
+<author>Yuzuru Tanahashi</author>
+<author>James R. Rowland</author>
+<author>Stephen C. North</author>
+<author>Kwan-Liu Ma</author>
+<title>Inferring human mobility patterns from anonymized mobile communication usage.</title>
+<pages>151-160</pages>
+<year>2012</year>
+<booktitle>MoMM</booktitle>
+<ee>http://doi.acm.org/10.1145/2428955.2428988</ee>
+<crossref>conf/momm/2012</crossref>
+<url>db/conf/momm/momm2012.html#TanahashiRNM12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/MorelandKMM12" mdate="2015-01-16">
+<author>Kenneth Moreland</author>
+<author>Brad King</author>
+<author>Robert Maynard</author>
+<author>Kwan-Liu Ma</author>
+<title>Flexible Analysis Software for Emerging Architectures.</title>
+<pages>821-826</pages>
+<year>2012</year>
+<booktitle>SC Companion</booktitle>
+<ee>http://dx.doi.org/10.1109/SC.Companion.2012.115</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SC.Companion.2012.115</ee>
+<crossref>conf/sc/2012c</crossref>
+<url>db/conf/sc/sc2012c.html#MorelandKMM12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/JacobKXMTWLFRHLBPTSYMHBHSBVMX12" mdate="2015-03-18">
+<author>Robert L. Jacob</author>
+<author>Jayesh Krishna</author>
+<author>Xiabing Xu</author>
+<author>Sheri A. Mickelson</author>
+<author>Tim Tautges</author>
+<author>Mike Wilde</author>
+<author>Robert Latham</author>
+<author>Ian T. Foster</author>
+<author>Robert B. Ross</author>
+<author>Mark Hereld</author>
+<author>Jay Walter Larson</author>
+<author>Pavel B. Bochev</author>
+<author>Kara Peterson</author>
+<author>Mark A. Taylor</author>
+<author>Karen Schuchardt</author>
+<author>Jain Yin</author>
+<author>Don Middleton</author>
+<author>Mary Haley</author>
+<author>David Brown</author>
+<author>Wei Huang</author>
+<author>Dennis G. Shea</author>
+<author>Richard Brownrigg</author>
+<author>Mariana Vertenstein</author>
+<author>Kwan-Liu Ma</author>
+<author>Jingrong Xie</author>
+<title>Abstract: Bringing Task and Data Parallelism to Analysis of Climate Model Output.</title>
+<pages>1493-1494</pages>
+<year>2012</year>
+<booktitle>SC Companion</booktitle>
+<ee>http://dx.doi.org/10.1109/SC.Companion.2012.282</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SC.Companion.2012.282</ee>
+<crossref>conf/sc/2012c</crossref>
+<url>db/conf/sc/sc2012c.html#JacobKXMTWLFRHLBPTSYMHBHSBVMX12</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/JacobKXMTWLFRHLBPTSYMHBHSBVMX12a" mdate="2015-03-18">
+<author>Robert L. Jacob</author>
+<author>Jayesh Krishna</author>
+<author>Xiabing Xu</author>
+<author>Sheri A. Mickelson</author>
+<author>Tim Tautges</author>
+<author>Mike Wilde</author>
+<author>Robert Latham</author>
+<author>Ian T. Foster</author>
+<author>Robert B. Ross</author>
+<author>Mark Hereld</author>
+<author>Jay Walter Larson</author>
+<author>Pavel B. Bochev</author>
+<author>Kara Peterson</author>
+<author>Mark A. Taylor</author>
+<author>Karen Schuchardt</author>
+<author>Jain Yin</author>
+<author>Don Middleton</author>
+<author>Mary Haley</author>
+<author>David Brown</author>
+<author>Wei Huang</author>
+<author>Dennis G. Shea</author>
+<author>Richard Brownrigg</author>
+<author>Mariana Vertenstein</author>
+<author>Kwan-Liu Ma</author>
+<author>Jingrong Xie</author>
+<title>Poster: Bringing Task and Data Parallelism to Analysis of Climate Model Output.</title>
+<pages>1495</pages>
+<year>2012</year>
+<booktitle>SC Companion</booktitle>
+<ee>http://dx.doi.org/10.1109/SC.Companion.2012.283</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SC.Companion.2012.283</ee>
+<crossref>conf/sc/2012c</crossref>
+<url>db/conf/sc/sc2012c.html#JacobKXMTWLFRHLBPTSYMHBHSBVMX12a</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/si3d/ZhangDM12" mdate="2012-03-12">
+<author>Yubo Zhang</author>
+<author>Zhao Dong</author>
+<author>Kwan-Liu Ma</author>
+<title>Realtime volume rendering using precomputed photon mapping.</title>
+<pages>217</pages>
+<year>2012</year>
+<booktitle>I3D</booktitle>
+<ee>http://doi.acm.org/10.1145/2159616.2159663</ee>
+<crossref>conf/si3d/2012</crossref>
+<url>db/conf/si3d/si3d2012.html#ZhangDM12</url>
+</inproceedings>
+</r>
+<r><article key="journals/cgf/WuPWLM11" mdate="2011-07-06">
+<author>Yingcai Wu</author>
+<author>Thomas Provan</author>
+<author>Furu Wei</author>
+<author>Shixia Liu</author>
+<author>Kwan-Liu Ma</author>
+<title>Semantic-Preserving Word Clouds by Seam Carving.</title>
+<pages>741-750</pages>
+<year>2011</year>
+<volume>30</volume>
+<journal>Comput. Graph. Forum</journal>
+<number>3</number>
+<ee>http://dx.doi.org/10.1111/j.1467-8659.2011.01923.x</ee>
+<url>db/journals/cgf/cgf30.html#WuPWLM11</url>
+</article>
+</r>
+<r><article key="journals/cgf/CrnovrsaninLWM11" mdate="2011-07-06">
+<author>Tarik Crnovrsanin</author>
+<author>Isaac Liao</author>
+<author>Yingcai Wu</author>
+<author>Kwan-Liu Ma</author>
+<title>Visual Recommendations for Network Navigation.</title>
+<pages>1081-1090</pages>
+<year>2011</year>
+<volume>30</volume>
+<journal>Comput. Graph. Forum</journal>
+<number>3</number>
+<ee>http://dx.doi.org/10.1111/j.1467-8659.2011.01957.x</ee>
+<url>db/journals/cgf/cgf30.html#CrnovrsaninLWM11</url>
+</article>
+</r>
+<r><article key="journals/cgf/ChenYYMM11" mdate="2011-11-25">
+<author>Cheng-Kai Chen</author>
+<author>Shi Yan</author>
+<author>Hongfeng Yu</author>
+<author>Nelson Max</author>
+<author>Kwan-Liu Ma</author>
+<title>An Illustrative Visualization Framework for 3D Vector Fields.</title>
+<pages>1941-1951</pages>
+<year>2011</year>
+<volume>30</volume>
+<journal>Comput. Graph. Forum</journal>
+<number>7</number>
+<ee>http://dx.doi.org/10.1111/j.1467-8659.2011.02064.x</ee>
+<url>db/journals/cgf/cgf30.html#ChenYYMM11</url>
+</article>
+</r>
+<r><article key="journals/cse/ChenHCME11" mdate="2011-11-16">
+<author>Cheng-Kai Chen</author>
+<author>Chris Ho</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<author>Ahmed Elgamal</author>
+<title>Visualizing 3D Earthquake Simulation Data.</title>
+<pages>52-63</pages>
+<year>2011</year>
+<volume>13</volume>
+<journal>Computing in Science and Engineering</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCSE.2010.120</ee>
+<url>db/journals/cse/cse13.html#ChenHCME11</url>
+</article>
+</r>
+<r><article key="journals/ivs/IsenbergESCMH11" mdate="2011-11-22">
+<author>Petra Isenberg</author>
+<author>Niklas Elmqvist</author>
+<author>Jean Scholtz</author>
+<author>Daniel Cernea</author>
+<author>Kwan-Liu Ma</author>
+<author>Hans Hagen</author>
+<title>Collaborative visualization: Definition, challenges, and research agenda.</title>
+<pages>310-326</pages>
+<year>2011</year>
+<volume>10</volume>
+<journal>Information Visualization</journal>
+<number>4</number>
+<ee>http://dx.doi.org/10.1177/1473871611412817</ee>
+<url>db/journals/ivs/ivs10.html#IsenbergESCMH11</url>
+</article>
+</r>
+<r><article key="journals/tog/HsuMC11" mdate="2011-12-06">
+<author>Wei-Hsien Hsu</author>
+<author>Kwan-Liu Ma</author>
+<author>Carlos D. Correa</author>
+<title>A rendering framework for multiscale views of 3D models.</title>
+<pages>131</pages>
+<year>2011</year>
+<volume>30</volume>
+<journal>ACM Trans. Graph.</journal>
+<number>6</number>
+<ee>http://doi.acm.org/10.1145/2070781.2024165</ee>
+<url>db/journals/tog/tog30.html#HsuMC11</url>
+</article>
+</r>
+<r><article key="journals/tvcg/WangWLM11" mdate="2011-11-07">
+<author>Yu-Shuen Wang</author>
+<author>Chaoli Wang</author>
+<author>Tong-Yee Lee</author>
+<author>Kwan-Liu Ma</author>
+<title>Feature-Preserving Volume Data Reduction and Focus+Context Visualization.</title>
+<pages>171-181</pages>
+<year>2011</year>
+<volume>17</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>2</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2010.34</ee>
+<url>db/journals/tvcg/tvcg17.html#WangWLM11</url>
+</article>
+</r>
+<r><article key="journals/tvcg/CorreaM11" mdate="2011-11-07">
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Visibility Histograms and Visibility-Driven Transfer Functions.</title>
+<pages>192-204</pages>
+<year>2011</year>
+<volume>17</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>2</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2010.35</ee>
+<url>db/journals/tvcg/tvcg17.html#CorreaM11</url>
+</article>
+</r>
+<r><article key="journals/tvcg/CorreaHM11" mdate="2011-11-07">
+<author>Carlos D. Correa</author>
+<author>Robert Hero</author>
+<author>Kwan-Liu Ma</author>
+<title>A Comparison of Gradient Estimation Methods for Volume Rendering on Unstructured Meshes.</title>
+<pages>305-319</pages>
+<year>2011</year>
+<volume>17</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>3</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2009.105</ee>
+<url>db/journals/tvcg/tvcg17.html#CorreaHM11</url>
+</article>
+</r>
+<r><inproceedings key="conf/aaai/WuM11" mdate="2012-02-21">
+<author>Yingcai Wu</author>
+<author>Kwan-Liu Ma</author>
+<title>Scalable Visualization Resizing Framework.</title>
+<year>2011</year>
+<booktitle>Scalable Integration of Analytics and Visualization</booktitle>
+<ee>http://www.aaai.org/ocs/index.php/WS/AAAIW11/paper/view/3867</ee>
+<crossref>conf/aaai/2011visual</crossref>
+<url>db/conf/aaai/visual2011.html#WuM11</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/ChenWMW11" mdate="2011-10-17">
+<author>Cheng-Kai Chen</author>
+<author>Chaoli Wang</author>
+<author>Kwan-Liu Ma</author>
+<author>Andrew T. Wittenberg</author>
+<title>Static correlation visualization for large time-varying volume data.</title>
+<pages>27-34</pages>
+<year>2011</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PACIFICVIS.2011.5742369</ee>
+<crossref>conf/apvis/2011</crossref>
+<url>db/conf/apvis/pacificvis2011.html#ChenWMW11</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/Ma11" mdate="2011-10-17">
+<author>Kwan-Liu Ma</author>
+<title>Keynote address: New approaches to large data visualization.</title>
+<year>2011</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PACIFICVIS.2011.5742365</ee>
+<crossref>conf/apvis/2011</crossref>
+<url>db/conf/apvis/pacificvis2011.html#Ma11</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/WeiYGCM11" mdate="2011-10-17">
+<author>Jishang Wei</author>
+<author>Hongfeng Yu</author>
+<author>Ray W. Grout</author>
+<author>Jacqueline H. Chen</author>
+<author>Kwan-Liu Ma</author>
+<title>Dual space analysis of turbulent combustion particle data.</title>
+<pages>91-98</pages>
+<year>2011</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PACIFICVIS.2011.5742377</ee>
+<crossref>conf/apvis/2011</crossref>
+<url>db/conf/apvis/pacificvis2011.html#WeiYGCM11</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/WangYGMC11" mdate="2011-10-17">
+<author>Chaoli Wang</author>
+<author>Hongfeng Yu</author>
+<author>Ray W. Grout</author>
+<author>Kwan-Liu Ma</author>
+<author>Jacqueline H. Chen</author>
+<title>Analyzing information transfer in time-varying multivariate data.</title>
+<pages>99-106</pages>
+<year>2011</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PACIFICVIS.2011.5742378</ee>
+<crossref>conf/apvis/2011</crossref>
+<url>db/conf/apvis/pacificvis2011.html#WangYGMC11</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/biovis/MillerMTM11" mdate="2015-05-29">
+<author>Robert Miller</author>
+<author>Vadim Mozhayskiy</author>
+<author>Ilias Tagkopoulos</author>
+<author>Kwan-Liu Ma</author>
+<title>EVEVis: A multi-scale visualization system for dense evolutionary data.</title>
+<pages>143-150</pages>
+<year>2011</year>
+<booktitle>BioVis</booktitle>
+<ee>http://dx.doi.org/10.1109/BioVis.2011.6094059</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/BioVis.2011.6094059</ee>
+<crossref>conf/biovis/2011</crossref>
+<url>db/conf/biovis/biovis2011.html#MillerMTM11</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/egpgv/TikhonovaYCCM11" mdate="2011-05-19">
+<author>Anna Tikhonova</author>
+<author>Hongfeng Yu</author>
+<author>Carlos D. Correa</author>
+<author>Jacqueline H. Chen</author>
+<author>Kwan-Liu Ma</author>
+<title>A Preview and Exploratory Technique for Large-Scale Scientific Simulations.</title>
+<pages>111-120</pages>
+<year>2011</year>
+<booktitle>EGPGV</booktitle>
+<ee>http://dx.doi.org/10.2312/EGPGV/EGPGV11/111-120</ee>
+<crossref>conf/egpgv/2011</crossref>
+<url>db/conf/egpgv/egpgv2011.html#TikhonovaYCCM11</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ldav/WeiYMC11" mdate="2013-09-18">
+<author>Jishang Wei</author>
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<author>Jackie H. Chen</author>
+<title>Parallel clustering for visualizing large scientific line data.</title>
+<pages>47-55</pages>
+<year>2011</year>
+<booktitle>LDAV</booktitle>
+<ee>http://dx.doi.org/10.1109/LDAV.2011.6092316</ee>
+<crossref>conf/ldav/2011</crossref>
+<url>db/conf/ldav/ldav2011.html#WeiYMC11</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ldav/MorelandAGM11" mdate="2013-09-18">
+<author>Kenneth Moreland</author>
+<author>Utkarsh Ayachit</author>
+<author>Berk Geveci</author>
+<author>Kwan-Liu Ma</author>
+<title>Dax Toolkit: A proposed framework for data analysis and visualization at Extreme Scale.</title>
+<pages>97-104</pages>
+<year>2011</year>
+<booktitle>LDAV</booktitle>
+<ee>http://dx.doi.org/10.1109/LDAV.2011.6092323</ee>
+<crossref>conf/ldav/2011</crossref>
+<url>db/conf/ldav/ldav2011.html#MorelandAGM11</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sca/ZhangCM11" mdate="2011-11-21">
+<author>Yubo Zhang</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Graph-based Fire Synthesis.</title>
+<pages>187-194</pages>
+<year>2011</year>
+<booktitle>Symposium on Computer Animation</booktitle>
+<ee>http://dx.doi.org/10.2312/SCA/SCA11/187-194</ee>
+<crossref>conf/sca/2011</crossref>
+<url>db/conf/sca/sca2011.html#ZhangCM11</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vizsec/BoschettiSMM11" mdate="2014-07-10">
+<author>Alberto Boschetti</author>
+<author>Luca Salgarelli</author>
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<title>TVi: a visual querying system for network monitoring and anomaly detection.</title>
+<pages>1</pages>
+<year>2011</year>
+<booktitle>VizSEC</booktitle>
+<ee>http://doi.acm.org/10.1145/2016904.2016905</ee>
+<crossref>conf/vizsec/2011</crossref>
+<url>db/conf/vizsec/vizsec2011.html#BoschettiSMM11</url>
+</inproceedings>
+</r>
+<r><incollection key="books/sp/social2011/CorreaM11" mdate="2012-02-18">
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualizing Social Networks.</title>
+<pages>307-326</pages>
+<year>2011</year>
+<booktitle>Social Network Data Analytics</booktitle>
+<ee>http://dx.doi.org/10.1007/978-1-4419-8462-3_11</ee>
+<crossref>books/sp/social11</crossref>
+<url>db/books/collections/Social2011.html#CorreaM11</url>
+</incollection>
+</r>
+<r><article key="journals/cga/WangYM10" mdate="2010-04-20">
+<author>Chaoli Wang</author>
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<title>Application-Driven Compression for Visualizing Large-Scale Time-Varying Data.</title>
+<pages>59-69</pages>
+<year>2010</year>
+<volume>30</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>1</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2010.3</ee>
+<url>db/journals/cga/cga30.html#WangYM10</url>
+</article>
+</r>
+<r><article key="journals/cga/YuWGCM10" mdate="2011-10-25">
+<author>Hongfeng Yu</author>
+<author>Chaoli Wang</author>
+<author>Ray W. Grout</author>
+<author>Jacqueline H. Chen</author>
+<author>Kwan-Liu Ma</author>
+<title>In Situ Visualization for Large-Scale Combustion Simulations.</title>
+<pages>45-57</pages>
+<year>2010</year>
+<volume>30</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>3</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2010.55</ee>
+<url>db/journals/cga/cga30.html#YuWGCM10</url>
+</article>
+</r>
+<r><article key="journals/cga/AkibaWM10" mdate="2011-10-25">
+<author>Hiroshi Akiba</author>
+<author>Chaoli Wang</author>
+<author>Kwan-Liu Ma</author>
+<title>AniViz: A Template-Based Animation Tool for Volume Visualization.</title>
+<pages>61-71</pages>
+<year>2010</year>
+<volume>30</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>5</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2009.107</ee>
+<url>db/journals/cga/cga30.html#AkibaWM10</url>
+</article>
+</r>
+<r><article key="journals/cgf/TikhonovaCM10" mdate="2010-11-12">
+<author>Anna Tikhonova</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>An Exploratory Technique for Coherent Visualization of Time-varying Volume Data.</title>
+<pages>783-792</pages>
+<year>2010</year>
+<volume>29</volume>
+<journal>Comput. Graph. Forum</journal>
+<number>3</number>
+<ee>http://dx.doi.org/10.1111/j.1467-8659.2009.01690.x</ee>
+<url>db/journals/cgf/cgf29.html#TikhonovaCM10</url>
+</article>
+</r>
+<r><article key="journals/cgf/YanMM10" mdate="2014-06-30">
+<author>Shi Yan</author>
+<author>Nelson Max</author>
+<author>Kwan-Liu Ma</author>
+<title>Polygonal Surface Advection applied to Strange Attractors.</title>
+<pages>2281-2290</pages>
+<year>2010</year>
+<volume>29</volume>
+<journal>Comput. Graph. Forum</journal>
+<number>7</number>
+<ee>http://dx.doi.org/10.1111/j.1467-8659.2010.01817.x</ee>
+<url>db/journals/cgf/cgf29.html#YanMM10</url>
+</article>
+</r>
+<r><article key="journals/tog/CorreaM10" mdate="2015-05-27">
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Dynamic video narratives.</title>
+<year>2010</year>
+<volume>29</volume>
+<journal>ACM Trans. Graph.</journal>
+<number>4</number>
+<ee>http://doi.acm.org/10.1145/1833351.1778825</ee>
+<url>db/journals/tog/tog29.html#CorreaM10</url>
+<pages>88:1-88:9</pages>
+</article>
+</r>
+<r><article key="journals/tvcg/TikhonovaCM10" mdate="2011-11-07">
+<author>Anna Tikhonova</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualization by Proxy: A Novel Framework for Deferred Interaction with Volume Data.</title>
+<pages>1551-1559</pages>
+<year>2010</year>
+<volume>16</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2010.215</ee>
+<url>db/journals/tvcg/tvcg16.html#TikhonovaCM10</url>
+</article>
+</r>
+<r><article key="journals/tvcg/MarchesinCHM10" mdate="2011-11-07">
+<author>St&#233;phane Marchesin</author>
+<author>Cheng-Kai Chen</author>
+<author>Chris Ho</author>
+<author>Kwan-Liu Ma</author>
+<title>View-Dependent Streamlines for 3D Vector Fields.</title>
+<pages>1578-1586</pages>
+<year>2010</year>
+<volume>16</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2010.212</ee>
+<url>db/journals/tvcg/tvcg16.html#MarchesinCHM10</url>
+</article>
+</r>
+<r><article key="journals/tvcg/JonesM10" mdate="2011-11-07">
+<author>Chad Jones</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualizing Flow Trajectories Using Locality-based Rendering and Warped Curve Plots.</title>
+<pages>1587-1594</pages>
+<year>2010</year>
+<volume>16</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2010.218</ee>
+<url>db/journals/tvcg/tvcg16.html#JonesM10</url>
+</article>
+</r>
+<r><inproceedings key="conf/apvis/HsiehCM10" mdate="2010-04-28">
+<author>Tung-Ju Hsieh</author>
+<author>Cheng-Kai Chen</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualizing field-measured seismic data.</title>
+<pages>65-72</pages>
+<year>2010</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://dx.doi.org/10.1109/PACIFICVIS.2010.5429610</ee>
+<crossref>conf/apvis/2010</crossref>
+<url>db/conf/apvis/pacificvis2010.html#HsiehCM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/WeiWYM10" mdate="2010-04-28">
+<author>Jishang Wei</author>
+<author>Chaoli Wang</author>
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<title>A sketch-based interface for classifying and visualizing vector fields.</title>
+<pages>129-136</pages>
+<year>2010</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://dx.doi.org/10.1109/PACIFICVIS.2010.5429603</ee>
+<crossref>conf/apvis/2010</crossref>
+<url>db/conf/apvis/pacificvis2010.html#WeiWYM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/TikhonovaCM10" mdate="2010-04-28">
+<author>Anna Tikhonova</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Explorable images for visualizing volume data.</title>
+<pages>177-184</pages>
+<year>2010</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://dx.doi.org/10.1109/PACIFICVIS.2010.5429595</ee>
+<crossref>conf/apvis/2010</crossref>
+<url>db/conf/apvis/pacificvis2010.html#TikhonovaCM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/cloudcom/TanahashiCMM10" mdate="2015-06-02">
+<author>Yuzuru Tanahashi</author>
+<author>Cheng-Kai Chen</author>
+<author>St&#233;phane Marchesin</author>
+<author>Kwan-Liu Ma</author>
+<title>An Interface Design for Future Cloud-Based Visualization Services.</title>
+<pages>609-613</pages>
+<year>2010</year>
+<booktitle>CloudCom</booktitle>
+<ee>http://dx.doi.org/10.1109/CloudCom.2010.46</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/CloudCom.2010.46</ee>
+<crossref>conf/cloudcom/2010</crossref>
+<url>db/conf/cloudcom/cloudcom2010.html#TanahashiCMM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/dms/JonesAM10" mdate="2010-11-26">
+<author>Chad Jones</author>
+<author>Ryan Armstrong</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualizing the Commonalities Between Hierarchically Structured Data Queries.</title>
+<pages>251-256</pages>
+<year>2010</year>
+<booktitle>DMS</booktitle>
+<crossref>conf/dms/2010</crossref>
+<url>db/conf/dms/dms2010.html#JonesAM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/egpgv/MarchesinM10" mdate="2011-04-06">
+<author>St&#233;phane Marchesin</author>
+<author>Kwan-Liu Ma</author>
+<title>Cross-Node Occlusion in Sort-Last Volume Rendering.</title>
+<pages>11-18</pages>
+<year>2010</year>
+<booktitle>EGPGV</booktitle>
+<ee>http://dx.doi.org/10.2312/EGPGV/EGPGV10/011-018</ee>
+<crossref>conf/egpgv/2010</crossref>
+<url>db/conf/egpgv/egpgv2010.html#MarchesinM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/hpdc/StuartCMO10" mdate="2010-09-26">
+<author>Jeff A. Stuart</author>
+<author>Cheng-Kai Chen</author>
+<author>Kwan-Liu Ma</author>
+<author>John D. Owens</author>
+<title>Multi-GPU volume rendering using MapReduce.</title>
+<pages>841-848</pages>
+<year>2010</year>
+<booktitle>HPDC</booktitle>
+<ee>http://doi.acm.org/10.1145/1851476.1851597</ee>
+<crossref>conf/hpdc/2010</crossref>
+<url>db/conf/hpdc/hpdc2010.html#StuartCMO10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ieeevast/ChanCM10" mdate="2011-05-05">
+<author>Yu-Hsuan Chan</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Flow-based scatterplots for sensitivity analysis.</title>
+<pages>43-50</pages>
+<year>2010</year>
+<booktitle>IEEE VAST</booktitle>
+<ee>http://dx.doi.org/10.1109/VAST.2010.5652460</ee>
+<crossref>conf/ieeevast/2010</crossref>
+<url>db/conf/ieeevast/ieeevast2010.html#ChanCM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ism/MuelderPM10" mdate="2014-10-13">
+<author>Chris Muelder</author>
+<author>Thomas Provan</author>
+<author>Kwan-Liu Ma</author>
+<title>Content Based Graph Visualization of Audio Data for Music Library Navigation.</title>
+<pages>129-136</pages>
+<year>2010</year>
+<booktitle>ISM</booktitle>
+<ee>http://dx.doi.org/10.1109/ISM.2010.27</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/ISM.2010.27</ee>
+<crossref>conf/ism/2010</crossref>
+<url>db/conf/ism/ism2010.html#MuelderPM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/miccai/ZhouZM10" mdate="2010-09-14">
+<author>Fangfang Zhou</author>
+<author>Ying Zhao</author>
+<author>Kwan-Liu Ma</author>
+<title>Parallel Mean Shift for Interactive Volume Segmentation.</title>
+<pages>67-75</pages>
+<year>2010</year>
+<booktitle>MLMI</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-642-15948-0_9</ee>
+<crossref>conf/miccai/2010mlmi</crossref>
+<url>db/conf/miccai/mlmi2010.html#ZhouZM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/miccai/ZhengWM10" mdate="2011-04-05">
+<author>Lin Zheng</author>
+<author>Yingcai Wu</author>
+<author>Kwan-Liu Ma</author>
+<title>Relation-Aware Spreadsheets for Multimodal Volume Segmentation and Visualization.</title>
+<pages>92-99</pages>
+<year>2010</year>
+<booktitle>MLMI</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-642-15948-0_12</ee>
+<crossref>conf/miccai/2010mlmi</crossref>
+<url>db/conf/miccai/mlmi2010.html#ZhengWM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/siggraph/MaTC10" mdate="2010-08-10">
+<author>Kwan-Liu Ma</author>
+<author>Anna Tikhonova</author>
+<author>Carlos D. Correa</author>
+<title>Distance visualization of ultrascale data with explorable images.</title>
+<year>2010</year>
+<booktitle>SIGGRAPH Talks</booktitle>
+<ee>http://doi.acm.org/10.1145/1837026.1837038</ee>
+<crossref>conf/siggraph/2010talks</crossref>
+<url>db/conf/siggraph/siggraph2010talks.html#MaTC10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/softvis/OgawaM10" mdate="2010-11-23">
+<author>Michael Ogawa</author>
+<author>Kwan-Liu Ma</author>
+<title>Software evolution storylines.</title>
+<pages>35-42</pages>
+<year>2010</year>
+<booktitle>SOFTVIS</booktitle>
+<ee>http://doi.acm.org/10.1145/1879211.1879219</ee>
+<crossref>conf/softvis/2010</crossref>
+<url>db/conf/softvis/softvis2010.html#OgawaM10</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/wecwis/ChanKM10" mdate="2014-12-05">
+<author>Yu-Hsuan Chan</author>
+<author>K. Keeton</author>
+<author>Kwan-Liu Ma</author>
+<title>Interactive Visual Analysis of Hierarchical Enterprise Data.</title>
+<pages>180-187</pages>
+<year>2010</year>
+<booktitle>CEC</booktitle>
+<ee>http://dx.doi.org/10.1109/CEC.2010.37</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/CEC.2010.37</ee>
+<crossref>conf/wecwis/2010</crossref>
+<url>db/conf/wecwis/cec2010.html#ChanKM10</url>
+</inproceedings>
+</r>
+<r><article key="journals/cg/LiereLSM09" mdate="2010-02-25">
+<author>Robert van Liere</author>
+<author>Robert S. Laramee</author>
+<author>Gerik Scheuermann</author>
+<author>Kwan-Liu Ma</author>
+<title>Foreword to special issue on knowledge assisted visualization.</title>
+<pages>583-584</pages>
+<year>2009</year>
+<volume>33</volume>
+<journal>Computers &#38; Graphics</journal>
+<number>5</number>
+<ee>http://dx.doi.org/10.1016/j.cag.2009.07.002</ee>
+<url>db/journals/cg/cg33.html#LiereLSM09</url>
+</article>
+</r>
+<r><article key="journals/cga/ChenEHLLMRSS09" mdate="2011-10-25">
+<author>Min Chen</author>
+<author>David S. Ebert</author>
+<author>Hans Hagen</author>
+<author>Robert S. Laramee</author>
+<author>Robert van Liere</author>
+<author>Kwan-Liu Ma</author>
+<author>William Ribarsky</author>
+<author>Gerik Scheuermann</author>
+<author>Deborah Silver</author>
+<title>Data, Information, and Knowledge in Visualization.</title>
+<pages>12-19</pages>
+<year>2009</year>
+<volume>29</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>1</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2009.6</ee>
+<url>db/journals/cga/cga29.html#ChenEHLLMRSS09</url>
+</article>
+</r>
+<r><article key="journals/cga/Ma09" mdate="2009-12-09">
+<author>Kwan-Liu Ma</author>
+<title>In Situ Visualization at Extreme Scale: Challenges and Opportunities.</title>
+<pages>14-19</pages>
+<year>2009</year>
+<volume>29</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2009.120</ee>
+<url>db/journals/cga/cga29.html#Ma09</url>
+</article>
+</r>
+<r><article key="journals/tvcg/OgawaM09" mdate="2011-11-07">
+<author>Michael Ogawa</author>
+<author>Kwan-Liu Ma</author>
+<title>code_swarm: A Design Study in Organic Software Visualization.</title>
+<pages>1097-1104</pages>
+<year>2009</year>
+<volume>15</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2009.123</ee>
+<url>db/journals/tvcg/tvcg15.html#OgawaM09</url>
+</article>
+</r>
+<r><article key="journals/tvcg/MuelderGM09" mdate="2011-11-07">
+<author>Chris Muelder</author>
+<author>Fran&#231;ois Gygi</author>
+<author>Kwan-Liu Ma</author>
+<title>Visual Analysis of Inter-Process Communication for Large-Scale Parallel Computing.</title>
+<pages>1129-1136</pages>
+<year>2009</year>
+<volume>15</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2009.196</ee>
+<url>db/journals/tvcg/tvcg15.html#MuelderGM09</url>
+</article>
+</r>
+<r><article key="journals/tvcg/LampeCMH09" mdate="2011-11-07">
+<author>Ove Daae Lampe</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<author>Helwig Hauser</author>
+<title>Curve-Centric Volume Reformation for Comparative Visualization.</title>
+<pages>1235-1242</pages>
+<year>2009</year>
+<volume>15</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2009.136</ee>
+<url>db/journals/tvcg/tvcg15.html#LampeCMH09</url>
+</article>
+</r>
+<r><article key="journals/tvcg/CorreaM09" mdate="2011-11-07">
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>The Occlusion Spectrum for Volume Classification and Visualization.</title>
+<pages>1465-1472</pages>
+<year>2009</year>
+<volume>15</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2009.189</ee>
+<url>db/journals/tvcg/tvcg15.html#CorreaM09</url>
+</article>
+</r>
+<r><inproceedings key="conf/apvis/MuelderM09" mdate="2010-03-10">
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<title>Interactive feature extraction and tracking by utilizing region coherency.</title>
+<pages>17-24</pages>
+<year>2009</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PACIFICVIS.2009.4906833</ee>
+<crossref>conf/apvis/2009</crossref>
+<url>db/conf/apvis/pacificvis2009.html#MuelderM09</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/ItohMMS09" mdate="2010-03-10">
+<author>Takayuki Itoh</author>
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<author>Jun Sese</author>
+<title>A hybrid space-filling and force-directed layout method for visualizing multiple-category graphs.</title>
+<pages>121-128</pages>
+<year>2009</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PACIFICVIS.2009.4906846</ee>
+<crossref>conf/apvis/2009</crossref>
+<url>db/conf/apvis/pacificvis2009.html#ItohMMS09</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/SukharevWMW09" mdate="2010-03-10">
+<author>Jeffrey Sukharev</author>
+<author>Chaoli Wang</author>
+<author>Kwan-Liu Ma</author>
+<author>Andrew T. Wittenberg</author>
+<title>Correlation study of time-varying multivariate climate data sets.</title>
+<pages>161-168</pages>
+<year>2009</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PACIFICVIS.2009.4906852</ee>
+<crossref>conf/apvis/2009</crossref>
+<url>db/conf/apvis/pacificvis2009.html#SukharevWMW09</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/CorreaM09" mdate="2010-03-10">
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Visibility-driven transfer functions.</title>
+<pages>177-184</pages>
+<year>2009</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PACIFICVIS.2009.4906854</ee>
+<crossref>conf/apvis/2009</crossref>
+<url>db/conf/apvis/pacificvis2009.html#CorreaM09</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/artsit/HsuMCM09" mdate="2015-03-16">
+<author>Wei-Hsien Hsu</author>
+<author>Jianqiang Mei</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Depicting Time Evolving Flow with Illustrative Visualization Techniques.</title>
+<pages>136-147</pages>
+<year>2009</year>
+<booktitle>ArtsIT</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-642-11577-6_18</ee>
+<ee>http://eudl.eu/doi/10.1007/978-3-642-11577-6_18</ee>
+<crossref>conf/artsit/2009</crossref>
+<url>db/conf/artsit/artsit2009.html#HsuMCM09</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/asunam/CrnovrsaninCM09" mdate="2010-01-05">
+<author>Tarik Crnovrsanin</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Social Network Discovery Based on Sensitivity Analysis.</title>
+<pages>107-112</pages>
+<year>2009</year>
+<booktitle>ASONAM</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/ASONAM.2009.56</ee>
+<crossref>conf/asunam/2009</crossref>
+<url>db/conf/asunam/asunam2009.html#CrnovrsaninCM09</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/icpp/PeterkaYRML09" mdate="2014-07-25">
+<author>Tom Peterka</author>
+<author>Hongfeng Yu</author>
+<author>Robert B. Ross</author>
+<author>Kwan-Liu Ma</author>
+<author>Robert Latham</author>
+<title>End-to-End Study of Parallel Volume Rendering on the IBM Blue Gene/P.</title>
+<pages>566-573</pages>
+<year>2009</year>
+<booktitle>ICPP</booktitle>
+<ee>http://dx.doi.org/10.1109/ICPP.2009.27</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/ICPP.2009.27</ee>
+<crossref>conf/icpp/2009</crossref>
+<url>db/conf/icpp/icpp2009.html#PeterkaYRML09</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ieeevast/CrnovrsaninMCM09" mdate="2011-05-05">
+<author>Tarik Crnovrsanin</author>
+<author>Chris Muelder</author>
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Proximity-based visualization of movement trace data.</title>
+<pages>11-18</pages>
+<year>2009</year>
+<booktitle>IEEE VAST</booktitle>
+<ee>http://dx.doi.org/10.1109/VAST.2009.5332593</ee>
+<crossref>conf/ieeevast/2009</crossref>
+<url>db/conf/ieeevast/ieeevast2009.html#CrnovrsaninMCM09</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ieeevast/CorreaCM09" mdate="2011-05-05">
+<author>Carlos D. Correa</author>
+<author>Yu-Hsuan Chan</author>
+<author>Kwan-Liu Ma</author>
+<title>A framework for uncertainty-aware visual analytics.</title>
+<pages>51-58</pages>
+<year>2009</year>
+<booktitle>IEEE VAST</booktitle>
+<ee>http://dx.doi.org/10.1109/VAST.2009.5332611</ee>
+<crossref>conf/ieeevast/2009</crossref>
+<url>db/conf/ieeevast/ieeevast2009.html#CorreaCM09</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ieeevast/JonesOSTM09" mdate="2011-05-05">
+<author>Chad Jones</author>
+<author>Michael Ogawa</author>
+<author>James Shearer</author>
+<author>Anna Tikhonova</author>
+<author>Kwan-Liu Ma</author>
+<title>VIDI surveillance - embassy monitoring and oversight system.</title>
+<pages>257-258</pages>
+<year>2009</year>
+<booktitle>IEEE VAST</booktitle>
+<ee>http://dx.doi.org/10.1109/VAST.2009.5333950</ee>
+<crossref>conf/ieeevast/2009</crossref>
+<url>db/conf/ieeevast/ieeevast2009.html#JonesOSTM09</url>
+</inproceedings>
+</r>
+<r><article key="journals/cga/MaFL08" mdate="2011-10-25">
+<author>Kwan-Liu Ma</author>
+<author>Issei Fujishiro</author>
+<author>Hua Li</author>
+<title>Visualization Research is Growing and Expanding.</title>
+<pages>22-23</pages>
+<year>2008</year>
+<volume>28</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>5</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2008.105</ee>
+<url>db/journals/cga/cga28.html#MaFL08</url>
+</article>
+</r>
+<r><article key="journals/cse/JonesMEL08" mdate="2009-12-06">
+<author>Chad Jones</author>
+<author>Kwan-Liu Ma</author>
+<author>St&#233;phane Ethier</author>
+<author>Wei-Li Lee</author>
+<title>An Integrated Exploration Approach to Visualizing Multivariate Particle Data.</title>
+<pages>20-29</pages>
+<year>2008</year>
+<volume>10</volume>
+<journal>Computing in Science and Engineering</journal>
+<number>4</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCSE.2008.88</ee>
+<url>db/journals/cse/cse10.html#JonesMEL08</url>
+</article>
+</r>
+<r><article key="journals/scp/JacksonDM08" mdate="2009-01-13">
+<author>Stoney Jackson</author>
+<author>Premkumar T. Devanbu</author>
+<author>Kwan-Liu Ma</author>
+<title>Stable, flexible, peephole pretty-printing.</title>
+<pages>40-51</pages>
+<year>2008</year>
+<volume>72</volume>
+<journal>Sci. Comput. Program.</journal>
+<number>1-2</number>
+<ee>http://dx.doi.org/10.1016/j.scico.2007.11.002</ee>
+<url>db/journals/scp/scp72.html#JacksonDM08</url>
+</article>
+</r>
+<r><article key="journals/tvcg/WangM08" mdate="2011-11-07">
+<author>Chaoli Wang</author>
+<author>Kwan-Liu Ma</author>
+<title>A Statistical Approach to Volume Data Quality Assessment.</title>
+<pages>590-602</pages>
+<year>2008</year>
+<volume>14</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>3</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2007.70628</ee>
+<url>db/journals/tvcg/tvcg14.html#WangM08</url>
+</article>
+</r>
+<r><article key="journals/tvcg/MuelderM08" mdate="2011-11-07">
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<title>Rapid Graph Layout Using Space Filling Curves.</title>
+<pages>1301-1308</pages>
+<year>2008</year>
+<volume>14</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2008.158</ee>
+<url>db/journals/tvcg/tvcg14.html#MuelderM08</url>
+</article>
+</r>
+<r><article key="journals/tvcg/CorreaM08" mdate="2011-11-07">
+<author>Carlos D. Correa</author>
+<author>Kwan-Liu Ma</author>
+<title>Size-based Transfer Functions: A New Volume Exploration Technique.</title>
+<pages>1380-1387</pages>
+<year>2008</year>
+<volume>14</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2008.162</ee>
+<url>db/journals/tvcg/tvcg14.html#CorreaM08</url>
+</article>
+</r>
+<r><article key="journals/tvcg/WangYM08" mdate="2011-11-07">
+<author>Chaoli Wang</author>
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<title>Importance-Driven Time-Varying Data Visualization.</title>
+<pages>1547-1554</pages>
+<year>2008</year>
+<volume>14</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2008.140</ee>
+<url>db/journals/tvcg/tvcg14.html#WangYM08</url>
+</article>
+</r>
+<r><inproceedings key="conf/apvis/ShearerOMK08" mdate="2008-06-17">
+<author>James Shearer</author>
+<author>Michael Ogawa</author>
+<author>Kwan-Liu Ma</author>
+<author>Toby Kohlenberg</author>
+<title>Pixelplexing: Gaining Display Resolution Through Time.</title>
+<pages>159-166</pages>
+<year>2008</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://dx.doi.org/10.1109/PACIFICVIS.2008.4475472</ee>
+<crossref>conf/apvis/2008</crossref>
+<url>db/conf/apvis/pacificvis2008.html#ShearerOMK08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/ShenM08" mdate="2008-06-17">
+<author>Zeqian Shen</author>
+<author>Kwan-Liu Ma</author>
+<title>MobiVis: A Visualization System for Exploring Mobile Data.</title>
+<pages>175-182</pages>
+<year>2008</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://dx.doi.org/10.1109/PACIFICVIS.2008.4475474</ee>
+<crossref>conf/apvis/2008</crossref>
+<url>db/conf/apvis/pacificvis2008.html#ShenM08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/Ma08" mdate="2008-06-17">
+<author>Kwan-Liu Ma</author>
+<title>StarGate: A Unified, Interactive Visualization of Software Projects.</title>
+<pages>191-198</pages>
+<year>2008</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://dx.doi.org/10.1109/PACIFICVIS.2008.4475476</ee>
+<crossref>conf/apvis/2008</crossref>
+<url>db/conf/apvis/pacificvis2008.html#Ma08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/HarozMH08" mdate="2008-06-17">
+<author>Steve Haroz</author>
+<author>Kwan-Liu Ma</author>
+<author>Katrin Heitmann</author>
+<title>Multiple Uncertainties in Time-Variant Cosmological Particle Data.</title>
+<pages>207-214</pages>
+<year>2008</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://dx.doi.org/10.1109/PACIFICVIS.2008.4475478</ee>
+<crossref>conf/apvis/2008</crossref>
+<url>db/conf/apvis/pacificvis2008.html#HarozMH08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/MuelderM08" mdate="2008-06-17">
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<title>A Treemap Based Method for Rapid Layout of Large Graphs.</title>
+<pages>231-238</pages>
+<year>2008</year>
+<booktitle>PacificVis</booktitle>
+<ee>http://dx.doi.org/10.1109/PACIFICVIS.2008.4475481</ee>
+<crossref>conf/apvis/2008</crossref>
+<url>db/conf/apvis/pacificvis2008.html#MuelderM08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/cts/MaW08" mdate="2012-09-03">
+<author>Kwan-Liu Ma</author>
+<author>Chaoli Wang</author>
+<title>Social-aware collaborative visualization for large scientific projects.</title>
+<pages>190-195</pages>
+<year>2008</year>
+<booktitle>CTS</booktitle>
+<ee>http://dx.doi.org/10.1109/CTS.2008.4543931</ee>
+<crossref>conf/cts/2008</crossref>
+<url>db/conf/cts/cts2008.html#MaW08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/egpgv/TikhonovaM08" mdate="2011-04-05">
+<author>Anna Tikhonova</author>
+<author>Kwan-Liu Ma</author>
+<title>A Scalable Parallel Force-Directed Graph Layout Algorithm.</title>
+<pages>25-32</pages>
+<year>2008</year>
+<booktitle>EGPGV</booktitle>
+<ee>http://dx.doi.org/10.2312/EGPGV/EGPGV08/025-032</ee>
+<crossref>conf/egpgv/2008</crossref>
+<url>db/conf/egpgv/egpgv2008.html#TikhonovaM08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/egpgv/PeterkaYRM08" mdate="2011-04-05">
+<author>Tom Peterka</author>
+<author>Hongfeng Yu</author>
+<author>Robert B. Ross</author>
+<author>Kwan-Liu Ma</author>
+<title>Parallel Volume Rendering on the IBM Blue Gene/P.</title>
+<pages>73-80</pages>
+<year>2008</year>
+<booktitle>EGPGV</booktitle>
+<ee>http://dx.doi.org/10.2312/EGPGV/EGPGV08/073-080</ee>
+<crossref>conf/egpgv/2008</crossref>
+<url>db/conf/egpgv/egpgv2008.html#PeterkaYRM08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ieeevast/CorreaCMSASM08" mdate="2011-05-06">
+<author>Carlos D. Correa</author>
+<author>Tarik Crnovrsanin</author>
+<author>Chris Muelder</author>
+<author>Zeqian Shen</author>
+<author>Ryan Armstrong</author>
+<author>James Shearer</author>
+<author>Kwan-Liu Ma</author>
+<title>Cell phone mini challenge award: Intuitive social network graphs visual analytics of cell phone data using mobivis and ontovis.</title>
+<pages>211-212</pages>
+<year>2008</year>
+<booktitle>IEEE VAST</booktitle>
+<ee>http://dx.doi.org/10.1109/VAST.2008.4677391</ee>
+<crossref>conf/ieeevast/2008</crossref>
+<url>db/conf/ieeevast/ieeevast2008.html#CorreaCMSASM08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/isda/ChenTM08" mdate="2014-12-10">
+<author>Cheng-Kai Chen</author>
+<author>Russell Thomason</author>
+<author>Kwan-Liu Ma</author>
+<title>Intelligent Focus+Context Volume Visualization.</title>
+<pages>368-374</pages>
+<year>2008</year>
+<booktitle>ISDA (1)</booktitle>
+<ee>http://dx.doi.org/10.1109/ISDA.2008.232</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/ISDA.2008.232</ee>
+<crossref>conf/isda/2008</crossref>
+<url>db/conf/isda/isda2008-1.html#ChenTM08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/YuWM08" mdate="2008-11-17">
+<author>Hongfeng Yu</author>
+<author>Chaoli Wang</author>
+<author>Kwan-Liu Ma</author>
+<title>Massively parallel volume rendering using 2-3 swap image compositing.</title>
+<pages>48</pages>
+<year>2008</year>
+<booktitle>SC</booktitle>
+<ee>http://doi.acm.org/10.1145/1413370.1413419</ee>
+<crossref>conf/sc/2008</crossref>
+<url>db/conf/sc/sc2008.html#YuWM08</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vizsec/ShearerMK08" mdate="2008-09-23">
+<author>James Shearer</author>
+<author>Kwan-Liu Ma</author>
+<author>Toby Kohlenberg</author>
+<title>BGPeep: An IP-Space Centered View for Internet Routing Data.</title>
+<pages>95-110</pages>
+<year>2008</year>
+<booktitle>VizSEC</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-540-85933-8_10</ee>
+<crossref>conf/vizsec/2008</crossref>
+<url>db/conf/vizsec/vizsec2008.html#ShearerMK08</url>
+</inproceedings>
+</r>
+<r><proceedings key="conf/egpgv/2008" mdate="2011-07-05">
+<editor>Jean M. Favre</editor>
+<editor>Kwan-Liu Ma</editor>
+<title>Eurographics Symposium on Parallel Graphics and Visualization, EGPGV 2008, Crete, Greece</title>
+<isbn>978-3-905674-04-0</isbn>
+<booktitle>EGPGV</booktitle>
+<year>2008</year>
+<publisher>Eurographics Association</publisher>
+<url>db/conf/egpgv/egpgv2008.html</url>
+</proceedings>
+</r>
+<r><proceedings key="conf/vizsec/2007" mdate="2009-05-05">
+<editor>John R. Goodall</editor>
+<editor>Gregory J. Conti</editor>
+<editor>Kwan-Liu Ma</editor>
+<title>VizSEC 2007, Proceedings of the Workshop on Visualization for Computer Security, Sacramento, California, USA, October 29, 2007</title>
+<series>Mathematics and Visualization</series>
+<ee>http://dx.doi.org/10.1007/978-3-540-78243-8</ee>
+<year>2008</year>
+<isbn>978-3-540-78242-1</isbn>
+<booktitle>VizSEC</booktitle>
+<publisher>Springer</publisher>
+<url>db/conf/vizsec/vizsec2007.html</url>
+</proceedings>
+</r>
+<r><proceedings key="conf/vizsec/2008" mdate="2008-09-23">
+<editor>John R. Goodall</editor>
+<editor>Gregory J. Conti</editor>
+<editor>Kwan-Liu Ma</editor>
+<title>Visualization for Computer Security, 5th International Workshop, VizSec 2008, Cambridge, MA, USA, September 15, 2008. Proceedings</title>
+<volume>5210</volume>
+<year>2008</year>
+<isbn>978-3-540-85931-4</isbn>
+<booktitle>VizSEC</booktitle>
+<series href="db/journals/lncs.html">Lecture Notes in Computer Science</series>
+<publisher>Springer</publisher>
+<url>db/conf/vizsec/vizsec2008.html</url>
+</proceedings>
+</r>
+<r><article key="journals/cga/Ma07" mdate="2008-04-28">
+<author>Kwan-Liu Ma</author>
+<title>Machine Learning to Boost the Next Generation of Visualization Technology.</title>
+<pages>6-9</pages>
+<year>2007</year>
+<volume>27</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>5</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2007.129</ee>
+<url>db/journals/cga/cga27.html#Ma07</url>
+</article>
+</r>
+<r><article key="journals/cse/AkibaMCH07" mdate="2009-12-06">
+<author>Hiroshi Akiba</author>
+<author>Kwan-Liu Ma</author>
+<author>Jacqueline H. Chen</author>
+<author>Evatt R. Hawkes</author>
+<title>Visualizing Multivariate Volume Data from Turbulent Combustion Simulations.</title>
+<pages>76-83</pages>
+<year>2007</year>
+<volume>9</volume>
+<journal>Computing in Science and Engineering</journal>
+<number>2</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCSE.2007.42</ee>
+<url>db/journals/cse/cse9.html#AkibaMCH07</url>
+</article>
+</r>
+<r><article key="journals/jvca/LiYMS07" mdate="2008-06-17">
+<author>Yan Li</author>
+<author>Jinhui Yu</author>
+<author>Kwan-Liu Ma</author>
+<author>Jiaoying Shi</author>
+<title>3D paper-cut modeling and animation.</title>
+<pages>395-403</pages>
+<year>2007</year>
+<volume>18</volume>
+<journal>Journal of Visualization and Computer Animation</journal>
+<number>4-5</number>
+<ee>http://dx.doi.org/10.1002/cav.188</ee>
+<url>db/journals/jvca/jvca18.html#LiYMS07</url>
+</article>
+</r>
+<r><article key="journals/tvcg/Jankun-KellyMG07" mdate="2011-11-07">
+<author>T. J. Jankun-Kelly</author>
+<author>Kwan-Liu Ma</author>
+<author>Michael Gertz</author>
+<title>A Model and Framework for Visualization Exploration.</title>
+<pages>357-369</pages>
+<year>2007</year>
+<volume>13</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>2</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2007.28</ee>
+<url>db/journals/tvcg/tvcg13.html#Jankun-KellyMG07</url>
+</article>
+</r>
+<r><article key="journals/tvcg/FoutM07" mdate="2011-11-07">
+<author>Nathaniel Fout</author>
+<author>Kwan-Liu Ma</author>
+<title>Transform Coding for Hardware-accelerated Volume Rendering.</title>
+<pages>1600-1607</pages>
+<year>2007</year>
+<volume>13</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2007.70516</ee>
+<url>db/journals/tvcg/tvcg13.html#FoutM07</url>
+</article>
+</r>
+<r><inproceedings key="conf/apvis/MuelderM07" mdate="2008-06-17">
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualization of sanitized email logs for spam analysis.</title>
+<pages>9-16</pages>
+<year>2007</year>
+<booktitle>APVIS</booktitle>
+<ee>http://dx.doi.org/10.1109/APVIS.2007.329303</ee>
+<crossref>conf/apvis/2007</crossref>
+<url>db/conf/apvis/apvis2007.html#MuelderM07</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/OgawaMBDG07" mdate="2008-06-17">
+<author>Michael Ogawa</author>
+<author>Kwan-Liu Ma</author>
+<author>Christian Bird</author>
+<author>Premkumar T. Devanbu</author>
+<author>Alex Gourley</author>
+<title>Visualizing social interaction in open source software projects.</title>
+<pages>25-32</pages>
+<year>2007</year>
+<booktitle>APVIS</booktitle>
+<ee>http://dx.doi.org/10.1109/APVIS.2007.329305</ee>
+<crossref>conf/apvis/2007</crossref>
+<url>db/conf/apvis/apvis2007.html#OgawaMBDG07</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/HuangLM07" mdate="2008-06-27">
+<author>Runzhen Huang</author>
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<title>Multi-scale morphological volume segmentation and visualization.</title>
+<pages>121-128</pages>
+<year>2007</year>
+<booktitle>APVIS</booktitle>
+<ee>http://dx.doi.org/10.1109/APVIS.2007.329286</ee>
+<crossref>conf/apvis/2007</crossref>
+<url>db/conf/apvis/apvis2007.html#HuangLM07</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/cdve/WangSM07" mdate="2007-09-05">
+<author>Yue Wang</author>
+<author>James Shearer</author>
+<author>Kwan-Liu Ma</author>
+<title>VICA: A Voronoi Interface for Visualizing Collaborative Annotations.</title>
+<pages>21-32</pages>
+<year>2007</year>
+<crossref>conf/cdve/2007</crossref>
+<booktitle>CDVE</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-540-74780-2_3</ee>
+<url>db/conf/cdve/cdve2007.html#WangSM07</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/ipom/TsengZWMTZ07" mdate="2007-11-09">
+<author>Shih-Ming Tseng</author>
+<author>Ke Zhang</author>
+<author>Shyhtsun Felix Wu</author>
+<author>Kwan-Liu Ma</author>
+<author>Soon Tee Teoh</author>
+<author>Xiaoliang Zhao</author>
+<title>Analysis of BGP Origin AS Changes Among Brazil-Related Autonomous Systems.</title>
+<pages>49-60</pages>
+<year>2007</year>
+<crossref>conf/ipom/2007</crossref>
+<booktitle>IPOM</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-540-75853-2_5</ee>
+<url>db/conf/ipom/ipom2007.html#TsengZWMTZ07</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/YuWM07" mdate="2008-04-28">
+<author>Hongfeng Yu</author>
+<author>Chaoli Wang</author>
+<author>Kwan-Liu Ma</author>
+<title>Parallel hierarchical visualization of large time-varying 3D vector fields.</title>
+<pages>24</pages>
+<year>2007</year>
+<booktitle>SC</booktitle>
+<ee>http://doi.acm.org/10.1145/1362622.1362655</ee>
+<crossref>conf/sc/2007</crossref>
+<url>db/conf/sc/sc2007.html#YuWM07</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vissym/ShenM07" mdate="2007-11-05">
+<author>Zeqian Shen</author>
+<author>Kwan-Liu Ma</author>
+<title>Path Visualization for Adjacency Matrices.</title>
+<pages>83-90</pages>
+<year>2007</year>
+<crossref>conf/vissym/2007</crossref>
+<booktitle>EuroVis</booktitle>
+<ee>http://dx.doi.org/10.2312/VisSym/EuroVis07/083-090</ee>
+<url>db/conf/vissym/eurovis2007.html#ShenM07</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vissym/AkibaM07" mdate="2007-11-05">
+<author>Hiroshi Akiba</author>
+<author>Kwan-Liu Ma</author>
+<title>A Tri-Space Visualization Interface for Analyzing Time-Varying Multivariate Volume Data.</title>
+<pages>115-122</pages>
+<year>2007</year>
+<crossref>conf/vissym/2007</crossref>
+<booktitle>EuroVis</booktitle>
+<ee>http://dx.doi.org/10.2312/VisSym/EuroVis07/115-122</ee>
+<url>db/conf/vissym/eurovis2007.html#AkibaM07</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vizsec/MuelderCTMB07" mdate="2010-01-23">
+<author>Chris Muelder</author>
+<author>L. Chen</author>
+<author>Russell Thomason</author>
+<author>Kwan-Liu Ma</author>
+<author>Tony Bartoletti</author>
+<title>Intelligent Classification and Visualization of Network Scans.</title>
+<pages>237-253</pages>
+<year>2007</year>
+<booktitle>VizSEC</booktitle>
+<ee>http://dx.doi.org/10.1007/978-3-540-78243-8_16</ee>
+<crossref>conf/vizsec/2007</crossref>
+<url>db/conf/vizsec/vizsec2007.html#MuelderCTMB07</url>
+</inproceedings>
+</r>
+<r><proceedings key="conf/apvis/2007" mdate="2008-06-17">
+<editor>Seok-Hee Hong</editor>
+<editor>Kwan-Liu Ma</editor>
+<title>APVIS 2007, 6th International Asia-Pacific Symposium on Visualization 2007, Sydney, Australia, 5-7 February 2007</title>
+<isbn>1-4244-0808-3</isbn>
+<booktitle>APVIS</booktitle>
+<publisher>IEEE</publisher>
+<year>2007</year>
+<url>db/conf/apvis/apvis2007.html</url>
+</proceedings>
+</r>
+<r><article key="journals/cga/Ma06" mdate="2006-07-21">
+<author>Kwan-Liu Ma</author>
+<title>Guest Editor's Introduction: Visualization for Cybersecurity.</title>
+<pages>26-27</pages>
+<year>2006</year>
+<volume>26</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>2</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2006.33</ee>
+<url>db/journals/cga/cga26.html#Ma06</url>
+</article>
+</r>
+<r><article key="journals/tvcg/ShenME06" mdate="2007-01-04">
+<author>Zeqian Shen</author>
+<author>Kwan-Liu Ma</author>
+<author>Tina Eliassi-Rad</author>
+<title>Visual Analysis of Large Heterogeneous Social Networks by Semantic and Structural Abstraction.</title>
+<pages>1427-1439</pages>
+<year>2006</year>
+<volume>12</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>6</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2006.107</ee>
+<url>db/journals/tvcg/tvcg12.html#ShenME06</url>
+</article>
+</r>
+<r><article key="journals/vc/LumSM06" mdate="2007-09-11">
+<author>Eric B. Lum</author>
+<author>James Shearer</author>
+<author>Kwan-Liu Ma</author>
+<title>Interactive multi-scale exploration for volume classification.</title>
+<pages>622-630</pages>
+<year>2006</year>
+<volume>22</volume>
+<journal>The Visual Computer</journal>
+<number>9-11</number>
+<ee>http://dx.doi.org/10.1007/s00371-006-0049-8</ee>
+<url>db/journals/vc/vc22.html#LumSM06</url>
+</article>
+</r>
+<r><inproceedings key="conf/apvis/Ma06" mdate="2008-06-17">
+<author>Kwan-Liu Ma</author>
+<title>Cyber security through visualization.</title>
+<pages>3-7</pages>
+<year>2006</year>
+<booktitle>APVIS</booktitle>
+<ee>http://doi.acm.org/10.1145/1151903.1151904</ee>
+<crossref>conf/apvis/2006</crossref>
+<url>db/conf/apvis/apvis2006.html#Ma06</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/apvis/ShenOTM06" mdate="2008-06-17">
+<author>Zeqian Shen</author>
+<author>Michael Ogawa</author>
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<title>BiblioViz: a system for visualizing bibliography information.</title>
+<pages>93-102</pages>
+<year>2006</year>
+<booktitle>APVIS</booktitle>
+<ee>http://doi.acm.org/10.1145/1151903.1151918</ee>
+<crossref>conf/apvis/2006</crossref>
+<url>db/conf/apvis/apvis2006.html#ShenOTM06</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/egpgv/ChildsDM06" mdate="2011-04-05">
+<author>Hank Childs</author>
+<author>Mark A. Duchaineau</author>
+<author>Kwan-Liu Ma</author>
+<title>A Scalable, Hybrid Scheme for Volume Rendering Massive Data Sets .</title>
+<pages>153-161</pages>
+<year>2006</year>
+<booktitle>EGPGV</booktitle>
+<ee>http://dx.doi.org/10.2312/EGPGV/EGPGV06/153-161</ee>
+<crossref>conf/egpgv/2006</crossref>
+<url>db/conf/egpgv/egpgv2006.html#ChildsDM06</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/egpgv/StrasserPM06" mdate="2011-04-05">
+<author>Jonathan Strasser</author>
+<author>Valerio Pascucci</author>
+<author>Kwan-Liu Ma</author>
+<title>Multi-layered Image Caching for Distributed Rendering of Large Multiresolution Datasets .</title>
+<pages>171-177</pages>
+<year>2006</year>
+<booktitle>EGPGV</booktitle>
+<ee>http://dx.doi.org/10.2312/EGPGV/EGPGV06/171-177</ee>
+<crossref>conf/egpgv/2006</crossref>
+<url>db/conf/egpgv/egpgv2006.html#StrasserPM06</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/isvc/LewisHM06" mdate="2006-11-21">
+<author>Daniel Lewis</author>
+<author>Steve Haroz</author>
+<author>Kwan-Liu Ma</author>
+<title>Layout of Multiple Views for Volume Visualization: A User Study.</title>
+<pages>215-226</pages>
+<year>2006</year>
+<crossref>conf/isvc/2006-2</crossref>
+<booktitle>ISVC (2)</booktitle>
+<ee>http://dx.doi.org/10.1007/11919629_23</ee>
+<url>db/conf/isvc/isvc2006-2.html#LewisHM06</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/TuYRBGMO06" mdate="2015-06-30">
+<author>Tiankai Tu</author>
+<author>Hongfeng Yu</author>
+<author>Leonardo Ram&#237;rez-Guzm&#225;n</author>
+<author>Jacobo Bielak</author>
+<author>Omar Ghattas</author>
+<author>Kwan-Liu Ma</author>
+<author>David R. O'Hallaron</author>
+<title>Scalable systems software - From mesh generation to scientific visualization: an end-to-end approach to parallel supercomputing.</title>
+<pages>91</pages>
+<year>2006</year>
+<crossref>conf/sc/2006</crossref>
+<booktitle>SC</booktitle>
+<ee>http://doi.acm.org/10.1145/1188455.1188551</ee>
+<ee>http://dx.doi.org/10.1109/SC.2006.32</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SC.2006.32</ee>
+<url>db/conf/sc/sc2006.html#TuYRBGMO06</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/AhrensCCBHKMMPPSS06" mdate="2009-05-19">
+<author>James P. Ahrens</author>
+<author>Hank Childs</author>
+<author>John Clyne</author>
+<author>Wes Bethel</author>
+<author>Jian Huang</author>
+<author>Scott Klasky</author>
+<author>Kwan-Liu Ma</author>
+<author>Kenneth Moreland</author>
+<author>Michael E. Papka</author>
+<author>Valerio Pascucci</author>
+<author>Han-Wei Shen</author>
+<author>Deborah Silver</author>
+<title>Ultra-scale visualization - Workshop on ultra-scale visualization.</title>
+<pages>235</pages>
+<year>2006</year>
+<crossref>conf/sc/2006</crossref>
+<booktitle>SC</booktitle>
+<ee>http://doi.acm.org/10.1145/1188455.1188700</ee>
+<url>db/conf/sc/sc2006.html#AhrensCCBHKMMPPSS06</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/TuYBGLMORSTU06" mdate="2010-06-28">
+<author>Tiankai Tu</author>
+<author>Hongfeng Yu</author>
+<author>Jacobo Bielak</author>
+<author>Omar Ghattas</author>
+<author>Julio C. L&#243;pez</author>
+<author>Kwan-Liu Ma</author>
+<author>David R. O'Hallaron</author>
+<author>Leonardo Ram&#237;rez-Guzm&#225;n</author>
+<author>Nathan Stone</author>
+<author>Ricardo Taborda-Rios</author>
+<author>John Urbanic</author>
+<title>Analytics challenge - Remote runtime steering of integrated terascale simulation and visualization.</title>
+<pages>297</pages>
+<year>2006</year>
+<crossref>conf/sc/2006</crossref>
+<booktitle>SC</booktitle>
+<ee>http://doi.acm.org/10.1145/1188455.1188767</ee>
+<url>db/conf/sc/sc2006.html#TuYBGLMORSTU06</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vissym/HarozM06" mdate="2007-11-05">
+<author>Steve Haroz</author>
+<author>Kwan-Liu Ma</author>
+<title>Natural Visualizations.</title>
+<pages>43-50</pages>
+<year>2006</year>
+<crossref>conf/vissym/2006</crossref>
+<booktitle>EuroVis</booktitle>
+<ee>http://dx.doi.org/10.2312/VisSym/EuroVis06/043-050</ee>
+<url>db/conf/vissym/eurovis2006.html#HarozM06</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vissym/WangTM06" mdate="2007-11-05">
+<author>Yue Wang</author>
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<title>Evaluating the Effectiveness of Tree Visualization Systems for Knowledge Discovery.</title>
+<pages>67-74</pages>
+<year>2006</year>
+<crossref>conf/vissym/2006</crossref>
+<booktitle>EuroVis</booktitle>
+<ee>http://dx.doi.org/10.2312/VisSym/EuroVis06/067-074</ee>
+<url>db/conf/vissym/eurovis2006.html#WangTM06</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vissym/AkibaFM06" mdate="2007-11-05">
+<author>Hiroshi Akiba</author>
+<author>Nathaniel Fout</author>
+<author>Kwan-Liu Ma</author>
+<title>Simultaneous Classification of Time-Varying Volume Data Based on the Time Histogram.</title>
+<pages>171-178</pages>
+<year>2006</year>
+<crossref>conf/vissym/2006</crossref>
+<booktitle>EuroVis</booktitle>
+<ee>http://dx.doi.org/10.2312/VisSym/EuroVis06/171-178</ee>
+<url>db/conf/vissym/eurovis2006.html#AkibaFM06</url>
+</inproceedings>
+</r>
+<r><article key="journals/jgtools/LumMM05" mdate="2013-05-14">
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<author>Nelson Max</author>
+<title>Calculating Hierarchical Radiosity Form Factors using Programmable Graphics Hardware.</title>
+<pages>61-71</pages>
+<year>2005</year>
+<volume>10</volume>
+<journal>J. Graphics Tools</journal>
+<number>4</number>
+<ee>http://dx.doi.org/10.1080/2151237X.2005.10129210</ee>
+<url>db/journals/jgtools/jgtools10.html#LumMM05</url>
+</article>
+</r>
+<r><article key="journals/pc/YuM05" mdate="2005-12-01">
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<title>A study of I/O methods for parallel visualization of large-scale data.</title>
+<pages>167-183</pages>
+<year>2005</year>
+<volume>31</volume>
+<journal>Parallel Computing</journal>
+<number>2</number>
+<ee>http://dx.doi.org/10.1016/j.parco.2005.02.004</ee>
+<url>db/journals/pc/pc31.html#YuM05</url>
+</article>
+</r>
+<r><article key="journals/tvcg/TzengLM05" mdate="2011-11-07">
+<author>Fan-Yin Tzeng</author>
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<title>An Intelligent System Approach to Higher-Dimensional Classification of Volume Data.</title>
+<pages>273-284</pages>
+<year>2005</year>
+<volume>11</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>3</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2005.38</ee>
+<url>db/journals/tvcg/tvcg11.html#TzengLM05</url>
+</article>
+</r>
+<r><article key="journals/tvcg/GrollerMM05" mdate="2011-11-07">
+<author>Eduard Gr&#246;ller</author>
+<author>Kwan-Liu Ma</author>
+<author>Klaus Mueller</author>
+<title>Guest Editors' Introduction: Special Section on IEEE Visualization Applications.</title>
+<pages>483-484</pages>
+<year>2005</year>
+<volume>11</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>5</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2005.80</ee>
+<url>db/journals/tvcg/tvcg11.html#GrollerMM05</url>
+</article>
+</r>
+<r><article key="journals/vc/LumM05" mdate="2006-02-09">
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<title>Expressive line selection by example.</title>
+<pages>811-820</pages>
+<year>2005</year>
+<volume>21</volume>
+<journal>The Visual Computer</journal>
+<number>8-10</number>
+<ee>http://dx.doi.org/10.1007/s00371-005-0342-y</ee>
+<url>db/journals/vc/vc21.html#LumM05</url>
+</article>
+</r>
+<r><inproceedings key="conf/icdcsw/ZhangTTLMWC05" mdate="2014-12-12">
+<author>Ke Zhang</author>
+<author>Soon Tee Teoh</author>
+<author>Shih-Ming Tseng</author>
+<author>Rattapon Limprasittiporn</author>
+<author>Kwan-Liu Ma</author>
+<author>Shyhtsun Felix Wu</author>
+<author>Chen-Nee Chuah</author>
+<title>Performing BGP Experiments on a Semi-realistic Internet Testbed Environment.</title>
+<pages>130-136</pages>
+<year>2005</year>
+<crossref>conf/icdcsw/2005</crossref>
+<booktitle>ICDCS Workshops</booktitle>
+<ee>http://dx.doi.org/10.1109/ICDCSW.2005.111</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/ICDCSW.2005.111</ee>
+<url>db/conf/icdcsw/icdcsw2005.html#ZhangTTLMWC05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/isvc/HuangM05" mdate="2005-12-14">
+<author>Runzhen Huang</author>
+<author>Kwan-Liu Ma</author>
+<title>A Three-Level Graph Based Interactive Volume Segmentation System.</title>
+<pages>143-150</pages>
+<year>2005</year>
+<crossref>conf/isvc/2005</crossref>
+<booktitle>ISVC</booktitle>
+<ee>http://dx.doi.org/10.1007/11595755_18</ee>
+<url>db/conf/isvc/isvc2005.html#HuangM05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/isvc/TeohM05" mdate="2005-12-14">
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<title>Hifocon: Object and Dimensional Coherence and Correlation in Multidimensional Visualization.</title>
+<pages>235-242</pages>
+<year>2005</year>
+<crossref>conf/isvc/2005</crossref>
+<booktitle>ISVC</booktitle>
+<ee>http://dx.doi.org/10.1007/11595755_29</ee>
+<url>db/conf/isvc/isvc2005.html#TeohM05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/raid/MuelderMB05" mdate="2006-02-02">
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<author>Tony Bartoletti</author>
+<title>Interactive Visualization for Network and Port Scan Detection.</title>
+<pages>265-283</pages>
+<year>2005</year>
+<crossref>conf/raid/2005</crossref>
+<booktitle>RAID</booktitle>
+<ee>http://dx.doi.org/10.1007/11663812_14</ee>
+<url>db/conf/raid/raid2005.html#MuelderMB05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sac/FoutMA05" mdate="2006-02-10">
+<author>Nathaniel Fout</author>
+<author>Kwan-Liu Ma</author>
+<author>James P. Ahrens</author>
+<title>Time-varying, multivariate volume data reduction.</title>
+<pages>1224-1230</pages>
+<year>2005</year>
+<crossref>conf/sac/2005</crossref>
+<booktitle>SAC</booktitle>
+<ee>http://doi.acm.org/10.1145/1066677.1066953</ee>
+<url>db/conf/sac/sac2005.html#FoutMA05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sac/McPhersonMO05" mdate="2006-02-10">
+<author>Jonathan McPherson</author>
+<author>Kwan-Liu Ma</author>
+<author>Michael Ogawa</author>
+<title>Discovering parametric clusters in social small-world graphs.</title>
+<pages>1231-1238</pages>
+<year>2005</year>
+<crossref>conf/sac/2005</crossref>
+<booktitle>SAC</booktitle>
+<ee>http://doi.acm.org/10.1145/1066677.1066954</ee>
+<url>db/conf/sac/sac2005.html#McPhersonMO05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/TzengM05" mdate="2015-06-30">
+<author>Fan-Yin Tzeng</author>
+<author>Kwan-Liu Ma</author>
+<title>Intelligent Feature Extraction and Tracking for Visualizing Large-Scale 4D Flow Simulations.</title>
+<pages>6</pages>
+<year>2005</year>
+<crossref>conf/sc/2005</crossref>
+<booktitle>SC</booktitle>
+<ee>http://dx.doi.org/10.1109/SC.2005.37</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SC.2005.37</ee>
+<ee>http://dl.acm.org/citation.cfm?id=1105771</ee>
+<url>db/conf/sc/sc2005.html#TzengM05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vg/AkibaMC05" mdate="2005-09-20">
+<author>Hiroshi Akiba</author>
+<author>Kwan-Liu Ma</author>
+<author>John Clyne</author>
+<title>End-to-End Data Reduction and Hardware Accelerated Rendering Techniques for Visualizing Time-Varying Non-uniform Grid Volume Data.</title>
+<pages>31-39</pages>
+<year>2005</year>
+<crossref>conf/vg/2005</crossref>
+<booktitle>Volume Graphics</booktitle>
+<ee>http://www.eg.org/EG/DL/WS/VG/VG05/031-039.pdf</ee>
+<url>db/conf/vg/vg2005.html#AkibaMC05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vissym/FoutAMLK05" mdate="2007-11-05">
+<author>Nathaniel Fout</author>
+<author>Hiroshi Akiba</author>
+<author>Kwan-Liu Ma</author>
+<author>Aaron E. Lefohn</author>
+<author>Joe Kniss</author>
+<title>High-Quality Rendering of Compressed Volume Data Formats.</title>
+<pages>77-84</pages>
+<year>2005</year>
+<crossref>conf/vissym/2005</crossref>
+<booktitle>EuroVis</booktitle>
+<ee>http://dx.doi.org/10.2312/VisSym/EuroVis05/077-084</ee>
+<url>db/conf/vissym/eurovis2005.html#FoutAMLK05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/TzengM05" mdate="2014-09-23">
+<author>Fan-Yin Tzeng</author>
+<author>Kwan-Liu Ma</author>
+<title>Opening the Black Box - Data Driven Visualization of Neural Network.</title>
+<pages>49</pages>
+<year>2005</year>
+<crossref>conf/visualization/2005</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VIS.2005.73</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VIS.2005.73</ee>
+<url>db/conf/visualization/visualization2005.html#TzengM05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/BartzHIMP05" mdate="2014-09-23">
+<author>Dirk Bartz</author>
+<author>Hans Hagen</author>
+<author>Victoria Interrante</author>
+<author>Kwan-Liu Ma</author>
+<author>Bernhard Preim</author>
+<title>Illustrative Rendering Techniques for Visualization: Future of Visualization or Just Another Technique?.</title>
+<pages>120</pages>
+<year>2005</year>
+<crossref>conf/visualization/2005</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VIS.2005.56</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VIS.2005.56</ee>
+<url>db/conf/visualization/visualization2005.html#BartzHIMP05</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vizsec/MuelderMB05" mdate="2006-02-08">
+<author>Chris Muelder</author>
+<author>Kwan-Liu Ma</author>
+<author>Tony Bartoletti</author>
+<title>A Visualization Methodology for Characterization of Network Scans.</title>
+<pages>4</pages>
+<year>2005</year>
+<crossref>conf/vizsec/2005</crossref>
+<booktitle>VizSEC</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VIZSEC.2005.2</ee>
+<url>db/conf/vizsec/vizsec2005.html#MuelderMB05</url>
+</inproceedings>
+</r>
+<r><proceedings key="conf/vizsec/2005" mdate="2007-05-15">
+<editor>Kwan-Liu Ma</editor>
+<editor>Stephen C. North</editor>
+<editor>William Yurcik</editor>
+<title>IEEE Workshop on Visualization for Computer Security (VizSEC 2005), 26 October 2005, Minneapolis, MN, USA</title>
+<booktitle>VizSEC</booktitle>
+<publisher>IEEE Computer Society</publisher>
+<year>2005</year>
+<isbn>0-7803-9477-1</isbn>
+<url>db/conf/vizsec/vizsec2005.html</url>
+</proceedings>
+</r>
+<r><article key="journals/cga/TeohMWJ04" mdate="2006-02-03">
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<author>Shyhtsun Felix Wu</author>
+<author>T. J. Jankun-Kelly</author>
+<title>Detecting Flaws and Intruders with Visual Data Analysis.</title>
+<pages>27-35</pages>
+<year>2004</year>
+<volume>24</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>5</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2004.26</ee>
+<url>db/journals/cga/cga24.html#TeohMWJ04</url>
+</article>
+</r>
+<r><inproceedings key="conf/egpgv/YuMW04" mdate="2005-10-28">
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<author>Joel Welling</author>
+<title>I/O Strategies for Parallel Rendering of Large Time-Varying Volume Data.</title>
+<pages>31-40</pages>
+<year>2004</year>
+<crossref>conf/egpgv/2004</crossref>
+<booktitle>EGPGV</booktitle>
+<url>db/conf/egpgv/egpgv2004.html#YuMW04</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/infovis/TeohM04" mdate="2014-12-01">
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<title>One-For-All: Visualization of the Information Visualization Symposia.</title>
+<year>2004</year>
+<crossref>conf/infovis/2004</crossref>
+<booktitle>INFOVIS</booktitle>
+<ee>http://dx.doi.org/10.1109/INFVIS.2004.50</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/INFVIS.2004.50</ee>
+<url>db/conf/infovis/infovis2004.html#TeohM04</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/npar/WilsonM04" mdate="2006-03-08">
+<author>Brett Wilson</author>
+<author>Kwan-Liu Ma</author>
+<title>Rendering complexity in computer-generated pen-and-ink illustrations.</title>
+<pages>129-137</pages>
+<year>2004</year>
+<crossref>conf/npar/2004</crossref>
+<booktitle>NPAR</booktitle>
+<ee>http://doi.acm.org/10.1145/987657.987674</ee>
+<url>db/conf/npar/npar2004.html#WilsonM04</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/YuMW04" mdate="2015-07-01">
+<author>Hongfeng Yu</author>
+<author>Kwan-Liu Ma</author>
+<author>Joel Welling</author>
+<title>A Parallel Visualization Pipeline for Terascale Earthquake Simulations.</title>
+<pages>49</pages>
+<year>2004</year>
+<crossref>conf/sc/2004</crossref>
+<booktitle>SC</booktitle>
+<ee>http://dx.doi.org/10.1109/SC.2004.6</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SC.2004.6</ee>
+<ee>http://dl.acm.org/citation.cfm?id=1049993</ee>
+<url>db/conf/sc/sc2004.html#YuMW04</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vissym/TzengM04" mdate="2004-05-24">
+<author>Fan-Yin Tzeng</author>
+<author>Kwan-Liu Ma</author>
+<title>A Cluster-Space Visual Interface for Arbitrary Dimensional Classification of Volume Data.</title>
+<pages>17-24, 338</pages>
+<year>2004</year>
+<crossref>conf/vissym/2004</crossref>
+<booktitle>VisSym</booktitle>
+<url>db/conf/vissym/vissym2004.html#TzengM04</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vissym/LumWM04" mdate="2004-05-24">
+<author>Eric B. Lum</author>
+<author>Brett Wilson</author>
+<author>Kwan-Liu Ma</author>
+<title>High-Quality Lighting for Pre-Integrated Volume Rendering.</title>
+<pages>25-34</pages>
+<year>2004</year>
+<crossref>conf/vissym/2004</crossref>
+<booktitle>VisSym</booktitle>
+<url>db/conf/vissym/vissym2004.html#LumWM04</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/CrawfordMHKE04" mdate="2015-03-04">
+<author>David Crawford</author>
+<author>Kwan-Liu Ma</author>
+<author>Min-Yu Huang</author>
+<author>Scott Klasky</author>
+<author>St&#233;phane Ethier</author>
+<title>Visualizing Gyrokinetic Simulations.</title>
+<pages>59-66</pages>
+<year>2004</year>
+<crossref>conf/visualization/2004</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VISUAL.2004.122</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2004.122</ee>
+<ee>http://dl.acm.org/citation.cfm?id=1034431</ee>
+<url>db/conf/visualization/visualization2004.html#CrawfordMHKE04</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/SchussmanM04" mdate="2015-03-04">
+<author>Gregory L. Schussman</author>
+<author>Kwan-Liu Ma</author>
+<title>Anisotropic Volume Rendering for Extremely Dense, Thin Line Data.</title>
+<pages>107-114</pages>
+<year>2004</year>
+<crossref>conf/visualization/2004</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2004.5</ee>
+<ee>http://dl.acm.org/citation.cfm?id=1034437</ee>
+<url>db/conf/visualization/visualization2004.html#SchussmanM04</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/LumM04" mdate="2015-03-04">
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<title>Lighting Transfer Functions Using Gradient Aligned Sampling.</title>
+<pages>289-296</pages>
+<year>2004</year>
+<crossref>conf/visualization/2004</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VISUAL.2004.64</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2004.64</ee>
+<ee>http://dl.acm.org/citation.cfm?id=1034459</ee>
+<url>db/conf/visualization/visualization2004.html#LumM04</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vizsec/TeohZTMW04" mdate="2007-05-15">
+<author>Soon Tee Teoh</author>
+<author>Ke Zhang</author>
+<author>Shih-Ming Tseng</author>
+<author>Kwan-Liu Ma</author>
+<author>Shyhtsun Felix Wu</author>
+<title>Combining visual and automated data mining for near-real-time anomaly detection and analysis in BGP.</title>
+<pages>35-44</pages>
+<year>2004</year>
+<crossref>conf/vizsec/2004</crossref>
+<booktitle>VizSEC</booktitle>
+<ee>http://doi.acm.org/10.1145/1029208.1029215</ee>
+<url>db/conf/vizsec/vizsec2004.html#TeohZTMW04</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vizsec/McPhersonMKBC04" mdate="2007-05-15">
+<author>Jonathan McPherson</author>
+<author>Kwan-Liu Ma</author>
+<author>Paul Krystosk</author>
+<author>Tony Bartoletti</author>
+<author>Marvin Christensen</author>
+<title>PortVis: a tool for port-based detection of security events.</title>
+<pages>73-81</pages>
+<year>2004</year>
+<crossref>conf/vizsec/2004</crossref>
+<booktitle>VizSEC</booktitle>
+<ee>http://doi.acm.org/10.1145/1029208.1029220</ee>
+<url>db/conf/vizsec/vizsec2004.html#McPhersonMKBC04</url>
+</inproceedings>
+</r>
+<r><article key="journals/cg/MaLM03" mdate="2004-11-30">
+<author>Kwan-Liu Ma</author>
+<author>Eric B. Lum</author>
+<author>Shigeru Muraki</author>
+<title>Recent advances in hardware-accelerated volume rendering.</title>
+<pages>725-734</pages>
+<year>2003</year>
+<volume>27</volume>
+<journal>Computers &#38; Graphics</journal>
+<number>5</number>
+<ee>http://dx.doi.org/10.1016/S0097-8493(03)00146-8</ee>
+<url>db/journals/cg/cg27.html#MaLM03</url>
+</article>
+</r>
+<r><article key="journals/cga/Jankun-KellyKMHJSB03" mdate="2004-10-27">
+<author>T. J. Jankun-Kelly</author>
+<author>Oliver Kreylos</author>
+<author>Kwan-Liu Ma</author>
+<author>Bernd Hamann</author>
+<author>Kenneth I. Joy</author>
+<author>John Shalf</author>
+<author>E. Wes Bethel</author>
+<title>Deploying Web-Based Visual Exploration Tools on the Grid.</title>
+<pages>40-50</pages>
+<year>2003</year>
+<volume>23</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>2</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2003.1185579</ee>
+<url>db/journals/cga/cga23.html#Jankun-KellyKMHJSB03</url>
+</article>
+</r>
+<r><article key="journals/tvcg/LumSM03" mdate="2011-11-07">
+<author>Eric B. Lum</author>
+<author>Aleksander Stompel</author>
+<author>Kwan-Liu Ma</author>
+<title>Using Motion to Illustrate Static 3D Shape--Kinetic Visualization.</title>
+<pages>115-126</pages>
+<year>2003</year>
+<volume>9</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>2</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2003.1196000</ee>
+<url>db/journals/tvcg/tvcg9.html#LumSM03</url>
+</article>
+</r>
+<r><inproceedings key="conf/dsom/TeohMWMZPWZB03" mdate="2012-12-13">
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<author>Shyhtsun Felix Wu</author>
+<author>Daniel Massey</author>
+<author>Xiaoliang Zhao</author>
+<author>Dan Pei</author>
+<author>Lan Wang</author>
+<author>Lixia Zhang 0001</author>
+<author>Randy Bush</author>
+<title>Visual-Based Anomaly Detection for BGP Origin AS Change (OASC) Events.</title>
+<pages>155-168</pages>
+<ee>http://dx.doi.org/10.1007/978-3-540-39671-0_14</ee>
+<year>2003</year>
+<crossref>conf/dsom/2003</crossref>
+<booktitle>DSOM</booktitle>
+<url>db/conf/dsom/dsom2003.html#TeohMWMZPWZB03</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/infovis/Jankun-KellyM03" mdate="2012-01-03">
+<author>T. J. Jankun-Kelly</author>
+<author>Kwan-Liu Ma</author>
+<title>MoireGraphs: Radial Focus+Context Visualization and Interaction for Graphs with Visual Nodes.</title>
+<year>2003</year>
+<crossref>conf/infovis/2003</crossref>
+<booktitle>INFOVIS</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/INFVIS.2003.1249009</ee>
+<url>db/conf/infovis/infovis2003.html#Jankun-KellyM03</url>
+<pages>59-66</pages>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/kdd/TeohM03" mdate="2006-02-13">
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<title>PaintingClass: interactive construction, visualization and exploration of decision trees.</title>
+<pages>667-672</pages>
+<year>2003</year>
+<crossref>conf/kdd/2003</crossref>
+<booktitle>KDD</booktitle>
+<ee>http://doi.acm.org/10.1145/956750.956837</ee>
+<url>db/conf/kdd/kdd2003.html#TeohM03</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/pg/HuangM03" mdate="2015-06-15">
+<author>Runzhen Huang</author>
+<author>Kwan-Liu Ma</author>
+<title>RGVis: Region Growing Based Techniques for Volume Visualization.</title>
+<pages>355-363</pages>
+<year>2003</year>
+<crossref>conf/pg/2003</crossref>
+<booktitle>Pacific Conference on Computer Graphics and Applications</booktitle>
+<ee>http://dx.doi.org/10.1109/PCCGA.2003.1238277</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PCCGA.2003.1238277</ee>
+<url>db/conf/pg/pg2003.html#HuangM03</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/pvg/StompelMLAP03" mdate="2003-09-24">
+<author>Aleksander Stompel</author>
+<author>Kwan-Liu Ma</author>
+<author>Eric B. Lum</author>
+<author>James P. Ahrens</author>
+<author>John Patchett</author>
+<title>SLIC: Scheduled Linear Image Compositing for Parallel Volume Rendering.</title>
+<pages>33-40</pages>
+<year>2003</year>
+<crossref>conf/pvg/2003</crossref>
+<booktitle>IEEE Symposium on Parallel and Large-Data Visualization and Graphics</booktitle>
+<url>db/conf/pvg/pvg2003.html#StompelMLAP03</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/pvg/MurakiLMOL03" mdate="2003-09-24">
+<author>Shigeru Muraki</author>
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<author>Masato Ogata</author>
+<author>Xuezhen Liu</author>
+<title>A PC Cluster System for Simultaneous Interactive Volumetric Modeling and Visualization.</title>
+<pages>95-102</pages>
+<year>2003</year>
+<crossref>conf/pvg/2003</crossref>
+<booktitle>IEEE Symposium on Parallel and Large-Data Visualization and Graphics</booktitle>
+<url>db/conf/pvg/pvg2003.html#MurakiLMOL03</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/MaSBGK03" mdate="2015-06-30">
+<author>Kwan-Liu Ma</author>
+<author>Aleksander Stompel</author>
+<author>Jacobo Bielak</author>
+<author>Omar Ghattas</author>
+<author>Eui Joong Kim</author>
+<title>Visualizing Very Large-Scale Earthquake Simulations.</title>
+<pages>48</pages>
+<year>2003</year>
+<crossref>conf/sc/2003</crossref>
+<booktitle>SC</booktitle>
+<ee>http://doi.acm.org/10.1145/1048935.1050198</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SC.2003.10026</ee>
+<url>db/conf/sc/sc2003.html#MaSBGK03</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sdm/TeohM03" mdate="2014-02-12">
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<title>StarClass: Interactive Visual Classification using Star Coordinates.</title>
+<year>2003</year>
+<crossref>conf/sdm/2003</crossref>
+<booktitle>SDM</booktitle>
+<ee>http://dx.doi.org/10.1137/1.9781611972733.16</ee>
+<url>db/conf/sdm/sdm2003.html#TeohM03</url>
+<pages>178-185</pages>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/siggraph/ZhuLSMS03" mdate="2006-02-10">
+<author>Yi-Bo Zhu</author>
+<author>Chen-Jia Li</author>
+<author>I. Fan Shen</author>
+<author>Kwan-Liu Ma</author>
+<author>Aleksander Stompel</author>
+<title>A new form of traditional art: visual simulation of Chinese shadow play.</title>
+<year>2003</year>
+<crossref>conf/siggraph/2003</crossref>
+<booktitle>SIGGRAPH</booktitle>
+<ee>http://doi.acm.org/10.1145/965400.965458</ee>
+<url>db/conf/siggraph/siggraph2003.html#ZhuLSMS03</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vg/OgataMLM03" mdate="2005-09-20">
+<author>Masato Ogata</author>
+<author>Shigeru Muraki</author>
+<author>Xuezhen Liu</author>
+<author>Kwan-Liu Ma</author>
+<title>The Design and Evaluation of a Pipelined Image Compositing Device for Massively Parallel Volume Rendering.</title>
+<pages>61-68</pages>
+<year>2003</year>
+<crossref>conf/vg/2003</crossref>
+<booktitle>Volume Graphics</booktitle>
+<ee>http://www.eg.org/EG/DL/WS/VG03/061-068-ogata-paper.pdf</ee>
+<url>db/conf/vg/vg2003.html#OgataMLM03</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vg/RosaLMO03" mdate="2005-09-20">
+<author>Gabriel G. Rosa</author>
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<author>Kenji Ono</author>
+<title>An Interactive Volume Visualization System for Transient Flow Analysis.</title>
+<pages>137-144</pages>
+<year>2003</year>
+<crossref>conf/vg/2003</crossref>
+<booktitle>Volume Graphics</booktitle>
+<ee>http://www.eg.org/EG/DL/WS/VG03/137-144-rosa-paper.pdf</ee>
+<url>db/conf/vg/vg2003.html#RosaLMO03</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/TzengLM03" mdate="2015-03-05">
+<author>Fan-Yin Tzeng</author>
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<title>A Novel Interface for Higher-Dimensional Classification of Volume Data.</title>
+<pages>505-512</pages>
+<year>2003</year>
+<crossref>conf/visualization/2003</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<url>db/conf/visualization/visualization2003.html#TzengLM03</url>
+<ee>http://dx.doi.org/10.1109/VISUAL.2003.1250413</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2003.1250413</ee>
+<ee>http://dl.acm.org/citation.cfm?id=1081510</ee>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/TeohMW03" mdate="2015-03-05">
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<author>Shyhtsun Felix Wu</author>
+<title>A Visual Exploration Process for the Analysis of Internet Routing Data.</title>
+<pages>523-530</pages>
+<year>2003</year>
+<crossref>conf/visualization/2003</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<url>db/conf/visualization/visualization2003.html#TeohMW03</url>
+<ee>http://dx.doi.org/10.1109/VISUAL.2003.1250415</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2003.1250415</ee>
+<ee>http://dl.acm.org/citation.cfm?id=1081513</ee>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/HuangMMW03" mdate="2015-03-05">
+<author>Runzhen Huang</author>
+<author>Kwan-Liu Ma</author>
+<author>Patrick S. McCormick</author>
+<author>William Ward</author>
+<title>Visualizing Industrial CT Volume Data for Nondestructive Testing Applications.</title>
+<pages>547-554</pages>
+<year>2003</year>
+<crossref>conf/visualization/2003</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<url>db/conf/visualization/visualization2003.html#HuangMMW03</url>
+<ee>http://dx.doi.org/10.1109/VISUAL.2003.1250418</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2003.1250418</ee>
+<ee>http://dl.acm.org/citation.cfm?id=1081517</ee>
+</inproceedings>
+</r>
+<r><article key="journals/tvcg/LumMC02" mdate="2011-11-07">
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<author>John Clyne</author>
+<title>A Hardware-Assisted Scalable Solution for Interactive Volume Rendering of Time-Varying Data.</title>
+<pages>286-301</pages>
+<year>2002</year>
+<volume>8</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>3</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/TVCG.2002.1021580</ee>
+<url>db/journals/tvcg/tvcg8.html#LumMC02</url>
+</article>
+</r>
+<r><inproceedings key="conf/gd/TeohM02" mdate="2011-07-04">
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<title>RINGS: A Technique for Visualizing Large Hierarchies.</title>
+<pages>268-275</pages>
+<year>2002</year>
+<crossref>conf/gd/2002</crossref>
+<booktitle>Graph Drawing</booktitle>
+<ee>http://dx.doi.org/10.1007/3-540-36151-0_25</ee>
+<url>db/conf/gd/gd2002.html#TeohM02</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/iccS/WilsonLM02" mdate="2011-06-30">
+<author>Brett Wilson</author>
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<title>Interactive Multi-volume Visualization.</title>
+<pages>102-110</pages>
+<year>2002</year>
+<crossref>conf/iccS/2002-2</crossref>
+<booktitle>International Conference on Computational Science (2)</booktitle>
+<ee>http://dx.doi.org/10.1007/3-540-46080-2_11</ee>
+<url>db/conf/iccS/iccS2002-2.html#WilsonLM02</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/iccS/WilsonMQR02" mdate="2011-06-30">
+<author>Brett Wilson</author>
+<author>Kwan-Liu Ma</author>
+<author>Ji Qiang</author>
+<author>Robert D. Ryne</author>
+<title>Interactive Visualization of Particle Beams for Accelerator Design.</title>
+<pages>352-361</pages>
+<year>2002</year>
+<crossref>conf/iccS/2002-3</crossref>
+<booktitle>International Conference on Computational Science (3)</booktitle>
+<ee>http://dx.doi.org/10.1007/3-540-47789-6_37</ee>
+<url>db/conf/iccS/iccS2002-3.html#WilsonMQR02</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/npar/LumM02" mdate="2006-02-15">
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<title>Hardware-accelerated parallel non-photorealistic volume rendering.</title>
+<pages>67-</pages>
+<year>2002</year>
+<booktitle>NPAR</booktitle>
+<ee>http://doi.acm.org/10.1145/508530.508542</ee>
+<url>db/conf/npar/npar2002.html#LumM02</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/pg/SchussmanM02" mdate="2015-06-15">
+<author>Gregory L. Schussman</author>
+<author>Kwan-Liu Ma</author>
+<title>Scalable Self-Orienting Surfaces: A Compact, Texture-Enhanced Representation for Interactive Visualization of 3D Vector Fields.</title>
+<pages>356-365</pages>
+<year>2002</year>
+<crossref>conf/pg/2002</crossref>
+<booktitle>Pacific Conference on Computer Graphics and Applications</booktitle>
+<ee>http://dx.doi.org/10.1109/PCCGA.2002.1167879</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PCCGA.2002.1167879</ee>
+<url>db/conf/pg/pg2002.html#SchussmanM02</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/pg/TakanashiLMM02" mdate="2015-06-15">
+<author>Ikuko Takanashi</author>
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<author>Shigeru Muraki</author>
+<title>ISpace: Interactive Volume Data Classification Techniques Using Independent Component Analysis.</title>
+<pages>366-374</pages>
+<year>2002</year>
+<crossref>conf/pg/2002</crossref>
+<booktitle>Pacific Conference on Computer Graphics and Applications</booktitle>
+<ee>http://dx.doi.org/10.1109/PCCGA.2002.1167880</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PCCGA.2002.1167880</ee>
+<url>db/conf/pg/pg2002.html#TakanashiLMM02</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/pg/StompelLM02" mdate="2015-06-15">
+<author>Aleksander Stompel</author>
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualization of Multidimensional, Multivariate Volume Data Using Hardware-Accelerated Non-Photorealistic Rendering Techniques.</title>
+<pages>394-402</pages>
+<year>2002</year>
+<crossref>conf/pg/2002</crossref>
+<booktitle>Pacific Conference on Computer Graphics and Applications</booktitle>
+<ee>http://dx.doi.org/10.1109/PCCGA.2002.1167883</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PCCGA.2002.1167883</ee>
+<url>db/conf/pg/pg2002.html#StompelLM02</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/MaSWKQR02" mdate="2015-06-30">
+<author>Kwan-Liu Ma</author>
+<author>Gregory L. Schussman</author>
+<author>Brett Wilson</author>
+<author>Kwok Ko</author>
+<author>Ji Qiang</author>
+<author>Robert D. Ryne</author>
+<title>Advanced visualization technology for terascale particle accelerator simulations.</title>
+<pages>48:1-48:11</pages>
+<year>2002</year>
+<crossref>conf/sc/2002</crossref>
+<booktitle>SC</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SC.2002.10007</ee>
+<ee>http://dl.acm.org/citation.cfm?id=762794</ee>
+<url>db/conf/sc/sc2002.html#MaSWKQR02</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/Jankun-KellyMG02" mdate="2014-09-23">
+<author>T. J. Jankun-Kelly</author>
+<author>Kwan-Liu Ma</author>
+<author>Michael Gertz</author>
+<title>A Model for the Visualization Exploration Process.</title>
+<year>2002</year>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VISUAL.2002.1183791</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2002.1183791</ee>
+<ee>http://dl.acm.org/citation.cfm?id=602149</ee>
+<url>db/conf/visualization/visualization2002.html#Jankun-KellyMG02</url>
+<pages>323-330</pages>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/LumSM02" mdate="2014-09-23">
+<author>Eric B. Lum</author>
+<author>Aleksander Stompel</author>
+<author>Kwan-Liu Ma</author>
+<title>Kinetic Visualization - A Technique for Illustrating 3D Shape and Structure.</title>
+<year>2002</year>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2002.1183805</ee>
+<ee>http://dl.acm.org/citation.cfm?id=602167</ee>
+<url>db/conf/visualization/visualization2002.html#LumSM02</url>
+<pages>435-442</pages>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/TeohMWZ02" mdate="2014-09-23">
+<author>Soon Tee Teoh</author>
+<author>Kwan-Liu Ma</author>
+<author>Shyhtsun Felix Wu</author>
+<author>Xiaoliang Zhao</author>
+<title>Case Study: Interactive Visualization for Internet Security.</title>
+<year>2002</year>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VISUAL.2002.1183816</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2002.1183816</ee>
+<ee>http://dl.acm.org/citation.cfm?id=602181</ee>
+<url>db/conf/visualization/visualization2002.html#TeohMWZ02</url>
+<pages>505-508</pages>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/volvis/WilsonMM02" mdate="2015-07-08">
+<author>Brett Wilson</author>
+<author>Kwan-Liu Ma</author>
+<author>Patrick S. McCormick</author>
+<title>A hardware-assisted hybrid rendering technique for interactive volume visualization.</title>
+<pages>123-130</pages>
+<year>2002</year>
+<crossref>conf/volvis/2002</crossref>
+<booktitle>VolVis</booktitle>
+<ee>http://dx.doi.org/10.1109/SWG.2002.1226518</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SWG.2002.1226518</ee>
+<ee>http://dl.acm.org/citation.cfm?id=584131</ee>
+<url>db/conf/volvis/volvis2002.html#WilsonMM02</url>
+</inproceedings>
+</r>
+<r><article key="journals/cga/Ma01" mdate="2011-10-25">
+<author>Kwan-Liu Ma</author>
+<title>Guest Editor's Introduction: Large-Scale Data Visualization.</title>
+<pages>22-23</pages>
+<year>2001</year>
+<volume>21</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>4</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2001.933520</ee>
+<url>db/journals/cga/cga21.html#Ma01</url>
+</article>
+</r>
+<r><article key="journals/cga/MaP01" mdate="2011-10-25">
+<author>Kwan-Liu Ma</author>
+<author>Steven Parker</author>
+<title>Massively Parallel Software Rendering for Visualizing Large-Scale Data Sets.</title>
+<pages>72-83</pages>
+<year>2001</year>
+<volume>21</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>4</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/38.933526</ee>
+<url>db/journals/cga/cga21.html#MaP01</url>
+</article>
+</r>
+<r><article key="journals/tvcg/Jankun-KellyM01" mdate="2011-11-07">
+<author>T. J. Jankun-Kelly</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualization Exploration and Encapsulation via a Spreadsheet-Like Interface.</title>
+<pages>275-287</pages>
+<year>2001</year>
+<volume>7</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>3</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/2945.942695</ee>
+<url>db/journals/tvcg/tvcg7.html#Jankun-KellyM01</url>
+</article>
+</r>
+<r><inproceedings key="conf/pg/LumM01" mdate="2015-06-15">
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<title>Non-Photorealistic Rendering Using Watercolor Inspired Textures and Illumination.</title>
+<pages>322-331</pages>
+<year>2001</year>
+<crossref>conf/pg/2001</crossref>
+<booktitle>Pacific Conference on Computer Graphics and Applications</booktitle>
+<ee>http://dx.doi.org/10.1109/PCCGA.2001.962888</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/PCCGA.2001.962888</ee>
+<url>db/conf/pg/pg2001.html#LumM01</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/pvg/MeredithM01" mdate="2008-11-17">
+<author>Jeremy S. Meredith</author>
+<author>Kwan-Liu Ma</author>
+<title>Multiresolution view-dependent splat based volume rendering of large irregular data.</title>
+<pages>93-99</pages>
+<year>2001</year>
+<crossref>conf/pvg/2001</crossref>
+<booktitle>IEEE Symposium on Parallel and Large-Data Visualization and Graphics</booktitle>
+<ee>http://portal.acm.org/citation.cfm?id=502125.502143</ee>
+<url>db/conf/pvg/pvg2001.html#MeredithM01</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/sc/MurakiOMKKLNS01" mdate="2015-06-30">
+<author>Shigeru Muraki</author>
+<author>Masato Ogata</author>
+<author>Kwan-Liu Ma</author>
+<author>Kenji Koshizuka</author>
+<author>Kagenori Kajihara</author>
+<author>Xuezhen Liu</author>
+<author>Yasutada Nagano</author>
+<author>Kazuro Shimokawa</author>
+<title>Next-generation visual supercomputing using PC clusters with volume graphics hardware devices.</title>
+<pages>51</pages>
+<year>2001</year>
+<crossref>conf/sc/2001</crossref>
+<booktitle>SC</booktitle>
+<ee>http://doi.acm.org/10.1145/582034.582085</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SC.2001.10055</ee>
+<url>db/conf/sc/sc2001.html#MurakiOMKKLNS01</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vg/Jankun-KellyM01" mdate="2005-09-22">
+<author>T. J. Jankun-Kelly</author>
+<author>Kwan-Liu Ma</author>
+<title>A Study of Transfer Function Generation for Time-Varying Volume Data.</title>
+<year>2001</year>
+<crossref>conf/vg/2001</crossref>
+<booktitle>Volume Graphics</booktitle>
+<ee>http://www.eg.org/EG/DL/WS/VG01/Jankun-Kelly</ee>
+<url>db/conf/vg/vg2001.html#Jankun-KellyM01</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/LumMC01" mdate="2014-09-23">
+<author>Eric B. Lum</author>
+<author>Kwan-Liu Ma</author>
+<author>John Clyne</author>
+<title>Texture Hardware Assisted Rendering of Time-Varying Volume Data.</title>
+<year>2001</year>
+<crossref>conf/visualization/2001</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VISUAL.2001.964520</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2001.964520</ee>
+<ee>http://dl.acm.org/citation.cfm?id=601712</ee>
+<url>db/conf/visualization/visualization2001.html#LumMC01</url>
+<pages>263-270</pages>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vmv/WeberKLSHHJM01" mdate="2003-02-25">
+<author>Gunther H. Weber</author>
+<author>Oliver Kreylos</author>
+<author>Terry J. Ligocki</author>
+<author>John Shalf</author>
+<author>Hans Hagen</author>
+<author>Bernd Hamann</author>
+<author>Kenneth I. Joy</author>
+<author>Kwan-Liu Ma</author>
+<title>High-quality Volume Rendering of Adaptive Mesh Refinement Data.</title>
+<pages>121-128</pages>
+<year>2001</year>
+<crossref>conf/vmv/2001</crossref>
+<booktitle>VMV</booktitle>
+<ee>http://wwwvis.informatik.uni-stuttgart.de/vmv01/dl/papers/10.pdf</ee>
+<url>db/conf/vmv/vmv2001.html#WeberKLSHHJM01</url>
+</inproceedings>
+</r>
+<r><article key="journals/cga/Ma00" mdate="2011-10-25">
+<author>Kwan-Liu Ma</author>
+<title>Visualizing Visualizations: User Interfaces for Managing and Exploring Scientific Visualization Data.</title>
+<pages>16-19</pages>
+<year>2000</year>
+<volume>20</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>5</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/38.865874</ee>
+<url>db/journals/cga/cga20.html#Ma00</url>
+</article>
+</r>
+<r><article key="journals/cga/KaoM00" mdate="2011-10-25">
+<author>David L. Kao</author>
+<author>Kwan-Liu Ma</author>
+<title>Guest Editors' Introduction: The Life Cycle of a Visualization Case Study.</title>
+<pages>29-31</pages>
+<year>2000</year>
+<volume>20</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>5</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.2000.865876</ee>
+<url>db/journals/cga/cga20.html#KaoM00</url>
+</article>
+</r>
+<r><inproceedings key="conf/sc/MaC00" mdate="2015-06-30">
+<author>Kwan-Liu Ma</author>
+<author>David M. Camp</author>
+<title>High Performance Visualization of Time-Varying Volume Data over a Wide-Area Network Status.</title>
+<year>2000</year>
+<crossref>conf/sc/2000</crossref>
+<booktitle>SC</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SC.2000.10000</ee>
+<ee>http://dl.acm.org/citation.cfm?id=370399</ee>
+<url>db/conf/sc/sc2000.html#MaC00</url>
+<pages>29</pages>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/Jankun-KellyM00" mdate="2014-09-23">
+<author>T. J. Jankun-Kelly</author>
+<author>Kwan-Liu Ma</author>
+<title>A spreadsheet interface for visualization exploration.</title>
+<pages>69-76</pages>
+<year>2000</year>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VISUAL.2000.885678</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2000.885678</ee>
+<ee>http://doi.acm.org/10.1145/375213.375220</ee>
+<url>db/conf/visualization/visualization2000.html#Jankun-KellyM00</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/SchussmanMSE00" mdate="2014-09-24">
+<author>Gregory L. Schussman</author>
+<author>Kwan-Liu Ma</author>
+<author>David P. Schissel</author>
+<author>Todd Evans</author>
+<title>Visualizing DIII-D Tokamak magnetic field lines.</title>
+<pages>501-504</pages>
+<year>2000</year>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VISUAL.2000.885742</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.2000.885742</ee>
+<ee>http://doi.acm.org/10.1145/375213.375315</ee>
+<url>db/conf/visualization/visualization2000.html#SchussmanMSE00</url>
+</inproceedings>
+</r>
+<r><article key="journals/cga/MaP99" mdate="2009-12-09">
+<author>Kwan-Liu Ma</author>
+<author>Frits H. Post</author>
+<title>Guest Editors' Introduction: Visualization Case Studies-Drawing a Roadmap for Future Visualization.</title>
+<pages>48-49</pages>
+<year>1999</year>
+<volume>19</volume>
+<journal>IEEE Computer Graphics and Applications</journal>
+<number>5</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/MCG.1999.788798</ee>
+<url>db/journals/cga/cga19.html#MaP99</url>
+</article>
+</r>
+<r><inproceedings key="conf/visualization/Ma99" mdate="2014-09-23">
+<author>Kwan-Liu Ma</author>
+<title>Image Graphs - A Novel Approach to Visual Data Exploration.</title>
+<pages>81-88</pages>
+<year>1999</year>
+<booktitle>IEEE Visualization</booktitle>
+<url>db/conf/visualization/visualization1999.html#Ma99</url>
+<ee>http://dx.doi.org/10.1109/VISUAL.1999.809871</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.1999.809871</ee>
+<ee>http://dl.acm.org/citation.cfm?id=319360</ee>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/ShenCM99" mdate="2014-09-23">
+<author>Han-Wei Shen</author>
+<author>Ling-Jan Chiang</author>
+<author>Kwan-Liu Ma</author>
+<title>A Fast Volume Rendering Algorithm for Time-Varying Fields Using a Time-Space Partitioning (TSP) Tree.</title>
+<pages>371-377</pages>
+<year>1999</year>
+<booktitle>IEEE Visualization</booktitle>
+<url>db/conf/visualization/visualization1999.html#ShenCM99</url>
+<ee>http://dx.doi.org/10.1109/VISUAL.1999.809910</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.1999.809910</ee>
+<ee>http://dl.acm.org/citation.cfm?id=319434</ee>
+</inproceedings>
+</r>
+<r><article key="journals/tvcg/UengSM97" mdate="2011-11-07">
+<author>Shyh-Kuang Ueng</author>
+<author>Christopher A. Sikorski</author>
+<author>Kwan-Liu Ma</author>
+<title>Out-of-Core Streamline Visualization on Large Unstructured Meshes.</title>
+<pages>370-380</pages>
+<year>1997</year>
+<volume>3</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>4</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/2945.646239</ee>
+<url>db/journals/tvcg/tvcg3.html#UengSM97</url>
+</article>
+</r>
+<r><inproceedings key="conf/ispan/ChiuehM97" mdate="2011-10-26">
+<author>Tzi-cker Chiueh</author>
+<author>Kwan-Liu Ma</author>
+<title>A Parallel Pipelined Renderer for Time-Varying Volume Data.</title>
+<pages>9-15</pages>
+<year>1997</year>
+<crossref>conf/ispan/1997</crossref>
+<booktitle>ISPAN</booktitle>
+<ee>http://doi.ieeecomputersociety.org/10.1109/ISPAN.1997.645046</ee>
+<url>db/conf/ispan/ispan1997.html#ChiuehM97</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/MaI97" mdate="2014-09-23">
+<author>Kwan-Liu Ma</author>
+<author>Victoria Interrante</author>
+<title>Extracting feature lines from 3D unstructured grids.</title>
+<pages>285-292</pages>
+<year>1997</year>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VISUAL.1997.663894</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.1997.663894</ee>
+<ee>http://doi.acm.org/10.1145/266989.267085</ee>
+<url>db/conf/visualization/visualization1997.html#MaI97</url>
+</inproceedings>
+</r>
+<r><article key="journals/tvcg/UengSM96" mdate="2011-11-07">
+<author>Shyh-Kuang Ueng</author>
+<author>Christopher A. Sikorski</author>
+<author>Kwan-Liu Ma</author>
+<title>Efficient Streamline, Streamribbon, and Streamtube Constructions on Unstructured Grids.</title>
+<pages>100-110</pages>
+<year>1996</year>
+<volume>2</volume>
+<journal>IEEE Trans. Vis. Comput. Graph.</journal>
+<number>2</number>
+<ee>http://doi.ieeecomputersociety.org/10.1109/2945.506222</ee>
+<url>db/journals/tvcg/tvcg2.html#UengSM96</url>
+</article>
+</r>
+<r><inproceedings key="conf/vvs/ShenJM96" mdate="2015-07-08">
+<author>Han-Wei Shen</author>
+<author>Christopher R. Johnson</author>
+<author>Kwan-Liu Ma</author>
+<title>Visualizing Vector Fields Using Line Integral Convolution and Dye advection.</title>
+<pages>63-70</pages>
+<year>1996</year>
+<crossref>conf/vvs/1996</crossref>
+<booktitle>VVS</booktitle>
+<ee>http://dx.doi.org/10.1109/SVV.1996.558044</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SVV.1996.558044</ee>
+<ee>http://dl.acm.org/citation.cfm?id=236234</ee>
+<url>db/conf/vvs/vvs96.html#ShenJM96</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/vvs/MaRV96" mdate="2015-07-08">
+<author>Kwan-Liu Ma</author>
+<author>John Van Rosendale</author>
+<author>Willem Vermeer</author>
+<title>3D Shock Wave Visualization on Unstructured Grids.</title>
+<pages>87-</pages>
+<year>1996</year>
+<crossref>conf/vvs/1996</crossref>
+<booktitle>VVS</booktitle>
+<ee>http://dx.doi.org/10.1109/SVV.1996.558049</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/SVV.1996.558049</ee>
+<ee>http://dl.acm.org/citation.cfm?id=236237</ee>
+<url>db/conf/vvs/vvs96.html#MaRV96</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/UengSM95" mdate="2014-09-23">
+<author>Shyh-Kuang Ueng</author>
+<author>K. Sikorski</author>
+<author>Kwan-Liu Ma</author>
+<title>Fast Algorithms for Visualizing Fluid Motion in Steady Flow on Unstructured Grids.</title>
+<pages>313</pages>
+<year>1995</year>
+<booktitle>IEEE Visualization</booktitle>
+<ee>http://dx.doi.org/10.1109/VISUAL.1995.485144</ee>
+<ee>http://doi.ieeecomputersociety.org/10.1109/VISUAL.1995.485144</ee>
+<ee>http://dl.acm.org/citation.cfm?id=833883</ee>
+<url>db/conf/visualization/visualization1995.html#UengSM95</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/MaZ94" mdate="2014-09-23">
+<author>Kwan-Liu Ma</author>
+<author>Z. C. Zheng</author>
+<title>3D Visualization of Unsteady 2D Airplane Wake Vortices.</title>
+<pages>124-131</pages>
+<year>1994</year>
+<crossref>conf/visualization/1994</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<url>db/conf/visualization/visualization1994.html#MaZ94</url>
+<ee>http://dx.doi.org/10.1109/VISUAL.1994.346328</ee>
+<ee>http://dl.acm.org/citation.cfm?id=951113</ee>
+</inproceedings>
+</r>
+<r><article key="journals/cg/MaP93" mdate="2003-09-03">
+<author>Kwan-Liu Ma</author>
+<author>James S. Painter</author>
+<title>Parallel volume visualization on workstations.</title>
+<pages>31-37</pages>
+<year>1993</year>
+<volume>17</volume>
+<journal>Computers &#38; Graphics</journal>
+<number>1</number>
+<ee>http://dx.doi.org/10.1016/0097-8493(93)90049-F</ee>
+<url>db/journals/cg/cg17.html#MaP93</url>
+</article>
+</r>
+<r><inproceedings key="conf/visualization/MaS93" mdate="2014-09-23">
+<author>Kwan-Liu Ma</author>
+<author>Philip J. Smith</author>
+<title>Cloud Tracing in Conection-Diffusion Systems.</title>
+<pages>253-260</pages>
+<year>1993</year>
+<crossref>conf/visualization/1993</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<url>db/conf/visualization/visualization1993.html#MaS93</url>
+<ee>http://dx.doi.org/10.1109/VISUAL.1993.398876</ee>
+<ee>http://dl.acm.org/citation.cfm?id=949892</ee>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/si3d/CohenPMM92" mdate="2012-01-03">
+<author>Michael F. Cohen</author>
+<author>James S. Painter</author>
+<author>Mihir Mehta</author>
+<author>Kwan-Liu Ma</author>
+<title>Volume Seedlings.</title>
+<pages>139-145</pages>
+<year>1992</year>
+<crossref>conf/si3d/1992</crossref>
+<booktitle>SI3D</booktitle>
+<ee>http://doi.acm.org/10.1145/147156.147184</ee>
+<url>db/conf/si3d/si3d92.html#CohenPMM92</url>
+</inproceedings>
+</r>
+<r><inproceedings key="conf/visualization/MaS92" mdate="2014-09-23">
+<author>Kwan-Liu Ma</author>
+<author>Philip J. Smith</author>
+<title>Virtual Smoke: An Interactive 3-D Flow Visualization Technique.</title>
+<pages>46-53</pages>
+<year>1992</year>
+<crossref>conf/visualization/1992</crossref>
+<booktitle>IEEE Visualization</booktitle>
+<url>db/conf/visualization/visualization1992.html#MaS92</url>
+<ee>http://dx.doi.org/10.1109/VISUAL.1992.235227</ee>
+<ee>http://dl.acm.org/citation.cfm?id=949698</ee>
+</inproceedings>
+</r>
+<r><article key="journals/jvca/MaCP91" mdate="2014-06-06">
+<author>Kwan-Liu Ma</author>
+<author>Michael F. Cohen</author>
+<author>James S. Painter</author>
+<title>Volume seeds: A volume exploration technique.</title>
+<pages>135-140</pages>
+<year>1991</year>
+<volume>2</volume>
+<journal>Journal of Visualization and Computer Animation</journal>
+<number>4</number>
+<ee>http://dx.doi.org/10.1002/vis.4340020409</ee>
+<url>db/journals/jvca/jvca2.html#MaCP91</url>
+</article>
+</r>
+<r><inproceedings key="conf/ppsc/MaS91" mdate="2002-05-29">
+<author>Kwan-Liu Ma</author>
+<author>K. Sikorski</author>
+<title>A Distributed Solution and Visualization for 3D Flow Simulation.</title>
+<pages>287-294</pages>
+<year>1991</year>
+<crossref>conf/ppsc/1991</crossref>
+<booktitle>PPSC</booktitle>
+<url>db/conf/ppsc/ppsc1991.html#MaS91</url>
+</inproceedings>
+</r>
+<r><article key="journals/spe/MaK90" mdate="2012-04-14">
+<author>Kwan-Liu Ma</author>
+<author>Robert R. Kessler</author>
+<title>TICL-A Type Inference System for Common Lisp.</title>
+<pages>593-623</pages>
+<year>1990</year>
+<volume>20</volume>
+<journal>Softw., Pract. Exper.</journal>
+<number>6</number>
+<url>db/journals/spe/spe20.html#MaK90</url>
+<ee>http://dx.doi.org/10.1002/spe.4380200606</ee>
+</article>
+</r>
+<coauthors n="313" nc="1">
+<co c="0"><na f="a/Abello:James">James Abello</na></co>
+<co c="0"><na f="a/Ahrens:James_P=">James P. Ahrens</na></co>
+<co c="0"><na f="a/Akiba:Hiroshi">Hiroshi Akiba</na></co>
+<co c="0"><na f="a/Archambault:Daniel">Daniel Archambault</na></co>
+<co c="0"><na f="a/Armstrong:Ryan">Ryan Armstrong</na></co>
+<co c="0"><na f="a/Ayachit:Utkarsh">Utkarsh Ayachit</na></co>
+<co c="0"><na f="b/Badawi:Ramsey_Derek">Ramsey Derek Badawi</na></co>
+<co c="0"><na f="b/Bartoletti:Tony">Tony Bartoletti</na></co>
+<co c="0"><na f="b/Bartz:Dirk">Dirk Bartz</na></co>
+<co c="0" n="2"><na f="b/Bethel:E=_Wes">E. Wes Bethel</na><na>Wes Bethel</na></co>
+<co c="0"><na f="b/Bi:Chongke">Chongke Bi</na></co>
+<co c="0"><na f="b/Bielak:Jacobo">Jacobo Bielak</na></co>
+<co c="0"><na f="b/Bird:Christian">Christian Bird</na></co>
+<co c="0"><na f="b/Bochev:Pavel_B=">Pavel B. Bochev</na></co>
+<co c="0"><na f="b/Boschetti:Alberto">Alberto Boschetti</na></co>
+<co c="0"><na f="b/Brown:David">David Brown</na></co>
+<co c="0"><na f="b/Brownrigg:Richard">Richard Brownrigg</na></co>
+<co c="0"><na f="b/Bryan:Chris">Chris Bryan</na></co>
+<co c="0"><na f="b/Bush:Randy">Randy Bush</na></co>
+<co c="-1"><na f="c/Camp:David_M=">David M. Camp</na></co>
+<co c="0"><na f="c/Cernea:Daniel">Daniel Cernea</na></co>
+<co c="0"><na f="c/Chan:Yu=Hsuan">Yu-Hsuan Chan</na></co>
+<co c="0"><na f="c/Chaudhari:Abhijit_J=">Abhijit J. Chaudhari</na></co>
+<co c="0"><na f="c/Chen:Bing=Yu">Bing-Yu Chen</na></co>
+<co c="0"><na f="c/Chen:Cheng=Kai">Cheng-Kai Chen</na></co>
+<co c="0"><na f="c/Chen:Haidong">Haidong Chen</na></co>
+<co c="0"><na f="c/Chen:Jackie_H=">Jackie H. Chen</na></co>
+<co c="0" n="2"><na f="c/Chen:Jacqueline">Jacqueline Chen</na><na>Jacqueline H. Chen</na></co>
+<co c="0"><na f="c/Chen:L=">L. Chen</na></co>
+<co c="0"><na f="c/Chen:Min">Min Chen</na></co>
+<co c="0"><na f="c/Chen:Wei">Wei Chen</na></co>
+<co c="0"><na f="c/Chen:Weifeng">Weifeng Chen</na></co>
+<co c="0"><na f="c/Chiang:Ling=Jan">Ling-Jan Chiang</na></co>
+<co c="0"><na f="c/Childs:Hank">Hank Childs</na></co>
+<co c="0"><na f="c/Chiueh:Tzi=cker">Tzi-cker Chiueh</na></co>
+<co c="0"><na f="c/Chou:Jia=Kai">Jia-Kai Chou</na></co>
+<co c="0"><na f="c/Christensen:Marvin">Marvin Christensen</na></co>
+<co c="0"><na f="c/Chuah:Chen=Nee">Chen-Nee Chuah</na></co>
+<co c="0"><na f="c/Clyne:John">John Clyne</na></co>
+<co c="0"><na f="c/Cohen:Michael_F=">Michael F. Cohen</na></co>
+<co c="0"><na f="c/Conti:Gregory_J=">Gregory J. Conti</na></co>
+<co c="0"><na f="c/Cope:Jason">Jason Cope</na></co>
+<co c="0"><na f="c/Correa:Carlos_D=">Carlos D. Correa</na></co>
+<co c="0"><na f="c/Crawford:David">David Crawford</na></co>
+<co c="0"><na f="c/Crnovrsanin:Tarik">Tarik Crnovrsanin</na></co>
+<co c="0"><na f="c/Cui:Weiwei">Weiwei Cui</na></co>
+<co c="0"><na f="d/Devanbu:Premkumar_T=">Premkumar T. Devanbu</na></co>
+<co c="0"><na f="d/Dong:Zhao">Zhao Dong</na></co>
+<co c="0"><na f="d/Duchaineau:Mark_A=">Mark A. Duchaineau</na></co>
+<co c="0"><na f="e/Ebert:David_S=">David S. Ebert</na></co>
+<co c="0"><na f="e/Elgamal:Ahmed">Ahmed Elgamal</na></co>
+<co c="0"><na f="e/Eliassi=Rad:Tina">Tina Eliassi-Rad</na></co>
+<co c="0"><na f="e/Elmqvist:Niklas">Niklas Elmqvist</na></co>
+<co c="0"><na f="e/Engle:Sophie">Sophie Engle</na></co>
+<co c="0"><na f="e/Ertl:Thomas">Thomas Ertl</na></co>
+<co c="0"><na f="e/Ethier:St=eacute=phane">St&#233;phane Ethier</na></co>
+<co c="0"><na f="e/Evans:Todd">Todd Evans</na></co>
+<co c="0"><na f="f/Faris:Robert">Robert Faris</na></co>
+<co c="0"><na f="f/Favre:Jean_M=">Jean M. Favre</na></co>
+<co c="0"><na f="f/Felmlee:Diane">Diane Felmlee</na></co>
+<co c="0"><na f="f/Fischer:Fabian">Fabian Fischer</na></co>
+<co c="0"><na f="f/Foster:Ian_T=">Ian T. Foster</na></co>
+<co c="0"><na f="f/Fout:Nathaniel">Nathaniel Fout</na></co>
+<co c="0"><na f="f/Frazier:Jennifer">Jennifer Frazier</na></co>
+<co c="0"><na f="f/Frey:Steffen">Steffen Frey</na></co>
+<co c="0"><na f="f/Fu:Yang=chih">Yang-chih Fu</na></co>
+<co c="0"><na f="f/Fujishiro:Issei">Issei Fujishiro</na></co>
+<co c="0"><na f="g/Gertz:Michael">Michael Gertz</na></co>
+<co c="0"><na f="g/Geveci:Berk">Berk Geveci</na></co>
+<co c="0"><na f="g/Ghattas:Omar">Omar Ghattas</na></co>
+<co c="0"><na f="g/Goodall:John_R=">John R. Goodall</na></co>
+<co c="0"><na f="g/Gou:Liang">Liang Gou</na></co>
+<co c="0"><na f="g/Gourley:Alex">Alex Gourley</na></co>
+<co c="0"><na f="g/Gr=ouml=ller:Eduard">Eduard Gr&#246;ller</na></co>
+<co c="0"><na f="g/Grout:Ray_W=">Ray W. Grout</na></co>
+<co c="0"><na f="g/Gu:Wentao">Wentao Gu</na></co>
+<co c="0"><na f="g/Guo:Baining">Baining Guo</na></co>
+<co c="0"><na f="g/Gygi:Fran=ccedil=ois">Fran&#231;ois Gygi</na></co>
+<co c="0"><na f="h/Hagen:Hans">Hans Hagen</na></co>
+<co c="0"><na f="h/Haley:Mary">Mary Haley</na></co>
+<co c="0"><na f="h/Hamann:Bernd">Bernd Hamann</na></co>
+<co c="0"><na f="h/Haroz:Steve">Steve Haroz</na></co>
+<co c="0"><na f="h/Hauser:Helwig">Helwig Hauser</na></co>
+<co c="0"><na f="h/Hawkes:Evatt_R=">Evatt R. Hawkes</na></co>
+<co c="0"><na f="h/Heitmann:Katrin">Katrin Heitmann</na></co>
+<co c="0"><na f="h/Hereld:Mark">Mark Hereld</na></co>
+<co c="0"><na f="h/Hero:Robert">Robert Hero</na></co>
+<co c="0"><na f="h/Ho:Chris">Chris Ho</na></co>
+<co c="0"><na f="h/Ho:Hwai=Chung">Hwai-Chung Ho</na></co>
+<co c="0"><na f="h/Hong:Seok=Hee">Seok-Hee Hong</na></co>
+<co c="0"><na f="h/Hsieh:Tung=Ju">Tung-Ju Hsieh</na></co>
+<co c="0"><na f="h/Hsu:Wei=Hsien">Wei-Hsien Hsu</na></co>
+<co c="0"><na f="h/Hsueh:Chien=Hsin">Chien-Hsin Hsueh</na></co>
+<co c="0"><na f="h/Hu:Mengdie">Mengdie Hu</na></co>
+<co c="0"><na f="h/Huang:Chih=Wei">Chih-Wei Huang</na></co>
+<co c="0"><na f="h/Huang:Jian">Jian Huang</na></co>
+<co c="0"><na f="h/Huang:Min=Yu">Min-Yu Huang</na></co>
+<co c="0"><na f="h/Huang:Runzhen">Runzhen Huang</na></co>
+<co c="0"><na f="h/Huang:Wei">Wei Huang</na></co>
+<co c="0"><na f="i/Imamura:Toshiyuki">Toshiyuki Imamura</na></co>
+<co c="0"><na f="i/Insley:Joseph_A=">Joseph A. Insley</na></co>
+<co c="0"><na f="i/Interrante:Victoria">Victoria Interrante</na></co>
+<co c="0"><na f="i/Isenberg:Petra">Petra Isenberg</na></co>
+<co c="0"><na f="i/Iskra:Kamil">Kamil Iskra</na></co>
+<co c="0"><na f="i/Itoh:Takayuki">Takayuki Itoh</na></co>
+<co c="0"><na f="j/Jackson:Stoney">Stoney Jackson</na></co>
+<co c="0"><na f="j/Jacob:Robert_L=">Robert L. Jacob</na></co>
+<co c="0"><na f="j/Jankun=Kelly:T=_J=">T. J. Jankun-Kelly</na></co>
+<co c="0"><na f="j/Jin:Liqiang">Liqiang Jin</na></co>
+<co c="0"><na f="j/Johnson:Christopher_R=">Christopher R. Johnson</na></co>
+<co c="0"><na f="j/Jones:Chad">Chad Jones</na></co>
+<co c="0"><na f="j/Joy:Kenneth_I=">Kenneth I. Joy</na></co>
+<co c="0"><na f="k/Kajihara:Kagenori">Kagenori Kajihara</na></co>
+<co c="0"><na f="k/Kao:David_L=">David L. Kao</na></co>
+<co c="0"><na f="k/Keeton:K=">K. Keeton</na></co>
+<co c="0"><na f="k/Keim:Daniel_A=">Daniel A. Keim</na></co>
+<co c="0"><na f="k/Kennedy:Jessie">Jessie Kennedy</na></co>
+<co c="-1"><na f="k/Kessler:Robert_R=">Robert R. Kessler</na></co>
+<co c="0"><na f="k/Kim:Eui_Joong">Eui Joong Kim</na></co>
+<co c="0"><na f="k/King:Brad">Brad King</na></co>
+<co c="0"><na f="k/Klasky:Scott">Scott Klasky</na></co>
+<co c="0" n="2"><na f="k/Kniss:Joe_Michael">Joe Michael Kniss</na><na>Joe Kniss</na></co>
+<co c="0"><na f="k/Ko:Kwok">Kwok Ko</na></co>
+<co c="0"><na f="k/Kobourov:Stephen_G=">Stephen G. Kobourov</na></co>
+<co c="0"><na f="k/Kohlenberg:Toby">Toby Kohlenberg</na></co>
+<co c="0"><na f="k/Kolla:Hemanth">Hemanth Kolla</na></co>
+<co c="0"><na f="k/Koshizuka:Kenji">Kenji Koshizuka</na></co>
+<co c="0"><na f="k/Kostis:Helen=Nicole">Helen-Nicole Kostis</na></co>
+<co c="0"><na f="k/Kreylos:Oliver">Oliver Kreylos</na></co>
+<co c="0"><na f="k/Krishna:Jayesh">Jayesh Krishna</na></co>
+<co c="0"><na f="k/Krystosk:Paul">Paul Krystosk</na></co>
+<co c="0"><na f="k/Kwon:Oh=Hyun">Oh-Hyun Kwon</na></co>
+<co c="0"><na f="l/Lampe:Ove_Daae">Ove Daae Lampe</na></co>
+<co c="0"><na f="l/Laramee:Robert_S=">Robert S. Laramee</na></co>
+<co c="0"><na f="l/Larson:Jay_Walter">Jay Walter Larson</na></co>
+<co c="0"><na f="l/Latham:Robert">Robert Latham</na></co>
+<co c="0"><na f="l/Leaf:Nick">Nick Leaf</na></co>
+<co c="0"><na f="l/Lee:Kyungwon">Kyungwon Lee</na></co>
+<co c="0"><na f="l/Lee:Tong=Yee">Tong-Yee Lee</na></co>
+<co c="0"><na f="l/Lee:Wei=Li">Wei-Li Lee</na></co>
+<co c="0"><na f="l/Lefohn:Aaron_E=">Aaron E. Lefohn</na></co>
+<co c="0"><na f="l/Lewis:Daniel">Daniel Lewis</na></co>
+<co c="0"><na f="l/Li:Chen=Jia">Chen-Jia Li</na></co>
+<co c="0"><na f="l/Li:Hua">Hua Li</na></co>
+<co c="0"><na f="l/Li:Jianping">Jianping Li</na></co>
+<co c="0"><na f="l/Li:Ping">Ping Li</na></co>
+<co c="0"><na f="l/Li:Yan">Yan Li</na></co>
+<co c="0"><na f="l/Li:Yu=Chuan">Yu-Chuan Li</na></co>
+<co c="0"><na f="l/Li:Zhuwen">Zhuwen Li</na></co>
+<co c="0"><na f="l/Liao:Isaac">Isaac Liao</na></co>
+<co c="0"><na f="l/Liere:Robert_van">Robert van Liere</na></co>
+<co c="0"><na f="l/Ligocki:Terry_J=">Terry J. Ligocki</na></co>
+<co c="0"><na f="l/Limprasittiporn:Rattapon">Rattapon Limprasittiporn</na></co>
+<co c="0"><na f="l/Liu:Chun=Liang">Chun-Liang Liu</na></co>
+<co c="0"><na f="l/Liu:Meng">Meng Liu</na></co>
+<co c="0"><na f="l/Liu:Shixia">Shixia Liu</na></co>
+<co c="0"><na f="l/Liu:Xiaotong">Xiaotong Liu</na></co>
+<co c="0"><na f="l/Liu:Xuezhen">Xuezhen Liu</na></co>
+<co c="0"><na f="l/Liu:Zhiqi">Zhiqi Liu</na></co>
+<co c="0"><na f="l/L=oacute=pez:Julio_C=">Julio C. L&#243;pez</na></co>
+<co c="0"><na f="l/Lum:Eric_B=">Eric B. Lum</na></co>
+<co c="0"><na f="l/Luo:Sheng=Jie">Sheng-Jie Luo</na></co>
+<co c="0"><na f="m/Ma:Joyce">Joyce Ma</na></co>
+<co c="0"><na f="m/Madhyastha:Tara_M=">Tara M. Madhyastha</na></co>
+<co c="0"><na f="m/Marchesin:St=eacute=phane">St&#233;phane Marchesin</na></co>
+<co c="0"><na f="m/Martin:Pino">Pino Martin</na></co>
+<co c="0"><na f="m/Massey:Daniel">Daniel Massey</na></co>
+<co c="0"><na f="m/Mavriplis:Dimitri_J=">Dimitri J. Mavriplis</na></co>
+<co c="0"><na f="m/Max:Nelson">Nelson Max</na></co>
+<co c="0"><na f="m/Maynard:Robert">Robert Maynard</na></co>
+<co c="0"><na f="m/McCormick:Patrick_S=">Patrick S. McCormick</na></co>
+<co c="0"><na f="m/McPherson:Jonathan">Jonathan McPherson</na></co>
+<co c="0"><na f="m/Mehta:Mihir">Mihir Mehta</na></co>
+<co c="0"><na f="m/Mei:Honghui">Honghui Mei</na></co>
+<co c="0"><na f="m/Mei:Jianqiang">Jianqiang Mei</na></co>
+<co c="0"><na f="m/Meredith:Jeremy_S=">Jeremy S. Meredith</na></co>
+<co c="0"><na f="m/Mickelson:Sheri_A=">Sheri A. Mickelson</na></co>
+<co c="0"><na f="m/Middleton:Don">Don Middleton</na></co>
+<co c="0"><na f="m/Miksch:Silvia">Silvia Miksch</na></co>
+<co c="0"><na f="m/Miller:Robert">Robert Miller</na></co>
+<co c="0"><na f="m/Moreland:Kenneth">Kenneth Moreland</na></co>
+<co c="0"><na f="m/Mozhayskiy:Vadim">Vadim Mozhayskiy</na></co>
+<co c="0" n="2"><na f="m/Muelder:Chris">Chris Muelder</na><na>Chris W. Muelder</na></co>
+<co c="0"><na f="m/Mueller:Klaus">Klaus Mueller</na></co>
+<co c="0"><na f="m/Muraki:Shigeru">Shigeru Muraki</na></co>
+<co c="0"><na f="n/Nagano:Yasutada">Yasutada Nagano</na></co>
+<co c="0"><na f="n/Nie:Yongwei">Yongwei Nie</na></co>
+<co c="0"><na f="n/North:Stephen_C=">Stephen C. North</na></co>
+<co c="0"><na f="o/Ogata:Masato">Masato Ogata</na></co>
+<co c="0"><na f="o/Ogawa:Michael">Michael Ogawa</na></co>
+<co c="0"><na f="o/O=Hallaron:David_R=">David R. O'Hallaron</na></co>
+<co c="0"><na f="o/Ono:Kenji">Kenji Ono</na></co>
+<co c="0"><na f="o/Owens:John_D=">John D. Owens</na></co>
+<co c="0"><na f="o/Ozer:Sedat">Sedat Ozer</na></co>
+<co c="0"><na f="p/Painter:James_S=">James S. Painter</na></co>
+<co c="0"><na f="p/Papka:Michael_E=">Michael E. Papka</na></co>
+<co c="-1"><na f="p/Parker:Steven">Steven Parker</na></co>
+<co c="0"><na f="p/Pascucci:Valerio">Valerio Pascucci</na></co>
+<co c="0"><na f="p/Patchett:John">John Patchett</na></co>
+<co c="0"><na f="p/Pei:Dan">Dan Pei</na></co>
+<co c="0"><na f="p/Peterka:Tom">Tom Peterka</na></co>
+<co c="0"><na f="p/Peterson:Kara">Kara Peterson</na></co>
+<co c="0"><na f="p/Post:Frits_H=">Frits H. Post</na></co>
+<co c="0"><na f="p/Preim:Bernhard">Bernhard Preim</na></co>
+<co c="0"><na f="p/Provan:Thomas">Thomas Provan</na></co>
+<co c="0"><na f="q/Qiang:Ji">Ji Qiang</na></co>
+<co c="0"><na f="q/Qu:Huamin">Huamin Qu</na></co>
+<co c="0"><na f="r/Ram=iacute=rez=Guzm=aacute=n:Leonardo">Leonardo Ram&#237;rez-Guzm&#225;n</na></co>
+<co c="0"><na f="r/Ribarsky:William">William Ribarsky</na></co>
+<co c="0"><na f="r/Riche:Nathalie_Henry">Nathalie Henry Riche</na></co>
+<co c="0"><na f="r/Rosa:Gabriel_G=">Gabriel G. Rosa</na></co>
+<co c="0"><na f="r/Rosendale:John_Van">John Van Rosendale</na></co>
+<co c="0"><na f="r/Ross:Robert_B=">Robert B. Ross</na></co>
+<co c="0"><na f="r/Rowland:James_R=">James R. Rowland</na></co>
+<co c="0"><na f="r/Ryne:Robert_D=">Robert D. Ryne</na></co>
+<co c="0"><na f="s/Sadlo:Filip">Filip Sadlo</na></co>
+<co c="0"><na f="s/Salgarelli:Luca">Luca Salgarelli</na></co>
+<co c="0"><na f="s/Sallaberry:Arnaud">Arnaud Sallaberry</na></co>
+<co c="0"><na f="s/Sauer:Franz">Franz Sauer</na></co>
+<co c="0"><na f="s/Scheuermann:Gerik">Gerik Scheuermann</na></co>
+<co c="0"><na f="s/Schissel:David_P=">David P. Schissel</na></co>
+<co c="0"><na f="s/Scholtz:Jean">Jean Scholtz</na></co>
+<co c="0"><na f="s/Schuchardt:Karen">Karen Schuchardt</na></co>
+<co c="0"><na f="s/Schussman:Gregory_L=">Gregory L. Schussman</na></co>
+<co c="0"><na f="s/Sese:Jun">Jun Sese</na></co>
+<co c="0"><na f="s/Shalf:John">John Shalf</na></co>
+<co c="0"><na f="s/She:Ruiyun">Ruiyun She</na></co>
+<co c="0"><na f="s/Shea:Dennis_G=">Dennis G. Shea</na></co>
+<co c="0"><na f="s/Shearer:James">James Shearer</na></co>
+<co c="0"><na f="s/Shen:Han=Wei">Han-Wei Shen</na></co>
+<co c="0"><na f="s/Shen:I=_Fan">I. Fan Shen</na></co>
+<co c="0"><na f="s/Shen:Zeqian">Zeqian Shen</na></co>
+<co c="0"><na f="s/Shi:Jiaoying">Jiaoying Shi</na></co>
+<co c="0"><na f="s/Shih:Min">Min Shih</na></co>
+<co c="0"><na f="s/Shimokawa:Kazuro">Kazuro Shimokawa</na></co>
+<co c="0"><na f="s/Sigovan:Carmen">Carmen Sigovan</na></co>
+<co c="0"><na f="s/Sikorski:Christopher_A=">Christopher A. Sikorski</na></co>
+<co c="0"><na f="s/Sikorski:K=">K. Sikorski</na></co>
+<co c="0"><na f="s/Silver:Deborah">Deborah Silver</na></co>
+<co c="0"><na f="s/Sitaraman:Jayanarayanan">Jayanarayanan Sitaraman</na></co>
+<co c="0"><na f="s/Smith:Philip_J=">Philip J. Smith</na></co>
+<co c="0"><na f="s/Song:Hanchen">Hanchen Song</na></co>
+<co c="0"><na f="s/Stasko:John_T=">John T. Stasko</na></co>
+<co c="0"><na f="s/Stompel:Aleksander">Aleksander Stompel</na></co>
+<co c="0"><na f="s/Stone:Nathan">Nathan Stone</na></co>
+<co c="0"><na f="s/Strasser:Jonathan">Jonathan Strasser</na></co>
+<co c="0"><na f="s/Stuart:Jeff_A=">Jeff A. Stuart</na></co>
+<co c="0"><na f="s/Sukharev:Jeffrey">Jeffrey Sukharev</na></co>
+<co c="0"><na f="s/Sun:Hanqiu">Hanqiu Sun</na></co>
+<co c="0"><na f="s/Sundaresan:Neel">Neel Sundaresan</na></co>
+<co c="0"><na f="t/Taborda=Rios:Ricardo">Ricardo Taborda-Rios</na></co>
+<co c="0"><na f="t/Tagkopoulos:Ilias">Ilias Tagkopoulos</na></co>
+<co c="0"><na f="t/Takanashi:Ikuko">Ikuko Takanashi</na></co>
+<co c="0"><na f="t/Tanahashi:Yuzuru">Yuzuru Tanahashi</na></co>
+<co c="0" n="2"><na f="t/Tautges:Timothy_J=">Timothy J. Tautges</na><na>Tim Tautges</na></co>
+<co c="0"><na f="t/Taylor:Mark_A=">Mark A. Taylor</na></co>
+<co c="0" n="2"><na f="t/Telea:Alexandru">Alexandru Telea</na><na>Alexandru C. Telea</na></co>
+<co c="0"><na f="t/Teoh:Soon_Tee">Soon Tee Teoh</na></co>
+<co c="0"><na f="t/Thomason:Russell">Russell Thomason</na></co>
+<co c="0"><na f="t/Tikhonova:Anna">Anna Tikhonova</na></co>
+<co c="0"><na f="t/Tseng:Shih=Ming">Shih-Ming Tseng</na></co>
+<co c="0"><na f="t/Tu:Tiankai">Tiankai Tu</na></co>
+<co c="0"><na f="t/Tzeng:Fan=Yin">Fan-Yin Tzeng</na></co>
+<co c="0"><na f="u/Ueng:Shyh=Kuang">Shyh-Kuang Ueng</na></co>
+<co c="0"><na f="u/Urbanic:John">John Urbanic</na></co>
+<co c="0"><na f="v/Vermeer:Willem">Willem Vermeer</na></co>
+<co c="0"><na f="v/Vertenstein:Mariana">Mariana Vertenstein</na></co>
+<co c="0"><na f="v/Vishwanath:Venkatram">Venkatram Vishwanath</na></co>
+<co c="0"><na f="w/Wang:Chaoli">Chaoli Wang</na></co>
+<co c="0"><na f="w/Wang:Chun=Fu">Chun-Fu Wang</na></co>
+<co c="0"><na f="w/Wang:Lan">Lan Wang</na></co>
+<co c="0"><na f="w/Wang:Renfang">Renfang Wang</na></co>
+<co c="0"><na f="w/Wang:Shimin">Shimin Wang</na></co>
+<co c="0"><na f="w/Wang:Song">Song Wang</na></co>
+<co c="0"><na f="w/Wang:Xiting">Xiting Wang</na></co>
+<co c="0"><na f="w/Wang:Yang">Yang Wang</na></co>
+<co c="0"><na f="w/Wang:Yu=Shuen">Yu-Shuen Wang</na></co>
+<co c="0"><na f="w/Wang:Yue">Yue Wang</na></co>
+<co c="0"><na f="w/Ward:William">William Ward</na></co>
+<co c="0"><na f="w/Weber:Gunther_H=">Gunther H. Weber</na></co>
+<co c="0"><na f="w/Wei:Furu">Furu Wei</na></co>
+<co c="0"><na f="w/Wei:Jishang">Jishang Wei</na></co>
+<co c="0"><na f="w/Welling:Joel">Joel Welling</na></co>
+<co c="0"><na f="w/Wilde:Mike">Mike Wilde</na></co>
+<co c="0"><na f="w/Wilson:Brett">Brett Wilson</na></co>
+<co c="0"><na f="w/Wittenberg:Andrew_T=">Andrew T. Wittenberg</na></co>
+<co c="0"><na f="w/Wu:Haiyuan">Haiyuan Wu</na></co>
+<co c="0"><na f="w/Wu:Meng_Qi_Yelena">Meng Qi Yelena Wu</na></co>
+<co c="0"><na f="w/Wu:Shyhtsun_Felix">Shyhtsun Felix Wu</na></co>
+<co c="0"><na f="w/Wu:Yingcai">Yingcai Wu</na></co>
+<co c="0"><na f="x/Xiao:Chunxia">Chunxia Xiao</na></co>
+<co c="0"><na f="x/Xiao:Donglin">Donglin Xiao</na></co>
+<co c="0" n="2"><na f="x/Xie:Jingrong">Jingrong Xie</na><na>Jinrong Xie</na></co>
+<co c="0"><na f="x/Xu:Xiabing">Xiabing Xu</na></co>
+<co c="0"><na f="y/Yan:Shi">Shi Yan</na></co>
+<co c="0"><na f="y/Yang:Chuan=Kai">Chuan-Kai Yang</na></co>
+<co c="0"><na f="y/Ye:Yucong">Yucong Ye</na></co>
+<co c="0"><na f="y/Yin:Jain">Jain Yin</na></co>
+<co c="0"><na f="y/Yu:Hongfeng">Hongfeng Yu</na></co>
+<co c="0"><na f="y/Yu:Jinhui">Jinhui Yu</na></co>
+<co c="0"><na f="y/Yuan:Guo=Xun">Guo-Xun Yuan</na></co>
+<co c="0"><na f="y/Yurcik:William">William Yurcik</na></co>
+<co c="0"><na f="z/Zhang:Ke">Ke Zhang</na></co>
+<co c="0"><na f="z/Zhang_0001:Lixia">Lixia Zhang 0001</na></co>
+<co c="0"><na f="z/Zhang:Yubo">Yubo Zhang</na></co>
+<co c="0"><na f="z/Zhao:Xiaoliang">Xiaoliang Zhao</na></co>
+<co c="0"><na f="z/Zhao:Ying">Ying Zhao</na></co>
+<co c="0"><na f="z/Zheng:Lin">Lin Zheng</na></co>
+<co c="-1"><na f="z/Zheng:Z=_C=">Z. C. Zheng</na></co>
+<co c="0"><na f="z/Zhou:Fangfang">Fangfang Zhou</na></co>
+<co c="0"><na f="z/Zhou:Kun">Kun Zhou</na></co>
+<co c="0"><na f="z/Zhou:Michelle_X=">Michelle X. Zhou</na></co>
+<co c="0"><na f="z/Zhu:Yi=Bo">Yi-Bo Zhu</na></co>
+</coauthors>
+</dblpperson>
+
