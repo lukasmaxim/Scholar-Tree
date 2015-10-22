@@ -18,7 +18,7 @@ var mapping_color = {
     root: "#362C21",
     leaf_stork: "#83A06E",
     // render_leaf_color: ["#924307", "#C2B208", "#94AE0F", "#5F9915"],
-    render_leaf_color: ["#D37A10", "#C2B208", "#94AE0F", "#5F9915", "#1F861D", "#123F24"],
+    render_leaf_color: ["#6C1904", "#D37A10", "#C2B208", "#8C8616", "#94AE0F", "#5F9915", "#1F861D", "#1C6324", "#123F24", "1F3848"],
     render_roots_color: ["#964343", "#90093F", "#967636", "#6B435E"],
     /*
     roots_color: ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c",

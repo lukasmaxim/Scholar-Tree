@@ -55,6 +55,7 @@ var MyApp = function MyApp(){
         // $("#result").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
     }
 
+
     // for general event
     var search = $('#check_url');
     var finish = $('#draw_tree');
@@ -79,6 +80,20 @@ var MyApp = function MyApp(){
         var resercher = $("#dblp_url").val();
         var sy = slider.result.from;
         var ey = slider.result.to;
+        var gap = ey - sy + 1;
+        if (gap <= 10)
+            gap = 1
+        else if (10 < gap && gap <= 20)
+            gap = 2
+        else if (20 < gap && gap <= 30)
+            gap = 3
+        else if (30 < gap && gap <= 40)
+            gap = 4
+        else if (40 < gap && gap <= 50)
+            gap = 5
+        else
+            gap = 6
+        $(".b_gap").text(gap);
         var request_array = [resercher, sy, ey];
         var request = JSON.stringify(request_array);
         self.model.generate_tree_structure(request);    

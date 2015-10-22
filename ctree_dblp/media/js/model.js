@@ -29,23 +29,7 @@ var Tree_Model = Backbone.Model.extend({
         var self = this;
         // $("#period_slider").slider( "destroy" );
         var researcher_period = self.get("time_period");
-        $("#researcher_name").html(researcher_period[2]);
-        var slider = $("#period_slider").data("ionRangeSlider");
-        // Call sliders update method with any params
-        slider.update({
-            min: researcher_period[0], 
-            max: researcher_period[1],
-            from: researcher_period[0], 
-            to: researcher_period[1],
-            // type: 'double',
-            // step: 1,
-            // min_interval: 3
-        });
-        $("#detail").show();
-        $("#progress").hide();
-        $("#no_preview").show();
-        $("#tree_result").hide();
-        $("#draw_tree").removeAttr("disabled");
+        util.set_slider(researcher_period);
     },
 
     generate_tree_structure: function(request){

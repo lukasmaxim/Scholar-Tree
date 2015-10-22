@@ -136,17 +136,28 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 	tree_egos["tree1"] = []
 	tree_egos["tree2"] = []
 	period = ey - sy + 1
-	gap = 1
+	# gap = 1
 	year_gap = []
-	branch_layer = 10
-	if period > 10:
-		gap = period/10.0
+	# branch_layer = period
+	if period <= 10:
+		gap = 1
+	elif 10 < period <= 20:
+		gap = 2
+	elif 20 < period <= 30:
+		gap = 3
+	elif 30 < period <= 40:
+		gap = 4
+	elif 40 < period <= 50:
+		gap = 5
 	else:
-		branch_layer = period
+		gap = 6
 	# print gap
-	for t in range(1, branch_layer):
-		year_gap.append(int(sy + gap*t))
-	print year_gap, len(year_gap)
+	
+	for y in range(sy+gap, ey, gap):
+		year_gap.append(int(y))
+
+	print gap, year_gap, len(year_gap)
+	branch_layer = len(year_gap) + 1
     # sys.exit()
     # ["stick", "leaf", "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
 	for paper in publication:
@@ -252,22 +263,21 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 
 			total_collaborate_paper = coauthors[author][0]
 			first_collaborated = coauthors[author][1]
-			if coauthor_order > 5:
-				coauthor_order = 5
-			data1.append(coauthor_order) # leaf color
+			if coauthor_order > 6:
+				coauthor_order = 6
+			data1.append(coauthor_order+1) # leaf color
 
 			if first_collaborated < year_gap[0]:
 				data2[5] = 0
 			elif first_collaborated >= year_gap[-1]:
-				data2[5] = 5
+				data2[5] = len(year_gap)
 			else:
-				cat = 1
-				for g in xrange(0, len(year_gap)-2, 2):
-					# print g, year_gap[g], year_gap[g+2]
-					if year_gap[g] <= first_collaborated < year_gap[g+2]:
-						data2[5] = cat
-					cat += 1
-
+				for g in range(len(year_gap)-1):
+					if year_gap[g] <= first_collaborated < year_gap[g+1]:
+						data2[5] = g+1
+			if branch_layer <= 6:
+				data2[5] += 2
+			
 			if total_collaborate_paper == 1:
 				data1.append(1) # leaf size
 				data2[6] = 1

@@ -1559,10 +1559,14 @@ var RenderingView = Backbone.View.extend({
         for(var e in tree_egos){
         	var img_src = tree_img_url[e];
         	var img_id = "#" + e;
-        	$(img_id).attr('src', img_src);
+            util.set_tree_img(img_id, img_src);
+        	// $(img_id).attr('src', img_src);
         }
-        $("#tree3").attr('src', tree_img_url["tree2"]);
-        $("#tree4").attr('src', tree_img_url["tree1"]);
+
+        util.set_tree_img("#tree3", tree_img_url["tree2"]);
+        util.set_tree_img("#tree4", tree_img_url["tree1"]);
+        // $("#tree3").attr('src', tree_img_url["tree2"]);
+        // $("#tree4").attr('src', tree_img_url["tree1"]);
         
         $("#tree_result").show();
 		$("#no_preview").hide();
