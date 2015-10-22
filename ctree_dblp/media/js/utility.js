@@ -40,6 +40,7 @@ var util = {
     set_tree_img: function(img_id, img_src){
         var cnt_id = img_id + "_cnt"
         $(img_id).attr('src', img_src);
+        $(img_id).attr('href', img_src);
         $(img_id).css({'height': '100%'});
         var tree_width = $(img_id).width();
         var cnt_width = $(cnt_id).width();

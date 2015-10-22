@@ -62,3 +62,9 @@ table, th, td {
 .b_gap{
     display:inline;
 }
+
+img.mfp-img{
+  background: whitesmoke;
+  background-clip: content-box;
+  max-width: 100%;
+}

@@ -55,6 +55,10 @@ var MyApp = function MyApp(){
         // $("#result").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
     }
 
+    $('.popup-link').magnificPopup({
+        type: 'image'
+        // other options
+    });
 
     // for general event
     var search = $('#check_url');
