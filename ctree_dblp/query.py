@@ -61,33 +61,39 @@ def get_tree_structure(request):
 		html = response.read()
 		html = html.decode('utf8')
 		soup = Soup(html)
-		author = soup.person.author.string
+		author_name =  soup.person.findAll('author')
+		author = []
+		for n in author_name:
+			author.append(n.string)
+		display_author = soup.person.author.string
 		coauthorship = dict()
 		publication = dict()
 		# with open("./ctree_dblp/data/dblp_test.json", "rb") as json_file:
 		# 	retuen_structure = json.load(json_file)
-
+		print author
 		for y in soup.findAll('r'):
 			co_author_list = []
 			p_title = y.title.string
 			p_year = y.year.string
+			# print p_title
+
 			if int(p_year) > ey or int(p_year) < sy:
 				continue
 			paper_type = str(y.contents[0]).split('key="')[1].split("/")[0]
 			for a in y.findAll('author'):
 				co_author_list.append(a.string)
-				if a.string != author and a.string not in coauthorship:
+				if a.string not in author and a.string not in coauthorship:
 					coauthorship[a.string] = [1, int(p_year)]
-				elif a.string != author:
+				elif a.string not in author:
 					coauthorship[a.string][0] += 1
 					if int(p_year) < coauthorship[a.string][1]:
 						coauthorship[a.string][1] = int(p_year)
 			if len(co_author_list) == 0:
 				for a in y.findAll('editor'):
 					co_author_list.append(a.string)
-					if a.string != author and a.string not in coauthorship:
+					if a.string not in author and a.string not in coauthorship:
 						coauthorship[a.string] = [1, int(p_year)]
-					elif a.string != author:
+					elif a.string not in author:
 						coauthorship[a.string][0] += 1
 						if int(p_year) < coauthorship[a.string][1]:
 							coauthorship[a.string][1] = int(p_year)
@@ -103,7 +109,14 @@ def get_tree_structure(request):
 			else:
 				pages = 1
 
-			author_order = co_author_list.index(author) + 1
+			for a in author:
+				try:
+					author_order = co_author_list.index(a) + 1
+					break
+				except ValueError:
+					continue
+
+			# author_order = co_author_list.index(author) + 1
 
 			if p_title not in publication:
 				publication[p_title] = dict()
@@ -114,7 +127,8 @@ def get_tree_structure(request):
 				publication[p_title]["type"] = paper_type
 				publication[p_title]["pages"] = int(pages)
 			else:
-				print p_title
+
+				print "<<<", p_title
 	    # sys.exit()
 		tree_egos, branches = tree_mapping(publication, coauthorship, author, sy, ey)
 		final_structure = dict()
@@ -165,40 +179,40 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 		if publication[paper]["author_count"] == 0:
 			# print paper
 			# print "in solo publication"
-			data1 = [paper, ego] # stick, leaf
-			data2 = [paper, ego, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
+			data1 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
+			data2 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
 
 			# trunk
 			if publication[paper]["author_order"] > 1:
-				data1.append(1)
+				data1[4] = 1
 				data2[2] = 1
 			else:
-				data1.append(0)
-				data2[2] = 0
+				data1[2] = 0
+				data2[4] = 0
             # branch as year
 			if publication[paper]["year"] < year_gap[0]:
-				data1.append(0)
+				data1[3] = 0
 				data2[3] = 0
 			elif publication[paper]["year"] >= year_gap[-1]:
-				data1.append(len(year_gap))
+				data1[3] = len(year_gap)
 				data2[3] = len(year_gap)
 			else:
 				for g in range(len(year_gap)-1):
 					if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
-						data1.append(g+1)
+						data1[3] = g+1
 						data2[3] = g+1
 			# branch as author order
 			# branch side
 			if publication[paper]["type"] == "conf":
 				# print publication[paper]["type"]
-				data1.append(1)
+				data1[2] = 0
 				data2[7] = 3 # fruit
 			else:
-				data1.append(0)
+				data1[2] = 1
 				data2[7] = 0 # fruit
 
-			data1.append(1) # leaf color for solo paper
-			data1.append(0) # leaf size for solo paper
+			data1[5] = 1 # leaf color for solo paper
+			data1[6] = 0 # leaf size for solo paper
 			data2[5] = 1 # leaf color for solo paper
 			data2[6] = 0 # leaf size for solo paper
 
@@ -209,15 +223,15 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 				data2[4] = 1 # branch side
 
 			if p_length == 1:
-				data1.append(0) # fruit
-			elif 1 < p_length <= 4:
-				data1.append(1) # fruit
-			elif 4 < p_length <= 8:
-				data1.append(2) # fruit
+				data1[7] = 0 # fruit
+			elif 1 < p_length < 4:
+				data1[7] = 0 # fruit
+			elif 4 <= p_length <= 8:
+				data1[7] = 2 # fruit
 			elif 8 < p_length <= 12:
-				data1.append(3) # fruit
+				data1[7] = 3 # fruit
 			elif 12 < p_length:
-				data1.append(4) # fruit
+				data1[7] = 4 # fruit
 			# data1.append(p_length) # fruit
 			tree_egos["tree1"].append(data1)
 			tree_egos["tree2"].append(data2)
@@ -227,74 +241,78 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 		# print paper
 		coauthor_order = 1
 		for author in publication[paper]["coauthor"]:
-			if author == ego:
+			if author in ego:
 				continue
-			data1 = [paper, author] # stick, leaf
-			data2 = [paper, ego, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
+			data1 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"] # stick, leaf
+			data2 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
 
 			# trunk
 			if publication[paper]["author_order"] > 1:
-				data1.append(1)
+				data1[4] = 1
 				data2[2] = 1
 			else:
-				data1.append(0)
+				data1[4] = 0
 				data2[2] = 0
 			# branch as year
 			if publication[paper]["year"] < year_gap[0]:
-				data1.append(0)
+				data1[3] = 0
 				data2[3] = 0
 			elif publication[paper]["year"] >= year_gap[-1]:
-				data1.append(len(year_gap))
+				data1[3] = len(year_gap)
 				data2[3] = len(year_gap)
 			else:
 				for g in range(len(year_gap)-1):
 					if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
-						data1.append(g+1)
+						data1[3] = g+1
 						data2[3] = g+1
 			# branch as author order
 			# branch side
 			if publication[paper]["type"] == "conf":
 				# print publication[paper]["type"]
-				data1.append(1)
+				data1[2] = 0
 				data2[7] = 3 # fruit
 			else:
-				data1.append(0)
+				data1[2] = 1
 				data2[7] = 0 # fruit
 
 			total_collaborate_paper = coauthors[author][0]
 			first_collaborated = coauthors[author][1]
-			if coauthor_order > 6:
-				coauthor_order = 6
-			data1.append(coauthor_order+1) # leaf color
+			# if coauthor_order > 6:
+			# 	coauthor_order = 6
+			# data1[5] = coauthor_order + 1 # leaf color
 
 			if first_collaborated < year_gap[0]:
 				data2[5] = 0
+				data1[5] = 0
 			elif first_collaborated >= year_gap[-1]:
 				data2[5] = len(year_gap)
+				data1[5] = len(year_gap)
 			else:
 				for g in range(len(year_gap)-1):
 					if year_gap[g] <= first_collaborated < year_gap[g+1]:
 						data2[5] = g+1
+						data1[5] = g+1
 			if branch_layer <= 6:
 				data2[5] += 2
+				data1[5] += 2
 			
 			if total_collaborate_paper == 1:
-				data1.append(1) # leaf size
+				data1[6] = 1 # leaf size
 				data2[6] = 1
 			elif 1 < total_collaborate_paper <= 3:
-				data1.append(2) # leaf size
+				data1[6] = 2 # leaf size
 				data2[6] = 2
 			elif 3 < total_collaborate_paper <= 5:
-				data1.append(3) # leaf size
+				data1[6] = 3 # leaf size
 				data2[6] = 3
 			elif 5 < total_collaborate_paper <= 10:
-				data1.append(4) # leaf size
+				data1[6] = 4 # leaf size
 				data2[6] = 4
 			elif 10 < total_collaborate_paper <= 20:
-				data1.append(5) # leaf size
+				data1[6] = 5 # leaf size
 				data2[6] = 5
 			elif 20 < total_collaborate_paper:
-				data1.append(6) # leaf size
+				data1[6] = 6 # leaf size
 				data2[6] = 6
 
 			p_length = int(publication[paper]["pages"])
@@ -303,15 +321,15 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 			else:
 				data2[4] = 1 # branch side
 			if p_length == 1:
-				data1.append(0) # fruit
-			elif 1 < p_length <= 4:
-				data1.append(1) # fruit
-			elif 4 < p_length <= 8:
-				data1.append(2) # fruit
+				data1[7] = 0 # fruit
+			elif 1 < p_length < 4:
+				data1[7] = 0 # fruit
+			elif 4 <= p_length <= 8:
+				data1[7] = 2 # fruit
 			elif 8 < p_length <= 12:
-				data1.append(3) # fruit
+				data1[7] = 3 # fruit
 			elif 12 < p_length:
-				data1.append(4) # fruit
+				data1[7] = 4 # fruit
             
 			tree_egos["tree1"].append(data1)
 			tree_egos["tree2"].append(data2)
