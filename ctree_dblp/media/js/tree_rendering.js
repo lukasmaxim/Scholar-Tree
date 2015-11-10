@@ -445,6 +445,9 @@ var RenderingView = Backbone.View.extend({
             else if(len>20 && Math.abs(d-u)/stick_scale>(layer+1)*2){
                 nature = n*((this.sub_slop/10)+2)*2;
             }
+            nature = n*10 + layer*1.5;
+            if(layer > 6 && num_alter > 50)
+                nature = n*10 + layer*1.5 + 50;
             nature = nature*nature_scale;
 
             // using rotation matrix to find the stick vector (45 degree)
@@ -890,6 +893,10 @@ var RenderingView = Backbone.View.extend({
             else if(len>20 && Math.abs(d-u)/stick_scale>(layer+1)*2){
                 nature = n*((this.sub_slop/10)+2)*2;
             }
+
+            nature = n*10 + layer*1.5;
+            if(layer > 6 && num_alter > 50)
+                nature = n*10 + layer*1.5 + 50;
             nature = nature*nature_scale;
 
             // using rotation matrix to find the stick vector (45 degree)
