@@ -82,8 +82,8 @@ var MyApp = function MyApp(){
         $("#tree_result").hide();
         var slider = $("#period_slider").data("ionRangeSlider");
         var resercher = $("#dblp_url").val();
-        var sy = slider.result.from;
-        var ey = slider.result.to;
+        sy = slider.result.from;
+        ey = slider.result.to;
         var gap = ey - sy + 1;
         if (gap <= 10)
             gap = 1
@@ -98,6 +98,10 @@ var MyApp = function MyApp(){
         else
             gap = 6
         $(".b_gap").text(gap);
+
+        ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
+        ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
+        
         var request_array = [resercher, sy, ey];
         var request = JSON.stringify(request_array);
         self.model.generate_tree_structure(request);    

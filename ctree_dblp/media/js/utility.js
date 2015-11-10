@@ -20,6 +20,8 @@ var util = {
     set_slider: function(researcher_period){
         $("#researcher_name").html(researcher_period[2]);
         DBLP_researcher = researcher_period[2];
+        ga('send', 'event', "researcher", "search", DBLP_researcher);
+        
         var slider = $("#period_slider").data("ionRangeSlider");
         // Call sliders update method with any params
         slider.update({
@@ -55,6 +57,9 @@ var util = {
         var img_name = img_id.replace('#' , DBLP_researcher + "_");
         $(save_id).attr('download', img_name + ".png");
         $(save_id).attr('href', pic_url);
+        $(save_id).click(function(){
+            ga('send', 'event', DBLP_researcher, "save", sy + "-" + ey, this.name);
+        });
         /*
         $(img_id).hover(function(){
             

@@ -59,3 +59,5 @@ var tree_egos = {"tree1": ["all"], "tree2": ["all"], "tree3": ["all"], "tree4": 
 var trunk_size = {"tree1": {}, "tree2": {}, "tree3": {}, "tree4": {}};
 
 var DBLP_researcher = "";
+var sy = 0;
+var ey = 2015;
