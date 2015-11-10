@@ -19,6 +19,7 @@ var util = {
 
     set_slider: function(researcher_period){
         $("#researcher_name").html(researcher_period[2]);
+        DBLP_researcher = researcher_period[2];
         var slider = $("#period_slider").data("ionRangeSlider");
         // Call sliders update method with any params
         slider.update({
@@ -38,7 +39,8 @@ var util = {
     },
 
     set_tree_img: function(img_id, img_src){
-        var cnt_id = img_id + "_cnt"
+        var cnt_id = img_id + "_cnt";
+        var save_id = img_id + "_save";
         $(img_id).attr('src', img_src);
         $(img_id).attr('href', img_src);
         $(img_id).css({'height': '100%'});
@@ -46,9 +48,13 @@ var util = {
         var cnt_width = $(cnt_id).width();
         if (tree_width > cnt_width){
             $(img_id).css({'width': '100%'});
-            $(img_id).removeAttr("height");
+            $(img_id).height('auto');
             // $(img_id).css({'margin': '0'});
         }
+        var pic_url = img_src.replace('image/png','image/octet-stream');
+        var img_name = img_id.replace('#' , DBLP_researcher + "_");
+        $(save_id).attr('download', img_name + ".png");
+        $(save_id).attr('href', pic_url);
         /*
         $(img_id).hover(function(){
             

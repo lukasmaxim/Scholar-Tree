@@ -50,8 +50,12 @@ var mapping_size = {
 
 var tree_img_url = {
 	"tree1": "",
-	"tree2": ""
+	"tree2": "",
+  "tree3": "",
+  "tree4": ""
 };
 
-var tree_egos = {"tree1": ["all"], "tree2": ["all"]};
-var trunk_size = {"tree1": {}, "tree2": {}};
+var tree_egos = {"tree1": ["all"], "tree2": ["all"], "tree3": ["all"], "tree4": ["all"]};
+var trunk_size = {"tree1": {}, "tree2": {}, "tree3": {}, "tree4": {}};
+
+var DBLP_researcher = "";

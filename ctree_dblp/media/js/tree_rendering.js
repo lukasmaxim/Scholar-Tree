@@ -107,7 +107,7 @@ var RenderingView = Backbone.View.extend({
                 var count_dr = right_side;
                 var count_dl = left_side;
                 var t_scale = (right_side + left_side)/150;
-                if(right_side+left_side < 80){
+                if(right_side+left_side < 100){
                     t_scale = 0.5;
                 }
                 else{
@@ -1471,7 +1471,7 @@ var RenderingView = Backbone.View.extend({
                 var count_dr = right_side;
                 var count_dl = left_side;
                 var t_scale = (right_side + left_side)/150;
-                if(right_side + left_side < 80){
+                if(right_side + left_side < 100){
                     t_scale = 0.5;
                 }
                 else{
@@ -1563,8 +1563,8 @@ var RenderingView = Backbone.View.extend({
         	// $(img_id).attr('src', img_src);
         }
 
-        util.set_tree_img("#tree3", tree_img_url["tree2"]);
-        util.set_tree_img("#tree4", tree_img_url["tree1"]);
+        // util.set_tree_img("#tree3", tree_img_url["tree2"]);
+        // util.set_tree_img("#tree4", tree_img_url["tree1"]);
         // $("#tree3").attr('src', tree_img_url["tree2"]);
         // $("#tree4").attr('src', tree_img_url["tree1"]);
         
