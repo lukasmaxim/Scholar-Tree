@@ -389,7 +389,7 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 
 		co_period = coauthors[coauthor][2] - coauthors[coauthor][1] + 1
 		co_frequency = float(coauthors[coauthor][0]) / float(co_period)
-		print co_frequency
+		# print co_frequency
 		if co_frequency > 1:
 			data3_stick[4] = 0
 			data4_stick[4] = 0
@@ -441,8 +441,8 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 				for g in range(len(year_gap)-1):
 					if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
 						data4[6] = int((len(year_gap) - g) / 1.5)
-			if coauthor == "none":
-				print data4
+			# if coauthor == "none":
+			# 	print data4
 
 			tree_egos["tree3"].append(data3)
 			tree_egos["tree4"].append(data4)

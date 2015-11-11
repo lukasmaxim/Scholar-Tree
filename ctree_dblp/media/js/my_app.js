@@ -47,10 +47,15 @@ var MyApp = function MyApp(){
     $("#main_display").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
     $("#introduction").css({'height': $("#main_display").height()-275});
     $("#tree_result").css({'height': $("#main_display").height() - 15});
+    $("#anim_container").css({'height': $(window).height()});
+    $("#anim_container").css({'width': $(window).width()});
+    
     window.onresize = function(event) {
         $("#main_display").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
         $("#introduction").css({'height': $("#main_display").height()-275});
         $("#tree_result").css({'height': $("#main_display").height() - 15});
+        $("#anim_container").css({'height': $(window).height()});
+        $("#anim_container").css({'width': $(window).width()});
         // $("#search_engine").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
         // $("#result").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
     }
@@ -107,6 +112,14 @@ var MyApp = function MyApp(){
         self.model.generate_tree_structure(request);    
     });
 
+    $("#anim_container").click(function(){
+        $("#anim_container").hide();
+    });
+
+    $("#anim_tree").click(function(){
+        return false;
+    });
+
     this.render = new RenderingView({model: this.model, containerID: "#rendering"});
     
 
@@ -134,5 +147,4 @@ MyApp.getInstance = function() {
 // entry point of the whole js application
 $(document).ready(function() {
     MyApp.getInstance();
-
 });

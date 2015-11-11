@@ -1441,8 +1441,10 @@ var RenderingView = Backbone.View.extend({
         		self.ego_label = e + "_" + sub;
         		var tree_width = self.tree_size[this.ego_label][1] - self.tree_size[this.ego_label][0] + 500;
         		var tree_height = self.tree_size[this.ego_label][3] - self.tree_size[this.ego_label][2] + 500;
-       
-		        this.context.lineWidth = 5; // set the style
+                
+                tree_boundary[e] = [tree_width+300, tree_height+500];
+		        
+                this.context.lineWidth = 5; // set the style
 
 		        this.context.setTransform(1, 0, 0, 1, 0, 0);
 		        this.context.clearRect(0, 0, this.saveCanvas.width, this.saveCanvas.height);
@@ -1555,11 +1557,9 @@ var RenderingView = Backbone.View.extend({
                 // var pic_url = drawing_canvas.save_canvas.toDataURL().replace('image/png','image/octet-stream');
 		        var pic_url =  drawing_canvas.save_canvas.toDataURL();
 		        tree_img_url[e] = pic_url;
-		        // self.el_custom_download_link.attr('download', "myctree_" + this.ego_label + ".png");
-		        // self.el_custom_download_link.attr('href', pic_url);
-		        // $("#custom_download_link")[0].click();
+		        
                 total_tree++;   
-                this.context.restore();          
+                this.context.restore();    
         	}
         }
 
@@ -1569,15 +1569,16 @@ var RenderingView = Backbone.View.extend({
             util.set_tree_img(img_id, img_src);
         	// $(img_id).attr('src', img_src);
         }
-
-        // util.set_tree_img("#tree3", tree_img_url["tree2"]);
-        // util.set_tree_img("#tree4", tree_img_url["tree1"]);
-        // $("#tree3").attr('src', tree_img_url["tree2"]);
-        // $("#tree4").attr('src', tree_img_url["tree1"]);
         
         $("#tree_result").show();
 		$("#no_preview").hide();
 		$("#loading").hide();
+
+        for(var e in tree_egos){
+            var img_id = "#" + e;
+            util.set_anim_canvas(img_id);
+        }
+        
 	}
 
 });

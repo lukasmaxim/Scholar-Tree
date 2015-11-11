@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <div id="tree1_text" class="col-md-3">
-                        <a id="tree1_anim" href="#">Anim</a> |
+                        <a id="tree1_anim" href="#" name="1">Anim</a> |
                         <a href="#">Comp</a> |
                         <a id="tree1_save" href="#" name="1">Save</a>
                         <!-- <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                     <div id="tree2_text" class="col-md-3">
-                        <a id="tree2_anim" href="#">Anim</a> |
+                        <a id="tree2_anim" href="#" name="2">Anim</a> |
                         <a href="#">Comp</a> |
                         <a id="tree2_save" href="#" name="2">Save</a>
                         <br>
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                     <div id="tree3_text" class="col-md-3">
-                        <a id="tree3_anim" href="#">Anim</a> |
+                        <a id="tree3_anim" href="#" name="3">Anim</a> |
                         <a href="#">Comp</a> |
                         <a id="tree3_save" href="#" name="3">Save</a>
                         <br>
@@ -155,7 +155,7 @@
                         <b>Trunk Side:</b> Total collaborated paper(left:<5) <br>
                         <b>Branches:</b> First collaborated time <br>
                         <b>Branch Gap:</b> <p class="b_gap">0</p> <br>
-                        <b>Branch Side:</b> Collaboration frequency(up: > 1) <br>
+                        <b>Branch Side:</b> Collaboration frequency(up:>1) <br>
                         <b>Fruit:</b> Researcher itself <br>
                         <b>Leaf:</b> Paper <br>
                         <b>leaf Color:</b> Paper types <br>
@@ -167,7 +167,7 @@
                         </div>
                     </div>
                     <div id="tree4_text" class="col-md-3">
-                        <a id="tree4_anim" href="#">Anim</a> |
+                        <a id="tree4_anim" href="#" name="4">Anim</a> |
                         <a href="#">Comp</a> |
                         <a id="tree4_save" href="#" name="4">Save</a>
                         <br>
@@ -175,7 +175,7 @@
                         <b>Trunk Side:</b> Total collaborated paper(left:<5) <br>
                         <b>Branches:</b> First collaborated time <br>
                         <b>Branch Gap:</b> <p class="b_gap">0</p> <br>
-                        <b>Branch Side:</b> Collaboration frequency(up: > 1) <br>
+                        <b>Branch Side:</b> Collaboration frequency(up:>1) <br>
                         <!-- <b>Fruit:</b> Conference paper <br> -->
                         <b>Leaf:</b> Paper <br>
                         <b>leaf Color:</b> Author order <br>
@@ -200,7 +200,11 @@
 
     <div id='save_container' class='left' style="position:absolute; overflow:hidden; height:50px; width:50px; left:50px; top:150px; display:none; z-index:-10;">
         <canvas id='save_tree' style="background:white;"></canvas>
-        <a id="custom_download_link" download="mytree.png" href=""></a>
+        <!-- <a id="custom_download_link" download="mytree.png" href=""></a> -->
+    </div>
+
+    <div id='anim_container' style="position:absolute; left:0px; top:0px; z-index:125; background:rgba(55, 55, 55, 0.9); display:none;">
+        <canvas id='anim_tree' style="background:white;"></canvas>
     </div>
 
 

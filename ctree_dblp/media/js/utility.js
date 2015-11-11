@@ -41,11 +41,13 @@ var util = {
     },
 
     set_tree_img: function(img_id, img_src){
-        var cnt_id = img_id + "_cnt";
         var save_id = img_id + "_save";
+        var cnt_id = img_id + "_cnt";
+        
         $(img_id).attr('src', img_src);
         $(img_id).attr('href', img_src);
         $(img_id).css({'height': '100%'});
+        
         var tree_width = $(img_id).width();
         var cnt_width = $(cnt_id).width();
         if (tree_width > cnt_width){
@@ -53,13 +55,16 @@ var util = {
             $(img_id).height('auto');
             // $(img_id).css({'margin': '0'});
         }
+
         var pic_url = img_src.replace('image/png','image/octet-stream');
         var img_name = img_id.replace('#' , DBLP_researcher + "_");
         $(save_id).attr('download', img_name + ".png");
         $(save_id).attr('href', pic_url);
+
         $(save_id).click(function(){
             ga('send', 'event', DBLP_researcher, "save", sy + "-" + ey, this.name);
         });
+
         /*
         $(img_id).hover(function(){
             
@@ -68,6 +73,38 @@ var util = {
             $(delete_id).hide();
         });
         */
+    },
+
+    set_anim_canvas: function(img_id){
+        var anim_id = img_id + "_anim";
+        
+        var anim_cnt_h = $(window).height()-100;
+        var anim_cnt_w = ($(window).height()-100) * ($(img_id).width()/$(img_id).height());
+
+        if (anim_cnt_w > $(window).width()-100){
+            anim_cnt_w = $(window).width()-100;
+            anim_cnt_h = ($(window).width()-100) * ($(img_id).height()/$(img_id).width());
+        }
+            
+        var snap_scale = 1;
+        var snap_width = tree_boundary[img_id.slice(1, 6)][0];
+        var snap_height = tree_boundary[img_id.slice(1, 6)][1];
+        // var anim_cnt_w = $(window).width()-100;
+        // var anim_cnt_h = $(window).height()-100;
+        
+        while(snap_width*snap_scale > anim_cnt_w || snap_height*snap_scale > anim_cnt_h){
+            snap_scale = Math.round((snap_scale-0.01)*100)/100;
+        }
+
+        tree_snap_scale[img_id.slice(1, 6)] = snap_scale;
+        $(anim_id).click(function(){
+            $("#anim_tree").css({'width': anim_cnt_w});
+            $("#anim_tree").css({'height': anim_cnt_h});
+            $("#anim_container").show();
+            $("#anim_tree").center();
+        });
+            
+
     }
 
 };

@@ -1,5 +1,6 @@
 var drawing_canvas = {
     save_canvas: document.getElementById("save_tree"),
+    anim_canvas: document.getElementById("anim_tree"),
     middle: 0
 };
 
@@ -61,3 +62,26 @@ var trunk_size = {"tree1": {}, "tree2": {}, "tree3": {}, "tree4": {}};
 var DBLP_researcher = "";
 var sy = 0;
 var ey = 2015;
+
+var tree_boundary = { // [w, h]
+  "tree1": [], 
+  "tree2": [],
+  "tree3": [],
+  "tree4": []
+}; 
+
+var tree_points = {
+  "tree1": {},
+  "tree2": {},
+  "tree3": {},
+  "tree4": {}
+};
+
+var tree_snap_scale = {
+  "tree1": -1,
+  "tree2": -1,
+  "tree3": -1,
+  "tree4": -1
+};
+
+
