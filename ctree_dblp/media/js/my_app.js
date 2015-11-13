@@ -56,6 +56,11 @@ var MyApp = function MyApp(){
         $("#tree_result").css({'height': $("#main_display").height() - 15});
         $("#anim_container").css({'height': $(window).height()});
         $("#anim_container").css({'width': $(window).width()});
+
+        for(var e in tree_egos){
+            var img_id = "#" + e;
+            util.set_anim_canvas(img_id);
+        }
         // $("#search_engine").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
         // $("#result").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
     }
@@ -104,8 +109,8 @@ var MyApp = function MyApp(){
             gap = 6
         $(".b_gap").text(gap);
 
-        ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
-        ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
+        // ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
+        // ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
         
         var request_array = [resercher, sy, ey];
         var request = JSON.stringify(request_array);

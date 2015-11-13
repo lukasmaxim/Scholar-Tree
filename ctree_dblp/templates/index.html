@@ -72,7 +72,10 @@
                     <span id="researcher_name" class="relative myfont3">Kwan-Liu Ma</span>
                 </div>
                 <!-- <span class="relative myfont3 row">Time:</span> -->
-                <input type="text" id="period_slider" class="row" style="margin:10px 0;"></input>
+                <div class="row" style="margin:0 8px;">
+                    <input type="text" id="period_slider" class="row" style="margin:10px 0;"></input>
+                </div>
+                
                 <button id="draw_tree" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px; margin:10px 0;">Finish</button>
             </div>
 
@@ -104,9 +107,6 @@
                         <a id="tree1_anim" href="#" name="1">Anim</a> |
                         <a href="#">Comp</a> |
                         <a id="tree1_save" href="#" name="1">Save</a>
-                        <!-- <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>  -->
                         <br>
                         <b>Stick:</b> paper <br>
                         <b>Trunk Side:</b> Conference paper(left) <br>
@@ -133,7 +133,6 @@
                         <b>Branches:</b> Published year <br>
                         <b>Branch Gap:</b> <p class="b_gap">0</p> <br>
                         <b>Branch Side:</b> Conference paper(down) <br>
-                        <!-- <b>Fruit:</b> <br> -->
                         <b>Leaf:</b> Co-author <br>
                         <b>leaf Color:</b> First collaborated time <br>
                         <b>Leaf Size:</b> Total collaborated paper <br>
@@ -176,17 +175,11 @@
                         <b>Branches:</b> First collaborated time <br>
                         <b>Branch Gap:</b> <p class="b_gap">0</p> <br>
                         <b>Branch Side:</b> Collaboration frequency(up:>1) <br>
-                        <!-- <b>Fruit:</b> Conference paper <br> -->
                         <b>Leaf:</b> Paper <br>
                         <b>leaf Color:</b> Author order <br>
                         <b>Leaf Size:</b> Published year <br>
                     </div>
                 </div>
-                <!-- <img id="tree1" src="media/img/no_preview.jpg" style="margin:10px; width:200px;"></img><br>
-                <img id="tree2" src="media/img/no_preview.jpg" style="margin:10px; width:200px;"></img><br> -->
-                <!-- <img id="tree3" src="media/img/no_preview.jpg" style="margin:10px;"></img><br>
-                <img id="tree4" src="media/img/no_preview.jpg" style="margin:10px;"></img><br>
-                <img id="tree5" src="media/img/no_preview.jpg" style="margin:10px;"></img><br> -->
             </div>
             <!-- <img id="no_preview" src="media/img/no_preview.jpg"></img> -->
 		</div>
@@ -210,6 +203,7 @@
 
     <script type="text/javascript" src="media/js/settings.js"></script>
     <script type="text/javascript" src="media/js/labels.js"></script>
+    <script type="text/javascript" src="media/js/anim_rendering.js"></script>
     <script type="text/javascript" src="media/js/utility.js"></script>
     <script type="text/javascript" src="media/js/model.js"></script>
     <script type="text/javascript" src="media/js/my_app.js"></script>

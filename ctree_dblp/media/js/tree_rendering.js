@@ -49,17 +49,20 @@ var RenderingView = Backbone.View.extend({
         this.save_img = 0;
         this.filter_cnt = 0;
         this.on_moving = 0;
+
+        this.current_side = "right";
+        this.current_layer = 1;
+        this.current_ego = "tree1";
 	},
 
 	// caculate the boundary
 	redraw: function(){
-		console.log("in redraw");
 		var self = this;
 		this.context =  this.saveCanvas.getContext('2d');
 		var structure = self.model.get("tree_structure");
 		this.approx_size = 0; // havent get the exact boundary
 		this.save_img = 0;
-		console.log(structure);
+		// console.log(structure);
 		if(jQuery.isEmptyObject(self.model.get("tree_structure"))){
 			$("#no_preview").show();
 			$("#tree_result").hide();
@@ -70,7 +73,7 @@ var RenderingView = Backbone.View.extend({
         
         var total_tree = 0;        
         for(var e in tree_egos){
-        	console.log(e);
+        	// console.log(e);
         	for(var t = 0; t < tree_egos[e].length; t++){ // all the ego
         		// console.log(tree_egos[e][t]);
 		        this.context.setTransform(1, 0, 0, 1, 0, 0);
@@ -84,7 +87,7 @@ var RenderingView = Backbone.View.extend({
 
         		var sub = tree_egos[e][t];
                 var ego = structure[sub][e];
-                console.log(ego);
+                // console.log(ego);
                 this.tree_rstpoint = [0, 0, 0, 0];
                 this.tree_lstpoint = [0, 0, 0, 0];
                 var left_side = 0;
@@ -166,7 +169,9 @@ var RenderingView = Backbone.View.extend({
 
                     var used_dr = 0;
                     var used_dl = 0;
-                    
+                    tree_points[e][height] = {};
+                    tree_points[e][height]["leaf"] = [];
+                    tree_points[e][height]["fruit"] = [];
                     // draw right tree
                     if((real_height == self.total_layer-1 && layer_total_alter["right"][real_height] == 0) || (count_dr <= 0 && (count_dl-layer_total_alter["left"][real_height]) <= 0)){
                         used_dr = this.draw_right_branch(height, layer_total_alter["right"][real_height], ego["right"][real_height]["level"]);
@@ -223,7 +228,9 @@ var RenderingView = Backbone.View.extend({
                 stick_scale = 1;
             }
         }
-       
+        this.current_side = "right";
+        this.current_layer = layer;
+
         var stick_pos = {"up": [], "down": []};
         var long_stick, short_stick;
         
@@ -360,7 +367,23 @@ var RenderingView = Backbone.View.extend({
 
         // draw branch
         this.context.moveTo(this.start_x + this.dr, this.start_y + this.temp_height);
+        
+        tree_points[self.current_ego][layer]["right"] = {};
+        tree_points[self.current_ego][layer]["right"]["trunk"] = [this.start_x + this.dr, this.start_y + this.temp_height];
+        tree_points[self.current_ego][layer]["right"]["type"] = "branch";
+
+        tree_points[self.current_ego][layer]["total"] = total_draw_stick; // stick_pos[long_stick].length;
+        tree_points[self.current_ego][layer]["right"]["sticks"] = [];
+        
         if(total_draw_stick > 0){
+            var temp_points = 
+            [cp1[0], cp1[1], cp2[0], cp2[1], tree_rstpoint[0], tree_rstpoint[1], 
+            tree_rstpoint[2], tree_rstpoint[3],
+            cp3[0], cp3[1], cp4[0], cp4[1], this.start_x - this.dl, this.start_y + this.temp_height,
+            this.start_x + this.dr, this.start_y + this.temp_height];
+
+            tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+
             this.context.bezierCurveTo(cp1[0], cp1[1], cp2[0], cp2[1], tree_rstpoint[0], tree_rstpoint[1]);
             this.context.lineTo(tree_rstpoint[2], tree_rstpoint[3]);
             this.context.bezierCurveTo(cp3[0], cp3[1], cp4[0], cp4[1], this.start_x - this.dl, this.start_y + this.temp_height);
@@ -368,13 +391,28 @@ var RenderingView = Backbone.View.extend({
             // draw rectangle to fill the trunk
             this.context.moveTo(this.start_x + this.dr, this.start_y + this.temp_height);
             if(layer != 0){
+                temp_points = 
+                [this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2,
+                this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2];
+                tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2);
             }
             else{
+                temp_points = 
+                [this.start_x + this.dr, this.start_y + this.temp_height + this.stick_length + 200,
+                this.start_x - this.dl, this.start_y + this.temp_height + this.stick_length + 200];
+                tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height + this.stick_length + 200);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height + this.stick_length + 200);
             }
+
+            temp_points = 
+            [this.start_x - this.dl, this.start_y + this.temp_height];
+            tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+
             this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height);
             this.context.closePath();
 
@@ -390,6 +428,14 @@ var RenderingView = Backbone.View.extend({
             // this.context.lineWidth = 5;
         }
         else{ // no branch
+            tree_points[self.current_ego][layer]["right"]["type"] = "nobranch";
+            temp_points = 
+            [this.start_x + this.dr + 10 - layer*1.5, this.start_y - this.stick_length + layer*15, this.start_x + this.dr + 50, this.start_y - this.stick_length - 100 + layer*15,
+            this.start_x + this.dr + 25, this.start_y - this.stick_length - 150 + layer*15, this.start_x - this.dl, this.start_y + this.temp_height,
+            this.start_x + this.dr, this.start_y + this.temp_height]
+
+            tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points);
+
             // this.context.lineTo(this.start_x + this.dr, this.start_y - this.stick_length);
             // this.context.lineTo(this.start_x - this.dl, this.start_y - this.stick_length);
             // this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height);
@@ -402,18 +448,33 @@ var RenderingView = Backbone.View.extend({
             // draw rectangle to fill the trunk
             this.context.moveTo(this.start_x + this.dr, this.start_y + this.temp_height);
             if(layer != 0){
+                temp_points = 
+                [this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2,
+                this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2];
+                tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2);
             }
             else{
+                temp_points = 
+                [this.start_x + this.dr, this.start_y + this.temp_height + this.stick_length + 200,
+                this.start_x - this.dl, this.start_y + this.temp_height + this.stick_length + 200];
+                tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height + this.stick_length + 200);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height + this.stick_length + 200);
             }
+            temp_points = 
+            [this.start_x - this.dl, this.start_y + this.temp_height];
+            tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+
             this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height);
             this.context.closePath();
 
             this.context.stroke();//draw line
             this.context.fill();//fill color
+            tree_points[self.current_ego][layer]["right"]["sticks"].push("end");
             return 0;
         }
 
@@ -465,102 +526,16 @@ var RenderingView = Backbone.View.extend({
             var sub_total_leaf = 0;
             
             var start_point = [ tree_rstpoint[begin_index[long_stick][0]]+stick_slope[long_stick][0]*stick_len, tree_rstpoint[begin_index[long_stick][1]]+stick_slope[long_stick][1]*stick_len ];
-            
-            if((!jQuery.isEmptyObject(alters[long_stick][n]) && alters[long_stick][n]["leaf"].length <= self.filter_cnt) || jQuery.isEmptyObject(alters[long_stick][n])){
-                if(!jQuery.isEmptyObject(alters[long_stick][n]))
-                    sub_total_leaf += alters[long_stick][n]["leaf"].length;
-                if(stick_pos[short_stick][count_short_stick] == n){
-                    if(jQuery.isEmptyObject(alters[short_stick][count_short_stick])){
-                        count_short_stick++;
-                        continue;
-                    }
-                    else if(alters[short_stick][count_short_stick]["leaf"].length <= self.filter_cnt){
-                        sub_total_leaf += alters[short_stick][count_short_stick]["leaf"].length;
-                        count_short_stick++;
-                        continue;
-                    }
-                    else{
-                        stick_len = (this.stick_d + this.stick_variation[n%6])*len_scale;
-                        if(alters[long_stick][n]["leaf"].length > 10){
-                            stick_len = (this.stick_d + this.stick_variation[n%2])*len_scale;
-                        }
-                        
-                        this.context.fillStyle = mapping_color.trunk;
-                        this.context.strokeStyle = mapping_color.trunk;
-                        this.context.lineWidth = 8;
-
-                        this.context.lineCap = 'round';
-                        this.context.beginPath();
-                        this.context.moveTo(tree_rstpoint[begin_index[short_stick][0]], tree_rstpoint[begin_index[short_stick][1]]);
-                        this.context.lineTo(tree_rstpoint[begin_index[short_stick][0]]+stick_slope[short_stick][0]*stick_len, tree_rstpoint[begin_index[short_stick][1]]+stick_slope[short_stick][1]*stick_len);
-                        
-                        this.context.stroke();//draw line
-                        this.context.fill();//fill color
-                        
-                        start_point = [ tree_rstpoint[begin_index[short_stick][0]]+stick_slope[short_stick][0]*stick_len, tree_rstpoint[begin_index[short_stick][1]]+stick_slope[short_stick][1]*stick_len ];
-                        
-                        var stick_leaf = 0;
-                        stick_leaf = this.draw_leaf(alters[short_stick][count_short_stick], start_point, stick_v[short_stick]); 
-                        
-                        sub_total_leaf += stick_leaf;
-                       
-                        count_short_stick++;
-
-                        if(total_draw_stick > 1){
-                            this.context.fillStyle = mapping_color.trunk;
-                            this.context.strokeStyle = mapping_color.trunk;
-                            this.context.lineCap = 'round';
-                            this.context.beginPath();
-
-                            var ori_rstpoint = [0, 0, 0, 0];
-                            ori_rstpoint[0] = tree_rstpoint[0];
-                            ori_rstpoint[1] = tree_rstpoint[1];
-                            ori_rstpoint[2] = tree_rstpoint[2];
-                            ori_rstpoint[3] = tree_rstpoint[3];
-                            tree_rstpoint[0] = tree_rstpoint[0]+this.sub_stick_length-nature/(len/2);
-                            tree_rstpoint[1] = tree_rstpoint[1]-w/2-this.sub_slop-nature/(len/2);
-                            tree_rstpoint[2] = tree_rstpoint[2]+this.sub_stick_length-nature/(len/2);
-                            tree_rstpoint[3] = tree_rstpoint[3]+w/2-this.sub_slop-nature/(len/2);
-
-                            this.context.moveTo(ori_rstpoint[0],ori_rstpoint[1]);
-                           
-                            this.context.lineTo(tree_rstpoint[0], tree_rstpoint[1]);
-
-                            if(total_draw_stick > 2){
-                                this.context.lineTo(tree_rstpoint[2], tree_rstpoint[3]);
-                                this.context.lineTo(ori_rstpoint[2], ori_rstpoint[3]);
-                                this.context.closePath();
-                                this.context.stroke();//draw line
-                                this.context.fill();//fill color
-                            }   
-
-                            else{
-                                this.context.lineTo(ori_rstpoint[2], ori_rstpoint[3]);
-                                this.context.closePath();
-                                this.context.stroke();//draw line
-                                this.context.fill();//fill color
-
-                                tree_rstpoint[2] = tree_rstpoint[0];
-                                tree_rstpoint[3] = tree_rstpoint[1];
-                            }
-                            // update branch vector
-                            end_p = [(tree_rstpoint[2]+tree_rstpoint[0])/2, (tree_rstpoint[3]+tree_rstpoint[1])/2];
-                            start_p = [(ori_rstpoint[2]+ori_rstpoint[0])/2, (ori_rstpoint[3]+ori_rstpoint[1])/2];
-                            total_draw_stick-=1;            
-                        }
-                    }
                     
-                }                
-                continue;
-            }
-        
             // sub stick
             if(!jQuery.isEmptyObject(alters[long_stick][n])){
                 stick_len = (this.stick_d + this.stick_variation[n%6])*len_scale;
                 if(alters[long_stick][n]["leaf"].length > 10){
                     stick_len = (this.stick_d + this.stick_variation[n%2])*len_scale;
                 }
-                
+                tree_points[self.current_ego][layer]["right"]["sticks"].push(tree_rstpoint[begin_index[long_stick][0]], tree_rstpoint[begin_index[long_stick][1]]);
+                tree_points[self.current_ego][layer]["right"]["sticks"].push(tree_rstpoint[begin_index[long_stick][0]]+stick_slope[long_stick][0]*stick_len, tree_rstpoint[begin_index[long_stick][1]]+stick_slope[long_stick][1]*stick_len);
+                tree_points[self.current_ego][layer]["right"]["sticks"].push("none", "none", "none", "none");
                 this.context.fillStyle = mapping_color.trunk;
                 this.context.strokeStyle = mapping_color.trunk;
                 this.context.lineWidth = 8;
@@ -600,6 +575,11 @@ var RenderingView = Backbone.View.extend({
                     this.context.lineWidth = 8;
                     this.context.lineCap = 'round';
                     this.context.beginPath();
+
+                    tree_points[self.current_ego][layer]["right"]["sticks"].push(tree_rstpoint[begin_index[short_stick][0]], tree_rstpoint[begin_index[short_stick][1]]);
+                    tree_points[self.current_ego][layer]["right"]["sticks"].push(tree_rstpoint[begin_index[short_stick][0]]+stick_slope[short_stick][0]*stick_len, tree_rstpoint[begin_index[short_stick][1]]+stick_slope[short_stick][1]*stick_len);
+                    tree_points[self.current_ego][layer]["right"]["sticks"].push("none", "none", "none", "none");
+                    
                     this.context.moveTo(tree_rstpoint[begin_index[short_stick][0]], tree_rstpoint[begin_index[short_stick][1]]);
                     this.context.lineTo(tree_rstpoint[begin_index[short_stick][0]]+stick_slope[short_stick][0]*stick_len, tree_rstpoint[begin_index[short_stick][1]]+stick_slope[short_stick][1]*stick_len);
                     
@@ -617,8 +597,14 @@ var RenderingView = Backbone.View.extend({
                 }
                 
             }
+
+            else{
+                tree_points[self.current_ego][layer]["right"]["sticks"].push("none", "none", "none", "none");
+                tree_points[self.current_ego][layer]["right"]["sticks"].push("none", "none", "none", "none");
+            }
             
             if(total_draw_stick > 1){ 
+                this.context.lineWidth = 5;
                 this.context.fillStyle = mapping_color.trunk;
                 this.context.strokeStyle = mapping_color.trunk;
                 this.context.lineCap = 'round';
@@ -636,9 +622,13 @@ var RenderingView = Backbone.View.extend({
 
                 this.context.moveTo(ori_rstpoint[0],ori_rstpoint[1]);
                 this.context.lineTo(tree_rstpoint[0], tree_rstpoint[1]);
+                tree_points[self.current_ego][layer]["right"]["sticks"].push(ori_rstpoint[0],ori_rstpoint[1]);
+                tree_points[self.current_ego][layer]["right"]["sticks"].push(tree_rstpoint[0], tree_rstpoint[1]);
 
                 
                 if(total_draw_stick > 2){
+                    tree_points[self.current_ego][layer]["right"]["sticks"].push(tree_rstpoint[2], tree_rstpoint[3]);
+                    tree_points[self.current_ego][layer]["right"]["sticks"].push(ori_rstpoint[2], ori_rstpoint[3]);
                     this.context.lineTo(tree_rstpoint[2], tree_rstpoint[3]);
                     this.context.lineTo(ori_rstpoint[2], ori_rstpoint[3]);
                     this.context.closePath();
@@ -646,6 +636,7 @@ var RenderingView = Backbone.View.extend({
                     this.context.fill();//fill color
                 }   
                 else{
+                    tree_points[self.current_ego][layer]["right"]["sticks"].push(ori_rstpoint[2], ori_rstpoint[3], "none", "none");
                     this.context.lineTo(ori_rstpoint[2], ori_rstpoint[3]);
                     this.context.closePath();
                     this.context.stroke();//draw line
@@ -661,6 +652,7 @@ var RenderingView = Backbone.View.extend({
             }
             
         }
+        tree_points[self.current_ego][layer]["right"]["sticks"].push("end");
         return (stick_pos[long_stick].length + stick_pos[short_stick].length);
         
     },
@@ -677,6 +669,9 @@ var RenderingView = Backbone.View.extend({
                 stick_scale = 1;
             }
         }
+
+        this.current_side = "left";
+        this.current_layer = layer;
         
         var stick_pos = {"up": [], "down": []};
         var long_stick, short_stick;
@@ -805,9 +800,23 @@ var RenderingView = Backbone.View.extend({
         var cp4 = [this.start_x, this.start_y-100];
 
         var weight = Math.abs(tree_lstpoint[3] - tree_lstpoint[1]);
+
+        tree_points[self.current_ego][layer]["left"] = {};
+        tree_points[self.current_ego][layer]["left"]["trunk"] = [this.start_x - this.dl, this.start_y + this.temp_height];
+        tree_points[self.current_ego][layer]["left"]["type"] = "branch";
+
+        if( total_draw_stick > tree_points[self.current_ego][layer]["total"])
+            tree_points[self.current_ego][layer]["total"] = total_draw_stick; // stick_pos[long_stick].length;
+        tree_points[self.current_ego][layer]["left"]["sticks"] = [];        
+
         // draw branch
         this.context.moveTo(this.start_x - this.dl, this.start_y + this.temp_height);
         if(total_draw_stick > 0){
+            tree_points[self.current_ego][layer]["left"]["trunk"].push(cp1[0], cp1[1], cp2[0], cp2[1], tree_lstpoint[0], tree_lstpoint[1]);
+            tree_points[self.current_ego][layer]["left"]["trunk"].push(tree_lstpoint[2], tree_lstpoint[3]);
+            tree_points[self.current_ego][layer]["left"]["trunk"].push(cp3[0], cp3[1], cp4[0], cp4[1], this.start_x + this.dr, this.start_y + this.temp_height);
+            tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl, this.start_y + this.temp_height);
+
             this.context.bezierCurveTo(cp1[0], cp1[1], cp2[0], cp2[1], tree_lstpoint[0], tree_lstpoint[1]);
             this.context.lineTo(tree_lstpoint[2], tree_lstpoint[3]);
             this.context.bezierCurveTo(cp3[0], cp3[1], cp4[0], cp4[1], this.start_x + this.dr, this.start_y + this.temp_height);
@@ -815,13 +824,18 @@ var RenderingView = Backbone.View.extend({
             // draw rectangle to fill the trunk
             this.context.moveTo(this.start_x - this.dl, this.start_y + this.temp_height);
             if(layer != 0){
+                tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2);
+                tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2);
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2);
             }
             else{
+                tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl, this.start_y + this.temp_height + this.stick_length + 200);
+                tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x + this.dr, this.start_y + this.temp_height + this.stick_length + 200);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height + this.stick_length + 200);
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height + this.stick_length + 200);
             }
+            tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x + this.dr, this.start_y + this.temp_height);
             this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height);
             this.context.closePath();
 
@@ -838,6 +852,10 @@ var RenderingView = Backbone.View.extend({
 
         }
         else{ // no branch
+            tree_points[self.current_ego][layer]["left"]["type"] = "branch";
+            tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl - 10 + layer*1.5, this.start_y - this.stick_length + layer*15, this.start_x - this.dl - 50, this.start_y - this.stick_length - 100 + layer*15);
+            tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl - 25, this.start_y - this.stick_length - 150 + layer*15, this.start_x + this.dr, this.start_y + this.temp_height);
+            tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl, this.start_y + this.temp_height);
             /*
             this.context.lineTo(this.start_x - this.dl, this.start_y - this.stick_length);
             this.context.lineTo(this.start_x + this.dr, this.start_y - this.stick_length);
@@ -852,18 +870,24 @@ var RenderingView = Backbone.View.extend({
             // draw rectangle to fill the trunk
             this.context.moveTo(this.start_x - this.dl, this.start_y + this.temp_height);
             if(layer != 0){
+                tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2);
+                tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2);
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2);
             }
             else{
+                tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl, this.start_y + this.temp_height + this.stick_length + 200);
+                tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x + this.dr, this.start_y + this.temp_height + this.stick_length + 200);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height + this.stick_length + 200);
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height + this.stick_length + 200);
             }
+            tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x + this.dr, this.start_y + this.temp_height);
             this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height);
             this.context.closePath();
 
             this.context.stroke();//draw line
             this.context.fill();//fill color
+            tree_points[self.current_ego][layer]["left"]["sticks"].push("end");
             return 0;
         }
 
@@ -880,6 +904,7 @@ var RenderingView = Backbone.View.extend({
         var stick_len = this.stick_d*len_scale;
         var stick_slop;
         var begin_index = {"up": [2, 3], "down":[0, 1]};
+
         for(var n = 0, len = stick_pos[long_stick].length; n < len; n++){
             var nature = n*(Math.abs(d-u)/stick_scale);
             var stick_len = (this.stick_d + this.stick_variation[n%6])*len_scale;
@@ -916,94 +941,16 @@ var RenderingView = Backbone.View.extend({
            
             var sub_total_leaf = 0;
 
-            if((!jQuery.isEmptyObject(alters[long_stick][n]) && alters[long_stick][n]["leaf"].length <= self.filter_cnt) || jQuery.isEmptyObject(alters[long_stick][n])){
-                stick_len = (this.stick_d + this.stick_variation[n%6])*len_scale;
-                if(alters[long_stick][n]["leaf"].length > 10){
-                    stick_len = (this.stick_d + this.stick_variation[n%2])*len_scale;
-                }
-                
-                if(!jQuery.isEmptyObject(alters[long_stick][n]))
-                    sub_total_leaf += alters[long_stick][n]["leaf"].length; 
-                if(stick_pos[short_stick][count_short_stick] == n){
-                    if(jQuery.isEmptyObject(alters[short_stick][count_short_stick])){
-                        count_short_stick++;
-                        continue;
-                    }
-                    else if(alters[short_stick][count_short_stick]["leaf"].length <= self.filter_cnt){
-                        sub_total_leaf += alters[short_stick][count_short_stick]["leaf"].length;
-                        count_short_stick++;
-                        continue;
-                    }
-                    else{                        
-                        this.context.fillStyle = mapping_color.trunk;
-                        this.context.strokeStyle = mapping_color.trunk;
-                        this.context.lineWidth = 8;
-                        this.context.lineCap = 'round';
-                        this.context.beginPath();
-                        this.context.moveTo(tree_lstpoint[begin_index[short_stick][0]], tree_lstpoint[begin_index[short_stick][1]]);
-                        this.context.lineTo(tree_lstpoint[begin_index[short_stick][0]]+stick_slope[short_stick][0]*stick_len, tree_lstpoint[begin_index[short_stick][1]]+stick_slope[short_stick][1]*stick_len);
-                       
-                        this.context.stroke();//draw line
-                        // this.context.fill();//fill color
-
-                        start_point = [ tree_lstpoint[begin_index[short_stick][0]]+stick_slope[short_stick][0]*stick_len, tree_lstpoint[begin_index[short_stick][1]]+stick_slope[short_stick][1]*stick_len ];
-                        stick_leaf = 0;
-                        stick_leaf = this.draw_leaf(alters[short_stick][count_short_stick], start_point, stick_v[short_stick]);
-                        
-                        sub_total_leaf += stick_leaf;
-                        
-                        count_short_stick++;                    
-                    }
-                    if(total_draw_stick > 1){
-                        var ori_lstpoint = [0, 0, 0, 0];
-                        ori_lstpoint[0] = tree_lstpoint[0];
-                        ori_lstpoint[1] = tree_lstpoint[1];
-                        ori_lstpoint[2] = tree_lstpoint[2];
-                        ori_lstpoint[3] = tree_lstpoint[3];
-                        tree_lstpoint[0] = tree_lstpoint[0]-this.sub_stick_length+nature/(len/2);
-                        tree_lstpoint[1] = tree_lstpoint[1]-w/2-this.sub_slop-nature/(len/2);
-                        tree_lstpoint[2] = tree_lstpoint[2]-this.sub_stick_length+nature/(len/2);
-                        tree_lstpoint[3] = tree_lstpoint[3]+w/2-this.sub_slop-nature/(len/2);
-
-                        this.context.lineCap = 'round';
-                        this.context.fillStyle = mapping_color.trunk;
-                        this.context.strokeStyle = mapping_color.trunk;
-                        this.context.beginPath();
-                        this.context.moveTo(ori_lstpoint[0],ori_lstpoint[1]);
-                        this.context.lineTo(tree_lstpoint[0], tree_lstpoint[1]);
-
-                        if(total_draw_stick > 2){
-                            this.context.lineTo(tree_lstpoint[2], tree_lstpoint[3]);
-                            this.context.lineTo(ori_lstpoint[2], ori_lstpoint[3]);
-                            this.context.closePath();
-                            this.context.stroke();//draw line
-                            this.context.fill();//fill color
-                        }                    
-                        else{
-                            this.context.lineTo(ori_lstpoint[2], ori_lstpoint[3]);
-                            this.context.closePath();
-                            this.context.stroke();//draw line
-                            this.context.fill();//fill color
-
-                            tree_lstpoint[2] = tree_lstpoint[0];
-                            tree_lstpoint[3] = tree_lstpoint[1];                    
-                        }
-                        // update branch vector
-                        end_p = [(tree_lstpoint[2]+tree_lstpoint[0])/2, (tree_lstpoint[3]+tree_lstpoint[1])/2];
-                        start_p = [(ori_lstpoint[2]+ori_lstpoint[0])/2, (ori_lstpoint[3]+ori_lstpoint[1])/2];
-                        total_draw_stick-=1;                       
-                    }                                        
-                    
-                }
-                continue;
-            }
             // sub stick
             if(!jQuery.isEmptyObject(alters[long_stick][n])){
                 stick_len = (this.stick_d + this.stick_variation[n%6])*len_scale;
                 if(alters[long_stick][n]["leaf"].length > 10){
                     stick_len = (this.stick_d + this.stick_variation[n%2])*len_scale;
                 }
-                
+
+                tree_points[self.current_ego][layer]["left"]["sticks"].push(tree_lstpoint[begin_index[long_stick][0]], tree_lstpoint[begin_index[long_stick][1]]);
+                tree_points[self.current_ego][layer]["left"]["sticks"].push(tree_lstpoint[begin_index[long_stick][0]]+stick_slope[long_stick][0]*stick_len, tree_lstpoint[begin_index[long_stick][1]]+stick_slope[long_stick][1]*stick_len);
+                tree_points[self.current_ego][layer]["left"]["sticks"].push("none", "none", "none", "none");
                 this.context.lineWidth = 8;
                 this.context.fillStyle = mapping_color.trunk;
                 this.context.strokeStyle = mapping_color.trunk;
@@ -1036,6 +983,9 @@ var RenderingView = Backbone.View.extend({
                     if(alters[short_stick][count_short_stick]["leaf"].length > 10){
                         stick_len = (this.stick_d + this.stick_variation[count_short_stick%2])*len_scale;
                     }
+                    tree_points[self.current_ego][layer]["left"]["sticks"].push(tree_lstpoint[begin_index[short_stick][0]], tree_lstpoint[begin_index[short_stick][1]]);
+                    tree_points[self.current_ego][layer]["left"]["sticks"].push(tree_lstpoint[begin_index[short_stick][0]]+stick_slope[short_stick][0]*stick_len, tree_lstpoint[begin_index[short_stick][1]]+stick_slope[short_stick][1]*stick_len);
+                    tree_points[self.current_ego][layer]["left"]["sticks"].push("none", "none", "none", "none");
                     
                     this.context.fillStyle = mapping_color.trunk;
                     this.context.strokeStyle = mapping_color.trunk;
@@ -1060,7 +1010,13 @@ var RenderingView = Backbone.View.extend({
                 
             }
 
+            else{
+                tree_points[self.current_ego][layer]["left"]["sticks"].push("none", "none", "none", "none");
+                tree_points[self.current_ego][layer]["left"]["sticks"].push("none", "none", "none", "none");
+            }
+
             if(total_draw_stick > 1){
+                this.context.lineWidth = 5;
                 var ori_lstpoint = [0, 0, 0, 0];
                 ori_lstpoint[0] = tree_lstpoint[0];
                 ori_lstpoint[1] = tree_lstpoint[1];
@@ -1077,6 +1033,8 @@ var RenderingView = Backbone.View.extend({
                 this.context.beginPath();
                 this.context.moveTo(ori_lstpoint[0],ori_lstpoint[1]);
                 this.context.lineTo(tree_lstpoint[0], tree_lstpoint[1]);
+                tree_points[self.current_ego][layer]["left"]["sticks"].push(ori_lstpoint[0],ori_lstpoint[1]);
+                tree_points[self.current_ego][layer]["left"]["sticks"].push(tree_lstpoint[0], tree_lstpoint[1]);
 
                 if(total_draw_stick > 2){
                     this.context.lineTo(tree_lstpoint[2], tree_lstpoint[3]);
@@ -1084,8 +1042,11 @@ var RenderingView = Backbone.View.extend({
                     this.context.closePath();
                     this.context.stroke();//draw line
                     this.context.fill();//fill color
+                    tree_points[self.current_ego][layer]["left"]["sticks"].push(tree_lstpoint[2], tree_lstpoint[3]);
+                    tree_points[self.current_ego][layer]["left"]["sticks"].push(ori_lstpoint[2], ori_lstpoint[3]);
                 }                    
                 else{
+                    tree_points[self.current_ego][layer]["left"]["sticks"].push(ori_lstpoint[2], ori_lstpoint[3], "none", "none");
                     this.context.lineTo(ori_lstpoint[2], ori_lstpoint[3]);
                     this.context.closePath();
                     this.context.stroke();//draw line
@@ -1102,6 +1063,7 @@ var RenderingView = Backbone.View.extend({
             }            
               
         }
+        tree_points[self.current_ego][layer]["left"]["sticks"].push("end");
         return (stick_pos[long_stick].length + stick_pos[short_stick].length);
 
     },
@@ -1163,6 +1125,8 @@ var RenderingView = Backbone.View.extend({
                     }
                     if(fruit_size != 0)
                         this.tree_fruit(this.context, p[0]+(dir_v[0]*tip), p[1]+(dir_v[1]*tip), fruit_size);
+                    else
+                        tree_points[self.current_ego][self.current_layer]["fruit"].push("none", "none", "none");
                 }
                 
             }
@@ -1176,6 +1140,9 @@ var RenderingView = Backbone.View.extend({
                     }
                     if(fruit_size != 0)
                         this.tree_fruit(this.context, p[0]+(dir_v[0]*(15+tip)), p[1]+(dir_v[1]*(15+tip)), fruit_size);
+                    else
+                        tree_points[self.current_ego][self.current_layer]["fruit"].push("none", "none", "none");
+        
                 }
 
                 for(var h = 0; h < cluster; h++){ 
@@ -1291,6 +1258,8 @@ var RenderingView = Backbone.View.extend({
                     this.context.beginPath();
                     this.context.lineWidth = 8;
                     this.context.lineCap = 'round';
+
+                    tree_points[self.current_ego][self.current_layer][self.current_side]["sticks"].push(p[0], p[1], point_x, point_y, "none", "none", "none", "none");
                     this.context.moveTo(p[0], p[1]);
                     this.context.lineTo(point_x, point_y);
                     
@@ -1306,6 +1275,7 @@ var RenderingView = Backbone.View.extend({
                 if(sub%3 > 0 || (sub%3 == 0 && sub>0 && len-g>0)){
                     this.context.fillStyle = mapping_color.trunk;
                     this.context.strokeStyle = mapping_color.trunk;
+                    tree_points[self.current_ego][self.current_layer][self.current_side]["sticks"].push(p[0], p[1], point_x, point_y, "none", "none", "none", "none");
                     
                     this.context.beginPath();
                     this.context.lineWidth = 8;
@@ -1375,7 +1345,8 @@ var RenderingView = Backbone.View.extend({
     leaf_style_1: function(ctx, cx, cy, radius, color, angle, l_id, leaf_detail) {
         var self = this;        
         ctx.save();
-
+        tree_points[self.current_ego][self.current_layer]["leaf"].push(cx, cy, angle, radius, color);
+        
         this.context.lineWidth = 1*self.model.get("leaf_scale");
         if(l_id != "none" && self.leaf_hovor == l_id){
             this.context.lineWidth = 25;
@@ -1401,11 +1372,12 @@ var RenderingView = Backbone.View.extend({
 
     tree_fruit: function(context, posx, posy, r){
         var self = this;
+        tree_points[self.current_ego][self.current_layer]["fruit"].push(posx, posy, r);
         
         context.fillStyle = mapping_color.fruit;//fill color
         // context.strokeStyle = mapping_color.fruit;;//line's color
         context.strokeStyle = '#ED3C3C';
-        context.lineWidth = 1*self.model.get("fruit_scale");;
+        context.lineWidth = 1*self.model.get("fruit_scale");
         context.beginPath();
         var cx = posx;
         var cy = posy;
@@ -1424,6 +1396,7 @@ var RenderingView = Backbone.View.extend({
 	// generate the image url
 	draw4save:function(){
 		var self = this;
+        console.log("in draw4save");
 		this.save_img = 1;
 		this.context =  this.saveCanvas.getContext('2d');
 		this.sub_stick_length = 55;
@@ -1434,6 +1407,7 @@ var RenderingView = Backbone.View.extend({
         var total_tree = 0;        
         for(var e in tree_egos){
         	for(var t = 0; t < tree_egos[e].length; t++){ // all the ego
+                self.current_ego = e;
         		// this.saveCanvas = drawing_canvas[e];
         		// this.context =   this.saveCanvas.getContext('2d');
 
@@ -1442,7 +1416,7 @@ var RenderingView = Backbone.View.extend({
         		var tree_width = self.tree_size[this.ego_label][1] - self.tree_size[this.ego_label][0] + 500;
         		var tree_height = self.tree_size[this.ego_label][3] - self.tree_size[this.ego_label][2] + 500;
                 
-                tree_boundary[e] = [tree_width+300, tree_height+500];
+                tree_boundary[e] = [tree_width, tree_height];
 		        
                 this.context.lineWidth = 5; // set the style
 
@@ -1469,6 +1443,9 @@ var RenderingView = Backbone.View.extend({
                 self.stick_length = self.tree_tall/self.total_layer; //_dist
                 this.start_y = this.saveCanvas.height/this.save_scale - (self.tree_size[this.ego_label][3] - self.tree_size[this.ego_label][5]) - 150; // align bottom
                 this.start_x = self.tree_size[this.ego_label][4] - self.tree_size[this.ego_label][0] + 200;
+
+                // tree_points[e]["star_y"] = this.start_y;
+                // tree_points[e]["start_x"] = this.start_x;
 
                 var layer_total_alter = trunk_size[e];
                 for(var s = 0; s < self.total_layer; s++){
@@ -1522,6 +1499,9 @@ var RenderingView = Backbone.View.extend({
                     var used_dr = 0;
                     var used_dl = 0;
                     
+                    tree_points[e][height] = {};
+                    tree_points[e][height]["leaf"] = [];
+                    tree_points[e][height]["fruit"] = [];
                     // draw right tree
                     if((real_height == self.total_layer-1 && layer_total_alter["right"][real_height] == 0) || (count_dr <= 0 && (count_dl-layer_total_alter["left"][real_height]) <= 0)){
                         used_dr = this.draw_right_branch(height, layer_total_alter["right"][real_height], ego["right"][real_height]["level"]);

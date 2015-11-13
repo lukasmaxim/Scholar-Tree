@@ -20,7 +20,7 @@ var util = {
     set_slider: function(researcher_period){
         $("#researcher_name").html(researcher_period[2]);
         DBLP_researcher = researcher_period[2];
-        ga('send', 'event', "researcher", "search", DBLP_researcher);
+        // ga('send', 'event', "researcher", "search", DBLP_researcher);
         
         var slider = $("#period_slider").data("ionRangeSlider");
         // Call sliders update method with any params
@@ -92,9 +92,19 @@ var util = {
         // var anim_cnt_w = $(window).width()-100;
         // var anim_cnt_h = $(window).height()-100;
         
-        while(snap_width*snap_scale > anim_cnt_w || snap_height*snap_scale > anim_cnt_h){
-            snap_scale = Math.round((snap_scale-0.01)*100)/100;
+        if(snap_width > anim_cnt_w || snap_height > anim_cnt_h){
+            while(snap_width*snap_scale > anim_cnt_w || snap_height*snap_scale > anim_cnt_h){
+                snap_scale = Math.round((snap_scale-0.001)*1000)/1000;
+            }
         }
+        else{
+            snap_scale = 10;
+            while(snap_width*snap_scale > anim_cnt_w || snap_height*snap_scale > anim_cnt_h){
+                snap_scale = Math.round((snap_scale-0.001)*1000)/1000;
+            }
+        }
+
+
 
         tree_snap_scale[img_id.slice(1, 6)] = snap_scale;
         $(anim_id).click(function(){
@@ -102,6 +112,7 @@ var util = {
             $("#anim_tree").css({'height': anim_cnt_h});
             $("#anim_container").show();
             $("#anim_tree").center();
+            anim.anim_render("tree"+this.name);
         });
             
 
