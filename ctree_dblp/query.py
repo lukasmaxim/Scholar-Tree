@@ -198,8 +198,9 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 		if publication[paper]["author_count"] == 0:
 			# print paper
 			# print "in solo publication"
-			data1 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
-			data2 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
+			real_year = 0
+			data1 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", ego[0], real_year]
+			data2 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", ego[0], real_year]
 			
 			# trunk
 			if publication[paper]["author_order"] > 1:
@@ -263,8 +264,9 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 			if author in ego:
 				coauthor_order += 1
 				continue
-			data1 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"] # stick, leaf
-			data2 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
+			real_year = int(coauthors[author][1]) - sy
+			data1 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, real_year] # stick, leaf
+			data2 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, real_year]
 			
 			# trunk
 			if publication[paper]["author_order"] > 1:
@@ -361,8 +363,8 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 		if coauthor == "none":
 			print coauthor
 			print coauthors[coauthor]
-		# data3 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
-		# data4 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
+		# data3 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
+		# data4 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
 		data3_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
 		data4_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
 		
@@ -402,8 +404,9 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 			fruit_val = 5
 
 		for paper in coauthors[coauthor][3]:
-			data3 = data3_stick + ["leaf_color", "leaf_size"] + [fruit_val]
-			data4 = data4_stick + ["leaf_color", "leaf_size", 0]
+			real_year = int(publication[paper]["year"]) - sy
+			data3 = data3_stick + ["leaf_color", "leaf_size"] + [fruit_val, paper, real_year]
+			data4 = data4_stick + ["leaf_color", "leaf_size", 0, paper, real_year]
 			
 			if publication[paper]["type"] == "conf":
 				data3[5] = 4
@@ -455,17 +458,21 @@ def tree_structure(tree_ego, branch_layer):
 	structure = dict()
 	egoid_index = -1
 	alterid_index = 0
-	leafid_index = 1
+	# leafid_index = 1
 	trunk_index = 2
 	branch_index = 3
 	bside_index = 4
 	leaf_color_index = 5
 	leaf_size_index = 6
 	fruit_size_index = 7
+
 	sorting_index = 3
+	leafid_index = 8
+	order_index = 9
+
 	# branch_layer = 10
 	stick = alterid_index
-	leaf_highlights = "none"
+	
 
 	# print stick_unique
 	structure["right"] = []
@@ -498,7 +505,7 @@ def tree_structure(tree_ego, branch_layer):
 				if meeting[branch_index] == l and meeting[bside_index] == 1:
 					if len(alter_array_left_up[level]) == 0:
 						structure["left"][level]["level"]["up"].append({"id": meeting[stick], "fruit": meeting[fruit_size_index],  "sorting": meeting[sorting_index], "leaf": []})
-						structure["left"][level]["level"]["up"][len(alter_array_left_up[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+						structure["left"][level]["level"]["up"][len(alter_array_left_up[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]}) 
 						alter_array_left_up[level].append(meeting[stick])
 
 					else:
@@ -510,17 +517,17 @@ def tree_structure(tree_ego, branch_layer):
 							count_alter += 1
 						if new_alter == -1:
 							structure["left"][level]["level"]["up"].append({"id": meeting[stick], "fruit": meeting[fruit_size_index], "sorting": meeting[sorting_index], "leaf": []})
-							structure["left"][level]["level"]["up"][len(alter_array_left_up[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+							structure["left"][level]["level"]["up"][len(alter_array_left_up[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 							alter_array_left_up[level].append(meeting[stick])
 						else:
-							structure["left"][level]["level"]["up"][new_alter]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+							structure["left"][level]["level"]["up"][new_alter]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 					break
 
 				# level and down
 				elif meeting[branch_index] == l and meeting[bside_index] == 0:
 					if len(alter_array_left_down[level]) == 0:
 						structure["left"][level]["level"]["down"].append({"id": meeting[stick], "fruit": meeting[fruit_size_index], "sorting": meeting[sorting_index], "leaf": []})
-						structure["left"][level]["level"]["down"][len(alter_array_left_down[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+						structure["left"][level]["level"]["down"][len(alter_array_left_down[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 						alter_array_left_down[level].append(meeting[stick])
 					else:
 						count_alter = 0
@@ -531,10 +538,10 @@ def tree_structure(tree_ego, branch_layer):
 							count_alter += 1
 						if new_alter == -1:
 							structure["left"][level]["level"]["down"].append({"id": meeting[stick], "fruit": meeting[fruit_size_index], "sorting": meeting[sorting_index], "leaf": []})
-							structure["left"][level]["level"]["down"][len(alter_array_left_down[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+							structure["left"][level]["level"]["down"][len(alter_array_left_down[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 							alter_array_left_down[level].append(meeting[stick])
 						else:
-							structure["left"][level]["level"]["down"][new_alter]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+							structure["left"][level]["level"]["down"][new_alter]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 					break
 				level += 1
 		# right
@@ -546,7 +553,7 @@ def tree_structure(tree_ego, branch_layer):
 				if meeting[branch_index] == l and meeting[bside_index] == 1:
 					if len(alter_array_right_up[level]) == 0:
 						structure["right"][level]["level"]["up"].append({"id": meeting[stick], "fruit": meeting[fruit_size_index], "sorting": meeting[sorting_index], "leaf": []})
-						structure["right"][level]["level"]["up"][len(alter_array_right_up[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+						structure["right"][level]["level"]["up"][len(alter_array_right_up[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 						alter_array_right_up[level].append(meeting[stick])
 					else:
 						count_alter = 0
@@ -557,16 +564,16 @@ def tree_structure(tree_ego, branch_layer):
 							count_alter += 1
 						if new_alter == -1:
 							structure["right"][level]["level"]["up"].append({"id": meeting[stick], "fruit": meeting[fruit_size_index], "sorting": meeting[sorting_index], "leaf": []})
-							structure["right"][level]["level"]["up"][len(alter_array_right_up[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+							structure["right"][level]["level"]["up"][len(alter_array_right_up[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 							alter_array_right_up[level].append(meeting[stick])
 						else:
-							structure["right"][level]["level"]["up"][new_alter]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+							structure["right"][level]["level"]["up"][new_alter]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 					break
 				# level and down
 				elif meeting[branch_index] == l and meeting[bside_index] == 0:
 					if len(alter_array_right_down[level]) == 0:
 						structure["right"][level]["level"]["down"].append({"id": meeting[stick], "fruit": meeting[fruit_size_index], "sorting": meeting[sorting_index], "leaf": []})
-						structure["right"][level]["level"]["down"][len(alter_array_right_down[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+						structure["right"][level]["level"]["down"][len(alter_array_right_down[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 						alter_array_right_down[level].append(meeting[stick])
 					else:
 						count_alter = 0
@@ -577,10 +584,10 @@ def tree_structure(tree_ego, branch_layer):
 							count_alter += 1
 						if new_alter == -1:
 							structure["right"][level]["level"]["down"].append({"id": meeting[stick], "fruit": meeting[fruit_size_index], "sorting": meeting[sorting_index], "leaf": []})
-							structure["right"][level]["level"]["down"][len(alter_array_right_down[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+							structure["right"][level]["level"]["down"][len(alter_array_right_down[level])]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 							alter_array_right_down[level].append(meeting[stick])
 						else:
-							structure["right"][level]["level"]["down"][new_alter]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": leaf_highlights})
+							structure["right"][level]["level"]["down"][new_alter]["leaf"].append({"size": meeting[leaf_size_index], "color": meeting[leaf_color_index], "leaf_id": meeting[leafid_index], "order": meeting[order_index]})
 					break
 				level += 1
 

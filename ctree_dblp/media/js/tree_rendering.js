@@ -53,6 +53,9 @@ var RenderingView = Backbone.View.extend({
         this.current_side = "right";
         this.current_layer = 1;
         this.current_ego = "tree1";
+        this.leaf_order = 0;
+
+        this.leaf_hovor = "-1";
 	},
 
 	// caculate the boundary
@@ -1151,6 +1154,7 @@ var RenderingView = Backbone.View.extend({
                     var color = mapping_color.render_leaf_color[sum_leaf[g].color];
                     var leaf_detail = sum_leaf[g].size + "#" + sum_leaf[g].color;
                     var leaf_id = sum_leaf[g].leaf_id;
+                    self.leaf_order = sum_leaf[g]["order"];
                     
                     if(leaf_id != "none" && self.leaf_hovor == leaf_id){
                         radius = leaf_table[sum_leaf[g].size]*2;
@@ -1346,7 +1350,14 @@ var RenderingView = Backbone.View.extend({
     leaf_style_1: function(ctx, cx, cy, radius, color, angle, l_id, leaf_detail) {
         var self = this;        
         ctx.save();
-        tree_points[self.current_ego][self.current_layer]["leaf"].push(cx, cy, angle, radius, color);
+        // tree_points[self.current_ego][self.current_layer]["leaf"].push(cx, cy, angle, radius, color);
+        if(self.leaf_order in tree_points[self.current_ego][self.current_layer]["leaf"]){
+            tree_points[self.current_ego][self.current_layer]["leaf"][self.leaf_order].push(cx, cy, angle, radius, color);
+        }
+        else{
+            tree_points[self.current_ego][self.current_layer]["leaf"][self.leaf_order] = [];
+            tree_points[self.current_ego][self.current_layer]["leaf"][self.leaf_order].push(cx, cy, angle, radius, color);
+        }
         
         this.context.lineWidth = 1*self.model.get("leaf_scale");
         if(l_id != "none" && self.leaf_hovor == l_id){

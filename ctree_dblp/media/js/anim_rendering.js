@@ -45,6 +45,21 @@ var anim = {
             	amin_frame.push(obj_sticks);                 
             }
 
+            var obj_fruits = {"type":"fruit", "pos":[]};
+            for(var i = 0, len = tree_points[ego][layer]["fruit"].length; i < len; i++)
+        		obj_fruits["pos"].push(tree_points[ego][layer]["fruit"][i]);
+        	amin_frame.push(obj_fruits);
+        	
+            for(var order in tree_points[ego][layer]["leaf"]){
+	        	for(var i = 0, len = tree_points[ego][layer]["leaf"][order].length; i < len; i += 30){
+	            	var obj_leaf = {"type":"leaf", "pos":[]};
+		        	for(var j = i; j < i+30; j ++){
+		        		obj_leaf["pos"].push(tree_points[ego][layer]["leaf"][order][j]);
+		        	}
+		        	amin_frame.push(obj_leaf);
+		        }
+	        }
+
 
             /*
             var obj_leaf = {"type":"leaf", "pos":[]};
@@ -58,7 +73,7 @@ var anim = {
         	amin_frame.push(obj_fruits);
         	*/
 
-            
+            /*
             for(var i = 0, len = tree_points[ego][layer]["leaf"].length; i < len; i += 20){
             	var obj_leaf = {"type":"leaf", "pos":[]};
 	        	for(var j = i; j < i+20; j ++)
@@ -72,7 +87,8 @@ var anim = {
 	        	for(var j = i; j < i+6; j ++)
 	        		obj_fruits["pos"].push(tree_points[ego][layer]["fruit"][j]);
 	        	amin_frame.push(obj_fruits);
-	        }	        
+	        }
+	        */	        
         }
 
         tree_amin_frame[ego] = amin_frame;
@@ -385,6 +401,7 @@ var anim = {
 	        					tree_points[ego][layer]["fruit"][i+2]);
 	        }
 
+	        /*
             for(var i = 0, len = tree_points[ego][layer]["leaf"].length; i < len; i += 5){
 	        	this.leaf_style(context,
 	        					tree_points[ego][layer]["leaf"][i],
@@ -392,6 +409,18 @@ var anim = {
 	        					tree_points[ego][layer]["leaf"][i+2],
 	        					tree_points[ego][layer]["leaf"][i+3],
 	        					tree_points[ego][layer]["leaf"][i+4]);
+	        }
+	        */
+
+	        for(var order in tree_points[ego][layer]["leaf"]){
+	        	for(var i = 0, len = tree_points[ego][layer]["leaf"][order].length; i < len; i += 5){
+		        	this.leaf_style(context,
+		        					tree_points[ego][layer]["leaf"][order][i],
+		        					tree_points[ego][layer]["leaf"][order][i+1],
+		        					tree_points[ego][layer]["leaf"][order][i+2],
+		        					tree_points[ego][layer]["leaf"][order][i+3],
+		        					tree_points[ego][layer]["leaf"][order][i+4]);
+		        }
 	        }
 
             height ++; 
