@@ -40,6 +40,39 @@ var util = {
         $("#draw_tree").removeAttr("disabled");
     },
 
+    set_highlight_list: function(){
+        var tree1_selection = $('#tree1_select');
+        var tree2_selection = $('#tree2_select');
+        var tree3_selection = $('#tree3_select');
+        var tree4_selection = $('#tree4_select');
+        
+        for(var a=0; a < highlight_list["authors"].length; a++){
+            var author_name = highlight_list["authors"][a];
+            var opt1 = $('<option></option>');            
+            opt1.val(author_name).html(author_name);
+
+            var opt2 = $('<option></option>');
+            opt2.val(author_name).html(author_name);
+            
+            tree1_selection.append(opt1);
+            tree2_selection.append(opt2);
+        }
+
+        for(var p=0; p < highlight_list["papers"].length; p++){
+            var paper_title = highlight_list["papers"][p];
+            var opt3 = $('<option></option>');            
+            opt3.val(paper_title).html(paper_title);
+            var opt4 = $('<option></option>');            
+            opt4.val(paper_title).html(paper_title);
+            
+            tree3_selection.append(opt3);
+            tree4_selection.append(opt4);
+        }
+
+        
+
+    },
+
     set_tree_img: function(img_id, img_src){
         var save_id = img_id + "_save";
         var cnt_id = img_id + "_cnt";

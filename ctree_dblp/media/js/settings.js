@@ -93,3 +93,8 @@ var tree_amin_frame = {
 
 var view_ego = "tree1";
 
+var highlight_list = {
+    "authors": [],
+    "papers": [],
+    "selected": "None"
+}

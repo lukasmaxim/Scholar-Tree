@@ -49,11 +49,11 @@ var anim = {
             for(var i = 0, len = tree_points[ego][layer]["fruit"].length; i < len; i++)
         		obj_fruits["pos"].push(tree_points[ego][layer]["fruit"][i]);
         	amin_frame.push(obj_fruits);
-        	
+
             for(var order in tree_points[ego][layer]["leaf"]){
-	        	for(var i = 0, len = tree_points[ego][layer]["leaf"][order].length; i < len; i += 30){
+	        	for(var i = 0, len = tree_points[ego][layer]["leaf"][order].length; i < len; i += 20){
 	            	var obj_leaf = {"type":"leaf", "pos":[]};
-		        	for(var j = i; j < i+30; j ++){
+		        	for(var j = i; j < i+20; j ++){
 		        		obj_leaf["pos"].push(tree_points[ego][layer]["leaf"][order][j]);
 		        	}
 		        	amin_frame.push(obj_leaf);

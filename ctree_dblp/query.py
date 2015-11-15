@@ -71,13 +71,16 @@ def get_tree_structure(request):
 		coauthorship["none"] = [1, int(sy), int(ey), []]
 		# with open("./ctree_dblp/data/dblp_test.json", "rb") as json_file:
 		# 	retuen_structure = json.load(json_file)
+
 		print author
+		unique_author_list = [author[0]]
+		unique_paper_list = []
 		for y in soup.findAll('r'):
 			co_author_list = []
 			p_title = y.title.string
 			p_year = y.year.string
 			# print p_title
-
+			unique_paper_list.append(p_title)
 			if int(p_year) > ey or int(p_year) < sy:
 				continue
 			paper_type = str(y.contents[0]).split('key="')[1].split("/")[0]
@@ -88,6 +91,7 @@ def get_tree_structure(request):
 					coauthorship["none"][3].append(p_title)
 				if a.string not in author and a.string not in coauthorship:
 					coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
+					unique_author_list.append(a.string)
 				elif a.string not in author:
 					coauthorship[a.string][0] += 1
 					coauthorship[a.string][3].append(p_title)
@@ -104,6 +108,7 @@ def get_tree_structure(request):
 						coauthorship["none"][3].append(p_title)
 					if a.string not in author and a.string not in coauthorship:
 						coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
+						unique_author_list.append(a.string)
 					elif a.string not in author:
 						coauthorship[a.string][0] += 1
 						coauthorship[a.string][3].append(p_title)
@@ -152,12 +157,24 @@ def get_tree_structure(request):
 			print one_ego
 			one_tree = tree_structure(tree_egos[one_ego], branches)
 			final_structure["all"][one_ego] = one_tree
+
+		# sort sticks
+		for d in final_structure:
+		    for e in final_structure[d]:
+		        # print final_structure[d][e]
+		        for layer in final_structure[d][e]['right']:
+		            layer['level']['down'] = sorted(layer['level']['down'], key=lambda k: k['sorting'])
+		            layer['level']['up'] = sorted(layer['level']['up'], key=lambda k: k['sorting'])
+		        for layer in final_structure[d][e]['left']:
+		            layer['level']['down'] = sorted(layer['level']['down'], key=lambda k: k['sorting'])
+		            layer['level']['up'] = sorted(layer['level']['up'], key=lambda k: k['sorting'])
 			
 
 	else:
 		raise Http404
 
-	return_json = simplejson.dumps(final_structure, indent=4, use_decimal=True)
+	final_return = [final_structure, unique_author_list, unique_paper_list]
+	return_json = simplejson.dumps(final_return, indent=4, use_decimal=True)
 
 	return HttpResponse(return_json)
 
@@ -198,9 +215,10 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 		if publication[paper]["author_count"] == 0:
 			# print paper
 			# print "in solo publication"
-			real_year = 0
-			data1 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", ego[0], real_year]
-			data2 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", ego[0], real_year]
+			first_real_year = 0
+			paper_real_year = int(publication[paper]["year"]) - sy
+			data1 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", ego[0], first_real_year, paper_real_year]
+			data2 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", ego[0], first_real_year, paper_real_year]
 			
 			# trunk
 			if publication[paper]["author_order"] > 1:
@@ -264,9 +282,10 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 			if author in ego:
 				coauthor_order += 1
 				continue
-			real_year = int(coauthors[author][1]) - sy
-			data1 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, real_year] # stick, leaf
-			data2 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, real_year]
+			first_real_year = int(coauthors[author][1]) - sy
+			paper_real_year = int(publication[paper]["year"]) - sy
+			data1 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, first_real_year, paper_real_year] # stick, leaf
+			data2 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, first_real_year, paper_real_year]
 			
 			# trunk
 			if publication[paper]["author_order"] > 1:
@@ -403,10 +422,11 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 		if coauthor == "none":
 			fruit_val = 5
 
+		first_real_year = int(coauthors[coauthor][1]) - sy
 		for paper in coauthors[coauthor][3]:
-			real_year = int(publication[paper]["year"]) - sy
-			data3 = data3_stick + ["leaf_color", "leaf_size"] + [fruit_val, paper, real_year]
-			data4 = data4_stick + ["leaf_color", "leaf_size", 0, paper, real_year]
+			paper_real_year = int(publication[paper]["year"]) - sy
+			data3 = data3_stick + ["leaf_color", "leaf_size"] + [fruit_val, paper, paper_real_year, first_real_year]
+			data4 = data4_stick + ["leaf_color", "leaf_size", 0, paper, paper_real_year, first_real_year]
 			
 			if publication[paper]["type"] == "conf":
 				data3[5] = 4
@@ -466,7 +486,7 @@ def tree_structure(tree_ego, branch_layer):
 	leaf_size_index = 6
 	fruit_size_index = 7
 
-	sorting_index = 3
+	sorting_index = 10
 	leafid_index = 8
 	order_index = 9
 

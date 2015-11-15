@@ -55,7 +55,6 @@ var RenderingView = Backbone.View.extend({
         this.current_ego = "tree1";
         this.leaf_order = 0;
 
-        this.leaf_hovor = "-1";
 	},
 
 	// caculate the boundary
@@ -1156,7 +1155,7 @@ var RenderingView = Backbone.View.extend({
                     var leaf_id = sum_leaf[g].leaf_id;
                     self.leaf_order = sum_leaf[g]["order"];
                     
-                    if(leaf_id != "none" && self.leaf_hovor == leaf_id){
+                    if(leaf_id != "none" && highlight_list["selected"] == leaf_id){
                         radius = leaf_table[sum_leaf[g].size]*2;
                         // color = mapping_color.render_leaf_color[sum_leaf[g].color];
                         if(next > 0){
@@ -1221,10 +1220,10 @@ var RenderingView = Backbone.View.extend({
                     if(h>0){
                         if(h==1){
                             var max = Math.max(leaf_table[sum_leaf[g].size], leaf_table[sum_leaf[g-1].size]);
-                            if(sum_leaf[g].leaf_id != "none" && self.leaf_hovor == sum_leaf[g].leaf_id){
+                            if(sum_leaf[g].leaf_id != "none" && highlight_list["selected"] == sum_leaf[g].leaf_id){
                                 max = leaf_table[sum_leaf[g].size]*4;
                             }
-                            else if(sum_leaf[g].leaf_id != "none" && self.leaf_hovor == sum_leaf[g-1].leaf_id){
+                            else if(sum_leaf[g].leaf_id != "none" && highlight_list["selected"] == sum_leaf[g-1].leaf_id){
                                 max = leaf_table[sum_leaf[g-1].size]*4;
                             }
                                                         
@@ -1232,7 +1231,7 @@ var RenderingView = Backbone.View.extend({
                         }
                         else{
                             next = leaf_table[sum_leaf[g].size]/2;
-                            if(sum_leaf[g].leaf_id != "none" && self.leaf_hovor == sum_leaf[g].leaf_id){
+                            if(sum_leaf[g].leaf_id != "none" && highlight_list["selected"] == sum_leaf[g].leaf_id){
                                 next = leaf_table[sum_leaf[g].size]*2;
                             }
                         }
@@ -1360,7 +1359,7 @@ var RenderingView = Backbone.View.extend({
         }
         
         this.context.lineWidth = 1*self.model.get("leaf_scale");
-        if(l_id != "none" && self.leaf_hovor == l_id){
+        if(l_id != "none" && highlight_list["selected"] == l_id){
             this.context.lineWidth = 25;
         }
         this.context.strokeStyle = mapping_color.leaf_stork;//line's color
