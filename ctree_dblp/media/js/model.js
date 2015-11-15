@@ -39,12 +39,6 @@ var Tree_Model = Backbone.Model.extend({
         d3.json(request_url, function(result){
             console.log(result);
             self.set({"tree_structure": result});
-            // tree_points = {
-            //     "tree1": {},
-            //     "tree2": {},
-            //     "tree3": {},
-            //     "tree4": {}
-            // }
             self.trigger('change:tree_structure');
         });
     }

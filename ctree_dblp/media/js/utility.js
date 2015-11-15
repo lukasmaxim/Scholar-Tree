@@ -85,6 +85,8 @@ var util = {
             $(show_snap).css({'border-width': '1px'});
 
             view_ego = this.id.slice(0,5); 
+            anim.static_img(view_ego);
+            /*
             var img_src = tree_img_url[view_ego];
             $("#tree_display").attr('src', img_src);
             $("#tree_display").attr('href', img_src);
@@ -96,6 +98,7 @@ var util = {
                 $("#tree_display").css({'width': '100%'});
                 $("#tree_display").height('auto');
             }
+            */
             return false;
         });
         
@@ -113,7 +116,7 @@ var util = {
             anim_cnt_w = $("#anim_container").width();
             anim_cnt_h = $("#anim_container").width() * ($(img_id).height()/$(img_id).width());
         }
-            
+
         var snap_scale = 1;
         var snap_width = tree_boundary[img_id.slice(1, 6)][0];
         var snap_height = tree_boundary[img_id.slice(1, 6)][1];
@@ -134,17 +137,17 @@ var util = {
 
         tree_snap_scale[img_id.slice(1, 6)] = snap_scale;
         $(anim_id).click(function(){
-            $("#anim_tree").css({'width': anim_cnt_w});
-            $("#anim_tree").css({'height': anim_cnt_h});
-            $("#anim_container").show();
-            $("#tree_cnt").hide();
+            // $("#anim_tree").css({'width': anim_cnt_w});
+            // $("#anim_tree").css({'height': anim_cnt_h});
+            // $("#anim_container").show();
+            // $("#tree_cnt").hide();
             // $("#anim_tree").center();
             anim.anim_render("tree"+this.name);
         });
 
         $(pic_id).click(function(){
-            $("#anim_container").hide();
-            $("#tree_cnt").show();
+            // clearInterval(timer);
+            anim.static_img("tree"+this.name);;
         });
             
 

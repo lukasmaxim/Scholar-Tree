@@ -1,19 +1,6 @@
 var anim = {
-    anim_render: function(ego){
-    	var context =  drawing_canvas.anim_canvas.getContext('2d');
-        console.log(ego, tree_points[ego]);
-
-        context.lineWidth = 5; // set the style
-
-        context.setTransform(1, 0, 0, 1, 0, 0);
-        context.clearRect(0, 0, drawing_canvas.anim_canvas.width, drawing_canvas.anim_canvas.height);
-        context.save();
-
-        drawing_canvas.anim_canvas.height = $("#anim_tree").height() - 10;
-        drawing_canvas.anim_canvas.width = $("#anim_tree").width() - 10;
-
-        context.translate(0.5, 0.5);
-        context.scale(tree_snap_scale[ego], tree_snap_scale[ego]);
+	timer: null,
+    generate_frames: function(ego){
         var amin_frame = [];
         
         for(layer in tree_points[ego]){ 
@@ -58,6 +45,8 @@ var anim = {
             	amin_frame.push(obj_sticks);                 
             }
 
+
+            /*
             var obj_leaf = {"type":"leaf", "pos":[]};
         	for(var i = 0, len = tree_points[ego][layer]["leaf"].length; i < len; i++)
         		obj_leaf["pos"].push(tree_points[ego][layer]["leaf"][i]);
@@ -67,8 +56,9 @@ var anim = {
             for(var i = 0, len = tree_points[ego][layer]["fruit"].length; i < len; i++)
         		obj_fruits["pos"].push(tree_points[ego][layer]["fruit"][i]);
         	amin_frame.push(obj_fruits);
+        	*/
 
-            /*
+            
             for(var i = 0, len = tree_points[ego][layer]["leaf"].length; i < len; i += 20){
             	var obj_leaf = {"type":"leaf", "pos":[]};
 	        	for(var j = i; j < i+20; j ++)
@@ -82,13 +72,30 @@ var anim = {
 	        	for(var j = i; j < i+6; j ++)
 	        		obj_fruits["pos"].push(tree_points[ego][layer]["fruit"][j]);
 	        	amin_frame.push(obj_fruits);
-	        }
-	        */
-	        
-	        
+	        }	        
         }
 
-        function draw_trunk(points) {
+        tree_amin_frame[ego] = amin_frame;
+    },
+
+    anim_render: function(ego){
+    	var amin_frame = tree_amin_frame[ego];
+    	var context =  drawing_canvas.anim_canvas.getContext('2d');
+        console.log(ego, tree_points[ego]);
+
+        context.lineWidth = 5; // set the style
+
+        context.setTransform(1, 0, 0, 1, 0, 0);
+        context.clearRect(0, 0, drawing_canvas.anim_canvas.width, drawing_canvas.anim_canvas.height);
+        context.save();
+
+        drawing_canvas.anim_canvas.height = $("#anim_tree").height() - 10;
+        drawing_canvas.anim_canvas.width = $("#anim_tree").width() - 10;
+
+        context.translate(0.5, 0.5);
+        context.scale(tree_snap_scale[ego], tree_snap_scale[ego]);
+
+    	function draw_trunk(points) {
         	if(points.length == 18){
         		context.moveTo(points[0], points[1]);
         		context.quadraticCurveTo(points[2], points[3], points[4], points[5]);
@@ -129,10 +136,13 @@ var anim = {
         	}
         };
 
-
-        var idx = 0;
+    	var idx = 0;
         var height = 0;
-        var timer = setInterval(function (){
+        if(this.timer != null){
+        	clearInterval(this.timer);
+        }
+        
+        this.timer = setInterval(function (){
 			var frame = amin_frame[idx];
 			// var action = frame["type"];
 			mapping_color.trunk = "rgb(" + (125-(height+1)*3).toString() + "," + (96-(height+1)*3).toString() + "," + (65-(height+1)*3).toString() + ")";
@@ -166,14 +176,14 @@ var anim = {
 	                break;
 	            case 'leaf':
 	                for(var i = 0, len = frame["pos"].length; i < len; i += 5){
-			        	anim.leaf_style(context, frame["pos"][i], frame["pos"][i+1], frame["pos"][i+2], 
+			        	this.leaf_style(context, frame["pos"][i], frame["pos"][i+1], frame["pos"][i+2], 
 	        					   		frame["pos"][i+3], frame["pos"][i+4]);
 			        }
 
 	                break;
 	            case 'fruit':
 	                for(var i = 0, len = frame["pos"].length; i < len; i += 3){
-			        	anim.tree_fruit(context, frame["pos"][i], frame["pos"][i+1], frame["pos"][i+2]);
+			        	this.tree_fruit(context, frame["pos"][i], frame["pos"][i+1], frame["pos"][i+2]);
 			        }
 	                
 	                break;
@@ -181,11 +191,10 @@ var anim = {
 			
 			idx++;
 			if(idx === amin_frame.length){
-				clearInterval(timer);
+				clearInterval(this.timer);
 				context.restore();
 			}
-		}, 80);
-
+		}.bind(this), 30);
     },
 
     tree_fruit: function(ctx, posx, posy, r){
@@ -197,7 +206,7 @@ var anim = {
         var cx = posx;
         var cy = posy;
         var radius = r;
-        anim.circle(ctx, cx, cy, radius);
+        this.circle(ctx, cx, cy, radius);
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
@@ -231,6 +240,7 @@ var anim = {
     },
 
     static_img: function(ego){
+    	clearInterval(this.timer);
     	var context =  drawing_canvas.anim_canvas.getContext('2d');
         console.log(ego, tree_points[ego]);
 
@@ -369,14 +379,14 @@ var anim = {
             }
 
             for(var i = 0, len = tree_points[ego][layer]["fruit"].length; i < len; i += 3){
-	        	anim.tree_fruit(context,
+	        	this.tree_fruit(context,
 	        					tree_points[ego][layer]["fruit"][i],
 	        					tree_points[ego][layer]["fruit"][i+1],
 	        					tree_points[ego][layer]["fruit"][i+2]);
 	        }
 
             for(var i = 0, len = tree_points[ego][layer]["leaf"].length; i < len; i += 5){
-	        	anim.leaf_style(context,
+	        	this.leaf_style(context,
 	        					tree_points[ego][layer]["leaf"][i],
 	        					tree_points[ego][layer]["leaf"][i+1],
 	        					tree_points[ego][layer]["leaf"][i+2],

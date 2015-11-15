@@ -1551,7 +1551,8 @@ var RenderingView = Backbone.View.extend({
             util.set_tree_img(img_id, img_src);
         	// $(img_id).attr('src', img_src);
         }
-        
+
+        /*
         var img_src = tree_img_url[view_ego];
         $("#tree_display").attr('src', img_src);
         $("#tree_display").attr('href', img_src);
@@ -1563,13 +1564,16 @@ var RenderingView = Backbone.View.extend({
             $("#tree_display").css({'width': '100%'});
             $("#tree_display").height('auto');
         }
-
+        */
 
         for(var e in tree_egos){
             var img_id = "#" + e;
             util.set_anim_canvas(img_id);
+            tree_amin_frame[e] = [];
+            anim.generate_frames(e);
         }
         // anim.anim_render(view_ego);
+        anim.static_img(view_ego);
         
         $("#tree_result").show();
         $("#no_preview").hide();

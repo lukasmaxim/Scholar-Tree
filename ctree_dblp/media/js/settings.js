@@ -84,4 +84,12 @@ var tree_snap_scale = {
   "tree4": -1
 };
 
+var tree_amin_frame = {
+  "tree1": [], 
+  "tree2": [],
+  "tree3": [],
+  "tree4": []
+}
+
 var view_ego = "tree1";
+
