@@ -47,16 +47,16 @@ var MyApp = function MyApp(){
     $("#main_display").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
     $("#introduction").css({'height': $("#main_display").height()-275});
     $("#tree_result").css({'height': $("#main_display").height() - 15});
-    $("#anim_container").css({'height': $(window).height()});
-    $("#anim_container").css({'width': $(window).width()});
-    
+    $("#tree_cnt").css({'height': $("#main_display").height() - 180});
+    $("#anim_container").css({'height': $("#main_display").height() - 180});
+    // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
     window.onresize = function(event) {
         $("#main_display").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
         $("#introduction").css({'height': $("#main_display").height()-275});
         $("#tree_result").css({'height': $("#main_display").height() - 15});
-        $("#anim_container").css({'height': $(window).height()});
-        $("#anim_container").css({'width': $(window).width()});
-
+        $("#tree_cnt").css({'height': $("#main_display").height() - 180});
+        $("#anim_container").css({'height': $("#main_display").height() - 180});
+        // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
         for(var e in tree_egos){
             var img_id = "#" + e;
             util.set_anim_canvas(img_id);
@@ -108,7 +108,7 @@ var MyApp = function MyApp(){
         else
             gap = 6
         $(".b_gap").text(gap);
-
+        
         // ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
         // ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
         

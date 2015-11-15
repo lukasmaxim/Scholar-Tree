@@ -55,7 +55,8 @@ var util = {
             $(img_id).height('auto');
             // $(img_id).css({'margin': '0'});
         }
-
+        
+        
         var pic_url = img_src.replace('image/png','image/octet-stream');
         var img_name = img_id.replace('#' , DBLP_researcher + "_");
         $(save_id).attr('download', img_name + ".png");
@@ -64,26 +65,53 @@ var util = {
         $(save_id).click(function(){
             ga('send', 'event', DBLP_researcher, "save", sy + "-" + ey, this.name);
         });
-
-        /*
-        $(img_id).hover(function(){
+        
+        
+        $(cnt_id).hover(function(){
             
         });
-        $(img_id).mouseout(function(){
-            $(delete_id).hide();
+
+        $(cnt_id).unbind();
+        $(cnt_id).click(function(){
+            var show_snap = "#" + view_ego + "_cnt";
+            var hide_snap = "#" + this.id.slice(0,5) + "_cnt";
+            var hide_text = "#" + view_ego + "_text";
+            var show_text = "#" + this.id.slice(0,5) + "_text";
+            $(show_text).show();
+            $(hide_text).hide();
+            // $(show_snap).show();
+            // $(hide_snap).hide();
+            $(hide_snap).css({'border-width': '3px'});
+            $(show_snap).css({'border-width': '1px'});
+
+            view_ego = this.id.slice(0,5); 
+            var img_src = tree_img_url[view_ego];
+            $("#tree_display").attr('src', img_src);
+            $("#tree_display").attr('href', img_src);
+            $("#tree_display").css({'height': '100%'});
+
+            var tree_width = $("#tree_display").width();
+            var cnt_width = $("#tree_cnt").width();
+            if (tree_width > cnt_width){
+                $("#tree_display").css({'width': '100%'});
+                $("#tree_display").height('auto');
+            }
+            return false;
         });
-        */
+        
     },
 
     set_anim_canvas: function(img_id){
         var anim_id = img_id + "_anim";
-        
-        var anim_cnt_h = $(window).height()-100;
-        var anim_cnt_w = ($(window).height()-100) * ($(img_id).width()/$(img_id).height());
+        var cnt_id = img_id + "_cnt";
+        var pic_id = img_id + "_pic";
 
-        if (anim_cnt_w > $(window).width()-100){
-            anim_cnt_w = $(window).width()-100;
-            anim_cnt_h = ($(window).width()-100) * ($(img_id).height()/$(img_id).width());
+        var anim_cnt_h = $("#anim_container").height();
+        var anim_cnt_w = $("#anim_container").height() * ($(img_id).width()/$(img_id).height());
+
+        if (anim_cnt_w > $("#anim_container").width()){
+            anim_cnt_w = $("#anim_container").width();
+            anim_cnt_h = $("#anim_container").width() * ($(img_id).height()/$(img_id).width());
         }
             
         var snap_scale = 1;
@@ -104,15 +132,19 @@ var util = {
             }
         }
 
-
-
         tree_snap_scale[img_id.slice(1, 6)] = snap_scale;
         $(anim_id).click(function(){
             $("#anim_tree").css({'width': anim_cnt_w});
             $("#anim_tree").css({'height': anim_cnt_h});
             $("#anim_container").show();
-            $("#anim_tree").center();
+            $("#tree_cnt").hide();
+            // $("#anim_tree").center();
             anim.anim_render("tree"+this.name);
+        });
+
+        $(pic_id).click(function(){
+            $("#anim_container").hide();
+            $("#tree_cnt").show();
         });
             
 

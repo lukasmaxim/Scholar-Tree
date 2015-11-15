@@ -146,6 +146,7 @@ var RenderingView = Backbone.View.extend({
 
                 this.context.lineWidth = 5; // set the style
                 var real_height = 0;
+                tree_points[e] = {};
                 for(var height = 0; height < self.total_layer; height++){
                     mapping_color.trunk = "rgb(" + (125-(height+1)*3).toString() + "," + (96-(height+1)*3).toString() + "," + (65-(height+1)*3).toString() + ")";
                                         
@@ -1474,6 +1475,7 @@ var RenderingView = Backbone.View.extend({
                 var layer_slop = Math.round(100/self.total_layer)/10;
 
                 this.context.lineWidth = 5; // set the style
+                tree_points[e] = {};
                 var real_height = 0;
                 for(var height = 0; height < self.total_layer; height++){
                     mapping_color.trunk = "rgb(" + (125-(height+1)*3).toString() + "," + (96-(height+1)*3).toString() + "," + (65-(height+1)*3).toString() + ")";
@@ -1550,14 +1552,28 @@ var RenderingView = Backbone.View.extend({
         	// $(img_id).attr('src', img_src);
         }
         
-        $("#tree_result").show();
-		$("#no_preview").hide();
-		$("#loading").hide();
+        var img_src = tree_img_url[view_ego];
+        $("#tree_display").attr('src', img_src);
+        $("#tree_display").attr('href', img_src);
+        $("#tree_display").css({'height': '100%'});
+
+        var tree_width = $("#tree_display").width();
+        var cnt_width = $("#tree_cnt").width();
+        if (tree_width > cnt_width){
+            $("#tree_display").css({'width': '100%'});
+            $("#tree_display").height('auto');
+        }
+
 
         for(var e in tree_egos){
             var img_id = "#" + e;
             util.set_anim_canvas(img_id);
         }
+        // anim.anim_render(view_ego);
+        
+        $("#tree_result").show();
+        $("#no_preview").hide();
+        $("#loading").hide();
         
 	}
 

@@ -84,3 +84,4 @@ var tree_snap_scale = {
   "tree4": -1
 };
 
+var view_ego = "tree1";
