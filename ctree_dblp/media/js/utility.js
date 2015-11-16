@@ -64,6 +64,9 @@ var util = {
 
         tree_anim.click(function(){
             $("#tree_backward").removeAttr("disabled");
+            $("#tree_forward").removeAttr("disabled");
+            anim.backword = 0;
+            anim.forward = 0;
             anim.anim_render(view_ego, anim.current_idx);
         });
 
@@ -75,18 +78,23 @@ var util = {
             clearInterval(anim.timer);
         });
 
-        // tree_backward.click(function(){
-        //     anim.backword += 1;
-        //     anim.forward = 0;
-        //     anim.anim_render(view_ego, anim.current_idx--);
-        // });
+        tree_backward.click(function(){
+            $("#tree_forward").removeAttr("disabled");
+            anim.backword = 1;
+            anim.forward = 0;
+            anim.current_idx -= 1;
+            anim.anim_render(view_ego, anim.current_idx);
+        });
 
-        // tree_forward.click(function(){
-        //     $("#tree_backward").removeAttr("disabled");
-        //     anim.forward += 1;
-        //     anim.backword = 0;
-        //     anim.anim_render(view_ego, anim.current_idx++);
-        // });
+        tree_forward.click(function(){
+            $("#tree_backward").removeAttr("disabled");
+            if(anim.backword != 1){
+                anim.current_idx += 1;
+            }
+            anim.forward = 1;
+            anim.backword = 0;            
+            anim.anim_render(view_ego, anim.current_idx);
+        });
     },
 
     set_highlight_list: function(){

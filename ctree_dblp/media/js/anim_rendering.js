@@ -106,7 +106,7 @@ var anim = {
         context.lineWidth = 5; // set the style
 
         context.setTransform(1, 0, 0, 1, 0, 0);
-        if(idx == 0){
+        if(idx == 0 || this.backword == 1){
         	context.clearRect(0, 0, drawing_canvas.anim_canvas.width, drawing_canvas.anim_canvas.height);
         	// context.save();
 	        drawing_canvas.anim_canvas.height = $("#anim_tree").height() - 10;
@@ -162,14 +162,73 @@ var anim = {
         if(this.timer != null){
         	clearInterval(this.timer);
         }
+
+        // draw to specific idx
+        if(this.backword == 1){
+        	if(idx === -1){
+				$('#tree_backward').attr("disabled", true);	
+				this.current_idx = 0;
+				return 0;	
+			}
+			this.tree_height = 0;
+        	for(var f = 0; f < idx; f++){
+        		var frame = amin_frame[f];
+        		mapping_color.trunk = "rgb(" + (125-(this.tree_height+1)*3).toString() + "," + (96-(this.tree_height+1)*3).toString() + "," + (65-(this.tree_height+1)*3).toString() + ")";
+            
+				switch(frame["type"]) {
+					case 'trunk':
+		                context.fillStyle = mapping_color.trunk;
+			            context.strokeStyle = mapping_color.trunk;
+			            context.lineCap = 'round';
+			            context.lineWidth = 5;
+			            context.beginPath();
+
+			            draw_trunk(frame["pos"]["left"]);
+			            context.stroke();//draw line
+			            context.fill();//fill color
+			            draw_trunk(frame["pos"]["right"]);
+			            context.stroke();//draw line
+			            context.fill();//fill color
+
+			            
+			            this.tree_height ++;
+		                break;
+		            case 'sticks':
+		                context.fillStyle = mapping_color.trunk;
+			            context.strokeStyle = mapping_color.trunk;
+			            context.lineCap = 'round';
+		                context.lineWidth = 8;
+
+		                draw_sticks(frame["pos"]);
+
+		                break;
+		            case 'leaf':
+		                for(var i = 0, len = frame["pos"].length; i < len; i += 5){
+				        	this.leaf_style(context, frame["pos"][i], frame["pos"][i+1], frame["pos"][i+2], 
+		        					   		frame["pos"][i+3], frame["pos"][i+4]);
+				        }
+
+		                break;
+		            case 'fruit':
+		                for(var i = 0, len = frame["pos"].length; i < len; i += 3){
+				        	this.tree_fruit(context, frame["pos"][i], frame["pos"][i+1], frame["pos"][i+2]);
+				        }
+		                
+		                break;
+		        } // end switch
+        	}
+
+        	return 0; 
+        }
         
+        // for animation playing
         this.timer = setInterval(function (){
 			var frame = amin_frame[idx];
-			this.current_idx = idx;
-			if(idx === -1){
+						
+			if(idx === amin_frame.length){
 				clearInterval(this.timer);
-				$('#tree_backward').attr("disabled", true);	
-				this.current_idx = 0;			
+				$('#tree_forward').attr("disabled", true);
+				this.current_idx = amin_frame.length;
 			}
 			// var action = frame["type"];
 			mapping_color.trunk = "rgb(" + (125-(this.tree_height+1)*3).toString() + "," + (96-(this.tree_height+1)*3).toString() + "," + (65-(this.tree_height+1)*3).toString() + ")";
@@ -216,8 +275,12 @@ var anim = {
 	                break;
 	        } // end switch
 			
-			if(this.forward == 0 && this.backword == 0)
+			if(this.forward == 0 && this.backword == 0){
+				this.current_idx = idx;
 				idx++;
+			}
+			else
+				clearInterval(this.timer);
 			
 			if(idx === amin_frame.length){
 				clearInterval(this.timer);
@@ -226,8 +289,7 @@ var anim = {
 	            anim.backword = 0;
 	            anim.tree_height = 0;
 				// context.restore();
-			}
-			
+			}			
 		}.bind(this), 30);
     },
 
