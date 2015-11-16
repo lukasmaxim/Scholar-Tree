@@ -72,12 +72,12 @@ img.mfp-img{
 .snap_view{
   float:left;
   position:relative;
-  margin:0 15px 0 0;
+  margin:0 0 15px 0;
   padding:0; 
   border:1px solid gray; 
   border-radius:5px; 
-  height:150px; 
-  width:150px;
+  /*height:150px; */
+  width:100%;
 }
 
 .snap_view.selected{
@@ -85,11 +85,11 @@ img.mfp-img{
 }
 
 .thumb_cnt{
-  overflow-x:auto;
-  width:100%;
-  margin-left:30px; 
-  margin-top:10px;
-  overflow-y:hidden; 
+  overflow-y:auto;
+  height:100%;
+  /*margin-left:30px; */
+  /*margin-top:10px;*/
+  overflow-x:hidden;
 }
 
 .btn-group{

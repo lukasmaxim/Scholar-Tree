@@ -47,15 +47,20 @@ var MyApp = function MyApp(){
     $("#main_display").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
     $("#introduction").css({'height': $("#main_display").height()-275});
     $("#tree_result").css({'height': $("#main_display").height() - 15});
-    $("#tree_cnt").css({'height': $("#main_display").height() - 180});
-    $("#anim_container").css({'height': $("#main_display").height() - 180});
+    // $("#tree_cnt").css({'height': $("#main_display").height() - 180});
+    $(".thumb_cnt").css({'height': $("#tree_result").height()});
+    $(".snap_view").css({'height': $(".snap_view").width()+20});
+    $("#anim_container").css({'height': $("#tree_result").height()});
+
     // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
     window.onresize = function(event) {
         $("#main_display").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
         $("#introduction").css({'height': $("#main_display").height()-275});
         $("#tree_result").css({'height': $("#main_display").height() - 15});
-        $("#tree_cnt").css({'height': $("#main_display").height() - 180});
-        $("#anim_container").css({'height': $("#main_display").height() - 180});
+        // $("#tree_cnt").css({'height': $("#main_display").height() - 180});
+        $(".thumb_cnt").css({'height': $("#tree_result").height()});
+        $(".snap_view").css({'height': $(".snap_view").width()+20});
+        $("#anim_container").css({'height': $("#tree_result").height()});
         // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
         for(var e in tree_egos){
             var img_id = "#" + e;
@@ -116,11 +121,9 @@ var MyApp = function MyApp(){
         self.model.generate_tree_structure(request);    
     });
 
-    util.set_events();    
-
+    util.set_events();
 
     this.render = new RenderingView({model: this.model, containerID: "#rendering"});
-    
 
     // d3.xml("http://dblp.uni-trier.de/pers/xx/m/Ma:Kwan=Liu.xml", function(error, data) {
     //     if (error) throw error;
@@ -130,10 +133,6 @@ var MyApp = function MyApp(){
     //     console.log(data);
     // });
 
-    // "media/data/Ma_Kwan=Liu.xml"
-
-    // bind with view
-    // this.uploading = new UploadView({model: this.model, containerID: "#uploading"});
 };
 
 var myApp;
