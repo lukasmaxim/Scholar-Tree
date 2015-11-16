@@ -65,12 +65,11 @@ var MyApp = function MyApp(){
         // $("#result").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
     }
 
-    $('.popup-link').magnificPopup({
-        type: 'image'
-        // other options
-    });
+    // $('.popup-link').magnificPopup({
+    //     type: 'image'
+    //     // other options
+    // });
 
-    // for general event
     var search = $('#check_url');
     var finish = $('#draw_tree');
 
@@ -109,21 +108,16 @@ var MyApp = function MyApp(){
             gap = 6
         $(".b_gap").text(gap);
         
-        // ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
-        // ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
+        ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
+        ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
         
         var request_array = [resercher, sy, ey];
         var request = JSON.stringify(request_array);
         self.model.generate_tree_structure(request);    
     });
 
-    $("#anim_container").click(function(){
-        $("#anim_container").hide();
-    });
+    util.set_events();    
 
-    $("#anim_tree").click(function(){
-        return false;
-    });
 
     this.render = new RenderingView({model: this.model, containerID: "#rendering"});
     

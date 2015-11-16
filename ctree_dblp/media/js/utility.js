@@ -20,7 +20,7 @@ var util = {
     set_slider: function(researcher_period){
         $("#researcher_name").html(researcher_period[2]);
         DBLP_researcher = researcher_period[2];
-        // ga('send', 'event', "researcher", "search", DBLP_researcher);
+        ga('send', 'event', "researcher", "search", DBLP_researcher);
         
         var slider = $("#period_slider").data("ionRangeSlider");
         // Call sliders update method with any params
@@ -38,6 +38,55 @@ var util = {
         $("#no_preview").show();
         $("#tree_result").hide();
         $("#draw_tree").removeAttr("disabled");
+    },
+
+    set_events: function(){
+        // for general events        
+        var save = $('#save_icon');
+        var tree_anim = $('#tree_anim');
+        var tree_pic = $('#tree_pic');
+        var tree_pause = $('#tree_pause');
+        var tree_backward = $('#tree_backward');
+        var tree_forward = $('#tree_forward');
+        
+        save.click(function(){
+            var save_link = "#" + view_ego + "_save";
+            $(save_link)[0].click();
+        });
+
+        save.hover(function(){
+            save.css("cursor", "pointer");
+        });
+
+        save.mouseout(function(){
+            save.css("cursor", "");
+        });
+
+        tree_anim.click(function(){
+            $("#tree_backward").removeAttr("disabled");
+            anim.anim_render(view_ego, anim.current_idx);
+        });
+
+        tree_pic.click(function(){
+            anim.static_img(view_ego);
+        });
+
+        tree_pause.click(function(){
+            clearInterval(anim.timer);
+        });
+
+        // tree_backward.click(function(){
+        //     anim.backword += 1;
+        //     anim.forward = 0;
+        //     anim.anim_render(view_ego, anim.current_idx--);
+        // });
+
+        // tree_forward.click(function(){
+        //     $("#tree_backward").removeAttr("disabled");
+        //     anim.forward += 1;
+        //     anim.backword = 0;
+        //     anim.anim_render(view_ego, anim.current_idx++);
+        // });
     },
 
     set_highlight_list: function(){
@@ -68,9 +117,6 @@ var util = {
             tree3_selection.append(opt3);
             tree4_selection.append(opt4);
         }
-
-        
-
     },
 
     set_tree_img: function(img_id, img_src){
@@ -86,24 +132,19 @@ var util = {
         if (tree_width > cnt_width){
             $(img_id).css({'width': '100%'});
             $(img_id).height('auto');
-            // $(img_id).css({'margin': '0'});
         }
-        
-        
+                
         var pic_url = img_src.replace('image/png','image/octet-stream');
         var img_name = img_id.replace('#' , DBLP_researcher + "_");
         $(save_id).attr('download', img_name + ".png");
         $(save_id).attr('href', pic_url);
 
+        $(cnt_id).unbind();
         $(save_id).click(function(){
             ga('send', 'event', DBLP_researcher, "save", sy + "-" + ey, this.name);
+            console.log("triggle save click of", this.name);
         });
         
-        
-        $(cnt_id).hover(function(){
-            
-        });
-
         $(cnt_id).unbind();
         $(cnt_id).click(function(){
             var show_snap = "#" + view_ego + "_cnt";
@@ -138,9 +179,9 @@ var util = {
     },
 
     set_anim_canvas: function(img_id){
-        var anim_id = img_id + "_anim";
-        var cnt_id = img_id + "_cnt";
-        var pic_id = img_id + "_pic";
+        // var anim_id = img_id + "_anim";
+        // var cnt_id = img_id + "_cnt";
+        // var pic_id = img_id + "_pic";
 
         var anim_cnt_h = $("#anim_container").height();
         var anim_cnt_w = $("#anim_container").height() * ($(img_id).width()/$(img_id).height());
@@ -169,21 +210,23 @@ var util = {
         }
 
         tree_snap_scale[img_id.slice(1, 6)] = snap_scale;
-        $(anim_id).click(function(){
-            // $("#anim_tree").css({'width': anim_cnt_w});
-            // $("#anim_tree").css({'height': anim_cnt_h});
-            // $("#anim_container").show();
-            // $("#tree_cnt").hide();
-            // $("#anim_tree").center();
-            anim.anim_render("tree"+this.name);
-        });
+        // $(anim_id).click(function(){
+        //     // $("#anim_tree").css({'width': anim_cnt_w});
+        //     // $("#anim_tree").css({'height': anim_cnt_h});
+        //     // $("#anim_container").show();
+        //     // $("#tree_cnt").hide();
+        //     // $("#anim_tree").center();
+        //     // anim.anim_render("tree"+this.value);
+        //     var ego = this.id.split("_anim")[0];
+        //     anim.anim_render(ego);
+        // });
 
-        $(pic_id).click(function(){
-            // clearInterval(timer);
-            anim.static_img("tree"+this.name);;
-        });
-            
-
+        // $(pic_id).click(function(){
+        //     var ego = this.id.split("_pic")[0];
+        //     anim.static_img(ego);
+        //     // clearInterval(timer);
+        //     // anim.static_img("tree"+this.value);;
+        // });
     }
 
 };

@@ -106,13 +106,32 @@
                     </div> -->
                     <div id='anim_container' class="col-md-9 relative" style="padding:0; border:1px solid gray; border-radius:10px; height:500px; border-bottom-width:10px;">
                         <canvas id='anim_tree' style="position:absolute; top:0; left:0; /*background:white;*/ width:100%; height:100%;"></canvas>
+
+                        <span id="save_icon" class="glyphicon glyphicon-floppy-save" style="position:absolute; top:5px; right:5px; font-size:large;"></span>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="btn-group">
+                            <button type="button" id="tree_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
+                            <button type="button" id="tree_anim" value="1" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
+                            <button type="button" id="tree_pause" value="1" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
+                            <button type="button" id="tree_pic" value="1" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
+                            <button type="button" id="tree_forward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+                        </div>
                     </div>
                     <div id="tree1_text" class="col-md-3">
-                        <a id="tree1_pic" href="#" name="1">Pic</a> |
+                        <!-- <div class="btn-group">
+                            <button type="button" id="tree1_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
+                            <button type="button" id="tree1_anim" value="1" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
+                            <button type="button" id="tree1_pause" value="1" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
+                            <button type="button" id="tree1_pic" value="1" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
+                            <button type="button" id="tree1_forward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+                        </div> -->
+                        <a id="tree1_save" href="#" name="1" style="display:none;">Save</a>
+                        <!-- <a id="tree1_pic" href="#" name="1">Pic</a> |
                         <a id="tree1_anim" href="#" name="1">Anim</a> |
                         <a href="#">Comp</a> |
-                        <a id="tree1_save" href="#" name="1">Save</a>
-                        <br>
+                        <a id="tree1_save" href="#" name="1">Save</a> 
+                        <br> -->
                         <b>Stick:</b> paper <br>
                         <b>Trunk Side:</b> Conference paper(left) <br>
                         <b>Branches:</b> Published year <br>
@@ -128,11 +147,19 @@
                         </select>
                     </div>
                     <div id="tree2_text" class="col-md-3" style="display:none;">
-                        <a id="tree2_pic" href="#" name="2">Pic</a> |
+                        <!-- <div class="btn-group">
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
+                            <button type="button" id="tree2_anim" value="2" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
+                            <button id="tree2_pic" value="2" type="button" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+                        </div> -->
+                        <a id="tree2_save" href="#" name="2" style="display:none;">Save</a>
+                        <!-- <a id="tree2_pic" href="#" name="2">Pic</a> |
                         <a id="tree2_anim" href="#" name="2">Anim</a> |
                         <a href="#">Comp</a> |
-                        <a id="tree2_save" href="#" name="2">Save</a>
-                        <br>
+                        <a id="tree2_save" href="#" name="2">Save</a> 
+                        <br> -->
                         <b>Stick:</b> paper <br>
                         <b>Trunk Side:</b> First author(left) <br>
                         <b>Branches:</b> Published year <br>
@@ -147,11 +174,19 @@
                         </select>
                     </div>
                     <div id="tree3_text" class="col-md-3" style="display:none;">
-                        <a id="tree3_pic" href="#" name="3">Pic</a> |
+                        <!-- <div class="btn-group">
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
+                            <button type="button" id="tree3_anim" value="3" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
+                            <button id="tree3_pic" value="3" type="button" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+                        </div> -->
+                        <a id="tree3_save" href="#" name="3" style="display:none;">Save</a>
+                        <!-- <a id="tree3_pic" href="#" name="3">Pic</a> |
                         <a id="tree3_anim" href="#" name="3">Anim</a> |
                         <a href="#">Comp</a> |
-                        <a id="tree3_save" href="#" name="3">Save</a>
-                        <br>
+                        <a id="tree3_save" href="#" name="3">Save</a> 
+                        <br> -->
                         <b>Stick:</b> Co-author <br>
                         <b>Trunk Side:</b> Total collaborated paper(left:<5) <br>
                         <b>Branches:</b> First collaborated time <br>
@@ -167,11 +202,19 @@
                         </select>
                     </div>
                     <div id="tree4_text" class="col-md-3" style="display:none;">
-                        <a id="tree4_pic" href="#" name="4">Pic</a> |
+                        <!-- <div class="btn-group">
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
+                            <button type="button" id="tree4_anim" value="4" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
+                            <button id="tree4_pic" value="4" type="button" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+                        </div> -->
+                        <a id="tree4_save" href="#" name="4" style="display:none;">Save</a>
+                        <!-- <a id="tree4_pic" href="#" name="4">Pic</a> |
                         <a id="tree4_anim" href="#" name="4">Anim</a> |
                         <a href="#">Comp</a> |
-                        <a id="tree4_save" href="#" name="4">Save</a>
-                        <br>
+                        <a id="tree4_save" href="#" name="4">Save</a> 
+                        <br> -->
                         <b>Stick:</b> Co-author <br>
                         <b>Trunk Side:</b> Total collaborated paper(left:<5) <br>
                         <b>Branches:</b> First collaborated time <br>

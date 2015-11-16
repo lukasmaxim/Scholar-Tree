@@ -1,5 +1,9 @@
 var anim = {
 	timer: null,
+	forward: 0,
+	backword: 0,
+	tree_height: 0,
+	current_idx: 0,
     generate_frames: function(ego){
         var amin_frame = [];
         
@@ -94,7 +98,7 @@ var anim = {
         tree_amin_frame[ego] = amin_frame;
     },
 
-    anim_render: function(ego){
+    anim_render: function(ego, idx){
     	var amin_frame = tree_amin_frame[ego];
     	var context =  drawing_canvas.anim_canvas.getContext('2d');
         console.log(ego, tree_points[ego]);
@@ -102,11 +106,12 @@ var anim = {
         context.lineWidth = 5; // set the style
 
         context.setTransform(1, 0, 0, 1, 0, 0);
-        context.clearRect(0, 0, drawing_canvas.anim_canvas.width, drawing_canvas.anim_canvas.height);
-        context.save();
-
-        drawing_canvas.anim_canvas.height = $("#anim_tree").height() - 10;
-        drawing_canvas.anim_canvas.width = $("#anim_tree").width() - 10;
+        if(idx == 0){
+        	context.clearRect(0, 0, drawing_canvas.anim_canvas.width, drawing_canvas.anim_canvas.height);
+        	// context.save();
+	        drawing_canvas.anim_canvas.height = $("#anim_tree").height() - 10;
+	        drawing_canvas.anim_canvas.width = $("#anim_tree").width() - 10;
+	    }
 
         context.translate(0.5, 0.5);
         context.scale(tree_snap_scale[ego], tree_snap_scale[ego]);
@@ -152,16 +157,22 @@ var anim = {
         	}
         };
 
-    	var idx = 0;
-        var height = 0;
+    	// var idx = 0;
+        // var height = 0;
         if(this.timer != null){
         	clearInterval(this.timer);
         }
         
         this.timer = setInterval(function (){
 			var frame = amin_frame[idx];
+			this.current_idx = idx;
+			if(idx === -1){
+				clearInterval(this.timer);
+				$('#tree_backward').attr("disabled", true);	
+				this.current_idx = 0;			
+			}
 			// var action = frame["type"];
-			mapping_color.trunk = "rgb(" + (125-(height+1)*3).toString() + "," + (96-(height+1)*3).toString() + "," + (65-(height+1)*3).toString() + ")";
+			mapping_color.trunk = "rgb(" + (125-(this.tree_height+1)*3).toString() + "," + (96-(this.tree_height+1)*3).toString() + "," + (65-(this.tree_height+1)*3).toString() + ")";
             
 			switch(frame["type"]) {
 				case 'trunk':
@@ -179,7 +190,7 @@ var anim = {
 		            context.fill();//fill color
 
 		            
-		            height ++;
+		            this.tree_height ++;
 	                break;
 	            case 'sticks':
 	                context.fillStyle = mapping_color.trunk;
@@ -205,11 +216,18 @@ var anim = {
 	                break;
 	        } // end switch
 			
-			idx++;
+			if(this.forward == 0 && this.backword == 0)
+				idx++;
+			
 			if(idx === amin_frame.length){
 				clearInterval(this.timer);
-				context.restore();
+				anim.current_idx = 0;
+	            anim.forward = 0;
+	            anim.backword = 0;
+	            anim.tree_height = 0;
+				// context.restore();
 			}
+			
 		}.bind(this), 30);
     },
 
@@ -272,6 +290,11 @@ var anim = {
         context.translate(0.5, 0.5);
         context.scale(tree_snap_scale[ego], tree_snap_scale[ego]);
         var amin_frame = [];
+
+        anim.current_idx = 0;
+        anim.forward = 0;
+        anim.backword = 0;
+        anim.tree_height = 0;
         
         var height = 0;        
     	
