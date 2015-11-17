@@ -380,7 +380,8 @@ var anim = {
 
     draw_highlight_leaf: function(ego){
     	var selected_leaves = tree_points[ego]["all_leaves"][highlight_list["selected"]];
-
+    	var context =  drawing_canvas.anim_canvas.getContext('2d');
+    	context.restore();
     	// highlight leaves
         for(var i = 0, len = selected_leaves.length; i < len; i += 5){
     		this.leaf_highlight_style(context,
@@ -396,7 +397,7 @@ var anim = {
     	clearInterval(this.timer);
     	clearInterval(this.blinking_timer);
     	var context =  drawing_canvas.anim_canvas.getContext('2d');
-        console.log(ego, tree_points[ego]);
+        // console.log(ego, tree_points[ego]);
 
         context.lineWidth = 5; // set the style
 
