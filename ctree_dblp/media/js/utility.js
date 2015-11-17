@@ -48,6 +48,8 @@ var util = {
         var tree_pause = $('#tree_pause');
         var tree_backward = $('#tree_backward');
         var tree_forward = $('#tree_forward');
+
+        var selectors = [$("#tree1_select"), $("#tree2_select"), $("#tree3_select"), $("#tree4_select")];
         
         save.click(function(){
             var save_link = "#" + view_ego + "_save";
@@ -71,6 +73,7 @@ var util = {
         });
 
         tree_pic.click(function(){
+            highlight_list["selected"] = "None";
             anim.static_img(view_ego);
         });
 
@@ -95,6 +98,13 @@ var util = {
             anim.backword = 0;            
             anim.anim_render(view_ego, anim.current_idx);
         });
+
+        for(var i = 0; i < 4; i++){
+            selectors[i].change(function(){
+                highlight_list["selected"] = this.value;
+                anim.highlight_img(view_ego);
+            });
+        }
     },
 
     set_highlight_list: function(){
@@ -159,13 +169,13 @@ var util = {
             var hide_snap = "#" + this.id.slice(0,5) + "_cnt";
             var hide_text = "#" + view_ego + "_text";
             var show_text = "#" + this.id.slice(0,5) + "_text";
-            $(show_text).show();
             $(hide_text).hide();
+            $(show_text).show();
             // $(show_snap).show();
             // $(hide_snap).hide();
-            $(hide_snap).css({'border-width': '3px'});
             $(show_snap).css({'border-width': '1px'});
-
+            $(hide_snap).css({'border-width': '3px'});            
+            highlight_list["selected"] = "None";
             view_ego = this.id.slice(0,5); 
             anim.static_img(view_ego);
             /*
@@ -190,7 +200,8 @@ var util = {
         // var anim_id = img_id + "_anim";
         // var cnt_id = img_id + "_cnt";
         // var pic_id = img_id + "_pic";
-
+        
+ 
         var anim_cnt_h = $("#anim_container").height();
         var anim_cnt_w = $("#anim_container").height() * ($(img_id).width()/$(img_id).height());
 
@@ -198,6 +209,7 @@ var util = {
             anim_cnt_w = $("#anim_container").width();
             anim_cnt_h = $("#anim_container").width() * ($(img_id).height()/$(img_id).width());
         }
+
 
         var snap_scale = 1;
         var snap_width = tree_boundary[img_id.slice(1, 6)][0];
@@ -218,23 +230,6 @@ var util = {
         }
 
         tree_snap_scale[img_id.slice(1, 6)] = snap_scale;
-        // $(anim_id).click(function(){
-        //     // $("#anim_tree").css({'width': anim_cnt_w});
-        //     // $("#anim_tree").css({'height': anim_cnt_h});
-        //     // $("#anim_container").show();
-        //     // $("#tree_cnt").hide();
-        //     // $("#anim_tree").center();
-        //     // anim.anim_render("tree"+this.value);
-        //     var ego = this.id.split("_anim")[0];
-        //     anim.anim_render(ego);
-        // });
-
-        // $(pic_id).click(function(){
-        //     var ego = this.id.split("_pic")[0];
-        //     anim.static_img(ego);
-        //     // clearInterval(timer);
-        //     // anim.static_img("tree"+this.value);;
-        // });
     }
 
 };

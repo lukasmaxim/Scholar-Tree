@@ -68,12 +68,12 @@ def get_tree_structure(request):
 		display_author = soup.person.author.string
 		coauthorship = dict()
 		publication = dict()
-		coauthorship["none"] = [1, int(sy), int(ey), []]
+		coauthorship[author[0]] = [1, int(sy), int(ey), []]
 		# with open("./ctree_dblp/data/dblp_test.json", "rb") as json_file:
 		# 	retuen_structure = json.load(json_file)
 
 		print author
-		unique_author_list = [author[0]]
+		unique_author_list = []
 		unique_paper_list = []
 		for y in soup.findAll('r'):
 			co_author_list = []
@@ -87,8 +87,8 @@ def get_tree_structure(request):
 			for a in y.findAll('author'):
 				co_author_list.append(a.string)
 				if len(y.findAll('author')) == 1:
-					coauthorship["none"][0] += 1 
-					coauthorship["none"][3].append(p_title)
+					coauthorship[author[0]][0] += 1 
+					coauthorship[author[0]][3].append(p_title)
 				if a.string not in author and a.string not in coauthorship:
 					coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
 					unique_author_list.append(a.string)
@@ -104,8 +104,8 @@ def get_tree_structure(request):
 				for a in y.findAll('editor'):
 					co_author_list.append(a.string)
 					if len(y.findAll('editor')) == 1:
-						coauthorship["none"][0] += 1 
-						coauthorship["none"][3].append(p_title)
+						coauthorship[author[0]][0] += 1 
+						coauthorship[author[0]][3].append(p_title)
 					if a.string not in author and a.string not in coauthorship:
 						coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
 						unique_author_list.append(a.string)
@@ -220,12 +220,8 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 			data1 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", ego[0], first_real_year, paper_real_year]
 			data2 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", ego[0], first_real_year, paper_real_year]
 			
-			# trunk
-			if publication[paper]["author_order"] > 1:
-				data1[4] = 1
-			else:
-				data1[2] = 0
-
+			# trunk			
+			data1[4] = 0
 			data2[2] = 0
             # branch as year
 			if publication[paper]["year"] < year_gap[0]:

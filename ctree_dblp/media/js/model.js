@@ -2,7 +2,7 @@ var Tree_Model = Backbone.Model.extend({
     defaults: {
         tree_structure: {},
         time_period: [],
-        leaf_scale: 3,
+        leaf_scale: 2.5,
         fruit_scale: 2,
         sub_leaf_len_scale: 1,
         dtl_branch_curve: 1
@@ -37,8 +37,8 @@ var Tree_Model = Backbone.Model.extend({
         console.log("get request", request);
         var request_url = "get_tree_structure/?final_setting=" + encodeURIComponent(request);
         d3.json(request_url, function(result){
-            console.log(result);
-            self.set({"tree_structure": result[0]});
+            console.log(result[0]);
+            self.set({"tree_structure": result[0]}, {silent: true});
             self.trigger('change:tree_structure');
             highlight_list["authors"] = result[1];
             highlight_list["papers"] = result[2];

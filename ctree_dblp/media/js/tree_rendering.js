@@ -54,6 +54,7 @@ var RenderingView = Backbone.View.extend({
         this.current_layer = 1;
         this.current_ego = "tree1";
         this.leaf_order = 0;
+        this.select_leaf = "-1";
 
 	},
 
@@ -76,6 +77,7 @@ var RenderingView = Backbone.View.extend({
         var total_tree = 0;        
         for(var e in tree_egos){
         	// console.log(e);
+            self.current_ego = e;
         	for(var t = 0; t < tree_egos[e].length; t++){ // all the ego
         		// console.log(tree_egos[e][t]);
 		        this.context.setTransform(1, 0, 0, 1, 0, 0);
@@ -149,6 +151,7 @@ var RenderingView = Backbone.View.extend({
                 this.context.lineWidth = 5; // set the style
                 var real_height = 0;
                 tree_points[e] = {};
+                tree_points[e]["all_leaves"] = {};
                 for(var height = 0; height < self.total_layer; height++){
                     mapping_color.trunk = "rgb(" + (125-(height+1)*3).toString() + "," + (96-(height+1)*3).toString() + "," + (65-(height+1)*3).toString() + ")";
                                         
@@ -1155,7 +1158,7 @@ var RenderingView = Backbone.View.extend({
                     var leaf_id = sum_leaf[g].leaf_id;
                     self.leaf_order = sum_leaf[g]["order"];
                     
-                    if(leaf_id != "none" && highlight_list["selected"] == leaf_id){
+                    if(leaf_id != "none" && this.select_leaf == leaf_id){
                         radius = leaf_table[sum_leaf[g].size]*2;
                         // color = mapping_color.render_leaf_color[sum_leaf[g].color];
                         if(next > 0){
@@ -1220,10 +1223,10 @@ var RenderingView = Backbone.View.extend({
                     if(h>0){
                         if(h==1){
                             var max = Math.max(leaf_table[sum_leaf[g].size], leaf_table[sum_leaf[g-1].size]);
-                            if(sum_leaf[g].leaf_id != "none" && highlight_list["selected"] == sum_leaf[g].leaf_id){
+                            if(sum_leaf[g].leaf_id != "none" && this.select_leaf == sum_leaf[g].leaf_id){
                                 max = leaf_table[sum_leaf[g].size]*4;
                             }
-                            else if(sum_leaf[g].leaf_id != "none" && highlight_list["selected"] == sum_leaf[g-1].leaf_id){
+                            else if(sum_leaf[g].leaf_id != "none" && this.select_leaf == sum_leaf[g-1].leaf_id){
                                 max = leaf_table[sum_leaf[g-1].size]*4;
                             }
                                                         
@@ -1231,7 +1234,7 @@ var RenderingView = Backbone.View.extend({
                         }
                         else{
                             next = leaf_table[sum_leaf[g].size]/2;
-                            if(sum_leaf[g].leaf_id != "none" && highlight_list["selected"] == sum_leaf[g].leaf_id){
+                            if(sum_leaf[g].leaf_id != "none" && this.select_leaf == sum_leaf[g].leaf_id){
                                 next = leaf_table[sum_leaf[g].size]*2;
                             }
                         }
@@ -1351,15 +1354,22 @@ var RenderingView = Backbone.View.extend({
         ctx.save();
         // tree_points[self.current_ego][self.current_layer]["leaf"].push(cx, cy, angle, radius, color);
         if(self.leaf_order in tree_points[self.current_ego][self.current_layer]["leaf"]){
-            tree_points[self.current_ego][self.current_layer]["leaf"][self.leaf_order].push(cx, cy, angle, radius, color);
+            tree_points[self.current_ego][self.current_layer]["leaf"][self.leaf_order].push(cx, cy, angle, radius, color, l_id);
         }
         else{
             tree_points[self.current_ego][self.current_layer]["leaf"][self.leaf_order] = [];
-            tree_points[self.current_ego][self.current_layer]["leaf"][self.leaf_order].push(cx, cy, angle, radius, color);
+            tree_points[self.current_ego][self.current_layer]["leaf"][self.leaf_order].push(cx, cy, angle, radius, color, l_id);
         }
-        
+        if(l_id in tree_points[self.current_ego]["all_leaves"]){
+            tree_points[self.current_ego]["all_leaves"][l_id].push(cx, cy, angle, radius, color);
+        }
+        else{
+            tree_points[self.current_ego]["all_leaves"][l_id] = [];
+            tree_points[self.current_ego]["all_leaves"][l_id].push(cx, cy, angle, radius, color);        
+        }
+
         this.context.lineWidth = 1*self.model.get("leaf_scale");
-        if(l_id != "none" && highlight_list["selected"] == l_id){
+        if(l_id != "none" && this.select_leaf == l_id){
             this.context.lineWidth = 25;
         }
         this.context.strokeStyle = mapping_color.leaf_stork;//line's color
@@ -1417,8 +1427,8 @@ var RenderingView = Backbone.View.extend({
 
         var total_tree = 0;        
         for(var e in tree_egos){
+            self.current_ego = e;
         	for(var t = 0; t < tree_egos[e].length; t++){ // all the ego
-                self.current_ego = e;
         		// this.saveCanvas = drawing_canvas[e];
         		// this.context =   this.saveCanvas.getContext('2d');
 
@@ -1486,6 +1496,7 @@ var RenderingView = Backbone.View.extend({
 
                 this.context.lineWidth = 5; // set the style
                 tree_points[e] = {};
+                tree_points[e]["all_leaves"] = {};
                 var real_height = 0;
                 for(var height = 0; height < self.total_layer; height++){
                     mapping_color.trunk = "rgb(" + (125-(height+1)*3).toString() + "," + (96-(height+1)*3).toString() + "," + (65-(height+1)*3).toString() + ")";
@@ -1555,6 +1566,9 @@ var RenderingView = Backbone.View.extend({
         	}
         }
 
+        $("#tree_result").show();
+        $("#no_preview").hide();
+
         for(var e in tree_egos){
         	var img_src = tree_img_url[e];
         	var img_id = "#" + e;
@@ -1583,10 +1597,8 @@ var RenderingView = Backbone.View.extend({
             anim.generate_frames(e);
         }
         // anim.anim_render(view_ego);
-        anim.static_img(view_ego);
+        anim.static_img(view_ego);        
         
-        $("#tree_result").show();
-        $("#no_preview").hide();
         $("#loading").hide();
         
 	}

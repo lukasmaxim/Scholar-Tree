@@ -94,6 +94,7 @@ var MyApp = function MyApp(){
         $("#loading").show();
         $("#no_preview").hide();
         $("#tree_result").hide();
+        $("#tree1_cnt")[0].click();
         var slider = $("#period_slider").data("ionRangeSlider");
         var resercher = $("#dblp_url").val();
         sy = slider.result.from;
