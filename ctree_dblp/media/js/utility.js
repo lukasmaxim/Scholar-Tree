@@ -1,4 +1,4 @@
-var util = {    
+var util = {
     order_list: function(s, e){
 		var gen_order = [];
 		for(var c = 0; c < e; c++){
@@ -25,9 +25,9 @@ var util = {
         var slider = $("#period_slider").data("ionRangeSlider");
         // Call sliders update method with any params
         slider.update({
-            min: researcher_period[0], 
+            min: researcher_period[0],
             max: researcher_period[1],
-            from: researcher_period[0], 
+            from: researcher_period[0],
             to: researcher_period[1],
             // type: 'double',
             // step: 1,
@@ -95,7 +95,7 @@ var util = {
                 anim.current_idx += 1;
             }
             anim.forward = 1;
-            anim.backword = 0;            
+            anim.backword = 0;
             anim.anim_render(view_ego, anim.current_idx);
         });
 
@@ -115,7 +115,7 @@ var util = {
         
         for(var a=0; a < highlight_list["authors"].length; a++){
             var author_name = highlight_list["authors"][a];
-            var opt1 = $('<option></option>');            
+            var opt1 = $('<option></option>');
             opt1.val(author_name).html(author_name);
 
             var opt2 = $('<option></option>');
@@ -127,9 +127,9 @@ var util = {
 
         for(var p=0; p < highlight_list["papers"].length; p++){
             var paper_title = highlight_list["papers"][p];
-            var opt3 = $('<option></option>');            
+            var opt3 = $('<option></option>');
             opt3.val(paper_title).html(paper_title);
-            var opt4 = $('<option></option>');            
+            var opt4 = $('<option></option>');
             opt4.val(paper_title).html(paper_title);
             
             tree3_selection.append(opt3);
@@ -137,20 +137,25 @@ var util = {
         }
     },
 
+
     set_tree_img: function(img_id, img_src){
         var save_id = img_id + "_save";
         var cnt_id = img_id + "_cnt";
         
-        $(img_id).attr('src', img_src);
-        $(img_id).attr('href', img_src);
+
+        // $(img_id).attr('href', img_src);
         $(img_id).css({'height': '100%'});
-        
-        var tree_width = $(img_id).width();
-        var cnt_width = $(cnt_id).width();
-        if (tree_width > cnt_width){
-            $(img_id).css({'width': '100%'});
-            $(img_id).height('auto');
-        }
+        $(img_id).attr('src', img_src).load(function(){
+            var tree_width = $(this).width();
+            var cnt_width = $(cnt_id).width();
+            if (tree_width > cnt_width){
+                $(this).css({'width': '100%'});
+                $(this).height('auto');
+            }
+            util.set_anim_canvas(this.id);
+            tree_amin_frame[this.id] = [];
+            anim.generate_frames(this.id);
+        });
                 
         var pic_url = img_src.replace('image/png','image/octet-stream');
         var img_name = img_id.replace('#' , DBLP_researcher + "_");
@@ -174,9 +179,9 @@ var util = {
             // $(show_snap).show();
             // $(hide_snap).hide();
             $(show_snap).css({'border-width': '1px'});
-            $(hide_snap).css({'border-width': '3px'});            
+            $(hide_snap).css({'border-width': '3px'});
             highlight_list["selected"] = "None";
-            view_ego = this.id.slice(0,5); 
+            view_ego = this.id.slice(0,5);
             anim.static_img(view_ego);
             /*
             var img_src = tree_img_url[view_ego];
@@ -196,11 +201,11 @@ var util = {
         
     },
 
-    set_anim_canvas: function(img_id){
+    set_anim_canvas: function(ego_id){
+        img_id = "#" + ego_id;
         // var anim_id = img_id + "_anim";
         // var cnt_id = img_id + "_cnt";
         // var pic_id = img_id + "_pic";
-        
  
         var anim_cnt_h = $("#anim_container").height();
         var anim_cnt_w = $("#anim_container").height() * ($(img_id).width()/$(img_id).height());
@@ -209,7 +214,6 @@ var util = {
             anim_cnt_w = $("#anim_container").width();
             anim_cnt_h = $("#anim_container").width() * ($(img_id).height()/$(img_id).width());
         }
-
 
         var snap_scale = 1;
         var snap_width = tree_boundary[img_id.slice(1, 6)][0];
@@ -230,6 +234,10 @@ var util = {
         }
 
         tree_snap_scale[img_id.slice(1, 6)] = snap_scale;
+
+        if(ego_id == view_ego){
+            anim.static_img(view_ego);
+        }
     }
 
 };

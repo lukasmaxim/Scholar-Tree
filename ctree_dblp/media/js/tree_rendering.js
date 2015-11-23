@@ -388,7 +388,7 @@ var RenderingView = Backbone.View.extend({
             cp3[0], cp3[1], cp4[0], cp4[1], this.start_x - this.dl, this.start_y + this.temp_height,
             this.start_x + this.dr, this.start_y + this.temp_height];
 
-            tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+            tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points);
 
             this.context.bezierCurveTo(cp1[0], cp1[1], cp2[0], cp2[1], tree_rstpoint[0], tree_rstpoint[1]);
             this.context.lineTo(tree_rstpoint[2], tree_rstpoint[3]);
@@ -400,7 +400,7 @@ var RenderingView = Backbone.View.extend({
                 temp_points = 
                 [this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2,
                 this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2];
-                tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+                tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points);
 
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2);
@@ -409,7 +409,7 @@ var RenderingView = Backbone.View.extend({
                 temp_points = 
                 [this.start_x + this.dr, this.start_y + this.temp_height + this.stick_length + 200,
                 this.start_x - this.dl, this.start_y + this.temp_height + this.stick_length + 200];
-                tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+                tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points);
 
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height + this.stick_length + 200);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height + this.stick_length + 200);
@@ -417,7 +417,7 @@ var RenderingView = Backbone.View.extend({
 
             temp_points = 
             [this.start_x - this.dl, this.start_y + this.temp_height];
-            tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+            tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points);
 
             this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height);
             this.context.closePath();
@@ -457,7 +457,7 @@ var RenderingView = Backbone.View.extend({
                 temp_points = 
                 [this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2,
                 this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2];
-                tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points)
+                tree_points[self.current_ego][layer]["right"]["trunk"] = tree_points[self.current_ego][layer]["right"]["trunk"].concat(temp_points);
 
                 this.context.lineTo(this.start_x + this.dr, this.start_y + this.temp_height*2 + this.stick_length*2);
                 this.context.lineTo(this.start_x - this.dl, this.start_y + this.temp_height*2 + this.stick_length*2);
@@ -1589,15 +1589,7 @@ var RenderingView = Backbone.View.extend({
             $("#tree_display").height('auto');
         }
         */
-
-        for(var e in tree_egos){
-            var img_id = "#" + e;
-            util.set_anim_canvas(img_id);
-            tree_amin_frame[e] = [];
-            anim.generate_frames(e);
-        }
         // anim.anim_render(view_ego);
-        anim.static_img(view_ego);        
         
         $("#loading").hide();
         
