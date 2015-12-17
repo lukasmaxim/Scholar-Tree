@@ -1,2 +1,6 @@
 ctree_dblp/query.pyc
 ctree_dblp/urls.pyc
+ctree_dblp/__init__.pyc
+ctree_dblp/settings.pyc
+ctree_dblp/view.pyc
+ctree_dblp/wsgi.pyc
