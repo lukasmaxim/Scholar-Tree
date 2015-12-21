@@ -6,6 +6,7 @@ var anim = {
 	current_idx: 0,
 	blinking_timer: null,
 	blinking: 0,
+    fadeout: 1,
     generate_frames: function(ego){
         var amin_frame = [];
         
@@ -323,7 +324,7 @@ var anim = {
         ctx.lineWidth = 3;
         ctx.strokeStyle = mapping_color.leaf_stork;//line's color
         ctx.fillStyle = color;
-        
+
         ctx.translate(cx, cy);
         ctx.rotate(angle);
 
@@ -355,7 +356,7 @@ var anim = {
         ctx.beginPath();
         ctx.moveTo(0, 0);
                 
-        radius *= 2;
+        radius = 50; //*=2
         ctx.quadraticCurveTo(radius, radius, radius*2.5, 0);
         ctx.quadraticCurveTo(radius, -radius, 0, 0);
         ctx.closePath();
@@ -419,8 +420,14 @@ var anim = {
         
         var height = 0;
         var selected_leaves = [];
+        var display_text = "";
+        $("#highlight_info").hide();
         if(highlight_list["selected"] != "None"){
         	selected_leaves = tree_points[ego]["all_leaves"][highlight_list["selected"]];
+            display_text = "Leaf size: " + selected_leaves[3]
+            $("#highlight_info").show();
+            leaf size: 3 out of 6 </br> 
+                        leaf count: 3
         }        
     	
         for(layer in tree_points[ego]){ 
@@ -544,6 +551,7 @@ var anim = {
                  
             }
 
+            context.globalAlpha = this.fadeout;
             for(var i = 0, len = tree_points[ego][layer]["fruit"].length; i < len; i += 3){
 	        	this.tree_fruit(context,
 	        					tree_points[ego][layer]["fruit"][i],
@@ -562,6 +570,7 @@ var anim = {
 	        }
 	        */
 
+            //context.globalAlpha = this.fadeout;
 	        for(var order in tree_points[ego][layer]["leaf"]){
 	        	for(var i = 0, len = tree_points[ego][layer]["leaf"][order].length; i < len; i += 6){
 	        		if(tree_points[ego][layer]["leaf"][order][i+5] == highlight_list["selected"])
@@ -574,7 +583,8 @@ var anim = {
 		        					tree_points[ego][layer]["leaf"][order][i+4]);
 		        }
 	        }
-
+            context.globalAlpha = 1;
+        
             height ++; 
         }
 
