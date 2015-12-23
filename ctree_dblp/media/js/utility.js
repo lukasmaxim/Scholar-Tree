@@ -67,28 +67,27 @@ var util = {
         tree_anim.click(function(){
             $("#tree_backward").removeAttr("disabled");
             $("#tree_forward").removeAttr("disabled");
-            anim.fadeout = 1;
-            highlight_list["selected"] = "None";
+            // highlight_list["selected"] = "None";
+            anim.highlight_choose = 0;
             anim.backword = 0;
             anim.forward = 0;
             anim.anim_render(view_ego, anim.current_idx);
         });
 
         tree_pic.click(function(){
-            anim.fadeout = 1;
-            highlight_list["selected"] = "None";
+            // highlight_list["selected"] = "None"; // trigger selector change!!!
+            anim.highlight_choose = 0;
             anim.static_img(view_ego);
         });
 
         tree_pause.click(function(){
-            anim.fadeout = 1;
-            highlight_list["selected"] = "None";
+            // highlight_list["selected"] = "None";
+            anim.highlight_choose = 0;
             clearInterval(anim.timer);
         });
 
         tree_backward.click(function(){
             $("#tree_forward").removeAttr("disabled");
-            anim.fadeout = 1;
             anim.backword = 1;
             anim.forward = 0;
             anim.current_idx -= 1;
@@ -96,7 +95,6 @@ var util = {
         });
 
         tree_forward.click(function(){
-            anim.fadeout = 1;
             $("#tree_backward").removeAttr("disabled");
             if(anim.backword != 1){
                 anim.current_idx += 1;
@@ -109,8 +107,12 @@ var util = {
         for(var i = 0; i < 4; i++){
             selectors[i].change(function(){
                 //$('.btn-group').attr("disabled", true);
-                anim.fadeout = 0.5;
                 highlight_list["selected"] = this.value;
+                anim.highlight_choose = 1;
+                if(this.value != 'None')
+                    anim.fadeout = 0.5;
+                else
+                    anim.fadeout = 1;
                 anim.highlight_img(view_ego);
             });
         }
@@ -191,6 +193,7 @@ var util = {
             $(hide_snap).css({'border-width': '3px'});
             highlight_list["selected"] = "None";
             view_ego = this.id.slice(0,5);
+            anim.highlight_choose = 0;
             anim.static_img(view_ego);
             /*
             var img_src = tree_img_url[view_ego];

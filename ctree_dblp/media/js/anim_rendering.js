@@ -7,6 +7,7 @@ var anim = {
 	blinking_timer: null,
 	blinking: 0,
     fadeout: 1,
+    highlight_choose: 0,
     generate_frames: function(ego){
         var amin_frame = [];
         
@@ -106,6 +107,7 @@ var anim = {
     },
 
     anim_render: function(ego, idx){
+        clearInterval(this.blinking_timer);
     	var amin_frame = tree_amin_frame[ego];
     	var context =  drawing_canvas.anim_canvas.getContext('2d');
 
@@ -210,6 +212,8 @@ var anim = {
 		                break;
 		            case 'leaf':
 		                for(var i = 0, len = frame["pos"].length; i < len; i += 6){
+                            if(frame["pos"][i+5] == highlight_list["selected"])
+                                continue;
 				        	this.leaf_style(context, frame["pos"][i], frame["pos"][i+1], frame["pos"][i+2], 
 		        					   		frame["pos"][i+3], frame["pos"][i+4]);
 				        }
@@ -232,6 +236,9 @@ var anim = {
 			var frame = amin_frame[idx];
 						
 			if(idx === amin_frame.length){
+                if(highlight_list["selected"] != "None" && this.highlight_choose == 0){
+                    this.draw_highlight_leaf(ego);
+                }
 				clearInterval(this.timer);
 				$('#tree_forward').attr("disabled", true);
 				this.current_idx = amin_frame.length;
@@ -268,6 +275,8 @@ var anim = {
 	                break;
 	            case 'leaf':
 	                for(var i = 0, len = frame["pos"].length; i < len; i += 6){
+                        if(frame["pos"][i+5] == highlight_list["selected"])
+                            continue;
 			        	this.leaf_style(context, frame["pos"][i], frame["pos"][i+1], frame["pos"][i+2], 
 	        					   		frame["pos"][i+3], frame["pos"][i+4]);
 			        }
@@ -289,6 +298,9 @@ var anim = {
 				clearInterval(this.timer);
 			
 			if(idx === amin_frame.length){
+                if(highlight_list["selected"] != "None" && this.highlight_choose == 0){
+                    this.draw_highlight_leaf(ego);
+                }
 				clearInterval(this.timer);
 				anim.current_idx = 0;
 	            anim.forward = 0;
@@ -300,6 +312,7 @@ var anim = {
     },
 
     tree_fruit: function(ctx, posx, posy, r){
+        ctx.globalAlpha = this.fadeout;
         ctx.fillStyle = mapping_color.fruit;//fill color
         // ctx.strokeStyle = mapping_color.fruit;;//line's color
         ctx.lineWidth = 3;
@@ -313,6 +326,7 @@ var anim = {
         ctx.fill();
         ctx.stroke();
         ctx.lineWidth = 8;
+        ctx.globalAlpha = 1;
     },
 
     circle: function(ctx, cx, cy, radius){
@@ -320,6 +334,7 @@ var anim = {
     },
 
     leaf_style: function(ctx, cx, cy, angle, radius, color) {
+        ctx.globalAlpha = this.fadeout;
         ctx.save();
         ctx.lineWidth = 3;
         ctx.strokeStyle = mapping_color.leaf_stork;//line's color
@@ -339,6 +354,7 @@ var anim = {
         ctx.restore();
         ctx.lineWidth = 8;
         ctx.lineCap = 'round';
+        ctx.globalAlpha = 1;
     },
 
     leaf_highlight_style: function(ctx, cx, cy, angle, radius, color) {
@@ -348,6 +364,13 @@ var anim = {
         	ctx.strokeStyle = "#FFF80F";//line's color
        	else
        		ctx.strokeStyle = "#ACA977";//line's color
+
+        /*
+        if(this.highlight_choose == 0){
+            ctx.strokeStyle = "#FFF80F";//line's color
+            ctx.lineWidth = 20;
+        } 
+        */
         ctx.fillStyle = color;
         
         ctx.translate(cx, cy);
@@ -355,8 +378,10 @@ var anim = {
 
         ctx.beginPath();
         ctx.moveTo(0, 0);
-                
+
+        // if(this.highlight_choose == 1)
         radius = 50; //*=2
+
         ctx.quadraticCurveTo(radius, radius, radius*2.5, 0);
         ctx.quadraticCurveTo(radius, -radius, 0, 0);
         ctx.closePath();
@@ -369,7 +394,7 @@ var anim = {
 
     highlight_img: function(ego){
     	this.static_img(ego);
-    	if(highlight_list["selected"] == "None"){
+    	if(highlight_list["selected"] == "None" || this.highlight_choose == 0){
     		return;
     	}
     	this.blinking_timer = setInterval(function (){
@@ -422,12 +447,14 @@ var anim = {
         var selected_leaves = [];
         var display_text = "";
         $("#highlight_info").hide();
+        // this.fadeout = 1;
         if(highlight_list["selected"] != "None"){
         	selected_leaves = tree_points[ego]["all_leaves"][highlight_list["selected"]];
-            display_text = "Leaf size: " + selected_leaves[3]
+            display_text = "Leaf size: " + selected_leaves[3] + " out of 100 <br> Leaf count: " + (selected_leaves.length/5);
             $("#highlight_info").show();
-            leaf size: 3 out of 6 </br> 
-                        leaf count: 3
+            $("#highlight_info").html(display_text);
+            // if(this.highlight_choose == 1)
+            // this.fadeout = 0.5;
         }        
     	
         for(layer in tree_points[ego]){ 
@@ -551,7 +578,7 @@ var anim = {
                  
             }
 
-            context.globalAlpha = this.fadeout;
+            // context.globalAlpha = this.fadeout;
             for(var i = 0, len = tree_points[ego][layer]["fruit"].length; i < len; i += 3){
 	        	this.tree_fruit(context,
 	        					tree_points[ego][layer]["fruit"][i],
@@ -586,6 +613,10 @@ var anim = {
             context.globalAlpha = 1;
         
             height ++; 
+        }
+
+        if(highlight_list["selected"] != "None" && this.highlight_choose == 0){
+            this.draw_highlight_leaf(ego);
         }
 
         context.restore();
