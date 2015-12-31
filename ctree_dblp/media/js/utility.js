@@ -40,6 +40,7 @@ var util = {
         $("#draw_tree").removeAttr("disabled");
     },
 
+    /*
     set_events: function(){
         // for general events        
         var save = $('#save_icon');
@@ -117,6 +118,7 @@ var util = {
             });
         }
     },
+    */
 
     set_highlight_list: function(){
         var tree1_selection = $('#tree1_select');
@@ -146,71 +148,100 @@ var util = {
             tree3_selection.append(opt3);
             tree4_selection.append(opt4);
         }
+    }
+
+};
+
+
+var tree_util = {
+    fadeout: 1,
+    
+    tree_fruit: function(ctx, posx, posy, r){
+        ctx.globalAlpha = this.fadeout;
+        ctx.fillStyle = mapping_color.fruit;//fill color
+        // ctx.strokeStyle = mapping_color.fruit;;//line's color
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#ED3C3C';
+        ctx.beginPath();
+        var cx = posx;
+        var cy = posy;
+        var radius = r;
+        // this.circle(ctx, cx, cy, radius);
+        ctx.arc(cx, cy, radius, 0, 2*Math.PI, true);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.lineWidth = 8;
+        ctx.globalAlpha = 1;
     },
 
 
-    set_tree_img: function(img_id, img_src){
-        var save_id = img_id + "_save";
-        var cnt_id = img_id + "_cnt";
-        
+    leaf_style: function(ctx, cx, cy, angle, radius, color) {
+        ctx.globalAlpha = this.fadeout;
+        ctx.save();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = mapping_color.leaf_stork;//line's color
+        ctx.fillStyle = color;
 
-        // $(img_id).attr('href', img_src);
-        $(img_id).css({'height': '100%'});
-        $(img_id).attr('src', img_src).load(function(){
-            var tree_width = $(this).width();
-            var cnt_width = $(cnt_id).width();
-            if (tree_width > cnt_width){
-                $(this).css({'width': '100%'});
-                $(this).height('auto');
-            }
-            util.set_anim_canvas(this.id);
-            tree_amin_frame[this.id] = [];
-            anim.generate_frames(this.id);
-        });
+        ctx.translate(cx, cy);
+        ctx.rotate(angle);
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
                 
-        var pic_url = img_src.replace('image/png','image/octet-stream');
-        var img_name = img_id.replace('#' , DBLP_researcher + "_");
-        $(save_id).attr('download', img_name + ".png");
-        $(save_id).attr('href', pic_url);
+        ctx.quadraticCurveTo(radius, radius, radius*2.5, 0);
+        ctx.quadraticCurveTo(radius, -radius, 0, 0);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+        ctx.restore();
+        ctx.lineWidth = 8;
+        ctx.lineCap = 'round';
+        ctx.globalAlpha = 1;
+    },
 
-        $(cnt_id).unbind();
-        $(save_id).click(function(){
-            ga('send', 'event', DBLP_researcher, "save", sy + "-" + ey, this.name);
-            console.log("triggle save click of", this.name);
-        });
+    leaf_highlight_style: function(ctx, cx, cy, angle, radius, color, blinking) {
+        ctx.save();
+        ctx.lineWidth = 10;
+        if(blinking == 0)
+            ctx.strokeStyle = "#FFF80F";//yellow color
+        else
+            ctx.strokeStyle = "#ACA977";//dark's color
+       
+        ctx.fillStyle = color;
         
-        $(cnt_id).unbind();
-        $(cnt_id).click(function(){
-            var show_snap = "#" + view_ego + "_cnt";
-            var hide_snap = "#" + this.id.slice(0,5) + "_cnt";
-            var hide_text = "#" + view_ego + "_text";
-            var show_text = "#" + this.id.slice(0,5) + "_text";
-            $(hide_text).hide();
-            $(show_text).show();
-            // $(show_snap).show();
-            // $(hide_snap).hide();
-            $(show_snap).css({'border-width': '1px'});
-            $(hide_snap).css({'border-width': '3px'});
-            highlight_list["selected"] = "None";
-            view_ego = this.id.slice(0,5);
-            anim.highlight_choose = 0;
-            anim.static_img(view_ego);
-            /*
-            var img_src = tree_img_url[view_ego];
-            $("#tree_display").attr('src', img_src);
-            $("#tree_display").attr('href', img_src);
-            $("#tree_display").css({'height': '100%'});
+        ctx.translate(cx, cy);
+        ctx.rotate(angle);
 
-            var tree_width = $("#tree_display").width();
-            var cnt_width = $("#tree_cnt").width();
-            if (tree_width > cnt_width){
-                $("#tree_display").css({'width': '100%'});
-                $("#tree_display").height('auto');
-            }
-            */
-            return false;
-        });
-        
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+
+        radius = 50; //*=2
+
+        ctx.quadraticCurveTo(radius, radius, radius*2.5, 0);
+        ctx.quadraticCurveTo(radius, -radius, 0, 0);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+        ctx.restore();
+        ctx.lineWidth = 8;
+        ctx.lineCap = 'round';
+    },
+
+    draw_highlight_leaf: function(ego, blinking){
+        var selected_leaves = tree_points[ego]["all_leaves"][highlight_list["selected"]];
+        var context =  drawing_canvas.anim_canvas.getContext('2d');
+        context.restore();
+        // highlight leaves
+        for(var i = 0, len = selected_leaves.length; i < len; i += 5){
+            tree_util.leaf_highlight_style(context,
+                                           selected_leaves[i],
+                                           selected_leaves[i+1],
+                                           selected_leaves[i+2],
+                                           selected_leaves[i+3],
+                                           selected_leaves[i+4], 
+                                           blinking);
+        }
     },
 
     set_anim_canvas: function(ego_id){
@@ -247,11 +278,10 @@ var util = {
 
         tree_snap_scale[img_id.slice(1, 6)] = snap_scale;
 
-        if(ego_id == view_ego){
-            anim.static_img(view_ego);
-        }
+        // if(ego_id == view_ego){
+        //     anim.static_img(view_ego);
+        // }
     }
-
 };
 
 jQuery.fn.center = function () {

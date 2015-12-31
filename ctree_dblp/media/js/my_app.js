@@ -64,7 +64,7 @@ var MyApp = function MyApp(){
         // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
         for(var e in tree_egos){
             var img_id = "#" + e;
-            util.set_anim_canvas(img_id);
+            tree_util.set_anim_canvas(img_id);
         }
         // $("#search_engine").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
         // $("#result").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
@@ -122,9 +122,11 @@ var MyApp = function MyApp(){
         self.model.generate_tree_structure(request);    
     });
 
-    util.set_events();
+    // util.set_events();
 
     this.render = new RenderingView({model: this.model, containerID: "#rendering"});
+    this.animation = new AnimView({model: this.model, containerID: "#animating"});
+    this.draw_tree = new DrawView({model: this.model, containerID: "#drawing"});
 
     // d3.xml("http://dblp.uni-trier.de/pers/xx/m/Ma:Kwan=Liu.xml", function(error, data) {
     //     if (error) throw error;

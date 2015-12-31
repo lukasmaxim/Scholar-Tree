@@ -8,10 +8,11 @@ var anim = {
 	blinking: 0,
     fadeout: 1,
     highlight_choose: 0,
+
     generate_frames: function(ego){
         var amin_frame = [];
         
-        for(layer in tree_points[ego]){ 
+        for(layer in tree_points[ego]){
         	if(layer == "all_leaves")
         		continue;
         	var obj_trunk = {"type":"trunk", "pos":{"left":[], "right":[]}};
@@ -434,6 +435,7 @@ var anim = {
         drawing_canvas.anim_canvas.height = $("#anim_tree").height() - 10;
         drawing_canvas.anim_canvas.width = $("#anim_tree").width() - 10;
 
+        // var current_trans = this.model.get("canvas_translate");
         context.translate(0.5, 0.5);
         context.scale(tree_snap_scale[ego], tree_snap_scale[ego]);
         var amin_frame = [];

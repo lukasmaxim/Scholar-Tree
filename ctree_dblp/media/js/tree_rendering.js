@@ -1432,6 +1432,16 @@ var RenderingView = Backbone.View.extend({
         		// this.saveCanvas = drawing_canvas[e];
         		// this.context =   this.saveCanvas.getContext('2d');
 
+                /*
+                for(var x = 0; x <= Math.round(this.myCanvas.width/this.c_detail); x++){
+                    // this.clicking_grid[x] = [];
+                    this.clicking_grid.push([]);
+                    for(var y = 0; y <= Math.round(this.myCanvas.height/this.c_detail); y++){
+                        this.clicking_grid[x][y] = -1;
+                    }
+                }
+                */
+
         		var sub = tree_egos[e][t];
         		self.ego_label = e + "_" + sub;
         		var tree_width = self.tree_size[this.ego_label][1] - self.tree_size[this.ego_label][0] + 500;
@@ -1569,14 +1579,17 @@ var RenderingView = Backbone.View.extend({
         $("#tree_result").show();
         $("#no_preview").hide();
 
+        self.model.trigger('change:new_researcher');
+        // self.model.set({"new_researcher": 1});
+        
+        /*
         for(var e in tree_egos){
-        	var img_src = tree_img_url[e];
-        	var img_id = "#" + e;
-            util.set_tree_img(img_id, img_src);
-        	// $(img_id).attr('src', img_src);
+            var img_src = tree_img_url[e];
+            var img_id = "#" + e;
+            self..set_tree_img(img_id, img_src);
+            // $(img_id).attr('src', img_src);
         }
 
-        /*
         var img_src = tree_img_url[view_ego];
         $("#tree_display").attr('src', img_src);
         $("#tree_display").attr('href', img_src);

@@ -5,7 +5,11 @@ var Tree_Model = Backbone.Model.extend({
         leaf_scale: 2.5,
         fruit_scale: 2,
         sub_leaf_len_scale: 1,
-        dtl_branch_curve: 1
+        dtl_branch_curve: 1,
+        canvas_translate: [0.5, 0.5],
+        scale: 3,
+        current_ego: "tree1",
+        new_researcher: 0
     },
     initialize: function(args) {
         var self = this;
