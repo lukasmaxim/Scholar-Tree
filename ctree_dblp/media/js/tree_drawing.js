@@ -9,7 +9,7 @@ var DrawView = Backbone.View.extend({
         _.bindAll(this, 'set_tree_info');
 
         this.model.bind('change:current_ego', this.draw_static);
-        this.model.bind('change:scale', this.draw_static);
+        this.model.bind('change:canvas_scale', this.draw_static);
         this.model.bind('change:canvas_translate', this.draw_static);
         this.model.bind('change:new_researcher', this.set_tree_info);
         

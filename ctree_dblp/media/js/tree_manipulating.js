@@ -42,7 +42,7 @@ var InteractView = Backbone.View.extend({
             var nx = mousePos.x - (tx * factor * self.scale);
             var ny = mousePos.y - (ty * factor * self.scale);
 
-            if(factor*self.scale < 0.03 || factor*self.scale > 3.5){
+            if(factor*self.scale < 0.05 || factor*self.scale > 3.5){
             }
             else{
                 self.model.set({"canvas_translate":[nx, ny]});
@@ -50,11 +50,10 @@ var InteractView = Backbone.View.extend({
             }
         }, false);
         
-        /*
+        
         self.myCanvas.addEventListener('mousemove',function(evt){
             // self.grid = self.model.get("canvas_grid");
             self.translate = self.model.get("canvas_translate");
-            self.scale = self.model.get("canvas_scale");
 
             // var alter_info = self.model.get("info_table");
             // var c_detail = self.model.get("canvas_detail");
@@ -67,16 +66,16 @@ var InteractView = Backbone.View.extend({
                 self.dragged = true;
                 // console.log("mousemove");
                 mousePos = self.getMousePos(self.myCanvas, evt);
-                var tx=self.translate[0]+(mousePos.x-self.dragStart.x);
-                var ty=self.translate[1]+(mousePos.y-self.dragStart.y);
+                // console.log("mousePos: ", mousePos.x, mousePos.y);
+                var tx = self.translate[0]+(mousePos.x-self.dragStart.x);
+                var ty = self.translate[1]+(mousePos.y-self.dragStart.y);
                 // self.model.set({"moving": 1});
-                self.model.set({"canvas_translate":[tx, ty]});
-                self.model.set({"canvas_scale":self.scale});
+                self.model.set({"canvas_translate":[tx, ty]}, {silent: true});
                 self.model.trigger('change:canvas_scale');
                 
                 self.dragStart = self.getMousePos(self.myCanvas, evt);//mousePos.x,mousePos.y
-                
             }
+            /*
             else{
                 var point_info = self.grid[Math.floor(mousePos.x/c_detail)][Math.floor(mousePos.y/c_detail)];
                 
@@ -97,6 +96,7 @@ var InteractView = Backbone.View.extend({
                     }
                 }
             }
+            */
 
         },false);
 
@@ -104,16 +104,18 @@ var InteractView = Backbone.View.extend({
             // self.grid = self.model.get("canvas_grid");
             // trigger redraw!!!
             self.model.trigger('change:canvas_scale');
-            self.translate = self.model.get("canvas_translate");
-            self.scale = self.model.get("canvas_scale");
-            var mousePos = self.getMousePos(self.myCanvas, evt);
+            // self.translate = self.model.get("canvas_translate");
+            // self.scale = self.model.get("canvas_scale");
+            // var mousePos = self.getMousePos(self.myCanvas, evt);
             // var alter_info = self.model.get("info_table");
             // get image data
-            var ctx = self.myCanvas.getContext("2d");
-            var img_data = ctx.getImageData(mousePos.x, mousePos.y, 1, 1).data;
+            // var ctx = self.myCanvas.getContext("2d");
+            // var img_data = ctx.getImageData(mousePos.x, mousePos.y, 1, 1).data;
             // console.log("image data:", img_data);
             // var c_detail = self.model.get("canvas_detail");
             
+            // information
+            /*
             if (!self.dragged && !self.click){
                 var point_info = self.grid[Math.floor(mousePos.x/c_detail)][Math.floor(mousePos.y/c_detail)];
                 if(point_info != "*t*" && (125-img_data[0])/3 == (96-img_data[1])/3 && (125-img_data[0])/3 == (65-img_data[2])/3 && (65-img_data[2])/3 == (96-img_data[1])/3){
@@ -132,21 +134,19 @@ var InteractView = Backbone.View.extend({
                         var index = parse_grid[2].split("_");
                         // console.log(parse_grid[1], parse_grid[2], alter_info[index[0]][index[1]], alter_info["leaves"][parse_grid[1]]);         
                         self.writeMessage1(Math.floor(mousePos.x), Math.floor(mousePos.y), alter_info[index[0]][index[1]], alter_info["leaves"][parse_grid[1]]);
-                        ga('send', 'event', event_mode, "click_leaf", session_id);
                     }
                     else{
                         if(point_info != "*t*"){
                             var index = self.grid[Math.floor(mousePos.x/c_detail)][Math.floor(mousePos.y/c_detail)].split("_");
                             self.writeMessage(Math.floor(mousePos.x), Math.floor(mousePos.y), alter_info[index[0]][index[1]]);
-                            ga('send', 'event', event_mode, "click_stick", session_id);
                         }                        
                     }
                 }
-
             }
+            */
             self.dragStart = null;
         }, true);
-        */
+        
 
         self.myCanvas.addEventListener('mousedown', function(evt) {
             // self.grid = self.model.get("canvas_grid");
