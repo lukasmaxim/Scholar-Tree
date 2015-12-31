@@ -115,6 +115,7 @@ var DrawView = Backbone.View.extend({
             tree_amin_frame[this.id] = [];
             self.generate_frames(this.id);
             if(this.id == view_ego){
+                self.model.set({"scale": tree_snap_scale[view_ego]}, {silent: true});
                 self.model.trigger('change:current_ego');
             }
         });
@@ -144,6 +145,7 @@ var DrawView = Backbone.View.extend({
             $(hide_snap).css({'border-width': '3px'});
             highlight_list["selected"] = "None";
             view_ego = this.id.slice(0,5); //!!! set current_ego and trgger it
+            self.model.set({"scale": tree_snap_scale[view_ego]}, {silent: true});
             self.model.set({"current_ego": view_ego});
             // anim.highlight_choose = 0; //!!! set scale and translate back [ego]
             // anim.static_img(view_ego);
@@ -184,8 +186,9 @@ var DrawView = Backbone.View.extend({
         drawing_canvas.anim_canvas.width = $("#anim_tree").width() - 10;
 
         // var current_trans = this.model.get("canvas_translate");
+        var current_scale = this.model.get("scale");
         context.translate(0.5, 0.5);
-        context.scale(tree_snap_scale[ego], tree_snap_scale[ego]);
+        context.scale(current_scale, current_scale);
         // var amin_frame = [];
 
         // self.current_idx = 0;
