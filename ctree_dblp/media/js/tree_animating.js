@@ -55,7 +55,8 @@ var AnimView = Backbone.View.extend({
             self.current_idx = 0;
             // self.static_img(view_ego);
             // self.model.set({"current_ego": view_ego});
-            self.model.set({"scale": tree_snap_scale[view_ego]}, {silent: true});
+            self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
+            self.model.set({"canvas_translate": [0.5, 0.5]}, {silent: true});
             self.model.trigger('change:new_researcher');
         });
 
@@ -88,7 +89,8 @@ var AnimView = Backbone.View.extend({
                 //$('.btn-group').attr("disabled", true);
                 highlight_list["selected"] = this.value;
                 highlight_list["on"] = 1;
-                self.model.set({"scale": tree_snap_scale[view_ego]}, {silent: true});
+                self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
+                self.model.set({"canvas_translate": [0.5, 0.5]}, {silent: true});
                 self.model.trigger('change:new_researcher');
                 if(this.value != 'None')
                     tree_util.fadeout = 0.5;

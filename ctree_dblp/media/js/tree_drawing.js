@@ -9,6 +9,8 @@ var DrawView = Backbone.View.extend({
         _.bindAll(this, 'set_tree_info');
 
         this.model.bind('change:current_ego', this.draw_static);
+        this.model.bind('change:scale', this.draw_static);
+        this.model.bind('change:canvas_translate', this.draw_static);
         this.model.bind('change:new_researcher', this.set_tree_info);
         
         // self.trigger('change:time_period'); !!!reselect need to re trigger the for loop up
@@ -115,7 +117,8 @@ var DrawView = Backbone.View.extend({
             tree_amin_frame[this.id] = [];
             self.generate_frames(this.id);
             if(this.id == view_ego){
-                self.model.set({"scale": tree_snap_scale[view_ego]}, {silent: true});
+                self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
+                self.model.set({"canvas_translate": [0.5, 0.5]}, {silent: true});
                 self.model.trigger('change:current_ego');
             }
         });
@@ -145,7 +148,8 @@ var DrawView = Backbone.View.extend({
             $(hide_snap).css({'border-width': '3px'});
             highlight_list["selected"] = "None";
             view_ego = this.id.slice(0,5); //!!! set current_ego and trgger it
-            self.model.set({"scale": tree_snap_scale[view_ego]}, {silent: true});
+            self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
+            self.model.set({"canvas_translate": [0.5, 0.5]}, {silent: true});
             self.model.set({"current_ego": view_ego});
             // anim.highlight_choose = 0; //!!! set scale and translate back [ego]
             // anim.static_img(view_ego);
@@ -185,9 +189,9 @@ var DrawView = Backbone.View.extend({
         drawing_canvas.anim_canvas.height = $("#anim_tree").height() - 10;
         drawing_canvas.anim_canvas.width = $("#anim_tree").width() - 10;
 
-        // var current_trans = this.model.get("canvas_translate");
-        var current_scale = this.model.get("scale");
-        context.translate(0.5, 0.5);
+        var current_trans = this.model.get("canvas_translate");
+        var current_scale = this.model.get("canvas_scale");
+        context.translate(current_trans[0], current_trans[1]);
         context.scale(current_scale, current_scale);
         // var amin_frame = [];
 

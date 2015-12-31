@@ -127,6 +127,7 @@ var MyApp = function MyApp(){
     this.render = new RenderingView({model: this.model, containerID: "#rendering"});
     this.animation = new AnimView({model: this.model, containerID: "#animating"});
     this.draw_tree = new DrawView({model: this.model, containerID: "#drawing"});
+    this.interact_tree = new InteractView({model: this.model, containerID: "#drawing"});
 
     // d3.xml("http://dblp.uni-trier.de/pers/xx/m/Ma:Kwan=Liu.xml", function(error, data) {
     //     if (error) throw error;
