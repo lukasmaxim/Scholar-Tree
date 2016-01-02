@@ -98,12 +98,21 @@ var tree_click_grid = {
   "tree4": []
 };
 
+var tree_info = {
+  "tree1": [], 
+  "tree2": [],
+  "tree3": [],
+  "tree4": []
+};
+
 var view_ego = "tree1";
 
-var timer = {
+var mytimer = {
   anim_timer: null,
   blinking_timer: null
-}
+};
+
+var blinking_timer = null;
 
 var highlight_list = {
     "authors": [],

@@ -9,8 +9,9 @@ var AnimView = Backbone.View.extend({
 		this.backword = 0;
 		this.tree_height = 0;
 		this.current_idx = 0;
-		this.blinking = 0;
+		this.blinking_control = 0;
 	    
+	    this.block = $('#block_page');
         this.set_events();
     },
 
@@ -18,25 +19,30 @@ var AnimView = Backbone.View.extend({
     	var self = this;
         // for general events        
         var save = $('#save_icon');
+        // var block = $('#block_page');
         var tree_anim = $('#tree_anim');
         var tree_pic = $('#tree_pic');
         var tree_pause = $('#tree_pause');
         var tree_backward = $('#tree_backward');
         var tree_forward = $('#tree_forward');
+        var info_page = $("#click_info");
 
         var selectors = [$("#tree1_select"), $("#tree2_select"), $("#tree3_select"), $("#tree4_select")];
         
         save.click(function(){
             var save_link = "#" + view_ego + "_save";
             $(save_link)[0].click();
+            return false;
         });
 
         save.hover(function(){
             save.css("cursor", "pointer");
+            return false;
         });
 
         save.mouseout(function(){
             save.css("cursor", "");
+            return false;
         });
 
         tree_anim.click(function(){
@@ -44,8 +50,10 @@ var AnimView = Backbone.View.extend({
             $("#tree_forward").removeAttr("disabled");
             // highlight_list["selected"] = "None";
             highlight_list["on"] = 0;
+            self.block.show();
             self.backword = 0;
             self.forward = 0;
+            info_page.hide();
             self.anim_render(view_ego, self.current_idx);
         });
 
@@ -53,6 +61,8 @@ var AnimView = Backbone.View.extend({
             // highlight_list["selected"] = "None"; // trigger selector change!!!
             highlight_list["on"] = 0;
             self.current_idx = 0;
+            self.block.hide();
+            info_page.hide();
             // self.static_img(view_ego);
             // self.model.set({"current_ego": view_ego});
             self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
@@ -63,7 +73,8 @@ var AnimView = Backbone.View.extend({
         tree_pause.click(function(){
             // highlight_list["selected"] = "None";
             highlight_list["on"] = 0;
-            clearInterval(timer.anim_timer);
+            info_page.hide();
+            clearInterval(mytimer.anim_timer);
         });
 
         tree_backward.click(function(){
@@ -71,6 +82,7 @@ var AnimView = Backbone.View.extend({
             self.backword = 1;
             self.forward = 0;
             self.current_idx -= 1;
+            info_page.hide();
             self.anim_render(view_ego, self.current_idx);
         });
 
@@ -81,6 +93,7 @@ var AnimView = Backbone.View.extend({
             }
             self.forward = 1;
             self.backword = 0;
+            info_page.hide();
             self.anim_render(view_ego, self.current_idx);
         });
 
@@ -92,17 +105,23 @@ var AnimView = Backbone.View.extend({
                 self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
                 self.model.set({"canvas_translate": [0.5, 0.5]}, {silent: true});
                 self.model.trigger('change:new_researcher');
-                if(this.value != 'None')
+                info_page.hide();
+                if(this.value != 'None'){
                     tree_util.fadeout = 0.5;
-                else
+                    self.block.show();
+                }
+                else{
                     tree_util.fadeout = 1;
+                    self.block.hide();
+                }
+
                 self.highlight_anim(view_ego);
             });
         }
     },
 
     anim_render: function(ego, idx){
-        clearInterval(timer.blinking_timer);
+        clearInterval(mytimer.blinking_timer);
     	var amin_frame = tree_amin_frame[ego];
     	var context =  drawing_canvas.anim_canvas.getContext('2d');
 
@@ -162,8 +181,8 @@ var AnimView = Backbone.View.extend({
 
     	// var idx = 0;
         // var height = 0;
-        if(timer.anim_timer != null){
-        	clearInterval(timer.anim_timer);
+        if(mytimer.anim_timer != null){
+        	clearInterval(mytimer.anim_timer);
         }
 
         // draw to specific idx
@@ -227,14 +246,15 @@ var AnimView = Backbone.View.extend({
         }
         
         // for animation playing
-        timer.anim_timer = setInterval(function (){
+        mytimer.anim_timer = setInterval(function (){
 			var frame = amin_frame[idx];
 						
 			if(idx === amin_frame.length){
                 if(highlight_list["selected"] != "None" && highlight_list["on"] == 0){
                     tree_util.draw_highlight_leaf(ego, 0);
                 }
-				clearInterval(timer.anim_timer);
+
+				clearInterval(mytimer.anim_timer);
 				$('#tree_forward').attr("disabled", true);
 				this.current_idx = amin_frame.length;
 			}
@@ -290,13 +310,14 @@ var AnimView = Backbone.View.extend({
 				idx++;
 			}
 			else
-				clearInterval(timer.anim_timer);
+				clearInterval(mytimer.anim_timer);
 			
 			if(idx === amin_frame.length){
                 if(highlight_list["selected"] != "None" && highlight_list["on"] == 0){
                     tree_util.draw_highlight_leaf(ego, 0);
                 }
-				clearInterval(timer.anim_timer);
+                self.block.hide();
+				clearInterval(mytimer.anim_timer);
 				self.current_idx = 0;
 	            self.forward = 0;
 	            self.backword = 0;
@@ -308,16 +329,23 @@ var AnimView = Backbone.View.extend({
 
 
     highlight_anim: function(ego){
+    	var self = this;
     	// this.static_img(ego);
-    	this.model.set({"current_ego": view_ego});
+    	// this.model.set({"current_ego": view_ego});
+    	self.model.trigger('change:current_ego');
     	if(highlight_list["selected"] == "None" || highlight_list["on"] == 0){
     		return;
     	}
-    	timer.blinking_timer = setInterval(function (){
-    		if(this.blinking == 0) this.blinking = 1;
-    		else this.blinking = 0;
-    		tree_util.draw_highlight_leaf(ego, this.blinking);
-    	}.bind(this), 100);    	
+    	if(mytimer.blinking_timer != null){
+        	clearInterval(mytimer.blinking_timer);
+        }
+    	mytimer.blinkiing_timer = setInterval(function (){
+    		console.log(self.blinking_control);
+    		if(self.blinking_control == 0) self.blinking_control = 1;
+    		else self.blinking_control = 0;
+    		tree_util.draw_highlight_leaf(ego, self.blinking_control);
+    	}, 100);   
+    	// mytimer["blinking_timer"] = temp_timer; 	
     }
 
 });

@@ -144,6 +144,7 @@ var DrawView = Backbone.View.extend({
             $(show_text).show();
             // $(show_snap).show();
             // $(hide_snap).hide();
+            tree_util.fadeout = 1;
             $(show_snap).css({'border-width': '1px'});
             $(hide_snap).css({'border-width': '3px'});
             highlight_list["selected"] = "None";
@@ -174,9 +175,9 @@ var DrawView = Backbone.View.extend({
 
     draw_static: function(){
         var self = this;
-    	clearInterval(timer.anim_timer);
-    	clearInterval(timer.blinking_timer);
-    	var context =  drawing_canvas.anim_canvas.getContext('2d');
+    	clearInterval(mytimer.anim_timer);
+    	clearInterval(mytimer.blinking_timer);
+    	var context = drawing_canvas.anim_canvas.getContext('2d');
         // console.log(ego, tree_points[ego]);
 
         var ego = self.model.get("current_ego");

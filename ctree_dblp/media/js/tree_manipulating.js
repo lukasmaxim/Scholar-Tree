@@ -7,13 +7,17 @@ var InteractView = Backbone.View.extend({
         // bind view with model
         console.log("in manipulating initialize");
 
+        this.el_main_canvas = $('#anim_container');
         this.click = false;
         this.dragStart = null;
         this.dragged = false;
+        this.info_label = ["<b>Stick id: </b>", "<b>Trunk side: </b>", "<b>Branch layer: </b>", "<b>Branch side: </b>", "<b>Leaves: </b>"];
 
         this.myCanvas = drawing_canvas.anim_canvas;
         this.translate = [];
         this.scale = 3;
+        this.grid = [];
+        this.detail = [];
 
         this.set_mouse_event();
     },
@@ -22,12 +26,9 @@ var InteractView = Backbone.View.extend({
         var self = this;
         // var context =  drawing_canvas.anim_canvas.getContext('2d');
         self.myCanvas.addEventListener('mousewheel', function(evt) {
-            // self.grid = self.model.get("canvas_grid");
             self.translate = self.model.get("canvas_translate");
             self.scale = self.model.get("canvas_scale");
-            // var leaf_scale = self.model.get("leaf_scale");
-            // var length_scale = self.model.get("sub_leaf_len_scale");
-
+           
             var scaleFactor = 1.1;
             var mousePos = self.getMousePos(self.myCanvas, evt);//mousePos.x,mousePos.y
             var tx = (mousePos.x - self.translate[0]) / self.scale;
@@ -52,16 +53,21 @@ var InteractView = Backbone.View.extend({
         
         
         self.myCanvas.addEventListener('mousemove',function(evt){
-            // self.grid = self.model.get("canvas_grid");
+            self.grid = tree_click_grid[view_ego];
+            self.detail = tree_info[view_ego];
             self.translate = self.model.get("canvas_translate");
-
+            self.scale = self.model.get("canvas_scale");
+           
             // var alter_info = self.model.get("info_table");
             // var c_detail = self.model.get("canvas_detail");
             var mousePos = self.getMousePos(self.myCanvas, evt);
             var ctx = self.myCanvas.getContext("2d");
             var img_data = ctx.getImageData(mousePos.x, mousePos.y, 1, 1).data;
 
-            // self.el_main_canvas.css("cursor", "");
+            // var renderscale = 0.15/self.scale;
+            self.el_main_canvas.css("cursor", "");
+            var canvas_point = [Math.round((mousePos.x-self.translate[0])/self.scale), Math.round((mousePos.y-self.translate[1])/self.scale)];
+            var grid_point = [Math.round(canvas_point[0]*0.15), Math.round(canvas_point[1]*0.15)];
             if (self.dragStart && Math.abs(mousePos.x-self.dragStart.x)>0.1){
                 self.dragged = true;
                 // console.log("mousemove");
@@ -75,35 +81,27 @@ var InteractView = Backbone.View.extend({
                 
                 self.dragStart = self.getMousePos(self.myCanvas, evt);//mousePos.x,mousePos.y
             }
-            /*
-            else{
-                var point_info = self.grid[Math.floor(mousePos.x/c_detail)][Math.floor(mousePos.y/c_detail)];
-                
-                if(point_info != "*t*" && (125-img_data[0])/3 == (96-img_data[1])/3 && (125-img_data[0])/3 == (65-img_data[2])/3 && (65-img_data[2])/3 == (96-img_data[1])/3){
-                    self.el_main_canvas.css("cursor", "pointer"); 
-                }
-                else if(point_info != -1){
-                    var parse_grid = point_info.split("*+"); 
-                    if(point_info != "*t*" && (parse_grid.length == 1 || parse_grid[0] == "leafid" || parse_grid[0] == "saveIMG" || parse_grid[0] == "popup" || parse_grid[0] == "root")){
-                        self.el_main_canvas.css("cursor", "pointer");
-                    }
-                    else{ 
-                        self.el_main_canvas.css("cursor", "");                        
-                        if(parse_grid[0] == "leaf"){
-                            self.model.set({"clicking_leaf":parse_grid[1]});
-                            self.writeNote(Math.floor(mousePos.x), Math.floor(mousePos.y), parse_grid[1]);
-                        }                     
-                    }
+            else if( grid_point[0] < self.grid.length && grid_point[1] < self.grid[0].length){
+                // var grid_point = [Math.round(canvas_point[0]*0.15), Math.round(canvas_point[1]*0.15)];
+                var point_idx = self.grid[grid_point[0]][grid_point[1]];
+                var point_info = self.detail[point_idx];
+                if(point_idx != -1){
+                    self.el_main_canvas.css("cursor", "pointer");
+                    // console.log(point_idx, [Math.round((mousePos.x-self.translate[0]))/self.scale, Math.round((mousePos.y-self.translate[1]))/self.scale], [canvas_point[0], canvas_point[1]]);
+                    // self.testGrid(canvas_point[0], canvas_point[1], point_idx);
                 }
             }
-            */
 
         },false);
 
         self.myCanvas.addEventListener('mouseup',function(evt){
-            // self.grid = self.model.get("canvas_grid");
             // trigger redraw!!!
             self.model.trigger('change:canvas_scale');
+            self.grid = tree_click_grid[view_ego];
+            self.detail = tree_info[view_ego];
+            self.translate = self.model.get("canvas_translate");
+            self.scale = self.model.get("canvas_scale");
+
             // self.translate = self.model.get("canvas_translate");
             // self.scale = self.model.get("canvas_scale");
             // var mousePos = self.getMousePos(self.myCanvas, evt);
@@ -113,37 +111,33 @@ var InteractView = Backbone.View.extend({
             // var img_data = ctx.getImageData(mousePos.x, mousePos.y, 1, 1).data;
             // console.log("image data:", img_data);
             // var c_detail = self.model.get("canvas_detail");
+
+            // var canvas_point = [Math.round((mousePos.x-self.translate[0])/self.scale), Math.round((mousePos.y-self.translate[1])/self.scale)];
+            // var grid_point = [Math.round(canvas_point[0]*0.15), Math.round(canvas_point[1]*0.15)];
             
+            var mousePos = self.getMousePos(self.myCanvas, evt);
+            var ctx = self.myCanvas.getContext("2d");
+            // var img_data = ctx.getImageData(mousePos.x, mousePos.y, 1, 1).data;
+            $("#click_info").hide();
             // information
-            /*
             if (!self.dragged && !self.click){
-                var point_info = self.grid[Math.floor(mousePos.x/c_detail)][Math.floor(mousePos.y/c_detail)];
-                if(point_info != "*t*" && (125-img_data[0])/3 == (96-img_data[1])/3 && (125-img_data[0])/3 == (65-img_data[2])/3 && (65-img_data[2])/3 == (96-img_data[1])/3){
-                    // console.log("tree layer:", (125-img_data[0])/3);
-                    // self.writeNote(Math.floor(mousePos.x), Math.floor(mousePos.y), "L" + Math.round((125-img_data[0])/3));
-                    
-                }
-                else if(point_info != -1){    
-                    var parse_grid = point_info.split("*+");
-                    if(parse_grid[0] == "leaf"){
-                    }
-                    else if(parse_grid[0] == "root"){
-                        self.writeNote(Math.floor(mousePos.x), Math.floor(mousePos.y), parse_grid[1]);
-                    }
-                    else if(parse_grid[0] == "leafid"){
-                        var index = parse_grid[2].split("_");
-                        // console.log(parse_grid[1], parse_grid[2], alter_info[index[0]][index[1]], alter_info["leaves"][parse_grid[1]]);         
-                        self.writeMessage1(Math.floor(mousePos.x), Math.floor(mousePos.y), alter_info[index[0]][index[1]], alter_info["leaves"][parse_grid[1]]);
-                    }
-                    else{
-                        if(point_info != "*t*"){
-                            var index = self.grid[Math.floor(mousePos.x/c_detail)][Math.floor(mousePos.y/c_detail)].split("_");
-                            self.writeMessage(Math.floor(mousePos.x), Math.floor(mousePos.y), alter_info[index[0]][index[1]]);
-                        }                        
+                var canvas_point = [Math.round((mousePos.x-self.translate[0])/self.scale), Math.round((mousePos.y-self.translate[1])/self.scale)];
+                var grid_point = [Math.round(canvas_point[0]*0.15), Math.round(canvas_point[1]*0.15)];
+            
+                if( grid_point[0] < self.grid.length && grid_point[1] < self.grid[0].length){
+                    // var grid_point = [Math.round(canvas_point[0]*0.15), Math.round(canvas_point[1]*0.15)];
+                    var point_idx = self.grid[grid_point[0]][grid_point[1]];
+                    var point_info = self.detail[point_idx];
+                    if(point_idx != -1){
+                        self.display_info(point_info);
+                        // self.point_grid(canvas_point[0], canvas_point[1], point_idx, self.scale);
+                        // self.el_main_canvas.css("cursor", "pointer");
+                        // console.log(point_idx, [Math.round((mousePos.x-self.translate[0]))/self.scale, Math.round((mousePos.y-self.translate[1]))/self.scale], [canvas_point[0], canvas_point[1]]);
+                        
                     }
                 }
             }
-            */
+            
             self.dragStart = null;
         }, true);
         
@@ -175,61 +169,45 @@ var InteractView = Backbone.View.extend({
 
     },
 
-    writeMessage: function (px, py, info) {
+    testGrid: function (px, py, info) {
         var self = this;
-        var context = self.myCanvas.getContext('2d');
-        context.fillStyle = 'rgba(225,225,225, 0.5)';
-        var box = 130 + 7*(info[0].length-10)
-        if (box < 130)
-            box = 130
-        if(display_detail["fruit"] != "none")
-            context.fillRect(px-2, py, box, 110);
-        else
-            context.fillRect(px-2, py, box, 90);
+        var context = drawing_canvas.anim_canvas.getContext('2d');
+        context.restore();
         context.font = '12pt Calibri';
         context.fillStyle = 'black';
-        context.fillText("Alter Id: " + info[0], px, py+20); //pos
-        context.fillText("Total Contacts: " + info[1], px, py+40);
-        // context.fillText("Fruit Size: " + info[2], px, py+60);
-        context.fillText("Branch Layer: " + info[3], px, py+60);
-        context.fillText("Branch Side: " + info[4], px, py+80);
-        if(display_detail["fruit"] != "none"){
-            context.fillText("Fruit Size: " + info[2], px, py+100);
-        }
+        context.fillText(info, px, py); //pos
     },
 
-    writeNote: function (px, py, info) {
+    point_grid: function(px, py, info, s) {
         var self = this;
-        var context = self.myCanvas.getContext('2d');
-        
-        context.font = '12pt Calibri';
-        context.fillStyle = 'black';
-        context.fillText(info, px+15, py+15); //pos
+        var context = drawing_canvas.anim_canvas.getContext('2d');
+        var radius = s*1000;
+        context.restore();
+        context.beginPath();
+        context.fillStyle = 'red';
+        context.strokeStyle = 'red';
+        context.lineWidth = 5;
+        context.arc(px, py, radius, 0, 2*Math.PI, true);
+        context.closePath();
+        // context.fill();
+        context.stroke();
     },
 
-    writeMessage1: function (px, py, info, leaf_info) {
+
+    display_info: function (info) {
         var self = this;
-        var context = self.myCanvas.getContext('2d');
-        context.fillStyle = 'rgba(225,225,225, 0.5)';
-        var box = 130 + 7*(info[0].length-10)
-        if (box < 130)
-            box = 130
-        if(display_detail["fruit"] != "none")
-            context.fillRect(px-2, py, box, 150);
-        else
-            context.fillRect(px-2, py, box, 130);
-        context.font = '12pt Calibri';
-        context.fillStyle = 'black';
-        context.fillText("Leaf Size: " + leaf_info[0], px, py+20);
-        context.fillText("Color Group: " + leaf_info[1], px, py+40);
-        context.fillText("Alter Id: " + info[0], px, py+60); //pos
-        context.fillText("Total Contacts: " + info[1], px, py+80);
-        // context.fillText("Fruit Size: " + info[2], px, py+60);
-        context.fillText("Branch Layer: " + info[3], px, py+100);
-        context.fillText("Branch Side: " + info[4], px, py+120);
-        if(display_detail["fruit"] != "none"){
-            context.fillText("Fruit Size: " + info[2], px, py+140);
+        var info_page = $("#click_info");
+        var info_text = "";
+        info_page.show();
+
+        for(var t = 0; t < 4; t++){
+            info_text += this.info_label[t] + info[t] + "<br>" ;
         }
+        info_text += this.info_label[4];
+        for(var t = 4; t < info.length; t++){
+            info_text += "<br>" + info[t];
+        }
+        info_page.html(info_text);
     }
 
 });
