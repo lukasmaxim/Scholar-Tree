@@ -151,6 +151,7 @@ var DrawView = Backbone.View.extend({
             view_ego = this.id.slice(0,5); //!!! set current_ego and trgger it
             self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
             self.model.set({"canvas_translate": [0.5, 0.5]}, {silent: true});
+            // self.model.trigger('change:new_researcher');
             self.model.set({"current_ego": view_ego});
             // anim.highlight_choose = 0; //!!! set scale and translate back [ego]
             // anim.static_img(view_ego);

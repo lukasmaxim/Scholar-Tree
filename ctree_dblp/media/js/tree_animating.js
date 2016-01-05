@@ -104,7 +104,7 @@ var AnimView = Backbone.View.extend({
                 highlight_list["on"] = 1;
                 self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
                 self.model.set({"canvas_translate": [0.5, 0.5]}, {silent: true});
-                self.model.trigger('change:new_researcher');
+                // self.model.trigger('change:new_researcher');
                 info_page.hide();
                 if(this.value != 'None'){
                     tree_util.fadeout = 0.5;
@@ -333,18 +333,25 @@ var AnimView = Backbone.View.extend({
     	// this.static_img(ego);
     	// this.model.set({"current_ego": view_ego});
     	self.model.trigger('change:current_ego');
+        clearInterval(mytimer.blinking_timer);
     	if(highlight_list["selected"] == "None" || highlight_list["on"] == 0){
+            clearInterval(mytimer.blinking_timer);
     		return;
     	}
     	if(mytimer.blinking_timer != null){
         	clearInterval(mytimer.blinking_timer);
         }
+        
     	mytimer.blinkiing_timer = setInterval(function (){
+            if(highlight_list["selected"] == "None" || highlight_list["on"] == 0){
+                clearInterval(mytimer.blinking_timer);
+                return;
+            }
     		console.log(self.blinking_control);
     		if(self.blinking_control == 0) self.blinking_control = 1;
     		else self.blinking_control = 0;
     		tree_util.draw_highlight_leaf(ego, self.blinking_control);
-    	}, 100);   
+    	}, 100); 
     	// mytimer["blinking_timer"] = temp_timer; 	
     }
 
