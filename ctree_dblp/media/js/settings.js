@@ -109,7 +109,7 @@ var view_ego = "tree1";
 
 var mytimer = {
   anim_timer: null,
-  "blinking_timer": null
+  blinking_timer: null
 };
 
 var blinking_timer = null;

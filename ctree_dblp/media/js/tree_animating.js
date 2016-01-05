@@ -347,7 +347,7 @@ var AnimView = Backbone.View.extend({
                 clearInterval(mytimer.blinking_timer);
                 return;
             }
-    		console.log(self.blinking_control);
+    		// console.log(self.blinking_control);
     		if(self.blinking_control == 0) self.blinking_control = 1;
     		else self.blinking_control = 0;
     		tree_util.draw_highlight_leaf(ego, self.blinking_control);
