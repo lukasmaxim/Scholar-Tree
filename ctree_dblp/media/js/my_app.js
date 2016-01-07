@@ -44,7 +44,7 @@ var MyApp = function MyApp(){
     });
 
     // update display container size
-    $("#main_display").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
+    $("#main_display").css({'height': $(window).height()-15-$("#header").height()-$("#footer").height()});
     $("#introduction").css({'height': $("#main_display").height()-275});
     $("#tree_result").css({'height': $("#main_display").height() - 15});
     // $("#tree_cnt").css({'height': $("#main_display").height() - 180});
@@ -54,7 +54,7 @@ var MyApp = function MyApp(){
 
     // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
     window.onresize = function(event) {
-        $("#main_display").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
+        $("#main_display").css({'height': $(window).height()-15-$("#header").height()-$("#footer").height()});
         $("#introduction").css({'height': $("#main_display").height()-275});
         $("#tree_result").css({'height': $("#main_display").height() - 15});
         // $("#tree_cnt").css({'height': $("#main_display").height() - 180});

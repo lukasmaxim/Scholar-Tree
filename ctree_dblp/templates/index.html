@@ -63,7 +63,7 @@
 			<div id="form" class="row relative" style="margin:10px;">
 				<span class="relative myfont3">DBLP URL:</span>
 				<input type="text" id="dblp_url" value="http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"></input>
-				<button id="check_url" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Search</button>
+				<button id="check_url" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Retrieve</button>
 			</div>
             <img id="progress" src="media/img/progress-bar.gif" style="display:none; width:50%;"></img>
             <div id="detail" class="row relative" style="margin:10px; display:none;">
@@ -80,13 +80,13 @@
             </div>
 
             <div id="introduction" class="row relative" style="margin:10px; overflow-y:auto; overflow-x: hidden;">
-                <span class="relative myfont3"><b>How to make Researcher Trees:</b></span>
+                <span class="relative myfont3"><b>How to Make Researcher Trees:</b></span>
                 <div style="text-align: justify;">
                 <span class="relative myfont3">
                     Researcher Tree is an online tool to generate 4 unique trees with different mapping. You can download each tree individually. Process steps are shown in following. <br>
-                    1. Searching researcher in <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a> website. <br>
-                    2. Copy the URL of the result of that researcher and paste the URL into our website. <br>
-                    3. Get the informaion of researcher and select the period to generate 4 kinds of trees. <br>
+                    1. Searching a researcher in <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a> website. <br>
+                    2. Copy the URL of the result of that target researcher and paste the URL into our website. <br>
+                    3. Retrieve the informaion of the researcher and select the period to generate trees. <br>
                     </span></div>
                 <!-- <div style="width:100%; height:300px; background:gainsboro;"></div> -->
             </div>            
@@ -128,7 +128,7 @@
                         </div>
                     </div>
 
-                    <div id='anim_container' class="col-md-7 relative" style="padding:0; border:1px solid gray; border-radius:10px; height:500px; border-bottom-width:10px; ">
+                    <div id='anim_container' class="col-md-7 relative" style="padding:0; border:1.5px solid gray; border-radius:10px; height:500px; /*border-bottom-width:10px;*/">
                         <canvas id='anim_tree' style="position:absolute; top:0; left:0; /*background:white;*/ width:100%; height:100%;"></canvas>
                         <span id="save_icon" class="glyphicon glyphicon-floppy-save" style="position:absolute; top:5px; right:5px; font-size:large;"></span>
                     </div>

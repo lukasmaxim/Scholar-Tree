@@ -107,7 +107,7 @@ var AnimView = Backbone.View.extend({
                 // self.model.trigger('change:new_researcher');
                 info_page.hide();
                 if(this.value != 'None'){
-                    tree_util.fadeout = 0.5;
+                    tree_util.fadeout = 0.25;
                     self.block.show();
                 }
                 else{
