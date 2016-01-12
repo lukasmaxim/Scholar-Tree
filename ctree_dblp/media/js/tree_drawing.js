@@ -103,7 +103,7 @@ var DrawView = Backbone.View.extend({
         var save_id = img_id + "_save";
         var cnt_id = img_id + "_cnt";
         var self = this;
-
+        var alters = self.model.get("new_researcher");
         // $(img_id).attr('href', img_src);
         $(img_id).css({'height': '100%'});
         $(img_id).attr('src', img_src).load(function(){
@@ -113,7 +113,7 @@ var DrawView = Backbone.View.extend({
                 $(this).css({'width': '100%'});
                 $(this).height('auto');
             }
-            tree_util.set_anim_canvas(this.id);
+            tree_util.set_anim_canvas(this.id, alters[this.id]);
             tree_amin_frame[this.id] = [];
             self.generate_frames(this.id);
             if(this.id == view_ego){
@@ -176,6 +176,7 @@ var DrawView = Backbone.View.extend({
 
     draw_static: function(){
         var self = this;
+        $("#click_info").hide();
     	clearInterval(mytimer.anim_timer);
     	clearInterval(mytimer.blinking_timer);
     	var context = drawing_canvas.anim_canvas.getContext('2d');

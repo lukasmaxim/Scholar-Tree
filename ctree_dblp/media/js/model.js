@@ -24,8 +24,15 @@ var Tree_Model = Backbone.Model.extend({
         var request_url = "check_searching/?researcher=" + encodeURIComponent(request);
         d3.json(request_url, function(result){
             console.log(result);
-            self.set({"time_period": result});
-            self.trigger('change:time_period');
+            if(result[0] == -1){
+               alert("Please get the EXACT MARCHES URL!");
+               $("#progress").hide();
+            }
+            else{
+                self.set({"time_period": result});
+                self.trigger('change:time_period');
+            }
+            
         });
     },
 
@@ -41,7 +48,7 @@ var Tree_Model = Backbone.Model.extend({
         console.log("get request", request);
         var request_url = "get_tree_structure/?final_setting=" + encodeURIComponent(request);
         d3.json(request_url, function(result){
-            console.log(result[0]);
+            console.log(result);
             self.set({"tree_structure": result[0]}, {silent: true});
             self.trigger('change:tree_structure');
             highlight_list["authors"] = result[1];

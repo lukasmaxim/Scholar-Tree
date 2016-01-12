@@ -121,6 +121,7 @@ var AnimView = Backbone.View.extend({
     },
 
     anim_render: function(ego, idx){
+        var self = this;
         clearInterval(mytimer.blinking_timer);
     	var amin_frame = tree_amin_frame[ego];
     	var context =  drawing_canvas.anim_canvas.getContext('2d');
@@ -253,7 +254,7 @@ var AnimView = Backbone.View.extend({
                 if(highlight_list["selected"] != "None" && highlight_list["on"] == 0){
                     tree_util.draw_highlight_leaf(ego, 0);
                 }
-
+                self.block.hide();
 				clearInterval(mytimer.anim_timer);
 				$('#tree_forward').attr("disabled", true);
 				this.current_idx = amin_frame.length;
@@ -309,8 +310,10 @@ var AnimView = Backbone.View.extend({
 				this.current_idx = idx;
 				idx++;
 			}
-			else
+			else{
+                self.block.hide();
 				clearInterval(mytimer.anim_timer);
+            }
 			
 			if(idx === amin_frame.length){
                 if(highlight_list["selected"] != "None" && highlight_list["on"] == 0){

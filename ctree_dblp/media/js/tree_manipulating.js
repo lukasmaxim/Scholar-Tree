@@ -57,7 +57,7 @@ var InteractView = Backbone.View.extend({
             self.detail = tree_info[view_ego];
             self.translate = self.model.get("canvas_translate");
             self.scale = self.model.get("canvas_scale");
-           
+            
             // var alter_info = self.model.get("info_table");
             // var c_detail = self.model.get("canvas_detail");
             var mousePos = self.getMousePos(self.myCanvas, evt);

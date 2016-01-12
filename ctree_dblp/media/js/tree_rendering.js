@@ -58,6 +58,7 @@ var RenderingView = Backbone.View.extend({
         this.select_leaf = "-1";
         this.snap_info = [];
         this.snap_idx = 0;
+        this.total_alter = {"tree1": 0, "tree2": 0, "tree3": 0, "tree4": 0}; 
 	},
 
 	// caculate the boundary
@@ -117,6 +118,7 @@ var RenderingView = Backbone.View.extend({
                 var ori_dl = left_side*0.65;
                 var count_dr = right_side;
                 var count_dl = left_side;
+                this.total_alter[e] = count_dr + count_dl;
                 var t_scale = (right_side + left_side)/150;
                 if(right_side+left_side < 100){
                     t_scale = 0.5;
@@ -1542,6 +1544,7 @@ var RenderingView = Backbone.View.extend({
         for(var e in tree_egos){
             self.current_ego = e;
             this.snap_idx = 0;
+            tree_info[e] = [];
         	for(var t = 0; t < tree_egos[e].length; t++){ // all the ego
         		// this.saveCanvas = drawing_canvas[e];
         		// this.context =   this.saveCanvas.getContext('2d');
@@ -1690,8 +1693,8 @@ var RenderingView = Backbone.View.extend({
         $("#tree_result").show();
         $("#no_preview").hide();
 
+        self.model.set({"new_researcher": this.total_alter}, {silent: true});
         self.model.trigger('change:new_researcher');
-        // self.model.set({"new_researcher": 1});
 
         /*
         for(var e in tree_egos){

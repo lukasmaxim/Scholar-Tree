@@ -126,6 +126,8 @@ var util = {
         var tree3_selection = $('#tree3_select');
         var tree4_selection = $('#tree4_select');
         
+        $(".highlight_selector").empty();
+
         for(var a=0; a < highlight_list["authors"].length; a++){
             var author_name = highlight_list["authors"][a];
             var opt1 = $('<option></option>');
@@ -244,12 +246,12 @@ var tree_util = {
         }
     },
 
-    set_anim_canvas: function(ego_id){
+    set_anim_canvas: function(ego_id, alters){
         img_id = "#" + ego_id;
         // var anim_id = img_id + "_anim";
         // var cnt_id = img_id + "_cnt";
         // var pic_id = img_id + "_pic";
- 
+        // console.log("total_alters", alters);
         var anim_cnt_h = $("#anim_container").height();
         var anim_cnt_w = $("#anim_container").height() * ($(img_id).width()/$(img_id).height());
 
