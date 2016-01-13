@@ -44,9 +44,9 @@ var MyApp = function MyApp(){
     });
 
     // update display container size
-    $("#main_display").css({'height': $(window).height()-15-$("#header").height()-$("#footer").height()});
-    $("#introduction").css({'height': $("#main_display").height()-275});
-    $("#tree_result").css({'height': $("#main_display").height() - 15});
+    $("#main_display").css({'height': $(window).height()-10-$("#header").height()-$("#footer").height()});
+    // $("#introduction").css({'height': $("#main_display").height()-275});
+    $("#tree_result").css({'height': $("#main_display").height()-15});
     // $("#tree_cnt").css({'height': $("#main_display").height() - 180});
     $(".thumb_cnt").css({'height': $("#tree_result").height()});
     $(".snap_view").css({'height': $(".snap_view").width()+20});
@@ -54,9 +54,9 @@ var MyApp = function MyApp(){
 
     // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
     window.onresize = function(event) {
-        $("#main_display").css({'height': $(window).height()-15-$("#header").height()-$("#footer").height()});
-        $("#introduction").css({'height': $("#main_display").height()-275});
-        $("#tree_result").css({'height': $("#main_display").height() - 15});
+        $("#main_display").css({'height': $(window).height()-10-$("#header").height()-$("#footer").height()});
+        // $("#introduction").css({'height': $("#main_display").height()-275});
+        $("#tree_result").css({'height': $("#main_display").height()-15});
         // $("#tree_cnt").css({'height': $("#main_display").height() - 180});
         $(".thumb_cnt").css({'height': $("#tree_result").height()});
         $(".snap_view").css({'height': $(".snap_view").width()+20});
@@ -75,8 +75,18 @@ var MyApp = function MyApp(){
     //     // other options
     // });
 
+    // $(".tooltip_help").tooltip();
+
     var search = $('#check_url');
     var finish = $('#draw_tree');
+    var start = $('#start_btn');
+
+    start.click(function(){
+        console.log("click start");
+        $("#search_engine").show();
+        $("#start_page").hide();
+        // $("#result").hide();
+    });
 
     search.click(function(){
         console.log("click search");
@@ -84,7 +94,7 @@ var MyApp = function MyApp(){
         self.model.check_researcher(resercher);
         $("#progress").show();
         $("#detail").hide();
-        $("#no_preview").show();
+        // $("#no_preview").show();
         $("#tree_result").hide();
     });
 
@@ -92,7 +102,7 @@ var MyApp = function MyApp(){
         console.log("click finish");
         finish.attr("disabled", true);
         $("#loading").show();
-        $("#no_preview").hide();
+        // $("#no_preview").hide();
         $("#tree_result").hide();
         $("#tree1_cnt")[0].click();
         var slider = $("#period_slider").data("ionRangeSlider");

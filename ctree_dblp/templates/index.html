@@ -57,46 +57,37 @@
         </div>
 	</div>
 
+    
 	<div id="main_display" class="row relative" style="width:99%; /*height:1000px;*/ margin:10px 10px; overflow:auto; min-width:950px; min-height:750px;">
 		<!-- search -->
-		<div id="search_engine" class="left relative" style="width:25%; height:100%;">
-			<div id="form" class="row relative" style="margin:10px;">
-				<span class="relative myfont3">DBLP URL:</span>
-				<input type="text" id="dblp_url" value="http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"></input>
-				<button id="check_url" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Retrieve</button>
-			</div>
-            <img id="progress" src="media/img/progress-bar.gif" style="display:none; width:50%;"></img>
-            <div id="detail" class="row relative" style="margin:10px; display:none;">
-                <div style="margin:10px 0;">
-                    <span class="relative myfont3">Researcher:</span>
-                    <span id="researcher_name" class="relative myfont3">Kwan-Liu Ma</span>
+		<div id="search_engine_cnt" class="left relative" style="width:25%; height:50%;">
+            <div id="search_engine" style="width:100%; height:100%; display:none;">
+    			<div id="form" class="row relative" style="margin:10px;">
+    				<span class="relative myfont3">DBLP URL:</span>
+    				<input type="text" id="dblp_url" value="http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu" title="Copy the searching result URL of DBLP" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"></input>
+    				<button id="check_url" title="Retrieve information of this researcher" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Retrieve</button>
+    			</div>
+                <img id="progress" src="media/img/progress-bar.gif" style="display:none; width:50%;"></img>
+                <div id="detail" class="row relative" style="margin:10px; display:none;">
+                    <div style="margin:10px 0;">
+                        <span class="relative myfont3">Researcher:</span>
+                        <span id="researcher_name" class="relative myfont3">Kwan-Liu Ma</span>
+                    </div>
+                    <!-- <span class="relative myfont3 row">Time:</span> -->
+                    <div title="Choosing an interesting period" class="row" style="margin:0 8px;">
+                        <input type="text" id="period_slider" class="row" style="margin:10px 0;"></input>
+                    </div>
+                    
+                    <button id="draw_tree" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px; margin:10px 0;">Create Trees</button>
                 </div>
-                <!-- <span class="relative myfont3 row">Time:</span> -->
-                <div class="row" style="margin:0 8px;">
-                    <input type="text" id="period_slider" class="row" style="margin:10px 0;"></input>
-                </div>
-                
-                <button id="draw_tree" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px; margin:10px 0;">Finish</button>
             </div>
-
-            <div id="introduction" class="row relative" style="margin:10px; overflow-y:auto; overflow-x: hidden;">
-                <span class="relative myfont3"><b>How to Make Researcher Trees:</b></span>
-                <div style="text-align: justify;">
-                <span class="relative myfont3">
-                    Researcher Tree is an online tool to generate 4 unique trees with different mapping. You can download each tree individually. Process steps are shown in following. <br>
-                    1. Searching a researcher in <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a> website. <br>
-                    2. Copy the URL of the result of that target researcher and paste the URL into our website. <br>
-                    3. Retrieve the informaion of the researcher and select the period to generate trees. <br>
-                    </span></div>
-                <!-- <div style="width:100%; height:300px; background:gainsboro;"></div> -->
-            </div>            
-		</div>
+        </div>
 
 		<!-- result -->
 		<div id="result" class="left relative" style="/*border:1px solid gray; border-radius: 5px;*/ width:75%; height:100%; overflow:hidden;">
             <img id="loading" src="media/img/loader.gif" class="relative" style="display:none; height:50px; margin-left:50%; margin-top:30px;"></img>
             <div id="block_page" style="position:absolute; top:0; left:0; height:100%; width:75%; z-index:100; display:none;"></div>
-            <h1 id="no_preview" style="text-align: center; top:10%; position:relative; color:gainsboro;"><b>NO PREVIEW<br>AVAILABLE</b></h1>
+            <h1 id="no_preview" style="text-align: center; top:10%; position:relative; color:gainsboro; display:none;"><b>NO PREVIEW<br>AVAILABLE</b></h1>
             <div id="tree_result" style="display:none;">
                 <div class="row" style="margin-left:0; width:99%;">
                     <!-- <div id="tree_cnt" class="col-md-9 relative" style="padding:0; border:1px solid gray; border-radius:10px; height:500px; border-bottom-width:10px;">
@@ -106,22 +97,22 @@
 
                     </div> -->
                     <div class="col-md-2 thumb_cnt relative">
-                        <div id="tree1_cnt" class="snap_view selected" name="1">
+                        <div id="tree1_cnt" title="Tree1" class="snap_view selected" name="1">
                             <div>
                                 <img id="tree1" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;"></img>
                             </div>
                         </div>
-                        <div id="tree2_cnt" class="snap_view" name="2">
+                        <div id="tree2_cnt" title="Tree2" class="snap_view" name="2">
                             <div>
                                 <img id="tree2" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;"></img>
                             </div>
                         </div>
-                        <div id="tree3_cnt" class="snap_view" name="3">
+                        <div id="tree3_cnt" title="Tree3" class="snap_view" name="3">
                             <div>
                                 <img id="tree3" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;"></img>
                             </div>
                         </div>
-                        <div id="tree4_cnt" class="snap_view" name="4">
+                        <div id="tree4_cnt" title="Tree4" class="snap_view" name="4">
                             <div>
                                 <img id="tree4" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;"></img>
                             </div>
@@ -130,7 +121,7 @@
 
                     <div id='anim_container' class="col-md-7 relative" style="padding:0; border:1.5px solid gray; border-radius:10px; height:500px; /*border-bottom-width:10px;*/">
                         <canvas id='anim_tree' style="position:absolute; top:0; left:0; /*background:white;*/ width:100%; height:100%;"></canvas>
-                        <span id="save_icon" class="glyphicon glyphicon-floppy-save" style="position:absolute; top:5px; right:5px; font-size:large;"></span>
+                        <span id="save_icon" title="Save the tree image" class="glyphicon glyphicon-floppy-save" style="position:absolute; top:5px; right:5px; font-size:large;"></span>
                     </div>
                     <!-- <div class="col-md-3">
                         <div class="btn-group">
@@ -145,9 +136,9 @@
                     <div class="col-md-3">
                         <div class="btn-group">
                             <button type="button" id="tree_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
-                            <button type="button" id="tree_anim" value="1" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
-                            <button type="button" id="tree_pause" value="1" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
-                            <button type="button" id="tree_pic" value="1" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
+                            <button type="button" id="tree_anim" value="1" title="Play the animation" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
+                            <button type="button" id="tree_pause" value="1" title="Pause the animation" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
+                            <button type="button" id="tree_pic" value="1" title="Stop and set to the default" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
                             <button type="button" id="tree_forward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
                         </div>
 
@@ -168,7 +159,7 @@
                             <b>Leaf Color:</b> First collaborated time <br>
                             <b>Leaf Size:</b> Total collaborated paper <br>
                             <b>Highlight:</b><br>
-                            <select id="tree1_select" class="highlight_selector">
+                            <select id="tree1_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
                                 <option value="None">None</option>
                             </select>
                         </div>
@@ -188,7 +179,7 @@
                             <b>Leaf Color:</b> First collaborated time <br>
                             <b>Leaf Size:</b> Total collaborated paper <br>
                             <b>Highlight:</b><br>
-                            <select id="tree2_select" class="highlight_selector">
+                            <select id="tree2_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
                                 <option value="None">None</option>
                             </select>
                         </div>
@@ -209,7 +200,7 @@
                             <b>Leaf Color:</b> Paper types <br>
                             <b>Leaf Size:</b> Paper length <br>
                             <b>Highlight:</b><br>
-                            <select id="tree3_select" class="highlight_selector">
+                            <select id="tree3_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
                                 <option value="None">None</option>
                             </select>
                         </div>
@@ -229,7 +220,7 @@
                             <b>Leaf Color:</b> Author order <br>
                             <b>Leaf Size:</b> Published year <br>
                             <b>Highlight:</b><br>
-                            <select id="tree4_select" class="highlight_selector">
+                            <select id="tree4_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
                                 <option value="None">None</option>
                             </select>
                         </div>
@@ -270,10 +261,37 @@
 		</div>
 	</div>
 
+    <div id="start_page" class="row" style="position:fixed; left:0;">
+        <div id="introduction" class="row relative" style="margin:0 30px; /*overflow-y:auto; overflow-x: hidden;*/">
+            <!-- <span class="relative myfont3"><b>How to Make Researcher Trees:</b></span> -->
+            <div style="text-align: justify;">
+                <!-- <span class="relative myfont3">
+                    Researcher Tree is an online tool to generate 4 unique trees with different mapping. You can download each tree individually. Process steps are shown in following. <br>
+                    1. Searching a researcher in <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a> website. <br>
+                    2. Copy the URL of the result of that target researcher and paste the URL into our website. <br>
+                    3. Retrieve the informaion of the researcher and select the period to generate trees. <br>
+                </span> -->
+                <span class="relative myfont3">
+                    <b>Researcher Tree</b> is a visualization characterizing a researcher's 
+                    academic career in terms of his/her publications.  To create a 
+                    researcher tree, do the following: <br>
+                    1. Find a researcher at <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a> <br>
+                    2. Copy the URL of the researcher's page and paste 
+                    it into the URL box on the interface displayed next <br>
+                    3.  Selected a time period of the publication data to use and
+                    press the Create Tree button. <br>
+                    Four trees will be generated and displayed. <br>
+                    You may repeat this process to visualize a different researcher. <br>
+                </span>
+            </div>
+            <!-- <div style="width:100%; height:300px; background:gainsboro;"></div> -->
+            <button id="start_btn" title="Enter the system page" class="btn btn-default myfont3 left" style="margin:10px 0; padding:0 10px; height:30px; z-index:150;">Start</button>    
+        </div>                
+    </div>
+
 	<!-- footer -->
-    <div id="footer" class="row" style="text-align: center; position: absolute; bottom: -5px; width:100%;
-    overflow:hidden;">
-        &copy; 2015 Visualization & Interface Design Innovation Lab @ University of California, Davis
+    <div id="footer" class="row" style="text-align: center; position:fixed; bottom:0; /*width:100%; overflow:hidden;*/">
+        &copy; 2016 Visualization & Interface Design Innovation Labs, University of California, Davis
     </div>	
 
     <div id='save_container' class='left' style="position:absolute; overflow:hidden; height:50px; width:50px; left:50px; top:150px; display:none; z-index:-10;">

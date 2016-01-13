@@ -35,7 +35,7 @@ var util = {
         });
         $("#detail").show();
         $("#progress").hide();
-        $("#no_preview").show();
+        // $("#no_preview").show();
         $("#tree_result").hide();
         $("#draw_tree").removeAttr("disabled");
     },
