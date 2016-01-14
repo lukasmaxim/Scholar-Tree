@@ -70,6 +70,13 @@ var tree_boundary = { // [w, h]
   "tree4": []
 }; 
 
+var tree_center = { // [sx, sy]
+  "tree1": [], 
+  "tree2": [],
+  "tree3": [],
+  "tree4": []
+};
+
 var tree_points = {
   "tree1": {},
   "tree2": {},

@@ -1589,6 +1589,7 @@ var RenderingView = Backbone.View.extend({
                 this.start_y = this.saveCanvas.height/this.save_scale - (self.tree_size[this.ego_label][3] - self.tree_size[this.ego_label][5]) - 150; // align bottom
                 this.start_x = self.tree_size[this.ego_label][4] - self.tree_size[this.ego_label][0] + 200;
 
+                tree_center[e] = [this.start_x, this.start_y];
                 // tree_points[e]["star_y"] = this.start_y;
                 // tree_points[e]["start_x"] = this.start_x;
 

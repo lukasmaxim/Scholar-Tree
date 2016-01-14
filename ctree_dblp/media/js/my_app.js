@@ -20,13 +20,14 @@ window.cancelRequestAnimFrame = ( function() {
 
 var MyApp = function MyApp(){
     var self = this;
+
     if ( arguments.callee._singletonInstance )
         return arguments.callee._singletonInstance;
     arguments.callee._singletonInstance = this;
     
     // init models
     this.model = new Tree_Model();
-
+    $(window).scrollTop(0);
     // set slider bar
     $("#period_slider").ionRangeSlider({
         min: 1990, 
@@ -44,20 +45,23 @@ var MyApp = function MyApp(){
     });
 
     // update display container size
-    $("#main_display").css({'height': $(window).height()-10-$("#header").height()-$("#footer").height()});
-    // $("#introduction").css({'height': $("#main_display").height()-275});
-    $("#tree_result").css({'height': $("#main_display").height()-15});
-    // $("#tree_cnt").css({'height': $("#main_display").height() - 180});
+    $("#system_page").css({'height': $(window).height()-10-$("#header").height()-$("#footer").height()});
+    // $("#introduction").css({'height': $("#system_page").height()-275});
+    $("#tree_result").css({'height': $("#system_page").height()-15});
+    // $("#tree_cnt").css({'height': $("#system_page").height() - 180});
     $(".thumb_cnt").css({'height': $("#tree_result").height()});
     $(".snap_view").css({'height': $(".snap_view").width()+20});
     $("#anim_container").css({'height': $("#tree_result").height()});
+ 
+    $("#system_page").hide();
+    $("#main_display").css({'min-height': $(window).height()-40-$("#header").height()-$("#footer").height()});
 
     // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
     window.onresize = function(event) {
-        $("#main_display").css({'height': $(window).height()-10-$("#header").height()-$("#footer").height()});
-        // $("#introduction").css({'height': $("#main_display").height()-275});
-        $("#tree_result").css({'height': $("#main_display").height()-15});
-        // $("#tree_cnt").css({'height': $("#main_display").height() - 180});
+        $("#system_page").css({'height': $(window).height()-10-$("#header").height()-$("#footer").height()});
+        // $("#introduction").css({'height': $("#system_page").height()-275});
+        $("#tree_result").css({'height': $("#system_page").height()-15});
+        // $("#tree_cnt").css({'height': $("#system_page").height() - 180});
         $(".thumb_cnt").css({'height': $("#tree_result").height()});
         $(".snap_view").css({'height': $(".snap_view").width()+20});
         $("#anim_container").css({'height': $("#tree_result").height()});
@@ -66,6 +70,7 @@ var MyApp = function MyApp(){
             var img_id = "#" + e;
             tree_util.set_anim_canvas(img_id);
         }
+        self.model.trigger('change:current_ego');
         // $("#search_engine").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
         // $("#result").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
     }
@@ -83,9 +88,10 @@ var MyApp = function MyApp(){
 
     start.click(function(){
         console.log("click start");
+        // $("body").css({'overflow': 'auto'});
+        $("#system_page").show();
         $("#search_engine").show();
         $("#start_page").hide();
-        // $("#result").hide();
     });
 
     search.click(function(){
@@ -126,10 +132,14 @@ var MyApp = function MyApp(){
         
         ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
         ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
-        
+
         var request_array = [resercher, sy, ey];
         var request = JSON.stringify(request_array);
-        self.model.generate_tree_structure(request);    
+
+        $("body").css({'overflow': 'auto'});
+        // $("#footer").css({'position': 'absolute'});
+        self.model.generate_tree_structure(request);   
+
     });
 
     // util.set_events();

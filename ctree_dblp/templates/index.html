@@ -1,319 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<title>Data Tree</title>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-	<meta name="robots" content="noindex">
-  	<!-- jQuery -->
-  	<script type="text/javascript" src="media/libs/jquery-ui/js/jquery-1.10.2.js"></script>
-  	<!-- backbone -->
-    <script type="text/javascript" src="media/libs/underscore-min.js"></script>
-    <script type="text/javascript" src="media/libs/backbone-min.js"></script>
-    <!-- d3 -->
-    <script type="text/javascript" src="media/libs/d3.v3.min.js"></script>
-    <!-- Bootstrap -->
-    <link href="media/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="media/libs/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-    <script type="text/javascript" src="media/libs/bootstrap/js/bootstrap.min.js"></script>
-    <!-- jQuery UI -->
-    <link href="media/libs/jquery-ui/css/overcast/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
-    <script type="text/javascript" src="media/libs/jquery-ui/js/jquery-ui-1.10.4.custom.min.js"></script>
-    <!-- jquery plugins -->
-    <link href="media/libs/ion.rangeSlider-2.1.1/css/ion.rangeSlider.css" rel="stylesheet">
-    <link href="media/libs/ion.rangeSlider-2.1.1/css/ion.rangeSlider.skinNice.css" rel="stylesheet">
-    <script type="text/javascript" src="media/libs/ion.rangeSlider-2.1.1/js/ion-rangeSlider/ion.rangeSlider.js"></script>
-    <script type="text/javascript" src="media/libs/moment.min.js"></script>
-
-    <!-- magnific-popup -->
-    <link rel="stylesheet" href="media/libs/magnific-popup/magnific-popup.css">
-    <script src="media/libs/magnific-popup/jquery.magnific-popup.js"></script>
-
-    <link href='http://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-    <!-- my custom css -->
-    <link href="media/css/style.css" rel="stylesheet">
-
-    <script>
+    <head>
+        <title>
+        Data Tree
+        </title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+        <meta name="robots" content="noindex"><!-- jQuery -->
+        <script type="text/javascript" src="media/libs/jquery-ui/js/jquery-1.10.2.js">
+        </script><!-- backbone -->
+        <script type="text/javascript" src="media/libs/underscore-min.js">
+        </script>
+        <script type="text/javascript" src="media/libs/backbone-min.js">
+        </script><!-- d3 -->
+        <script type="text/javascript" src="media/libs/d3.v3.min.js">
+        </script><!-- Bootstrap -->
+        <link href="media/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="media/libs/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="media/libs/bootstrap/js/bootstrap.min.js">
+        </script><!-- jQuery UI -->
+        <link href="media/libs/jquery-ui/css/overcast/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="media/libs/jquery-ui/js/jquery-ui-1.10.4.custom.min.js">
+        </script><!-- jquery plugins -->
+        <link href="media/libs/ion.rangeSlider-2.1.1/css/ion.rangeSlider.css" rel="stylesheet" type="text/css">
+        <link href="media/libs/ion.rangeSlider-2.1.1/css/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="media/libs/ion.rangeSlider-2.1.1/js/ion-rangeSlider/ion.rangeSlider.js">
+        </script>
+        <script type="text/javascript" src="media/libs/moment.min.js">
+        </script><!-- magnific-popup -->
+        <link rel="stylesheet" href="media/libs/magnific-popup/magnific-popup.css" type="text/css">
+        <script src="media/libs/magnific-popup/jquery.magnific-popup.js" type="text/javascript">
+        </script>
+        <link href='http://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'><!-- my custom css -->
+        <link href="media/css/style.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript">
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
         ga('create', 'UA-69937489-1', 'auto');
         ga('send', 'pageview');
-    </script>
-
-</head>
-<body>
-	<!-- header -->
-	<div id="header" class="row relative" style="margin:10px 10px;">
-		<div class="left" style="margin-right:25px;">
-            <a href="http://vidi.cs.ucdavis.edu/" target="_blank"><img src="media/img/logo.png" style="height:85px;"></a>
-        </div>
-        <div class="left">
-            <h1 class="myfont1" style="margin:15px 0 2px 10px;">Researcher Tree</h1>
-        </div>
-	</div>
-
-    
-	<div id="main_display" class="row relative" style="width:99%; /*height:1000px;*/ margin:10px 10px; overflow:auto; min-width:950px; min-height:750px;">
-		<!-- search -->
-		<div id="search_engine_cnt" class="left relative" style="width:25%; height:50%;">
-            <div id="search_engine" style="width:100%; height:100%; display:none;">
-    			<div id="form" class="row relative" style="margin:10px;">
-    				<span class="relative myfont3">DBLP URL:</span>
-    				<input type="text" id="dblp_url" value="http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu" title="Copy the searching result URL of DBLP" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"></input>
-    				<button id="check_url" title="Retrieve information of this researcher" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Retrieve</button>
-    			</div>
-                <img id="progress" src="media/img/progress-bar.gif" style="display:none; width:50%;"></img>
-                <div id="detail" class="row relative" style="margin:10px; display:none;">
-                    <div style="margin:10px 0;">
-                        <span class="relative myfont3">Researcher:</span>
-                        <span id="researcher_name" class="relative myfont3">Kwan-Liu Ma</span>
-                    </div>
-                    <!-- <span class="relative myfont3 row">Time:</span> -->
-                    <div title="Choosing an interesting period" class="row" style="margin:0 8px;">
-                        <input type="text" id="period_slider" class="row" style="margin:10px 0;"></input>
-                    </div>
-                    
-                    <button id="draw_tree" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px; margin:10px 0;">Create Trees</button>
-                </div>
+        </script>
+    </head>
+    <body>
+        <!-- header -->
+        <div id="header" class="row relative" style="margin:10px 10px;">
+            <div class="left" style="margin-right:25px;">
+                <a href="http://vidi.cs.ucdavis.edu/" target="_blank"><img src="media/img/logo.png" style="height:85px;"></a>
+            </div>
+            <div class="left">
+                <h1 class="myfont1" style="margin:15px 0 2px 10px;">
+                Researcher Tree
+                </h1>
             </div>
         </div>
-
-		<!-- result -->
-		<div id="result" class="left relative" style="/*border:1px solid gray; border-radius: 5px;*/ width:75%; height:100%; overflow:hidden;">
-            <img id="loading" src="media/img/loader.gif" class="relative" style="display:none; height:50px; margin-left:50%; margin-top:30px;"></img>
-            <div id="block_page" style="position:absolute; top:0; left:0; height:100%; width:75%; z-index:100; display:none;"></div>
-            <h1 id="no_preview" style="text-align: center; top:10%; position:relative; color:gainsboro; display:none;"><b>NO PREVIEW<br>AVAILABLE</b></h1>
-            <div id="tree_result" style="display:none;">
-                <div class="row" style="margin-left:0; width:99%;">
-                    <!-- <div id="tree_cnt" class="col-md-9 relative" style="padding:0; border:1px solid gray; border-radius:10px; height:500px; border-bottom-width:10px;">
-                        <div>
-                            <img id="tree_display" height="100%" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;"></img>
-                        </div>
-
-                    </div> -->
-                    <div class="col-md-2 thumb_cnt relative">
-                        <div id="tree1_cnt" title="Tree1" class="snap_view selected" name="1">
-                            <div>
-                                <img id="tree1" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;"></img>
-                            </div>
-                        </div>
-                        <div id="tree2_cnt" title="Tree2" class="snap_view" name="2">
-                            <div>
-                                <img id="tree2" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;"></img>
-                            </div>
-                        </div>
-                        <div id="tree3_cnt" title="Tree3" class="snap_view" name="3">
-                            <div>
-                                <img id="tree3" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;"></img>
-                            </div>
-                        </div>
-                        <div id="tree4_cnt" title="Tree4" class="snap_view" name="4">
-                            <div>
-                                <img id="tree4" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;"></img>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id='anim_container' class="col-md-7 relative" style="padding:0; border:1.5px solid gray; border-radius:10px; height:500px; /*border-bottom-width:10px;*/">
-                        <canvas id='anim_tree' style="position:absolute; top:0; left:0; /*background:white;*/ width:100%; height:100%;"></canvas>
-                        <span id="save_icon" title="Save the tree image" class="glyphicon glyphicon-floppy-save" style="position:absolute; top:5px; right:5px; font-size:large;"></span>
-                    </div>
-                    <!-- <div class="col-md-3">
-                        <div class="btn-group">
-                            <button type="button" id="tree_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
-                            <button type="button" id="tree_anim" value="1" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
-                            <button type="button" id="tree_pause" value="1" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
-                            <button type="button" id="tree_pic" value="1" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
-                            <button type="button" id="tree_forward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
-                        </div>
-                    </div> -->
-
-                    <div class="col-md-3">
-                        <div class="btn-group">
-                            <button type="button" id="tree_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
-                            <button type="button" id="tree_anim" value="1" title="Play the animation" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
-                            <button type="button" id="tree_pause" value="1" title="Pause the animation" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
-                            <button type="button" id="tree_pic" value="1" title="Stop and set to the default" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
-                            <button type="button" id="tree_forward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
-                        </div>
-
-                        <div id="tree1_text">
-                            <a id="tree1_save" href="#" name="1" style="display:none;">Save</a>
-                            <!-- <a id="tree1_pic" href="#" name="1">Pic</a> |
-                            <a id="tree1_anim" href="#" name="1">Anim</a> |
-                            <a href="#">Comp</a> |
-                            <a id="tree1_save" href="#" name="1">Save</a> 
-                            <br> -->
-                            <b>Stick:</b> paper <br>
-                            <b>Trunk Side:</b> Conference paper(left) <br>
-                            <b>Branches:</b> Published year <br>
-                            <b>Branch Gap:</b> <p class="b_gap">0</p> <br>
-                            <b>Branch Side:</b> First author(down) <br>
-                            <b>Fruit:</b> Paper length (>4) <br>
-                            <b>Leaf:</b> Co-author <br>
-                            <b>Leaf Color:</b> First collaborated time <br>
-                            <b>Leaf Size:</b> Total collaborated paper <br>
-                            <b>Highlight:</b><br>
-                            <select id="tree1_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
-                                <option value="None">None</option>
-                            </select>
-                        </div>
-                        <div id="tree2_text" style="display:none;">
-                            <a id="tree2_save" href="#" name="2" style="display:none;">Save</a>
-                            <!-- <a id="tree2_pic" href="#" name="2">Pic</a> |
-                            <a id="tree2_anim" href="#" name="2">Anim</a> |
-                            <a href="#">Comp</a> |
-                            <a id="tree2_save" href="#" name="2">Save</a> 
-                            <br> -->
-                            <b>Stick:</b> paper <br>
-                            <b>Trunk Side:</b> First author(left) <br>
-                            <b>Branches:</b> Published year <br>
-                            <b>Branch Gap:</b> <p class="b_gap">0</p> <br>
-                            <b>Branch Side:</b> Conference paper(down) <br>
-                            <b>Leaf:</b> Co-author <br>
-                            <b>Leaf Color:</b> First collaborated time <br>
-                            <b>Leaf Size:</b> Total collaborated paper <br>
-                            <b>Highlight:</b><br>
-                            <select id="tree2_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
-                                <option value="None">None</option>
-                            </select>
-                        </div>
-                        <div id="tree3_text" style="display:none;">
-                            <a id="tree3_save" href="#" name="3" style="display:none;">Save</a>
-                            <!-- <a id="tree3_pic" href="#" name="3">Pic</a> |
-                            <a id="tree3_anim" href="#" name="3">Anim</a> |
-                            <a href="#">Comp</a> |
-                            <a id="tree3_save" href="#" name="3">Save</a> 
-                            <br> -->
-                            <b>Stick:</b> Co-author <br>
-                            <b>Trunk Side:</b> Total collaborated paper(left:<5) <br>
-                            <b>Branches:</b> First collaborated time <br>
-                            <b>Branch Gap:</b> <p class="b_gap">0</p> <br>
-                            <b>Branch Side:</b> Collaboration frequency(up:>1) <br>
-                            <b>Fruit:</b> Researcher itself <br>
-                            <b>Leaf:</b> Paper <br>
-                            <b>Leaf Color:</b> Paper types <br>
-                            <b>Leaf Size:</b> Paper length <br>
-                            <b>Highlight:</b><br>
-                            <select id="tree3_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
-                                <option value="None">None</option>
-                            </select>
-                        </div>
-                        <div id="tree4_text" style="display:none;">
-                            <a id="tree4_save" href="#" name="4" style="display:none;">Save</a>
-                            <!-- <a id="tree4_pic" href="#" name="4">Pic</a> |
-                            <a id="tree4_anim" href="#" name="4">Anim</a> |
-                            <a href="#">Comp</a> |
-                            <a id="tree4_save" href="#" name="4">Save</a> 
-                            <br> -->
-                            <b>Stick:</b> Co-author <br>
-                            <b>Trunk Side:</b> Total collaborated paper(left:<5) <br>
-                            <b>Branches:</b> First collaborated time <br>
-                            <b>Branch Gap:</b> <p class="b_gap">0</p> <br>
-                            <b>Branch Side:</b> Collaboration frequency(up:>1) <br>
-                            <b>Leaf:</b> Paper <br>
-                            <b>Leaf Color:</b> Author order <br>
-                            <b>Leaf Size:</b> Published year <br>
-                            <b>Highlight:</b><br>
-                            <select id="tree4_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
-                                <option value="None">None</option>
-                            </select>
-                        </div>
-                    <div>   
-                    <div id="highlight_info">
-                        leaf size: 3 out of 6 </br> 
-                        leaf count: 30
-                    </div> 
-                    <div id="click_info" style="display:none;">
-                        Trunk side: Up </br>
-                    </div>                 
+        <div id="main_display" class="row relative" style="margin:10px 10px; 0 10px;">
+            <div id="start_page" class="row" style="margin:20px;">
+                <div id="introduction" class="row relative">
+                    <!-- <span class="relative myfont3"><b>How to Make Researcher Trees:</b></span> -->
+                    <div style="text-align: justify;">
+                        <!-- <span class="relative myfont3">
+                            Researcher Tree is an online tool to generate 4 unique trees with different mapping. You can download each tree individually. Process steps are shown in following. <br>
+                            1. Searching a researcher in <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a> website. <br>
+                            2. Copy the URL of the result of that target researcher and paste the URL into our website. <br>
+                            3. Retrieve the informaion of the researcher and select the period to generate trees. <br>
+                        </span> -->
+                        <span class="relative myfont3"><b>Researcher Tree</b> is a visualization characterizing a researcher's academic career in terms of his/her publications. To create a researcher tree, do the following:<br>
+                            1. Find a researcher at <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a><br>
+                            2. Copy the URL of the researcher's page and paste it into the URL box on the interface displayed next<br>
+                            3. Selected a time period of the publication data to use and press the Create Tree button.<br>
+                            Four trees will be generated and displayed.<br>
+                        You may repeat this process to visualize a different researcher.<br></span>
+                    </div><!-- <div style="width:100%; height:300px; background:gainsboro;"></div> -->
+                    <button id="start_btn" title="Enter the system page" class="btn btn-default myfont3 left" style="margin:10px 0; padding:0 10px; height:30px; z-index:150;">Start</button>
                 </div>
-
-                <!-- <div class="row thumb_cnt">
-                    <div id="tree1_cnt" class="snap_view selected" name="1">
-                        <div>
-                            <img id="tree1" height="100%" src="media/img/no_preview.jpg" style="position:absolute; bottom:0; left:25%;"></img>
+            </div>
+            <div id="system_page" style="overflow:auto; min-width:1200px; min-height:750px;">
+                <!-- search -->
+                <div id="search_engine_cnt" class="left relative" style="width:23%; height:50%;">
+                    <div id="search_engine" style="width:100%; height:100%; display:none;">
+                        <div id="form" class="row relative" style="margin:0 10px;">
+                            <span class="relative myfont3">DBLP URL:</span> <input type="text" id="dblp_url" value="http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu" title="Copy the searching result URL of DBLP" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"> <button id="check_url" title="Retrieve information of this researcher" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Retrieve</button>
+                        </div><img id="progress" src="media/img/progress-bar.gif" style="display:none; width:50%;">
+                        <div id="detail" class="row relative" style="margin:10px; display:none;">
+                            <div style="margin:10px 0;">
+                                <span class="relative myfont3">Researcher:</span> <span id="researcher_name" class="relative myfont3">Kwan-Liu Ma</span>
+                            </div><!-- <span class="relative myfont3 row">Time:</span> -->
+                            <div title="Choosing an interesting period" class="row" style="margin:0 8px;">
+                                <input type="text" id="period_slider" class="row" style="margin:10px 0;">
+                            </div>
+                            <button id="draw_tree" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px; margin:10px 0;">Create Trees</button>
                         </div>
                     </div>
-                    <div id="tree2_cnt" class="snap_view" name="2">
-                        <div>
-                            <img id="tree2" height="100%" src="media/img/no_preview.jpg" style="position:absolute; bottom:0; left:25%;"></img>
+                </div>
+                <!-- result -->
+                <div id="result" class="left relative" style="width:77%; height:100%; overflow:auto; min-width:900px;">
+                    <img id="loading" src="media/img/loader.gif" class="relative" style="display:none; height:50px; margin-left:50%; margin-top:30px;">
+                    <div id="block_page" style="position:absolute; top:0; left:0; height:100%; width:75%; z-index:100; display:none;"></div>
+                    <h1 id="no_preview" style="text-align: center; top:10%; position:relative; color:gainsboro; display:none;">
+                        <b>NO PREVIEW<br>AVAILABLE</b>
+                    </h1>
+                    <div id="tree_result" class="container-non-responsive" style="display:none;">
+                        <div class="row" style="margin-left:0; width:99%;">
+                            <div class="col-md-2 thumb_cnt relative">
+                                <div id="tree1_cnt" title="Tree1" class="snap_view selected" name="1">
+                                    <div>
+                                        <img id="tree1" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;">
+                                    </div>
+                                </div>
+                                <div id="tree2_cnt" title="Tree2" class="snap_view" name="2">
+                                    <div>
+                                        <img id="tree2" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;">
+                                    </div>
+                                </div>
+                                <div id="tree3_cnt" title="Tree3" class="snap_view" name="3">
+                                    <div>
+                                        <img id="tree3" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;">
+                                    </div>
+                                </div>
+                                <div id="tree4_cnt" title="Tree4" class="snap_view" name="4">
+                                    <div>
+                                        <img id="tree4" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id='anim_container' class="col-md-7 relative" style="padding:0; border:1.5px solid gray; border-radius:10px; height:500px; /*border-bottom-width:10px;*/">
+                                <canvas id='anim_tree' style="position:absolute; top:0; left:0; /*background:white;*/ width:100%; height:100%;"></canvas> <span id="save_icon" title="Save this image" class="glyphicon glyphicon-save" style="position:absolute; top:5px; right:5px; font-size:large; color:#B3B3B3;"></span>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="btn-group">
+                                    <button type="button" id="tree_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
+                                    <button type="button" id="tree_anim" value="1" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
+                                    <button type="button" id="tree_pause" value="1" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
+                                    <button type="button" id="tree_pic" value="1" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
+                                    <button type="button" id="tree_forward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+                                </div>
+                                <div id="tree1_text">
+                                    <a id="tree1_save" href="#" name="1" style="display:none;">Save</a> 
+                                    <b>Stick:</b> paper<br>
+                                    <b>Trunk Side:</b> Conference paper(left)<br>
+                                    <b>Branches:</b> Published year<br>
+                                    <b>Branch Gap:</b>
+                                    <p class="b_gap">
+                                        0
+                                    </p><br>
+                                    <b>Branch Side:</b> First author(down)<br>
+                                    <b>Fruit:</b> Paper length (&gt;4)<br>
+                                    <b>Leaf:</b> Co-author<br>
+                                    <b>Leaf Color:</b> First collaborated time<br>
+                                    <b>Leaf Size:</b> Total collaborated paper<br>
+                                    <b>Highlight:</b><br>
+                                    <select id="tree1_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
+                                        <option value="None">
+                                            None
+                                        </option>
+                                    </select>
+                                </div>
+                                <div id="tree2_text" style="display:none;">
+                                    <a id="tree2_save" href="#" name="2" style="display:none;">Save</a> 
+                                    <b>Stick:</b> paper<br>
+                                    <b>Trunk Side:</b> First author(left)<br>
+                                    <b>Branches:</b> Published year<br>
+                                    <b>Branch Gap:</b>
+                                    <p class="b_gap">
+                                        0
+                                    </p><br>
+                                    <b>Branch Side:</b> Conference paper(down)<br>
+                                    <b>Leaf:</b> Co-author<br>
+                                    <b>Leaf Color:</b> First collaborated time<br>
+                                    <b>Leaf Size:</b> Total collaborated paper<br>
+                                    <b>Highlight:</b><br>
+                                    <select id="tree2_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
+                                        <option value="None">
+                                            None
+                                        </option>
+                                    </select>
+                                </div>
+                                <div id="tree3_text" style="display:none;">
+                                    <a id="tree3_save" href="#" name="3" style="display:none;">Save</a> 
+                                    <b>Stick:</b> Co-author<br>
+                                    <b>Trunk Side:</b> Total collaborated paper(left:&lt;5)<br>
+                                    <b>Branches:</b> First collaborated time<br>
+                                    <b>Branch Gap:</b>
+                                    <p class="b_gap">
+                                        0
+                                    </p><br>
+                                    <b>Branch Side:</b> Collaboration frequency(up:&gt;1)<br>
+                                    <b>Fruit:</b> Researcher itself<br>
+                                    <b>Leaf:</b> Paper<br>
+                                    <b>Leaf Color:</b> Paper types<br>
+                                    <b>Leaf Size:</b> Paper length<br>
+                                    <b>Highlight:</b><br>
+                                    <select id="tree3_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
+                                        <option value="None">
+                                            None
+                                        </option>
+                                    </select>
+                                </div>
+                                <div id="tree4_text" style="display:none;">
+                                    <a id="tree4_save" href="#" name="4" style="display:none;">Save</a>
+                                    <b>Stick:</b> Co-author<br>
+                                    <b>Trunk Side:</b> Total collaborated paper(left:&lt;5)<br>
+                                    <b>Branches:</b> First collaborated time<br>
+                                    <b>Branch Gap:</b>
+                                    <p class="b_gap">
+                                        0
+                                    </p><br>
+                                    <b>Branch Side:</b> Collaboration frequency(up:&gt;1)<br>
+                                    <b>Leaf:</b> Paper<br>
+                                    <b>Leaf Color:</b> Author order<br>
+                                    <b>Leaf Size:</b> Published year<br>
+                                    <b>Highlight:</b><br>
+                                    <select id="tree4_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
+                                        <option value="None">
+                                            None
+                                        </option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <div id="highlight_info">
+                                        leaf size: 3 out of 6<br>
+                                        leaf count: 30
+                                    </div>
+                                    <div id="click_info" style="display:none;">
+                                        Trunk side: Up<br>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div id="tree3_cnt" class="snap_view" name="3">
-                        <div>
-                            <img id="tree3" height="100%" src="media/img/no_preview.jpg" style="position:absolute; bottom:0; left:25%;"></img>
-                        </div>
-                    </div>
-                    <div id="tree4_cnt" class="snap_view" name="4">
-                        <div>
-                            <img id="tree4" height="100%" src="media/img/no_preview.jpg" style="position:absolute; bottom:0; left:25%;"></img>
-                        </div>
-                    </div>
-                </div> -->
+            
+                </div>
             </div>
             
-		</div>
-	</div>
-
-    <div id="start_page" class="row" style="position:fixed; left:0;">
-        <div id="introduction" class="row relative" style="margin:0 30px; /*overflow-y:auto; overflow-x: hidden;*/">
-            <!-- <span class="relative myfont3"><b>How to Make Researcher Trees:</b></span> -->
-            <div style="text-align: justify;">
-                <!-- <span class="relative myfont3">
-                    Researcher Tree is an online tool to generate 4 unique trees with different mapping. You can download each tree individually. Process steps are shown in following. <br>
-                    1. Searching a researcher in <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a> website. <br>
-                    2. Copy the URL of the result of that target researcher and paste the URL into our website. <br>
-                    3. Retrieve the informaion of the researcher and select the period to generate trees. <br>
-                </span> -->
-                <span class="relative myfont3">
-                    <b>Researcher Tree</b> is a visualization characterizing a researcher's 
-                    academic career in terms of his/her publications.  To create a 
-                    researcher tree, do the following: <br>
-                    1. Find a researcher at <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a> <br>
-                    2. Copy the URL of the researcher's page and paste 
-                    it into the URL box on the interface displayed next <br>
-                    3.  Selected a time period of the publication data to use and
-                    press the Create Tree button. <br>
-                    Four trees will be generated and displayed. <br>
-                    You may repeat this process to visualize a different researcher. <br>
-                </span>
-            </div>
-            <!-- <div style="width:100%; height:300px; background:gainsboro;"></div> -->
-            <button id="start_btn" title="Enter the system page" class="btn btn-default myfont3 left" style="margin:10px 0; padding:0 10px; height:30px; z-index:150;">Start</button>    
-        </div>                
-    </div>
-
-	<!-- footer -->
-    <div id="footer" class="row" style="text-align: center; position:fixed; bottom:0; /*width:100%; overflow:hidden;*/">
-        &copy; 2016 Visualization & Interface Design Innovation Labs, University of California, Davis
-    </div>	
-
-    <div id='save_container' class='left' style="position:absolute; overflow:hidden; height:50px; width:50px; left:50px; top:150px; display:none; z-index:-10;">
-        <canvas id='save_tree' style="background:white;"></canvas>
-        <!-- <a id="custom_download_link" download="mytree.png" href=""></a> -->
-    </div>
-
-    <!-- <div id='anim_container' style="position:absolute; left:0px; top:0px; z-index:125; background:rgba(55, 55, 55, 0.9); display:none;">
-        <canvas id='anim_tree' style="background:white;"></canvas>
-    </div> -->
-
-
-    <script type="text/javascript" src="media/js/settings.js"></script>
-    <script type="text/javascript" src="media/js/labels.js"></script>
-    <!--script type="text/javascript" src="media/js/anim_rendering.js"></script-->
-    <script type="text/javascript" src="media/js/utility.js"></script>
-    <script type="text/javascript" src="media/js/model.js"></script>
-    <script type="text/javascript" src="media/js/my_app.js"></script>
-    <script type="text/javascript" src="media/js/tree_rendering.js"></script>
-    <script type="text/javascript" src="media/js/tree_animating.js"></script>
-    <script type="text/javascript" src="media/js/tree_drawing.js"></script>
-    <script type="text/javascript" src="media/js/tree_manipulating.js"></script>
-    
-</body>
+        </div>
+        <!-- footer -->
+        <div id="footer" class="row" style="text-align:center; width:100%;">
+            © 2016 Visualization &amp; Interface Design Innovation Labs, University of California, Davis
+        </div>
+        <div id='save_container' class='left' style="position:absolute; overflow:hidden; height:50px; width:50px; left:50px; top:150px; display:none; z-index:-10;">
+            <canvas id='save_tree' style="background:white;"></canvas> <!-- <a id="custom_download_link" download="mytree.png" href=""></a> -->
+        </div>
+        <script type="text/javascript" src="media/js/settings.js"></script><script type="text/javascript" src="media/js/labels.js">
+        </script><!--script type="text/javascript" src="media/js/anim_rendering.js"></script-->
+        <script type="text/javascript" src="media/js/utility.js">
+        </script><script type="text/javascript" src="media/js/model.js">
+        </script><script type="text/javascript" src="media/js/my_app.js">
+        </script><script type="text/javascript" src="media/js/tree_rendering.js">
+        </script><script type="text/javascript" src="media/js/tree_animating.js">
+        </script><script type="text/javascript" src="media/js/tree_drawing.js">
+        </script><script type="text/javascript" src="media/js/tree_manipulating.js">
+        </script>
+    </body>
 </html>

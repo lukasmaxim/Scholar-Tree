@@ -30,9 +30,14 @@ var InteractView = Backbone.View.extend({
             self.scale = self.model.get("canvas_scale");
            
             var scaleFactor = 1.1;
+            // get mouse position
             var mousePos = self.getMousePos(self.myCanvas, evt);//mousePos.x,mousePos.y
             var tx = (mousePos.x - self.translate[0]) / self.scale;
             var ty = (mousePos.y - self.translate[1]) / self.scale;
+
+            // get tree center
+            tx = tree_center[view_ego][0];
+            ty = tree_center[view_ego][1];
 
             var delta = evt.wheelDelta ? evt.wheelDelta/40 : evt.detail ? - evt.detail : 0;
            
@@ -40,8 +45,13 @@ var InteractView = Backbone.View.extend({
         
             var factor = Math.pow(scaleFactor, delta);
             
-            var nx = mousePos.x - (tx * factor * self.scale);
-            var ny = mousePos.y - (ty * factor * self.scale);
+            // zoom in based on mouse cursor
+            // var nx = mousePos.x - (tx * factor * self.scale);
+            // var ny = mousePos.y - (ty * factor * self.scale);
+
+            // zoom in from tree center
+            var nx = (tx*self.scale + self.translate[0]) - (tx * factor * self.scale);
+            var ny = (ty*self.scale + self.translate[1]) - (ty * factor * self.scale);
 
             if(factor*self.scale < 0.05 || factor*self.scale > 3.5){
             }
@@ -49,6 +59,45 @@ var InteractView = Backbone.View.extend({
                 self.model.set({"canvas_translate":[nx, ny]});
                 self.model.set({"canvas_scale":factor*self.scale});
             }
+            evt.preventDefault();
+            return false;
+        }, false);
+
+        self.myCanvas.addEventListener('DOMMouseScroll', function(evt) {
+            self.translate = self.model.get("canvas_translate");
+            self.scale = self.model.get("canvas_scale");
+           
+            var scaleFactor = 1.1;
+            var mousePos = self.getMousePos(self.myCanvas, evt);//mousePos.x,mousePos.y
+            var tx = (mousePos.x - self.translate[0]) / self.scale;
+            var ty = (mousePos.y - self.translate[1]) / self.scale;
+
+            // get tree center
+            tx = tree_center[view_ego][0];
+            ty = tree_center[view_ego][1];
+            
+            var delta = evt.wheelDelta ? evt.wheelDelta/40 : evt.detail ? - evt.detail : 0;
+           
+            var delta_scale = Math.floor(evt.wheelDelta*3*10/100)/10; //for mac
+        
+            var factor = Math.pow(scaleFactor, delta);
+            
+            // zoom in based on mouse cursor
+            // var nx = mousePos.x - (tx * factor * self.scale);
+            // var ny = mousePos.y - (ty * factor * self.scale);
+
+            // zoom in from tree center
+            var nx = (tx*self.scale + self.translate[0]) - (tx * factor * self.scale);
+            var ny = (ty*self.scale + self.translate[1]) - (ty * factor * self.scale);
+
+            if(factor*self.scale < 0.05 || factor*self.scale > 3.5){
+            }
+            else{
+                self.model.set({"canvas_translate":[nx, ny]});
+                self.model.set({"canvas_scale":factor*self.scale});
+            }
+            evt.preventDefault();
+            return false;
         }, false);
         
         
