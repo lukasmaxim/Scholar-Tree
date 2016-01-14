@@ -45,23 +45,20 @@ var MyApp = function MyApp(){
     });
 
     // update display container size
-    $("#system_page").css({'height': $(window).height()-10-$("#header").height()-$("#footer").height()});
-    // $("#introduction").css({'height': $("#system_page").height()-275});
-    $("#tree_result").css({'height': $("#system_page").height()-15});
-    // $("#tree_cnt").css({'height': $("#system_page").height() - 180});
+    $("#system_page").css({'height': $(window).height()-20-$("#header").height()-$("#footer").height()});
+    $("#tree_result").css({'height': $("#system_page").height()});
     $(".thumb_cnt").css({'height': $("#tree_result").height()});
     $(".snap_view").css({'height': $(".snap_view").width()+20});
     $("#anim_container").css({'height': $("#tree_result").height()});
  
     $("#system_page").hide();
-    $("#main_display").css({'min-height': $(window).height()-40-$("#header").height()-$("#footer").height()});
+    $("#main_display").css({'min-height': $(window).height()-20-$("#header").height()-$("#footer").height()});
 
     // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
     window.onresize = function(event) {
-        $("#system_page").css({'height': $(window).height()-10-$("#header").height()-$("#footer").height()});
-        // $("#introduction").css({'height': $("#system_page").height()-275});
-        $("#tree_result").css({'height': $("#system_page").height()-15});
-        // $("#tree_cnt").css({'height': $("#system_page").height() - 180});
+        $("#main_display").css({'min-height': $(window).height()-20-$("#header").height()-$("#footer").height()});
+        $("#system_page").css({'height': $(window).height()-20-$("#header").height()-$("#footer").height()});
+        $("#tree_result").css({'height': $("#system_page").height()});
         $(".thumb_cnt").css({'height': $("#tree_result").height()});
         $(".snap_view").css({'height': $(".snap_view").width()+20});
         $("#anim_container").css({'height': $("#tree_result").height()});
@@ -71,8 +68,6 @@ var MyApp = function MyApp(){
             tree_util.set_anim_canvas(img_id);
         }
         self.model.trigger('change:current_ego');
-        // $("#search_engine").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
-        // $("#result").css({'height': $(window).height()-30-$("#header").height()-$("#footer").height()});
     }
 
     // $('.popup-link').magnificPopup({
@@ -80,15 +75,12 @@ var MyApp = function MyApp(){
     //     // other options
     // });
 
-    // $(".tooltip_help").tooltip();
-
     var search = $('#check_url');
     var finish = $('#draw_tree');
     var start = $('#start_btn');
 
     start.click(function(){
         console.log("click start");
-        // $("body").css({'overflow': 'auto'});
         $("#system_page").show();
         $("#search_engine").show();
         $("#start_page").hide();
@@ -100,15 +92,13 @@ var MyApp = function MyApp(){
         self.model.check_researcher(resercher);
         $("#progress").show();
         $("#detail").hide();
-        // $("#no_preview").show();
         $("#tree_result").hide();
     });
 
     finish.click(function(){
         console.log("click finish");
         finish.attr("disabled", true);
-        $("#loading").show();
-        // $("#no_preview").hide();
+        $("#loading").show();;
         $("#tree_result").hide();
         $("#tree1_cnt")[0].click();
         var slider = $("#period_slider").data("ionRangeSlider");

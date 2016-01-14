@@ -116,7 +116,8 @@ var view_ego = "tree1";
 
 var mytimer = {
   anim_timer: null,
-  blinking_timer: null
+  blinking_timer: null,
+  blinking_count: 0
 };
 
 var blinking_timer = null;

@@ -108,11 +108,11 @@ var AnimView = Backbone.View.extend({
                 info_page.hide();
                 if(this.value != 'None'){
                     tree_util.fadeout = 0.25;
-                    self.block.show();
+                    // self.block.show();
                 }
                 else{
                     tree_util.fadeout = 1;
-                    self.block.hide();
+                    // self.block.hide();
                 }
 
                 self.highlight_anim(view_ego);
@@ -252,7 +252,7 @@ var AnimView = Backbone.View.extend({
 						
 			if(idx === amin_frame.length){
                 if(highlight_list["selected"] != "None" && highlight_list["on"] == 0){
-                    tree_util.draw_highlight_leaf(ego, 0);
+                    tree_util.draw_highlight_leaf(ego, 0, 1);
                 }
                 self.block.hide();
 				clearInterval(mytimer.anim_timer);
@@ -317,7 +317,7 @@ var AnimView = Backbone.View.extend({
 			
 			if(idx === amin_frame.length){
                 if(highlight_list["selected"] != "None" && highlight_list["on"] == 0){
-                    tree_util.draw_highlight_leaf(ego, 0);
+                    tree_util.draw_highlight_leaf(ego, 0, 1);
                 }
                 self.block.hide();
 				clearInterval(mytimer.anim_timer);
@@ -344,16 +344,17 @@ var AnimView = Backbone.View.extend({
     	if(mytimer.blinking_timer != null){
         	clearInterval(mytimer.blinking_timer);
         }
-        
+        mytimer.blinking_count = 0;
     	mytimer.blinkiing_timer = setInterval(function (){
             if(highlight_list["selected"] == "None" || highlight_list["on"] == 0){
                 clearInterval(mytimer.blinking_timer);
                 return;
             }
     		// console.log(self.blinking_control);
+            mytimer.blinking_count += 1;
     		if(self.blinking_control == 0) self.blinking_control = 1;
     		else self.blinking_control = 0;
-    		tree_util.draw_highlight_leaf(ego, self.blinking_control);
+    		tree_util.draw_highlight_leaf(ego, self.blinking_control, 0);
     	}, 100); 
     	// mytimer["blinking_timer"] = temp_timer; 	
     }

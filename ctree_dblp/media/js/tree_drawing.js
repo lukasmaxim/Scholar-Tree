@@ -140,6 +140,7 @@ var DrawView = Backbone.View.extend({
             var hide_snap = "#" + this.id.slice(0,5) + "_cnt";
             var hide_text = "#" + view_ego + "_text";
             var show_text = "#" + this.id.slice(0,5) + "_text";
+            var hide_selector = "#" + view_ego + "_select";
             $(hide_text).hide();
             $(show_text).show();
             // $(show_snap).show();
@@ -148,6 +149,8 @@ var DrawView = Backbone.View.extend({
             $(show_snap).css({'border-width': '1px'});
             $(hide_snap).css({'border-width': '3px'});
             highlight_list["selected"] = "None";
+            $(hide_selector).val("None");
+
             view_ego = this.id.slice(0,5); //!!! set current_ego and trgger it
             self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
             self.model.set({"canvas_translate": [0.5, 0.5]}, {silent: true});
@@ -210,7 +213,8 @@ var DrawView = Backbone.View.extend({
         // tree_util.fadeout = 1;
         if(highlight_list["selected"] != "None"){
         	selected_leaves = tree_points[ego]["all_leaves"][highlight_list["selected"]];
-            display_text = "Leaf size: " + selected_leaves[3] + " out of 100 <br> Leaf count: " + (selected_leaves.length/5);
+            // display_text = "Leaf size: " + selected_leaves[3] + " out of 100 <br> Leaf count: " + (selected_leaves.length/5);
+            display_text = "Highlight leaf count: " + (selected_leaves.length/5);
             $("#highlight_info").show();
             $("#highlight_info").html(display_text);
             // if(highlight_list["on"] == 1)
@@ -365,8 +369,10 @@ var DrawView = Backbone.View.extend({
             height ++; 
         }
 
+        tree_util.saved_rect = context.getImageData(0, 0, drawing_canvas.anim_canvas.width, drawing_canvas.anim_canvas.height);
+        
         if(highlight_list["selected"] != "None" && highlight_list["on"] == 0){
-            tree_util.draw_highlight_leaf(ego, 0);
+            tree_util.draw_highlight_leaf(ego, 0, 1);
         }
 
         context.restore();

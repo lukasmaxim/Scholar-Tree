@@ -36,8 +36,8 @@ var InteractView = Backbone.View.extend({
             var ty = (mousePos.y - self.translate[1]) / self.scale;
 
             // get tree center
-            tx = tree_center[view_ego][0];
-            ty = tree_center[view_ego][1];
+            // tx = tree_center[view_ego][0];
+            // ty = tree_center[view_ego][1];
 
             var delta = evt.wheelDelta ? evt.wheelDelta/40 : evt.detail ? - evt.detail : 0;
            
@@ -73,8 +73,8 @@ var InteractView = Backbone.View.extend({
             var ty = (mousePos.y - self.translate[1]) / self.scale;
 
             // get tree center
-            tx = tree_center[view_ego][0];
-            ty = tree_center[view_ego][1];
+            // tx = tree_center[view_ego][0];
+            // ty = tree_center[view_ego][1];
             
             var delta = evt.wheelDelta ? evt.wheelDelta/40 : evt.detail ? - evt.detail : 0;
            

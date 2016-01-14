@@ -157,7 +157,8 @@ var util = {
 
 var tree_util = {
     fadeout: 1,
-    
+    saved_rect: null,
+
     tree_fruit: function(ctx, posx, posy, r){
         ctx.globalAlpha = this.fadeout;
         ctx.fillStyle = mapping_color.fruit;//fill color
@@ -202,9 +203,26 @@ var tree_util = {
         ctx.globalAlpha = 1;
     },
 
-    leaf_highlight_style: function(ctx, cx, cy, angle, radius, color, blinking) {
+    leaf_highlight_style: function(ctx, cx, cy, angle, radius, color, blinking, first) {
+        /*
+        if(first == 0 && mytimer.blinking_count < 32){
+            if(mytimer.blinking_count%6 == 0){ //mytimer.blinking_count < 5
+                var mark_radius = 150;
+                ctx.strokeStyle = "red";
+                ctx.beginPath();
+                ctx.arc(cx, cy, mark_radius, 0, 2*Math.PI, true);
+                ctx.stroke();
+            }
+            else{ // if(mytimer.blinking_count == 61)
+                ctx.putImageData(tree_util.saved_rect, 0, 0);
+            }
+        }
+        */        
         ctx.save();
+        ctx.translate(cx, cy);
         ctx.lineWidth = 10;
+
+        // ctx.lineWidth = 10;
         if(blinking == 0)
             ctx.strokeStyle = "#FFF80F";//yellow color
         else
@@ -212,14 +230,11 @@ var tree_util = {
        
         ctx.fillStyle = color;
         
-        ctx.translate(cx, cy);
         ctx.rotate(angle);
-
         ctx.beginPath();
         ctx.moveTo(0, 0);
 
-        radius = 50; //*=2
-
+        // ctx.moveTo(0, 0);
         ctx.quadraticCurveTo(radius, radius, radius*2.5, 0);
         ctx.quadraticCurveTo(radius, -radius, 0, 0);
         ctx.closePath();
@@ -230,7 +245,7 @@ var tree_util = {
         ctx.lineCap = 'round';
     },
 
-    draw_highlight_leaf: function(ego, blinking){
+    draw_highlight_leaf: function(ego, blinking, first){
         var selected_leaves = tree_points[ego]["all_leaves"][highlight_list["selected"]];
         var context =  drawing_canvas.anim_canvas.getContext('2d');
         context.restore();
@@ -242,7 +257,7 @@ var tree_util = {
                                            selected_leaves[i+2],
                                            selected_leaves[i+3],
                                            selected_leaves[i+4], 
-                                           blinking);
+                                           blinking, first);
         }
     },
 

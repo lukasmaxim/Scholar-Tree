@@ -78,8 +78,8 @@ def get_tree_structure(request):
 		# 	retuen_structure = json.load(json_file)
 
 		print author
-		unique_author_list = ["None"]
-		unique_paper_list = ["None"]
+		unique_author_list = []
+		unique_paper_list = []
 		for y in soup.findAll('r'):
 			co_author_list = []
 			p_title = y.title.string
@@ -177,7 +177,12 @@ def get_tree_structure(request):
 	else:
 		raise Http404
 
-	final_return = [final_structure, unique_author_list, unique_paper_list]
+	
+	final_unique_author_list = ["None"] + sorted(unique_author_list)
+	final_unique_paper_list = ["None"] + sorted(unique_paper_list)
+	# print final_unique_author_list
+	# print final_unique_paper_list
+	final_return = [final_structure, final_unique_author_list, final_unique_paper_list]
 	return_json = simplejson.dumps(final_return, indent=4, use_decimal=True)
 
 	return HttpResponse(return_json)
