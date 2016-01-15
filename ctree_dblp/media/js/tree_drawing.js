@@ -180,6 +180,11 @@ var DrawView = Backbone.View.extend({
     draw_static: function(){
         var self = this;
         $("#click_info").hide();
+        $('#tree_forward').attr("disabled", true);
+        $('#tree_backward').attr("disabled", true);
+        $('#tree_pause').attr("disabled", true);
+        $(".highlight_selector").removeAttr("disabled");
+
     	clearInterval(mytimer.anim_timer);
     	clearInterval(mytimer.blinking_timer);
     	var context = drawing_canvas.anim_canvas.getContext('2d');

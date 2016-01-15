@@ -126,8 +126,6 @@ var MyApp = function MyApp(){
         var request_array = [resercher, sy, ey];
         var request = JSON.stringify(request_array);
 
-        $("body").css({'overflow': 'auto'});
-        // $("#footer").css({'position': 'absolute'});
         self.model.generate_tree_structure(request);   
 
     });

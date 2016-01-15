@@ -48,6 +48,9 @@ var AnimView = Backbone.View.extend({
         tree_anim.click(function(){
             $("#tree_backward").removeAttr("disabled");
             $("#tree_forward").removeAttr("disabled");
+            $("#tree_pause").removeAttr("disabled");
+            $(".highlight_selector").attr("disabled", true);            
+            
             // highlight_list["selected"] = "None";
             highlight_list["on"] = 0;
             self.block.show();
@@ -255,6 +258,10 @@ var AnimView = Backbone.View.extend({
                     tree_util.draw_highlight_leaf(ego, 0, 1);
                 }
                 self.block.hide();
+                $('#tree_forward').attr("disabled", true);
+                $('#tree_backward').attr("disabled", true);
+                $('#tree_pause').attr("disabled", true);
+                $(".highlight_selector").removeAttr("disabled");
 				clearInterval(mytimer.anim_timer);
 				$('#tree_forward').attr("disabled", true);
 				this.current_idx = amin_frame.length;
@@ -312,6 +319,10 @@ var AnimView = Backbone.View.extend({
 			}
 			else{
                 self.block.hide();
+                $('#tree_forward').attr("disabled", true);
+                $('#tree_backward').attr("disabled", true);
+                $('#tree_pause').attr("disabled", true);
+                $(".highlight_selector").removeAttr("disabled");
 				clearInterval(mytimer.anim_timer);
             }
 			
@@ -320,6 +331,10 @@ var AnimView = Backbone.View.extend({
                     tree_util.draw_highlight_leaf(ego, 0, 1);
                 }
                 self.block.hide();
+                $('#tree_forward').attr("disabled", true);
+                $('#tree_backward').attr("disabled", true);
+                $('#tree_pause').attr("disabled", true);
+                $(".highlight_selector").removeAttr("disabled");
 				clearInterval(mytimer.anim_timer);
 				self.current_idx = 0;
 	            self.forward = 0;
