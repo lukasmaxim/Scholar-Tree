@@ -129,30 +129,30 @@
                                 <canvas id='anim_tree' style="position:absolute; top:0; left:0; /*background:white;*/ width:100%; height:100%;"></canvas> <span id="save_icon" title="Save this image" class="glyphicon glyphicon-save" style="position:absolute; top:5px; right:5px; font-size:large; color:#B3B3B3;"></span>
                             </div>
                             <div class="col-md-3">
-                                <b style="font-size:16px;">Animation Control Panel</b><br>
-                                <div class="btn-group">
+                                <b style="font-size:16px;">Animation Control</b><br>
+                                <div class="btn-group" style="margin-bottom:15px;">
                                     <button type="button" title="Back to previous step" id="tree_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
                                     <button type="button" title="Play tree growing animation" id="tree_anim" value="1" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
                                     <button type="button" title="Pause to current step" id="tree_pause" value="1" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
                                     <button type="button" title="Stop and set to default" id="tree_pic" value="1" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
                                     <button type="button" title="Go to next step" id="tree_forward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
                                 </div><br>
-                                <b style="font-size:16px;">Mappings Description:</b><br>
+                                <b style="font-size:16px;">Tree Feature Mappings:</b><br>
                                 <div id="tree1_text">
                                     <a id="tree1_save" href="#" name="1" style="display:none;">Save</a> 
                                     <b>Stick:</b> paper<br>
-                                    <b>Trunk Side:</b> Conference paper(left)<br>
+                                    <b>Trunk Side:</b> Conference paper (left)<br>
                                     <b>Branches:</b> Published year<br>
                                     <b>Branch Gap:</b>
                                     <p class="b_gap">
                                         0
                                     </p><br>
-                                    <b>Branch Side:</b> First author(down)<br>
+                                    <b>Branch Side:</b> First authored papers (down)<br>
                                     <b>Fruit:</b> Paper length (&gt;4)<br>
                                     <b>Leaf:</b> Co-author<br>
-                                    <b>Leaf Color:</b> First collaborated time<br>
-                                    <b>Leaf Size:</b> Total collaborated paper<br>
-                                    <b>Highlight:</b><br>
+                                    <b>Leaf Color:</b> First co-authored year<br>
+                                    <b>Leaf Size:</b> Total co-authored papers<br>
+                                    <b>Highlight Selection:</b><br>
                                     <select id="tree1_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
                                         <option value="None">
                                             None
@@ -162,17 +162,17 @@
                                 <div id="tree2_text" style="display:none;">
                                     <a id="tree2_save" href="#" name="2" style="display:none;">Save</a> 
                                     <b>Stick:</b> paper<br>
-                                    <b>Trunk Side:</b> First author(left)<br>
+                                    <b>Trunk Side:</b> First authored papers (left)<br>
                                     <b>Branches:</b> Published year<br>
                                     <b>Branch Gap:</b>
                                     <p class="b_gap">
                                         0
                                     </p><br>
-                                    <b>Branch Side:</b> Conference paper(down)<br>
+                                    <b>Branch Side:</b> Conference paper (down)<br>
                                     <b>Leaf:</b> Co-author<br>
-                                    <b>Leaf Color:</b> First collaborated time<br>
-                                    <b>Leaf Size:</b> Total collaborated paper<br>
-                                    <b>Highlight:</b><br>
+                                    <b>Leaf Color:</b> First co-authored year<br>
+                                    <b>Leaf Size:</b> Total co-authored papers<br>
+                                    <b>Highlight Selection:</b><br>
                                     <select id="tree2_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
                                         <option value="None">
                                             None
@@ -182,18 +182,18 @@
                                 <div id="tree3_text" style="display:none;">
                                     <a id="tree3_save" href="#" name="3" style="display:none;">Save</a> 
                                     <b>Stick:</b> Co-author<br>
-                                    <b>Trunk Side:</b> Total collaborated paper(left:&lt;5)<br>
-                                    <b>Branches:</b> First collaborated time<br>
+                                    <b>Trunk Side:</b> Total co-authored papers (left:&lt;5)<br>
+                                    <b>Branches:</b> First co-authored year<br>
                                     <b>Branch Gap:</b>
                                     <p class="b_gap">
                                         0
                                     </p><br>
-                                    <b>Branch Side:</b> Collaboration frequency(up:&gt;1)<br>
-                                    <b>Fruit:</b> Researcher itself<br>
+                                    <b>Branch Side:</b> Collaboration frequency (up:&gt;1)<br>
+                                    <!-- <b>Fruit:</b> Researcher itself<br> -->
                                     <b>Leaf:</b> Paper<br>
                                     <b>Leaf Color:</b> Paper types<br>
                                     <b>Leaf Size:</b> Paper length<br>
-                                    <b>Highlight:</b><br>
+                                    <b>Highlight Selection:</b><br>
                                     <select id="tree3_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
                                         <option value="None">
                                             None
@@ -203,17 +203,17 @@
                                 <div id="tree4_text" style="display:none;">
                                     <a id="tree4_save" href="#" name="4" style="display:none;">Save</a>
                                     <b>Stick:</b> Co-author<br>
-                                    <b>Trunk Side:</b> Total collaborated paper(left:&lt;5)<br>
-                                    <b>Branches:</b> First collaborated time<br>
+                                    <b>Trunk Side:</b> Total co-authored papers (left:&lt;5)<br>
+                                    <b>Branches:</b> First co-authored year<br>
                                     <b>Branch Gap:</b>
                                     <p class="b_gap">
                                         0
                                     </p><br>
-                                    <b>Branch Side:</b> Collaboration frequency(up:&gt;1)<br>
+                                    <b>Branch Side:</b> Collaboration frequency (up:&gt;1)<br>
                                     <b>Leaf:</b> Paper<br>
                                     <b>Leaf Color:</b> Author order<br>
                                     <b>Leaf Size:</b> Published year<br>
-                                    <b>Highlight:</b><br>
+                                    <b>Highlight Selection:</b><br>
                                     <select id="tree4_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
                                         <option value="None">
                                             None
