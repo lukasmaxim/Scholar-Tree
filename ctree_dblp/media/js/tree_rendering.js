@@ -559,12 +559,12 @@ var RenderingView = Backbone.View.extend({
 
                 // !!!
                 if(this.snap_idx != -1){
-                    this.snap_info = [alters[long_stick][n]["id"], "right", layer, long_stick];
-                    for(var w = -1; w < 1; w++){
+                    this.snap_info = [alters[long_stick][n]["id"], "right", layer+1, long_stick];
+                    for(var click_w = 0; click_w <= 4; click_w++){
                         for(var i = 0; i < stick_len; i++){
                             // var p_index = [Math.round((point_in_canvas[0]+stick_vector[0]*i)/self.c_detail), Math.round((point_in_canvas[1]+stick_vector[1]*i)/self.c_detail)];
                             var p_index = [Math.round((tree_rstpoint[begin_index[long_stick][0]]+stick_v[long_stick][0]*i)*this.save_scale*this.c_detail), Math.round((tree_rstpoint[begin_index[long_stick][1]]+stick_v[long_stick][1]*i)*this.save_scale*this.c_detail)];
-                            tree_click_grid[this.current_ego][p_index[0]+w][p_index[1]+w] = this.snap_idx;
+                            tree_click_grid[this.current_ego][p_index[0]+click_w][p_index[1]+click_w] = this.snap_idx;
                         }
                     }
                     
@@ -606,12 +606,12 @@ var RenderingView = Backbone.View.extend({
 
                 
                 if(this.snap_idx != -1){
-                    this.snap_info = [alters[short_stick][count_short_stick]["id"], "right", layer, short_stick];
-                    for(var w = -1; w < 1; w++){
+                    this.snap_info = [alters[short_stick][count_short_stick]["id"], "right", layer+1, short_stick];
+                    for(var click_w = 0; click_w <= 4; click_w++){
                         for(var i = 0; i < stick_len; i++){
                             // var p_index = [Math.round(tree_rstpoint[begin_index[short_stick][0]]*this.save_scale*this.c_detail), Math.round(tree_rstpoint[begin_index[short_stick][1]]*this.save_scale*this.c_detail)];
                             var p_index = [Math.round((tree_rstpoint[begin_index[short_stick][0]]+stick_v[short_stick][0]*i)*this.save_scale*this.c_detail), Math.round((tree_rstpoint[begin_index[short_stick][1]]+stick_v[short_stick][1]*i)*this.save_scale*this.c_detail)];
-                            tree_click_grid[this.current_ego][p_index[0]+w][p_index[1]+w] = this.snap_idx;
+                            tree_click_grid[this.current_ego][p_index[0]+click_w][p_index[1]+click_w] = this.snap_idx;
                         }
                     }
                 }
@@ -1001,12 +1001,12 @@ var RenderingView = Backbone.View.extend({
                 // this.context.fill();//fill color
 
                 if(this.snap_idx != -1){
-                    this.snap_info = [alters[long_stick][n]["id"], "left", layer, long_stick];
-                    for(var w = -1; w < 1; w++){
+                    this.snap_info = [alters[long_stick][n]["id"], "left", layer+1, long_stick];
+                    for(var click_w = 0; click_w <= 4; click_w++){
                         for(var i = 0; i < stick_len; i++){
                             // var p_index = [Math.round((point_in_canvas[0]+stick_vector[0]*i)/self.c_detail), Math.round((point_in_canvas[1]+stick_vector[1]*i)/self.c_detail)];
                             var p_index = [Math.round((tree_lstpoint[begin_index[long_stick][0]]+stick_v[long_stick][0]*i)*this.save_scale*this.c_detail), Math.round((tree_lstpoint[begin_index[long_stick][1]]+stick_v[long_stick][1]*i)*this.save_scale*this.c_detail)];
-                            tree_click_grid[this.current_ego][p_index[0]+w][p_index[1]+w] = this.snap_idx;
+                            tree_click_grid[this.current_ego][p_index[0]+click_w][p_index[1]+click_w] = this.snap_idx;
                         }
                     }
                     
@@ -1045,12 +1045,12 @@ var RenderingView = Backbone.View.extend({
                 // this.context.fill();//fill color
 
                 if(this.snap_idx != -1){
-                    this.snap_info = [alters[short_stick][count_short_stick]["id"], "left", layer, short_stick];
-                    for(var w = -1; w < 1; w++){
+                    this.snap_info = [alters[short_stick][count_short_stick]["id"], "left", layer+1, short_stick];
+                    for(var click_w = 0; click_w <= 4; click_w++){
                         for(var i = 0; i < stick_len; i++){
                             // var p_index = [Math.round(tree_rstpoint[begin_index[short_stick][0]]*this.save_scale*this.c_detail), Math.round(tree_rstpoint[begin_index[short_stick][1]]*this.save_scale*this.c_detail)];
                             var p_index = [Math.round((tree_lstpoint[begin_index[short_stick][0]]+stick_v[short_stick][0]*i)*this.save_scale*this.c_detail), Math.round((tree_lstpoint[begin_index[short_stick][1]]+stick_v[short_stick][1]*i)*this.save_scale*this.c_detail)];
-                            tree_click_grid[this.current_ego][p_index[0]+w][p_index[1]+w] = this.snap_idx;
+                            tree_click_grid[this.current_ego][p_index[0]+click_w][p_index[1]+click_w] = this.snap_idx;
                         }
                     }
                 }
@@ -1260,8 +1260,8 @@ var RenderingView = Backbone.View.extend({
                         angle = angle + random_angle;
                         // console.log("+++++one leaf", 2.5*radius*this.save_scale);
                         if(this.snap_idx != -1){
-                            for(var leaf_x = 0; leaf_x < 2*radius*this.save_scale*this.c_detail; leaf_x++){
-                                for(var leaf_y = -radius*this.save_scale*this.c_detail*0.2; leaf_y < radius*this.save_scale*this.c_detail*0.2; leaf_y++){
+                            for(var leaf_x = 0; leaf_x < 3*radius*this.save_scale*this.c_detail; leaf_x++){
+                                for(var leaf_y = -radius*this.save_scale*this.c_detail*0.5; leaf_y < radius*this.save_scale*this.c_detail*0.5; leaf_y++){
                                     // x = xcos - ysin, y = ycos + xsin
                                     var real_x = (point_x*this.save_scale*this.c_detail) + (leaf_x*Math.cos(angle) - leaf_y*Math.sin(angle));
                                     var real_y = (point_y*this.save_scale*this.c_detail) + (leaf_y*Math.cos(angle) + leaf_x*Math.sin(angle));
@@ -1279,8 +1279,8 @@ var RenderingView = Backbone.View.extend({
                         angle = angle - random_angle;
                         // console.log("+++++one leaf", 2.5*radius*this.save_scale);
                         if(this.snap_idx != -1){
-                            for(var leaf_x = 0; leaf_x < 2*radius*this.save_scale; leaf_x++){
-                                for(var leaf_y = -radius*this.save_scale*0.2; leaf_y < radius*this.save_scale*0.2; leaf_y++){
+                            for(var leaf_x = 0; leaf_x < 3*radius*this.save_scale; leaf_x++){
+                                for(var leaf_y = -radius*this.save_scale*0.5; leaf_y < radius*this.save_scale*0.5; leaf_y++){
                                     // x = xcos - ysin, y = ycos + xsin
                                     var real_x = (point_x*this.save_scale*this.c_detail) + (leaf_x*Math.cos(angle) - leaf_y*Math.sin(angle));
                                     var real_y = (point_y*this.save_scale*this.c_detail) + (leaf_y*Math.cos(angle) + leaf_x*Math.sin(angle));
@@ -1497,8 +1497,8 @@ var RenderingView = Backbone.View.extend({
         var self = this;
         tree_points[self.current_ego][self.current_layer]["fruit"].push(posx, posy, r);
         if(this.snap_idx != -1){
-            for(var fx = -r*this.save_scale*this.c_detail*2; fx < r*this.save_scale*this.c_detail*2; fx++){
-                for(var fy = -r*this.save_scale*this.c_detail*2; fy < r*this.save_scale*this.c_detail*2; fy++){
+            for(var fx = -r*this.save_scale*this.c_detail*2.5; fx < r*this.save_scale*this.c_detail*2.5; fx++){
+                for(var fy = -r*this.save_scale*this.c_detail*2.5; fy < r*this.save_scale*this.c_detail*2.5; fy++){
                     // x = xcos - ysin, y = ycos + xsin
                     var real_x = (posx*this.save_scale*this.c_detail) + fx;
                     var real_y = (posy*this.save_scale*this.c_detail) + fy;

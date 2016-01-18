@@ -115,6 +115,7 @@ var InteractView = Backbone.View.extend({
 
             // var renderscale = 0.15/self.scale;
             self.el_main_canvas.css("cursor", "");
+            $("#click_info").hide();
             var canvas_point = [Math.round((mousePos.x-self.translate[0])/self.scale), Math.round((mousePos.y-self.translate[1])/self.scale)];
             var grid_point = [Math.round(canvas_point[0]*0.15), Math.round(canvas_point[1]*0.15)];
             if (self.dragStart && Math.abs(mousePos.x-self.dragStart.x)>0.1){
@@ -136,6 +137,7 @@ var InteractView = Backbone.View.extend({
                 var point_info = self.detail[point_idx];
                 if(point_idx != -1){
                     self.el_main_canvas.css("cursor", "pointer");
+                    self.display_info(point_info);
                     // console.log(point_idx, [Math.round((mousePos.x-self.translate[0]))/self.scale, Math.round((mousePos.y-self.translate[1]))/self.scale], [canvas_point[0], canvas_point[1]]);
                     // self.testGrid(canvas_point[0], canvas_point[1], point_idx);
                 }
