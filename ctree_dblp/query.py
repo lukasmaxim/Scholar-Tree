@@ -443,10 +443,19 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 				# data4[4] = 1
 
 			# co-author order
+			# leaf size
 			order = publication[paper]["author_order"]
-			if order > 4:
-				order = 4
-			data4[5] = order + 3
+			if order >= 5:
+				data4[6] = 1
+			elif order <= 1:
+				data4[6] = 5
+			elif order == 2:
+				data4[6] = 4
+			elif order == 3:
+				data4[6] = 3
+			elif order == 4:
+				data4[6] = 2
+			# data4[6] = order + 1
 
 			p_length = int(publication[paper]["pages"])
 			
@@ -462,15 +471,15 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 			elif 12 < p_length:
 				data3[6] = 5
 
-			# leaf size
+			# leaf color
 			if publication[paper]["year"] < year_gap[0]:
-				data4[6] = int((len(year_gap) + 1) / 1.5)
+				data4[5] = 0
 			elif publication[paper]["year"] >= year_gap[-1]:
-				data4[6] = 2
+				data4[5] = len(year_gap) 
 			else:
 				for g in range(len(year_gap)-1):
 					if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
-						data4[6] = int((len(year_gap) - g) / 1.5)
+						data4[5] = g+1
 			# if coauthor == "none":
 			# 	print data4
 

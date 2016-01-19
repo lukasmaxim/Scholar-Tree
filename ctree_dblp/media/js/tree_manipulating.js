@@ -256,7 +256,7 @@ var InteractView = Backbone.View.extend({
         }
         info_text += this.info_label[4];
         for(var t = 4; t < info.length; t++){
-            info_text += "<br>" + info[t];
+            info_text += "<br> &bull; " + info[t];
         }
         info_page.html(info_text);
     }
