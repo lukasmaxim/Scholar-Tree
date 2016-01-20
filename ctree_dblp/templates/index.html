@@ -78,8 +78,8 @@
             </div>
             <div id="system_page" style="overflow:auto; min-width:1200px; min-height:750px;">
                 <!-- search -->
-                <div id="search_engine_cnt" class="left relative" style="width:23%; height:50%;">
-                    <div id="search_engine" style="width:100%; height:100%; display:none;">
+                <div id="search_engine_cnt" class="left relative" style="width:23%;">
+                    <div id="search_engine" style="width:100%; display:none;">
                         <div id="form" class="row relative" style="margin:0 10px;">
                             <span class="relative myfont3">DBLP URL:</span> <input type="text" id="dblp_url" value="http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu" title="Copy the searching result URL of DBLP" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"> <button id="check_url" title="Retrieve information of this researcher" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Retrieve</button>
                         </div><img id="progress" src="media/img/progress-bar.gif" style="display:none; width:50%;">
@@ -93,7 +93,22 @@
                             <button id="draw_tree" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px; margin:10px 0;">Create Trees</button>
                         </div>
                     </div>
-                </div>
+                    <div id="legend_cnt" style='display:table;'> 
+                        <b style="font-size:16px; margin-left:10px;">Leaf Color Legend:</b><br>
+                        <div id="tree1_legend" class="display_legend">
+                            Legend here
+                        </div>
+                        <div id="tree2_legend" class="display_legend">
+                            Legend here
+                        </div>
+                        <div id="tree3_legend" class="display_legend">
+                            Legend here
+                        </div>
+                        <div id="tree4_legend" class="display_legend">
+                            Legend here
+                        </div>
+                    </div>
+                </div>                
                 <!-- result -->
                 <div id="result" class="left relative" style="width:77%; height:100%; overflow:auto; min-width:900px;">
                     <img id="loading" src="media/img/loader.gif" class="relative" style="display:none; height:50px; margin-left:50%; margin-top:30px;">
@@ -212,7 +227,7 @@
                                     <b>Branch Side:</b> Collaboration frequency (up: &gt; 1)<br>
                                     <b>Leaf:</b> Paper<br>
                                     <b>Leaf Color:</b> Published year<br>
-                                    <b>Leaf Size:</b> Author order<br>
+                                    <b>Leaf Size:</b> Author order (first: biggest)<br>
                                     <b>Highlight Selection:</b><br>
                                     <select id="tree4_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
                                         <option value="None">

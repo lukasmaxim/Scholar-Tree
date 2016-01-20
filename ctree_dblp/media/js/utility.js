@@ -120,6 +120,53 @@ var util = {
     },
     */
 
+    set_legend: function(legend_info){
+        var legend_list = {'tree1': $('#tree1_legend'), 'tree2': $('#tree2_legend'), 'tree3': $('#tree3_legend'), 'tree4': $('#tree4_legend')};
+        // var legend_list = {'tree1': '#tree1_legend', 'tree2': '#tree2_legend', 'tree3': '#tree3_legend', 'tree4': '#tree4_legend'};
+        console.log('In set legend');
+        // console.log(legend_info);
+        $(".display_legend").empty();
+        var paper_type = ['Others', 'Journal', 'Conference']
+        var type_color = ['#6C1904', '#94AE0F', '#1F861D']
+        for(var e in legend_list){
+            legend_list[e].show();
+            if( e == "tree3"){
+                for (var i = 0; i < 3; i++){
+                    var cnt = $('<div style="display:table-row; height:30px;"></div>');
+                    var box = $('<div class="legend_box"></div>');
+                    var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b>' + paper_type[i] + '</b></span>');
+                    box.css({"background": type_color[i]});
+                    cnt.append(box)
+                    cnt.append(label)
+                    legend_list[e].append(cnt)
+                }
+            }
+            else{
+                for (var i = 0; i < legend_info.length; i++){
+                    var cnt = $('<div style="display:table-row; height:30px;"></div>');
+                    var box = $('<div class="legend_box"></div>');
+                    var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"> <b>&lt; ' + legend_info[i] + '</b></span>');
+                    box.css({"background": mapping_color.render_leaf_color[i]});
+                    cnt.append(box)
+                    cnt.append(label)
+                    legend_list[e].append(cnt)
+                }
+                var cnt = $('<div style="display:table-row; height:30px;"></div>');
+                var box = $('<div class="legend_box"></div>');
+                var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b> &lt;= ' + ey + '</b></span>');
+                box.css({"background": mapping_color.render_leaf_color[legend_info.length]});
+                cnt.append(box)
+                cnt.append(label)
+                legend_list[e].append(cnt)
+            }            
+            
+            legend_list[e].hide();      
+        }
+        legend_list[view_ego].show();
+        $('#legend_cnt').show();
+
+    },
+
     set_highlight_list: function(){
         var tree1_selection = $('#tree1_select');
         var tree2_selection = $('#tree2_select');

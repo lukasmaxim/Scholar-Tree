@@ -17,6 +17,7 @@ var Tree_Model = Backbone.Model.extend({
         _.bindAll(this, 'set_period');
         this.bind('change:time_period', this.set_period);
     },
+
     // for general event trigger
     check_researcher: function(request){
         var self = this;
@@ -54,6 +55,7 @@ var Tree_Model = Backbone.Model.extend({
             highlight_list["authors"] = result[1];
             highlight_list["papers"] = result[2];
             util.set_highlight_list();
+            util.set_legend(result[3]);
         });
     }
 });

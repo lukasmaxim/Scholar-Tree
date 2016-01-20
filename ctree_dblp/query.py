@@ -153,7 +153,7 @@ def get_tree_structure(request):
 			else:
 				print "<<<", p_title
 	    # sys.exit()
-		tree_egos, branches = tree_mapping(publication, coauthorship, author, sy, ey)
+		tree_egos, branches, legends = tree_mapping(publication, coauthorship, author, sy, ey)
 		final_structure = dict()
 		final_structure["all"] = dict()
 		
@@ -182,7 +182,7 @@ def get_tree_structure(request):
 	final_unique_paper_list = ["None"] + sorted(unique_paper_list)
 	# print final_unique_author_list
 	# print final_unique_paper_list
-	final_return = [final_structure, final_unique_author_list, final_unique_paper_list]
+	final_return = [final_structure, final_unique_author_list, final_unique_paper_list, legends]
 	return_json = simplejson.dumps(final_return, indent=4, use_decimal=True)
 
 	return HttpResponse(return_json)
@@ -214,7 +214,7 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 	
 	# if gap == 1:
 	# 	year_gap.append(sy)
-	for y in range(sy+gap, ey+1, gap):
+	for y in range(sy+gap, ey, gap):
 		year_gap.append(int(y))
 
 	print gap, year_gap, len(year_gap)
@@ -435,12 +435,15 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 			data3 = data3_stick + ["leaf_color", "leaf_size"] + [fruit_val, paper, paper_real_year, first_real_year]
 			data4 = data4_stick + ["leaf_color", "leaf_size", 0, paper, paper_real_year, first_real_year]
 			
-			if publication[paper]["type"] == "conf":
+			if publication[paper]["type"] == "journals":# "conf":
 				data3[5] = 4
 				# data4[4] = 0
-			else:
+			elif publication[paper]["type"] == "conf":
 				data3[5] = 6
 				# data4[4] = 1
+			else:
+				# print "*", publication[paper]["type"]
+				data3[5] = 0
 
 			# co-author order
 			# leaf size
@@ -455,7 +458,13 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 				data4[6] = 3
 			elif order == 4:
 				data4[6] = 2
-			# data4[6] = order + 1
+			# if order <= 1:
+			# 	data4[6] = 1
+			# elif order >= 5:
+			# 	data4[6] = 5
+			# else:
+			# 	data4[6] = order
+			
 
 			p_length = int(publication[paper]["pages"])
 			
@@ -487,7 +496,7 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 			tree_egos["tree4"].append(data4)
 			
 			
-	return tree_egos, branch_layer
+	return tree_egos, branch_layer, year_gap
 
 
 def tree_structure(tree_ego, branch_layer):

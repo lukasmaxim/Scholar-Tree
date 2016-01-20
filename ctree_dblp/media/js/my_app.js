@@ -84,6 +84,7 @@ var MyApp = function MyApp(){
         $("#system_page").show();
         $("#search_engine").show();
         $("#start_page").hide();
+        $('#legend_cnt').hide();
     });
 
     search.click(function(){
@@ -93,6 +94,7 @@ var MyApp = function MyApp(){
         $("#progress").show();
         $("#detail").hide();
         $("#tree_result").hide();
+        $('#legend_cnt').hide();
     });
 
     finish.click(function(){
@@ -101,6 +103,7 @@ var MyApp = function MyApp(){
         $("#loading").show();;
         $("#tree_result").hide();
         $("#tree1_cnt")[0].click();
+        $('#legend_cnt').hide();
         var slider = $("#period_slider").data("ionRangeSlider");
         var resercher = $("#dblp_url").val();
         sy = slider.result.from;

@@ -106,3 +106,23 @@ img.mfp-img{
 .highlight_selector{
   width:100%;
 }
+
+
+.display_legend{
+  /*position: relative;*/
+  margin:0 10px; 
+  width:100%;
+  display:none;
+}
+
+.legend_box{
+  height: 25px;
+  width: 25px;
+  background: gray;
+  /*margin: 5px 0;*/
+  float: left;
+}
+
+.legend_label{
+  margin: 10px;
+}
