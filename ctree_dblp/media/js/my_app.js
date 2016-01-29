@@ -106,6 +106,7 @@ var MyApp = function MyApp(){
     finish.click(function(){
         console.log("click finish");
         finish.attr("disabled", true);
+        $("#feedback").removeAttr("disabled");
         $("#loading").show();;
         $("#tree_result").hide();
         $("#tree1_cnt")[0].click();
@@ -139,6 +140,20 @@ var MyApp = function MyApp(){
         self.model.generate_tree_structure(request);   
 
     });
+
+    // open the dialog
+    $( "#survey_dialog" ).dialog({
+        autoOpen: false,
+        height: $(window).height()*0.5,
+        width: $(window).width()*0.5,
+        modal: true,
+        resizable: false
+    });
+
+    $( "#feedback" ).click(function() {
+        $("#survey_dialog").dialog( "open" );
+    });
+
 
     // util.set_events();
 
