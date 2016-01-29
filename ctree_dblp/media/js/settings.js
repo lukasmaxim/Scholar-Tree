@@ -61,7 +61,8 @@ var trunk_size = {"tree1": {}, "tree2": {}, "tree3": {}, "tree4": {}};
 
 var DBLP_researcher = "";
 var sy = 0;
-var ey = 2015;
+var ey = 2016;
+var timeline = [0, 2016, 1];
 
 var tree_boundary = { // [w, h]
   "tree1": [], 

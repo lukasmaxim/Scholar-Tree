@@ -51,9 +51,13 @@ var MyApp = function MyApp(){
     $(".snap_view").css({'height': $(".snap_view").width()+20});
     $("#anim_container").css({'height': $("#tree_result").height()});
  
+    $("#click_info").css({'max-height': $("#system_page").height()-390});
+    $("#click_info").css({'overflow-y': 'auto'});
+    $("#click_info").css({'overflow-x': 'hidden'});
+
     $("#system_page").hide();
     $("#main_display").css({'min-height': $(window).height()-20-$("#header").height()-$("#footer").height()});
-
+   
     // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
     window.onresize = function(event) {
         $("#main_display").css({'min-height': $(window).height()-20-$("#header").height()-$("#footer").height()});
@@ -84,7 +88,8 @@ var MyApp = function MyApp(){
         $("#system_page").show();
         $("#search_engine").show();
         $("#start_page").hide();
-        $('#legend_cnt').hide();
+        $('#anim_panel').hide();
+        $('#highlight_panel').hide();        
     });
 
     search.click(function(){
@@ -94,7 +99,8 @@ var MyApp = function MyApp(){
         $("#progress").show();
         $("#detail").hide();
         $("#tree_result").hide();
-        $('#legend_cnt').hide();
+        $('#anim_panel').hide();
+        $('#highlight_panel').hide();
     });
 
     finish.click(function(){
@@ -103,7 +109,7 @@ var MyApp = function MyApp(){
         $("#loading").show();;
         $("#tree_result").hide();
         $("#tree1_cnt")[0].click();
-        $('#legend_cnt').hide();
+
         var slider = $("#period_slider").data("ionRangeSlider");
         var resercher = $("#dblp_url").val();
         sy = slider.result.from;
@@ -122,11 +128,12 @@ var MyApp = function MyApp(){
         else
             gap = 6
         $(".b_gap").text(gap);
-        
+
         ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
         ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
+        ga('send', 'event', DBLP_researcher, "create", sy + "-" + ey);
 
-        var request_array = [resercher, sy, ey];
+        var request_array = [resercher, sy, ey, timeline];
         var request = JSON.stringify(request_array);
 
         self.model.generate_tree_structure(request);   

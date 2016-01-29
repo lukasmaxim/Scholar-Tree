@@ -80,20 +80,63 @@
                 <!-- search -->
                 <div id="search_engine_cnt" class="left relative" style="width:23%;">
                     <div id="search_engine" style="width:100%; display:none;">
-                        <div id="form" class="row relative" style="margin:0 10px;">
+                        <div id="form" class="row relative" style="margin:0 1px 0 10px;">
                             <span class="relative myfont3">DBLP URL:</span> <input type="text" id="dblp_url" value="http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu" title="Copy the searching result URL of DBLP" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"> <button id="check_url" title="Retrieve information of this researcher" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Retrieve</button>
                         </div><img id="progress" src="media/img/progress-bar.gif" style="display:none; width:50%;">
                         <div id="detail" class="row relative" style="margin:10px; display:none;">
                             <div style="margin:10px 0;">
                                 <span class="relative myfont3">Researcher:</span> <span id="researcher_name" class="relative myfont3">Kwan-Liu Ma</span>
                             </div><!-- <span class="relative myfont3 row">Time:</span> -->
-                            <div title="Choosing an interesting period" class="row" style="margin:0 8px;">
+                            <div title="Choosing an interesting period" class="row" style="margin:0 1px 0 8px;">
                                 <input type="text" id="period_slider" class="row" style="margin:10px 0;">
                             </div>
                             <button id="draw_tree" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px; margin:10px 0;">Create Trees</button>
                         </div>
                     </div>
-                    <div id="legend_cnt" style='display:table;'> 
+                    <div id="anim_panel" style='/*margin:0 10px; width:100%;*/ margin:0 1px 0 10px;'>
+                        <b style="font-size:16px;">Animation Control</b><br>
+                        <div class="btn-group" style="margin-bottom:15px;">
+                            <button type="button" title="Back to previous step" id="tree_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
+                            <button type="button" title="Play tree growing animation" id="tree_anim" value="1" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
+                            <button type="button" title="Pause to current step" id="tree_pause" value="1" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
+                            <button type="button" title="Stop and set to default" id="tree_pic" value="1" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
+                            <button type="button" title="Go to next step" id="tree_forward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+                        </div><br>
+                    </div>
+                    <div id="highlight_panel" style='/*margin:0 10px; width:100%;*/margin:0 1px 0 10px;'>
+                        <b style="font-size:16px;">Highlight Selector</b><br>
+                        <select id="tree1_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
+                            <option value="None">
+                                None
+                            </option>
+                        </select>
+                        <select id="tree2_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
+                            <option value="None">
+                                None
+                            </option>
+                        </select>
+                        <select id="tree3_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
+                            <option value="None">
+                                None
+                            </option>
+                        </select>
+                        <select id="tree4_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
+                            <option value="None">
+                                None
+                            </option>
+                        </select>
+                        <div>
+                            <div id="highlight_info">
+                                leaf size: 3 out of 6<br>
+                                leaf count: 30
+                            </div>
+                            <div id="click_info" >
+                                Trunk side: Up<br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div id="legend_cnt" style='display:table;'> 
                         <b style="font-size:16px; margin-left:10px;">Leaf Color Legend:</b><br>
                         <div id="tree1_legend" class="display_legend">
                             Legend here
@@ -107,7 +150,7 @@
                         <div id="tree4_legend" class="display_legend">
                             Legend here
                         </div>
-                    </div>
+                    </div> -->
                 </div>                
                 <!-- result -->
                 <div id="result" class="left relative" style="width:77%; height:100%; overflow:auto; min-width:900px;">
@@ -143,15 +186,15 @@
                             <div id='anim_container' class="col-md-7 relative" style="padding:0; border:1.5px solid gray; border-radius:10px; height:500px; /*border-bottom-width:10px;*/">
                                 <canvas id='anim_tree' style="position:absolute; top:0; left:0; /*background:white;*/ width:100%; height:100%;"></canvas> <span id="save_icon" title="Save this image" class="glyphicon glyphicon-save" style="position:absolute; top:5px; right:5px; font-size:large; color:#B3B3B3;"></span>
                             </div>
-                            <div class="col-md-3">
-                                <b style="font-size:16px;">Animation Control</b><br>
+                            <div class="col-md-3" style="margin-bottom: 10px;">
+                                <!-- <b style="font-size:16px;">Animation Control</b><br>
                                 <div class="btn-group" style="margin-bottom:15px;">
                                     <button type="button" title="Back to previous step" id="tree_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
                                     <button type="button" title="Play tree growing animation" id="tree_anim" value="1" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
                                     <button type="button" title="Pause to current step" id="tree_pause" value="1" class="btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
                                     <button type="button" title="Stop and set to default" id="tree_pic" value="1" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
                                     <button type="button" title="Go to next step" id="tree_forward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
-                                </div><br>
+                                </div><br> -->
                                 <b style="font-size:16px;">Tree Feature Mappings:</b><br>
                                 <div id="tree1_text">
                                     <a id="tree1_save" href="#" name="1" style="display:none;">Save</a> 
@@ -167,12 +210,12 @@
                                     <b>Leaf:</b> Co-author<br>
                                     <b>Leaf Color:</b> First co-authored year<br>
                                     <b>Leaf Size:</b> Total co-authored papers<br>
-                                    <b>Highlight Selection:</b><br>
-                                    <select id="tree1_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
+                                    <!-- <b>Highlight Selection:</b><br> -->
+                                    <!-- <select id="tree1_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
                                         <option value="None">
                                             None
                                         </option>
-                                    </select>
+                                    </select> -->
                                 </div>
                                 <div id="tree2_text" style="display:none;">
                                     <a id="tree2_save" href="#" name="2" style="display:none;">Save</a> 
@@ -187,12 +230,12 @@
                                     <b>Leaf:</b> Co-author<br>
                                     <b>Leaf Color:</b> First co-authored year<br>
                                     <b>Leaf Size:</b> Total co-authored papers<br>
-                                    <b>Highlight Selection:</b><br>
-                                    <select id="tree2_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
+                                    <!-- <b>Highlight Selection:</b><br> -->
+                                    <!-- <select id="tree2_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
                                         <option value="None">
                                             None
                                         </option>
-                                    </select>
+                                    </select> -->
                                 </div>
                                 <div id="tree3_text" style="display:none;">
                                     <a id="tree3_save" href="#" name="3" style="display:none;">Save</a> 
@@ -208,12 +251,12 @@
                                     <b>Leaf:</b> Paper<br>
                                     <b>Leaf Color:</b> Paper types<br>
                                     <b>Leaf Size:</b> Paper length<br>
-                                    <b>Highlight Selection:</b><br>
-                                    <select id="tree3_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
+                                    <!-- <b>Highlight Selection:</b><br> -->
+                                   <!--  <select id="tree3_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
                                         <option value="None">
                                             None
                                         </option>
-                                    </select>
+                                    </select> -->
                                 </div>
                                 <div id="tree4_text" style="display:none;">
                                     <a id="tree4_save" href="#" name="4" style="display:none;">Save</a>
@@ -228,14 +271,14 @@
                                     <b>Leaf:</b> Paper<br>
                                     <b>Leaf Color:</b> Published year<br>
                                     <b>Leaf Size:</b> Author order (first: biggest)<br>
-                                    <b>Highlight Selection:</b><br>
-                                    <select id="tree4_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
+                                    <!-- <b>Highlight Selection:</b><br> -->
+                                    <!-- <select id="tree4_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
                                         <option value="None">
                                             None
                                         </option>
-                                    </select>
+                                    </select> -->
                                 </div>
-                                <div>
+                                <!-- <div>
                                     <div id="highlight_info">
                                         leaf size: 3 out of 6<br>
                                         leaf count: 30
@@ -243,6 +286,21 @@
                                     <div id="click_info" style="display:none;">
                                         Trunk side: Up<br>
                                     </div>
+                                </div> -->
+                            </div>
+                            <div id="legend_cnt" style='margin-left:10px; display:table;'> 
+                                <b style="font-size:16px; margin-left:15px;">Leaf Color Legend:</b><br>
+                                <div id="tree1_legend" class="display_legend">
+                                    Legend here
+                                </div>
+                                <div id="tree2_legend" class="display_legend">
+                                    Legend here
+                                </div>
+                                <div id="tree3_legend" class="display_legend">
+                                    Legend here
+                                </div>
+                                <div id="tree4_legend" class="display_legend">
+                                    Legend here
                                 </div>
                             </div>
                         </div>

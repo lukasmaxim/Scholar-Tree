@@ -26,7 +26,8 @@ var Tree_Model = Backbone.Model.extend({
         d3.json(request_url, function(result){
             console.log(result);
             if(result[0] == -1){
-               alert("Please get the EXACT MARCHES URL!");
+               // alert("Please get the CORRECT and EXACT MATCHED URL!");
+               alert("Invalid URL!");
                $("#progress").hide();
             }
             else{

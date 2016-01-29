@@ -141,6 +141,7 @@ var DrawView = Backbone.View.extend({
             var hide_text = "#" + view_ego + "_text";
             var show_text = "#" + this.id.slice(0,5) + "_text";
             var hide_selector = "#" + view_ego + "_select";
+            var show_selector = "#" + this.id.slice(0,5) + "_select";
             var hide_legend = "#" + view_ego + "_legend";
             var show_legend = "#" + this.id.slice(0,5) + "_legend";
             $(hide_text).hide();
@@ -155,6 +156,8 @@ var DrawView = Backbone.View.extend({
             $(hide_snap).css({'border-width': '3px'});
             highlight_list["selected"] = "None";
             $(hide_selector).val("None");
+            $(hide_selector).hide();
+            $(show_selector).show();
 
             view_ego = this.id.slice(0,5); //!!! set current_ego and trgger it
             self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
@@ -224,7 +227,7 @@ var DrawView = Backbone.View.extend({
         if(highlight_list["selected"] != "None"){
         	selected_leaves = tree_points[ego]["all_leaves"][highlight_list["selected"]];
             // display_text = "Leaf size: " + selected_leaves[3] + " out of 100 <br> Leaf count: " + (selected_leaves.length/5);
-            display_text = "Highlight leaf count: " + (selected_leaves.length/5);
+            display_text = "<b>Highlight leaf count:</b> " + (selected_leaves.length/5);
             $("#highlight_info").show();
             $("#highlight_info").html(display_text);
             // if(highlight_list["on"] == 1)

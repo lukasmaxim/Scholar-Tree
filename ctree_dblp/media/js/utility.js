@@ -20,9 +20,25 @@ var util = {
     set_slider: function(researcher_period){
         $("#researcher_name").html(researcher_period[2]);
         DBLP_researcher = researcher_period[2];
+        // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue], [fieldsObject]);
         ga('send', 'event', "researcher", "search", DBLP_researcher);
         
         var slider = $("#period_slider").data("ionRangeSlider");
+
+        var timeline_gap = researcher_period[1] - researcher_period[0] + 1;
+        if (timeline_gap <= 10)
+            timeline_gap = 1
+        else if (10 < timeline_gap && timeline_gap <= 20)
+            timeline_gap = 2
+        else if (20 < timeline_gap && timeline_gap <= 30)
+            timeline_gap = 3
+        else if (30 < timeline_gap && timeline_gap <= 40)
+            timeline_gap = 4
+        else if (40 < timeline_gap && timeline_gap <= 50)
+            timeline_gap = 5
+        else
+            timeline_gap = 6
+        timeline = [researcher_period[0], researcher_period[1], timeline_gap];
         // Call sliders update method with any params
         slider.update({
             min: researcher_period[0],
@@ -128,6 +144,10 @@ var util = {
         $(".display_legend").empty();
         var paper_type = ['Others', 'Journal', 'Conference']
         var type_color = ['#6C1904', '#94AE0F', '#1F861D']
+        var extra = 0;
+        if (legend_info.length <= 6){
+            extra = 2;
+        }
         for(var e in legend_list){
             legend_list[e].show();
             if( e == "tree3"){
@@ -146,7 +166,7 @@ var util = {
                     var cnt = $('<div style="display:table-row; height:30px;"></div>');
                     var box = $('<div class="legend_box"></div>');
                     var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"> <b>&lt; ' + legend_info[i] + '</b></span>');
-                    box.css({"background": mapping_color.render_leaf_color[i]});
+                    box.css({"background": mapping_color.render_leaf_color[i+extra]});
                     cnt.append(box)
                     cnt.append(label)
                     legend_list[e].append(cnt)
@@ -154,7 +174,7 @@ var util = {
                 var cnt = $('<div style="display:table-row; height:30px;"></div>');
                 var box = $('<div class="legend_box"></div>');
                 var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b> &lt;= ' + ey + '</b></span>');
-                box.css({"background": mapping_color.render_leaf_color[legend_info.length]});
+                box.css({"background": mapping_color.render_leaf_color[legend_info.length+extra]});
                 cnt.append(box)
                 cnt.append(label)
                 legend_list[e].append(cnt)
@@ -197,6 +217,18 @@ var util = {
             tree3_selection.append(opt3);
             tree4_selection.append(opt4);
         }
+
+        var selector_list = {'tree1': $('#tree1_select'), 'tree2': $('#tree2_select'), 'tree3': $('#tree3_select'), 'tree4': $('#tree4_select')};
+        
+        for(e in selector_list){
+            if (e == view_ego)
+                selector_list[e].show();
+            else
+                selector_list[e].hide();
+        }
+        $('#anim_panel').show();
+        $('#highlight_panel').show();
+
     }
 
 };

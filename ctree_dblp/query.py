@@ -26,19 +26,24 @@ def check_searching(request):
 			xml_url = ori_url.replace("/hd/", "/xx/")
 			xml_url += ".xml"
 
+			
 			request = Request(xml_url, headers=HEADERS)
-			response = urlopen(request)
-			html = response.read()
-			html = html.decode('utf8')
-			soup = Soup(html)
-			all_year = []
-			author = soup.person.author.string
-			# get all the published years
-			for y in soup.findAll('year'):
-				if y.string not in all_year:
-					all_year.append(y.string)
-			# print all_year
-			period = [all_year[-1], all_year[0], author]
+			try:
+				response = urlopen(request)
+				html = response.read()
+				html = html.decode('utf8')
+				soup = Soup(html)
+				all_year = []
+				author = soup.person.author.string
+				# get all the published years
+				
+				for y in soup.findAll('year'):
+					if y.string not in all_year:
+						all_year.append(y.string)
+				# print all_year
+				period = [all_year[-1], all_year[0], author]
+			except Exception:
+				period = [-1]
 		else:
 			period = [-1]
 	else:
@@ -50,11 +55,12 @@ def check_searching(request):
 
 
 def get_tree_structure(request):
-	if request.GET.get('final_setting'):
+	if request.GET.get('final_setting'): 
 		final_setting = json.loads(request.GET.get('final_setting'))
 		ori_url = final_setting[0]
 		sy = final_setting[1]
 		ey = final_setting[2]
+		career_period = final_setting[3]
 		# http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu
     	# http://dblp.uni-trier.de/pers/xx/m/Ma:Kwan=Liu.xml 
     	# http://dblp.uni-trier.de/pers/hd/s/Shneiderman:Ben
@@ -153,7 +159,7 @@ def get_tree_structure(request):
 			else:
 				print "<<<", p_title
 	    # sys.exit()
-		tree_egos, branches, legends = tree_mapping(publication, coauthorship, author, sy, ey)
+		tree_egos, branches, legends = tree_mapping(career_period, publication, coauthorship, author, sy, ey)
 		final_structure = dict()
 		final_structure["all"] = dict()
 		
@@ -188,7 +194,7 @@ def get_tree_structure(request):
 	return HttpResponse(return_json)
 
 
-def tree_mapping(publication, coauthors, ego, sy, ey):
+def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 	tree_egos = dict()
 	tree_egos["tree1"] = []
 	tree_egos["tree2"] = []
@@ -197,6 +203,7 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 	period = ey - sy + 1
 	# gap = 1
 	year_gap = []
+	color_gap = []
 	# branch_layer = period
 	if period <= 10:
 		gap = 1
@@ -211,14 +218,21 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 	else:
 		gap = 6
 	# print gap
+
+	# start =  int(career_period[0])
+	# end = int(career_period[1])
+	# t_gap = int(career_period[2])
 	
-	# if gap == 1:
-	# 	year_gap.append(sy)
+	# for x in range(start+t_gap, end, t_gap):
+	# 	# print x
+	# 	color_gap.append(int(x))
+	
 	for y in range(sy+gap, ey, gap):
 		year_gap.append(int(y))
 
 	print gap, year_gap, len(year_gap)
 	branch_layer = len(year_gap) + 1
+	color_gap = year_gap
     # sys.exit()
     # ["stick", "leaf", "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
 	for paper in publication:
@@ -329,18 +343,18 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 			total_collaborate_paper = coauthors[author][0]
 			first_collaborated = coauthors[author][1]
 			
-			if first_collaborated < year_gap[0]:
+			if first_collaborated < color_gap[0]:
 				data1[5] = 0
 				data2[5] = 0
-			elif first_collaborated >= year_gap[-1]:
-				data1[5] = len(year_gap)
-				data2[5] = len(year_gap)
+			elif first_collaborated >= color_gap[-1]:
+				data1[5] = len(color_gap)
+				data2[5] = len(color_gap)
 			else:
-				for g in range(len(year_gap)-1):
-					if year_gap[g] <= first_collaborated < year_gap[g+1]:
+				for g in range(len(color_gap)-1):
+					if color_gap[g] <= first_collaborated < color_gap[g+1]:
 						data1[5] = g+1
 						data2[5] = g+1
-			if branch_layer <= 6:
+			if len(color_gap) <= 6:
 				data1[5] += 2
 				data2[5] += 2
 			
@@ -481,14 +495,16 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 				data3[6] = 5
 
 			# leaf color
-			if publication[paper]["year"] < year_gap[0]:
+			if publication[paper]["year"] < color_gap[0]:
 				data4[5] = 0
-			elif publication[paper]["year"] >= year_gap[-1]:
-				data4[5] = len(year_gap) 
+			elif publication[paper]["year"] >= color_gap[-1]:
+				data4[5] = len(color_gap) 
 			else:
-				for g in range(len(year_gap)-1):
-					if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
+				for g in range(len(color_gap)-1):
+					if color_gap[g] <= publication[paper]["year"] < color_gap[g+1]:
 						data4[5] = g+1
+			if len(color_gap) <= 6:
+				data4[5] += 2
 			# if coauthor == "none":
 			# 	print data4
 
@@ -496,7 +512,7 @@ def tree_mapping(publication, coauthors, ego, sy, ey):
 			tree_egos["tree4"].append(data4)
 			
 			
-	return tree_egos, branch_layer, year_gap
+	return tree_egos, branch_layer, color_gap
 
 
 def tree_structure(tree_ego, branch_layer):
