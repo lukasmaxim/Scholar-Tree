@@ -386,3 +386,8 @@ jQuery.fn.center = function () {
     this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2)) + "px");
     return this;
 };
+
+$.getJSON("http://jsonip.com?callback=?", function (data) {
+    // alert("Your ip: " + data.ip);
+    user_ip = data.ip;
+});

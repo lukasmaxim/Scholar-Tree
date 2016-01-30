@@ -50,6 +50,8 @@ def check_searching(request):
 		raise Http404
 
 	return_json = simplejson.dumps(period, indent=4, use_decimal=True)
+	# with open("./ctree_dblp/media/data/research_graph.json", "wb") as json_file:
+	# 	json_file.write(return_json)
 
 	return HttpResponse(return_json)
 
