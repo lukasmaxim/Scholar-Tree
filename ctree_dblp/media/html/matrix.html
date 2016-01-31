@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+  <title>Adjacency Matrix</title>
+  <style>
+  rect.bordered {
+    /*stroke: #E6E6E6;*/
+    border-radius: 0;
+    /*stroke-width:0.5px;*/
+  }
+
+  text.mono {
+    font-size: 9pt;
+    font-family: Consolas, courier;
+    font-weight: bold;
+    fill: #aaa;
+  }
+  text.axis-workweek {
+    fill: #000;
+  }
+  text.axis-worktime {
+    fill: #000;
+  }
+  div.matrix{
+    border: 0px solid #000;
+    border-radius: 0;
+    width: 720px;
+    height: 760px;
+    float: left;
+    margin-top: 15px;
+  }
+  </style>
+  <script src="//d3js.org/d3.v3.min.js"></script>
+  <script type="text/javascript" src="../libs/jquery-ui/js/jquery-1.10.2.js"></script>
+</head>
+<body>
+  <a id="tree1" href="#tree1" style="margin-left:10px;">Tree1</a>
+  <a id="tree2" href="#tree2" style="margin-left:10px;">Tree2</a>
+  <a id="tree3" href="#tree3" style="margin-left:10px;">Tree3</a>
+  <a id="tree4" href="#tree4" style="margin-left:10px;">Tree4</a>
+  <div>
+    <div class="matrix" id="chart"></div>
+  </div> 
+  <script type="text/javascript" src="../js/matrix.js">></script>
+</body>
+</html>
