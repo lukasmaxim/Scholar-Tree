@@ -93,9 +93,10 @@ def get_tree_structure(request):
 			p_title = y.title.string
 			p_year = y.year.string
 			# print p_title
-			unique_paper_list.append(p_title)
-			if int(p_year) > ey or int(p_year) < sy:
-				continue
+			if int(p_year) <= ey and int(p_year) >= sy:
+				unique_paper_list.append(p_title)
+			# if int(p_year) > ey or int(p_year) < sy:
+			# 	continue
 			paper_type = str(y.contents[0]).split('key="')[1].split("/")[0]
 			for a in y.findAll('author'):
 				co_author_list.append(a.string)
@@ -104,7 +105,8 @@ def get_tree_structure(request):
 					coauthorship[author[0]][3].append(p_title)
 				if a.string not in author and a.string not in coauthorship:
 					coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
-					unique_author_list.append(a.string)
+					if int(p_year) <= ey and int(p_year) >= sy:
+						unique_author_list.append(a.string)
 				elif a.string not in author:
 					coauthorship[a.string][0] += 1
 					coauthorship[a.string][3].append(p_title)
@@ -121,7 +123,8 @@ def get_tree_structure(request):
 						coauthorship[author[0]][3].append(p_title)
 					if a.string not in author and a.string not in coauthorship:
 						coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
-						unique_author_list.append(a.string)
+						if int(p_year) <= ey and int(p_year) >= sy:
+							unique_author_list.append(a.string)
 					elif a.string not in author:
 						coauthorship[a.string][0] += 1
 						coauthorship[a.string][3].append(p_title)
@@ -221,23 +224,25 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 		gap = 6
 	# print gap
 
-	# start =  int(career_period[0])
-	# end = int(career_period[1])
-	# t_gap = int(career_period[2])
+	start =  int(career_period[0])
+	end = int(career_period[1])
+	t_gap = int(career_period[2])
 	
-	# for x in range(start+t_gap, end, t_gap):
-	# 	# print x
-	# 	color_gap.append(int(x))
+	for x in range(start+t_gap, end, t_gap):
+		# print x
+		color_gap.append(int(x))
 	
 	for y in range(sy+gap, ey, gap):
 		year_gap.append(int(y))
 
 	print gap, year_gap, len(year_gap)
 	branch_layer = len(year_gap) + 1
-	color_gap = year_gap
+	# color_gap = year_gap
     # sys.exit()
     # ["stick", "leaf", "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit"]
 	for paper in publication:
+		if publication[paper]["year"] > ey or publication[paper]["year"] < sy:
+				continue
 		# solo paper
 		if publication[paper]["author_count"] == 0:
 			# print paper
@@ -447,6 +452,8 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 
 		first_real_year = int(coauthors[coauthor][1]) - sy
 		for paper in coauthors[coauthor][3]:
+			if publication[paper]["year"] > ey or publication[paper]["year"] < sy:
+				continue
 			paper_real_year = int(publication[paper]["year"]) - sy
 			data3 = data3_stick + ["leaf_color", "leaf_size"] + [fruit_val, paper, paper_real_year, first_real_year]
 			data4 = data4_stick + ["leaf_color", "leaf_size", 0, paper, paper_real_year, first_real_year]
