@@ -5,7 +5,7 @@ width = 1000 - margin.left - margin.right,
 height = 1000 - margin.top - margin.bottom;
 
 /* Public variable */
-var scaleNumber = 0.2;
+var scaleNumber = 1;
 
 // Input file name for row
 // var ROW_VALUE_FILE = "new_wave/Thomas_E_matrix_1_row.csv";
@@ -46,7 +46,7 @@ var egos;
 d3.json("../data/research_matrix.json", function(error, mydata) {
   if (error) throw error;
   egos = mydata
-  ego_matrix = mydata.KLM;
+  ego_matrix = mydata.tree1;
   set_color_value(ego_matrix);
   set_row_value(ego_matrix);
   set_col_value(ego_matrix);
@@ -63,9 +63,9 @@ var click_event = function(){
     .attr("width", width)
     .attr("height", height);
    
-    set_color_value(egos.KLM);
-    set_row_value(egos.KLM);
-    set_col_value(egos.KLM);
+    set_color_value(egos.tree1);
+    set_row_value(egos.tree1);
+    set_col_value(egos.tree1);
     draw_matrix();
   });
   $("#tree2").click(function(){
@@ -75,9 +75,9 @@ var click_event = function(){
     .attr("width", width)
     .attr("height", height);
     
-    set_color_value(egos.Wijk);
-    set_row_value(egos.Wijk);
-    set_col_value(egos.Wijk);
+    set_color_value(egos.tree2);
+    set_row_value(egos.tree2);
+    set_col_value(egos.tree2);
     draw_matrix();
   });
   $("#tree3").click(function(){
@@ -87,9 +87,9 @@ var click_event = function(){
     .attr("width", width)
     .attr("height", height);
     
-    set_color_value(egos.Ben);
-    set_row_value(egos.Ben);
-    set_col_value(egos.Ben);
+    set_color_value(egos.tree1);
+    set_row_value(egos.tree1);
+    set_col_value(egos.tree1);
     draw_matrix();
   });
   $("#tree4").click(function(){
@@ -98,9 +98,9 @@ var click_event = function(){
     svg = d3.select("#nl_canvas").append("svg")
     .attr("width", width)
     .attr("height", height);
-    set_color_value(egos.J);
-    set_row_value(egos.J);
-    set_col_value(egos.J);
+    set_color_value(egos.tree2);
+    set_row_value(egos.tree2);
+    set_col_value(egos.tree2);
     draw_matrix();
   });
 };
@@ -112,63 +112,45 @@ function set_color_value(ego) {
   for(s = 0; s < ego.color.length; s++){
     cellValue[s] = ego.color[s];
   } 
-  if(s > 50000)
-    scaleNumber = 0.1;
 }
 
+var colScaleNumber = 2;
+var rowScaleNumber = 3;
 // Read in row value
 function set_row_value(ego) {
-  rowName = [];
-  rowValue = [];
-  rowMark = [];
-  // var scale = d3.scale.linear()
-  //   .domain([
-  //     d3.min(ego.row, function(d) {
-  //       return d3.min(d);
-  //     }),
-  //     d3.max(ego.row, function(d) {
-  //       return d3.max(d);
-  //     })
-  //     ])
-  //   .range([0,100]);
-  for(colNumber = 0; colNumber < ego.row.length; colNumber++){
-    // rowName[colNumber] = "";
-    rowName[colNumber] = ego.row[colNumber][0];
-    rowValue[colNumber] = ego.row[colNumber][1];
-    rowMark[colNumber] = 0;
+  colName = [];
+  colValue = [];
+  colMark = [];
+ 
+  for(colNumber = 0; colNumber < ego.column.length; colNumber++){
+    // colName[colNumber] = "";
+    colName[colNumber] = ego.column[colNumber][0];
+    colValue[colNumber] = ego.column[colNumber][1] * colScaleNumber;
+    colMark[colNumber] = ego.column[colNumber][2] * 3;
     
   }
 }
 
 // Read in column value
 function set_col_value(ego) {
-  colName = [];
-  colValue = [];
-  // var scale = d3.scale.linear()
-  //   .domain([
-  //     d3.min(ego.column, function(d) {
-  //       return d3.min(d);
-  //     }),
-  //     d3.max(ego.column, function(d) {
-  //       return d3.max(d);
-  //     })
-  //     ])
-  //   .range([0,100]);
-  for(rowNumber = 0; rowNumber < ego.column.length; rowNumber++){
-    colName[rowNumber] = ego.column[rowNumber][0];
-    // if(ego.column[rowNumber][0] == 'None')
-    //   colName[rowNumber] = 30;
-    colValue[rowNumber] = ego.column[rowNumber][1];
+  rowName = [];
+  rowValue = [];
+  
+  for(rowNumber = 0; rowNumber < ego.row.length; rowNumber++){
+    rowName[rowNumber] = ego.row[rowNumber][0];
+    // if(ego.row[rowNumber][0] == 'None')
+    //   rowName[rowNumber] = 30;
+    rowValue[rowNumber] = ego.row[rowNumber][1] * rowScaleNumber;
   }
 
 }
 
 function draw_matrix(){
   for (var i = 0; i < rowNumber; ++i)
-      matrixHeight += colValue[i] * scaleNumber;
+      matrixHeight += rowValue[i];
 
     for (var i = 0; i < colNumber; ++i)
-      matrixWidth += rowValue[i] * scaleNumber;
+      matrixWidth += colValue[i];
 
   width = matrixWidth + 100;
   height = matrixHeight;
@@ -180,8 +162,8 @@ function draw_matrix(){
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // Append column labels
-  var colLabels = svg.selectAll(".colLabel")
-  .data(colName)
+  var rowLabels = svg.selectAll(".rowLabel")
+  .data(rowName)
   // .enter().append("text")
   .enter().append("circle")
   .text(function(d) {return d;})
@@ -189,58 +171,38 @@ function draw_matrix(){
   .attr("cy", function(d, i) {
    var len = 30;
    for (var t = 0; t < i; ++t) {
-    len += colValue[t] * scaleNumber;
+    len += rowValue[t];
   }
-  len += 0.5 * colValue[t] * scaleNumber;
+  len += 0.5 * rowValue[t];
   return len;
   })
   .attr("r", function(d, i) {
-    if(colName[i] == 'None')
-      return 30*scaleNumber;
+    if(rowName[i] == 'self')
+      return 3;
     else
       return 0
   })
-  .attr("transform", function(d, i) {return "translate(-" + 60*scaleNumber + ",0)";})
+  .attr("transform", "translate(-17, 0)")
   .style("stroke", "#f45e00")
   .style("fill", "#f45e00");
   
-  // Append row labels
-  // var rowLabels = svg.selectAll(".rowLabel")
-  // .data(rowName)
-  // .enter().append("text")
-  // .text(function(d) {return d;})
-  // .attr("x", function(d, i) {
-  //  var len = 15;
-  //  for (var t = 0; t < i; ++t) {
-  //    len += rowValue[t] * scaleNumber;
-  //  }
-  //  len += 0.5 * rowValue[t] * scaleNumber;
-  //  return len;
-  // })
-  // .attr("y", function(d,i) {
-  //   return matrixHeight+50;
-  // })
-  // .style("text-anchor", "end")
-  // .style("font-size","32px")
-  // .attr("transform", "translate(0,17)")
-  // .attr("class", function(d, i) { return "timeLabel mono axis axis-worktime";});
 
-  // Append row mark
-  var rowLabels = svg.selectAll(".rowLabel")
-  .data(rowMark)
+  // Append column mark
+  var colLabels = svg.selectAll(".colLabel")
+  .data(colMark)
   .enter().append("circle")
   .text(function(d) {return d;})
   .attr("cx", function(d, i) {
     var len = 0;
     for (var t = 0; t < i; ++t) {
-     len += rowValue[t] * scaleNumber;
+     len += colValue[t];
     }
-    len += 0.5 * rowValue[t] * scaleNumber;
+    len += 0.5 * colValue[t];
     return len;
   })
   .attr("cy", 0)
-  .attr("r", function(d, i) {return rowMark[i];})
-  .attr("transform", "translate(0,17)")
+  .attr("r", function(d, i) {return colMark[i];})
+  .attr("transform", "translate(0, 17)")
   .style("stroke", "#f45e00")
   .style("fill", "#f45e00");
 
@@ -252,31 +214,31 @@ function draw_matrix(){
   .attr("x", function(d, i) {
     var len = 0;
     for (var t = 0; t < (i%colNumber); ++t) {
-      len += rowValue[t] * scaleNumber;
+      len += colValue[t];
     }
     return len;
   })
   .attr("y", function(d, i) {
     var len = 30;
     for (var t = 0; t < (Math.floor(i/colNumber)); ++t) {
-      len += colValue[t] * scaleNumber;
+      len += rowValue[t];
     }
     return len;
   })
   .attr("class", "hour bordered")
   // .attr("class", "legend")
-  .attr("width", function(d, i) {return rowValue[i%colNumber] * scaleNumber; })
-  .attr("height", function(d, i) {return colValue[Math.floor(i/colNumber)] * scaleNumber; })
+  .attr("width", function(d, i) {return colValue[i%colNumber]; })
+  .attr("height", function(d, i) {return rowValue[Math.floor(i/colNumber)]; })
   // .style("stroke", colors[0])
-  .style("stroke-width", 8*scaleNumber )
+  .style("stroke-width", 1 )
   .style("stroke", '#dddddd')
   .style("fill", colors[0]);
 
   heatMap //.transition().duration(1000)
   .style("fill", function(d, i) {
-    return colors[d-1];
+    return colors[d];
   });
 
   heatMap.append("title")
-    .text(function(d, i) { return rowName[i%colNumber].split('***')[0] + " (" + colName[Math.floor(i/colNumber)] + ")"; });
+    .text(function(d, i) { return colName[i%colNumber] + " (" + rowName[Math.floor(i/colNumber)] + ")"; });
 }

@@ -24,7 +24,7 @@ var svg = d3.select("#nl_canvas").append("svg")
 var mydata = {};
 var force = d3.layout.force();
 var nodes, links;
-d3.json("../data/research_graph_test.json", function(error, alldata) {
+d3.json("../data/research_graph.json", function(error, alldata) {
   if (error) throw error;
   mydata = alldata;
   

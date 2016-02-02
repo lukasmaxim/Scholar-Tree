@@ -7,6 +7,7 @@ import random
 import hashlib
 import xml.etree.ElementTree as ET
 import json
+from operator import *
 
 rand_str = str(random.random()).encode('utf8')
 google_id = hashlib.md5(rand_str).hexdigest()[:16]
@@ -752,18 +753,64 @@ def graph_mapping(career_period, publication, coauthors, ego, sy, ey):
 	# graph_egos["tree1"]['nodes'][0]["size"] = total_pub
 	# graph_egos["tree2"]['nodes'][0]["size"] = total_pub
 	return_json = simplejson.dumps(graph_egos, indent=4, use_decimal=True)
-	with open("./ctree_dblp/media/data/research_graph_test.json", "wb") as json_file:
+	with open("./ctree_dblp/media/data/research_graph.json", "wb") as json_file:
 		json_file.write(return_json)
 
+	matrix_mapping(career_period, publication, coauthors, ego, sy, ey)
 
-def matrix_mapping(publication, coauthors, ego, sy, ey):
+
+def matrix_mapping(career_period, publication, coauthors, ego, sy, ey):
 	matrix_egos = dict()
-	matrix_egos["tree1"] = []
-	matrix_egos["tree2"] = []
-	matrix_egos["tree3"] = []
-	matrix_egos["tree4"] = []
+	matrix_egos["tree1"] = {'column': [], 'row': [], 'color': []}
+	matrix_egos["tree2"] = {'column': [], 'row': [], 'color': []}
+	matrix_egos["tree3"] = {'column': [], 'row': [], 'color': []}
+	matrix_egos["tree4"] = {'column': [], 'row': [], 'color': []}
 	period = ey - sy + 1
 
+	color_gap = []
+	start =  int(career_period[0])
+	end = int(career_period[1])
+	t_gap = int(career_period[2])
+	
+	for x in range(start+t_gap, end, t_gap):
+		# print x
+		color_gap.append(int(x))
+
+	sort_publication = sorted(publication.items(), key=lambda p:getitem(p[1],'year'))
+	sort_coauthor = sorted(coauthors.items(), key=lambda a:getitem(a[1],1))
+	# sort_publication = {p:i for p,i in sort_publication}
+
+	paper_data = 0
+	for author, a_info in sort_coauthor:
+		# print a_info[1]
+		if author == ego[0]:
+			print author
+			author = 'self'
+
+		matrix_egos["tree1"]["row"].append([author, a_info[0]])
+		matrix_egos["tree2"]["row"].append([author, a_info[0]])
+		for paper, p_info in sort_publication:
+			# print p_info['year']
+			if paper_data == 0:
+				if p_info['author_order'] > 1:
+					first_au = 0
+				else:
+					first_au = 1
+				matrix_egos["tree1"]["column"].append([paper, p_info['pages'], first_au])
+				matrix_egos["tree2"]["column"].append([paper, p_info['author_count']+1, first_au])
+
+			cell_color = 0
+			if paper in a_info[3]:
+				if p_info['type'] == 'conf':
+					cell_color = 1
+				elif p_info['type'] == 'journals':
+					cell_color = 3
+				else:
+					cell_color = 2
+			matrix_egos["tree1"]["color"].append(cell_color)
+			matrix_egos["tree2"]["color"].append(cell_color)
+		paper_data += 1
+		
 	return_json = simplejson.dumps(matrix_egos, indent=4, use_decimal=True)
-	# with open("./ctree_dblp/media/data/research_matrix_test.json", "wb") as json_file:
-	# 	json_file.write(return_json)
+	with open("./ctree_dblp/media/data/research_matrix.json", "wb") as json_file:
+		json_file.write(return_json)
