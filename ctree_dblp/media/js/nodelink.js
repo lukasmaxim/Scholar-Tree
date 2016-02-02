@@ -3,6 +3,10 @@ var width = 1200,
 
 var color = d3.scale.category20(); // stander color scale
 
+var color_cat = ["#f45e00","#e39ac5","#b04d84","#821b54",
+                 "#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"];
+
+
 // var force = d3.layout.force()
 //     .charge(-120)
 //     .linkDistance(30)
@@ -20,12 +24,12 @@ var svg = d3.select("#nl_canvas").append("svg")
 var mydata = {};
 var force = d3.layout.force();
 var nodes, links;
-d3.json("../data/research_graph.json", function(error, alldata) {
+d3.json("../data/research_graph_test.json", function(error, alldata) {
   if (error) throw error;
   mydata = alldata;
   
   init();
-  draw_graph(mydata.KLM);
+  draw_graph(mydata.tree1);
   click_event();
 });
 
@@ -37,7 +41,7 @@ var click_event = function(){
     .attr("width", width)
     .attr("height", height);
     // render(mydata.Wijk, svg);
-    draw_graph(mydata.KLM);
+    draw_graph(mydata.tree1);
   });
   $("#tree2").click(function(){
     console.log("click tree2 in nodelink");
@@ -46,7 +50,7 @@ var click_event = function(){
     .attr("width", width)
     .attr("height", height);
     // render(mydata.KLM, svg);
-    draw_graph(mydata.Wijk);
+    draw_graph(mydata.tree2);
   });
   $("#tree3").click(function(){
     console.log("click tree3 in nodelink");
@@ -55,7 +59,7 @@ var click_event = function(){
     .attr("width", width)
     .attr("height", height);
     // render(mydata.BenS, svg);
-    draw_graph(mydata.BenS);
+    draw_graph(mydata.tree1);
   });
   $("#tree4").click(function(){
     console.log("click tree4 in nodelink");
@@ -64,7 +68,7 @@ var click_event = function(){
     .attr("width", width)
     .attr("height", height);
     // render(mydata.JHeer, svg);
-    draw_graph(mydata.JHeer);
+    draw_graph(mydata.tree2);
   });
 };
 
@@ -84,6 +88,7 @@ function init(){
 
 function draw_graph(graph){
   // graph = mydata.Wijk
+  console.log(graph);
   force
     .nodes(graph.nodes)
     .links(graph.links)
@@ -117,9 +122,9 @@ function draw_graph(graph){
 
   node.append("path")
       .attr("d", d3.svg.symbol()
-        .size(function(d) { return d.size*10; })
+        .size(function(d) { return d.size*50; })
         .type(function(d) { return d.type; }))
-      .style("fill", function(d) { return d.group;});
+      .style("fill", function(d) { return color_cat[d.group];});
 
   node.exit().remove();
 
@@ -138,7 +143,6 @@ function draw_graph(graph){
   });
 
 }
-
 
 
 function render(graph, svg){
@@ -180,9 +184,9 @@ function render(graph, svg){
 
   node.append("path")
       .attr("d", d3.svg.symbol()
-        .size(function(d) { return d.size*10; })
+        .size(function(d) { return d.size*50; })
         .type(function(d) { return d.type; }))
-      .style("fill", function(d) { return d.group;});
+      .style("fill", function(d) { return color_cat[d.group];});
   
   force.on("tick", function() {
     link.attr("x1", function(d) { return d.source.x; })

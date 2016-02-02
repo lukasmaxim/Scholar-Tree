@@ -5,7 +5,7 @@ width = 1000 - margin.left - margin.right,
 height = 1000 - margin.top - margin.bottom;
 
 /* Public variable */
-var scaleNumber = 0.15;
+var scaleNumber = 0.2;
 
 // Input file name for row
 // var ROW_VALUE_FILE = "new_wave/Thomas_E_matrix_1_row.csv";
@@ -21,8 +21,7 @@ var scaleNumber = 0.15;
 // Length between matrix and legend
 var LEGENG_MARING_TOP = 40;
 
-var colors = ["#ffffff","#e39ac5","#b04d84","#821b54","#b04d84","#e39ac5", "#e39ac5","#FFFFFF"]
-
+var colors = ["#ffffff","#e39ac5","#b04d84","#821b54","#b04d84","#e39ac5", "#e39ac5","#FFFFFF"];
 // var colors = ["#ffffd9","#7fa2c7","#4c7db1", "#004690","#f0a9ab","#e5686c","#ce1141","#FFFFFF"]; // case2 yellow, b1, b2, b3, r1, r2 ,r3
 // var colors = ['#FFFFD9', '#D8DAEB', '#998EC3', '#542788']
 var range = [0, 1, 2, 3, 4, 5, 6];
@@ -109,9 +108,12 @@ var click_event = function(){
 // Read in cell value
 function set_color_value(ego) {
   cellValue = [];
-  for(var i = 0; i < ego.color.length; i++){
-    cellValue[i] = ego.color[i];
-  }
+  var s = 0;
+  for(s = 0; s < ego.color.length; s++){
+    cellValue[s] = ego.color[s];
+  } 
+  if(s > 50000)
+    scaleNumber = 0.1;
 }
 
 // Read in row value
@@ -119,6 +121,16 @@ function set_row_value(ego) {
   rowName = [];
   rowValue = [];
   rowMark = [];
+  // var scale = d3.scale.linear()
+  //   .domain([
+  //     d3.min(ego.row, function(d) {
+  //       return d3.min(d);
+  //     }),
+  //     d3.max(ego.row, function(d) {
+  //       return d3.max(d);
+  //     })
+  //     ])
+  //   .range([0,100]);
   for(colNumber = 0; colNumber < ego.row.length; colNumber++){
     // rowName[colNumber] = "";
     rowName[colNumber] = ego.row[colNumber][0];
@@ -132,13 +144,23 @@ function set_row_value(ego) {
 function set_col_value(ego) {
   colName = [];
   colValue = [];
+  // var scale = d3.scale.linear()
+  //   .domain([
+  //     d3.min(ego.column, function(d) {
+  //       return d3.min(d);
+  //     }),
+  //     d3.max(ego.column, function(d) {
+  //       return d3.max(d);
+  //     })
+  //     ])
+  //   .range([0,100]);
   for(rowNumber = 0; rowNumber < ego.column.length; rowNumber++){
     colName[rowNumber] = ego.column[rowNumber][0];
     // if(ego.column[rowNumber][0] == 'None')
     //   colName[rowNumber] = 30;
     colValue[rowNumber] = ego.column[rowNumber][1];
-    
   }
+
 }
 
 function draw_matrix(){

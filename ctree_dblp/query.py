@@ -165,6 +165,7 @@ def get_tree_structure(request):
 				print "<<<", p_title
 	    # sys.exit()
 		tree_egos, branches, legends = tree_mapping(career_period, publication, coauthorship, author, sy, ey)
+		graph_mapping(career_period, publication, coauthorship, author, sy, ey)
 		final_structure = dict()
 		final_structure["all"] = dict()
 		
@@ -662,3 +663,107 @@ def tree_structure(tree_ego, branch_layer):
 				level += 1
 
 	return structure
+
+
+
+color_cat = ["#ffffff","#e39ac5","#b04d84","#821b54"] # conf, others, jour 
+def graph_mapping(career_period, publication, coauthors, ego, sy, ey):
+	graph_egos = dict()
+	graph_egos["tree1"] = {'nodes': [], 'links': []}
+	graph_egos["tree2"] = {'nodes': [], 'links': []}
+	graph_egos["tree3"] = {'nodes': [], 'links': []}
+	graph_egos["tree4"] = {'nodes': [], 'links': []}
+	period = ey - sy + 1
+	paper_node_idx = []
+	author_node_idx = []
+
+	color_gap = []
+	start =  int(career_period[0])
+	end = int(career_period[1])
+	t_gap = int(career_period[2])
+	
+	for x in range(start+t_gap, end, t_gap):
+		# print x
+		color_gap.append(int(x))
+	
+	graph_egos["tree1"]['nodes'].append({"type": "diamond", "size": 5, "group": 0, "label": ego[0]})
+	graph_egos["tree2"]['nodes'].append({"type": "diamond", "size": 5, "group": 0, "label": ego[0]})
+	paper_node_idx.append(ego[0])
+	total_pub = 0;
+	for paper in publication:
+		total_pub += 1
+		if publication[paper]["year"] > ey or publication[paper]["year"] < sy:
+				continue
+		
+		paper_node_idx.append(paper)
+		paper_color = 1
+		
+		if publication[paper]["type"] == 'conf':
+			graph_egos["tree1"]['nodes'].append({"type": "square", "size": publication[paper]["pages"], "group": 1, "label": paper})
+			graph_egos["tree2"]['nodes'].append({"type": "square", "size": len(publication[paper]["coauthor"]), "group": 1, "label": paper})
+		elif publication[paper]["type"] == 'journals':
+			paper_color = 3
+			graph_egos["tree1"]['nodes'].append({"type": "square", "size": publication[paper]["pages"], "group": 3, "label": paper})
+			graph_egos["tree2"]['nodes'].append({"type": "square", "size": len(publication[paper]["coauthor"]), "group": 3, "label": paper})
+		else:
+			paper_color = 2
+			graph_egos["tree1"]['nodes'].append({"type": "square", "size": publication[paper]["pages"], "group": 2, "label": paper})
+			graph_egos["tree2"]['nodes'].append({"type": "square", "size": len(publication[paper]["coauthor"]), "group": 2, "label": paper})
+		
+		if publication[paper]["author_count"] == 0:
+			graph_egos["tree1"]['links'].append({"source": 0, "target": paper_node_idx.index(paper), "value": "#f45e00"})
+			graph_egos["tree2"]['links'].append({"source": 0, "target": paper_node_idx.index(paper), "value": "#f45e00"})
+			continue
+		if publication[paper]["author_order"] > 1:
+			graph_egos["tree1"]['links'].append({"source": 0, "target": paper_node_idx.index(paper), "value": "Gray"})
+			graph_egos["tree2"]['links'].append({"source": 0, "target": paper_node_idx.index(paper), "value": "Gray"})
+		else:
+			graph_egos["tree1"]['links'].append({"source": 0, "target": paper_node_idx.index(paper), "value": "#f45e00"})
+			graph_egos["tree2"]['links'].append({"source": 0, "target": paper_node_idx.index(paper), "value": "#f45e00"})
+			
+		coauthor_order = 1
+		for author in publication[paper]["coauthor"]:
+			if author in ego:
+				coauthor_order += 1
+				continue
+			
+			if author not in paper_node_idx:
+				paper_node_idx.append(author)
+
+				first_collaborated = coauthors[author][1]
+				if first_collaborated < color_gap[0]:
+					au_group = 0
+					au_group = 0
+				elif first_collaborated >= color_gap[-1]:
+					au_group = len(color_gap)
+					au_group = len(color_gap)
+				else:
+					for g in range(len(color_gap)-1):
+						if color_gap[g] <= first_collaborated < color_gap[g+1]:
+							au_group = g+1
+							au_group = g+1
+
+				graph_egos["tree1"]['nodes'].append({"type": "circle", "size": coauthors[author][0], "group": au_group + 4, "label": author})
+				graph_egos["tree2"]['nodes'].append({"type": "circle", "size": coauthors[author][0], "group": au_group + 4, "label": author})
+
+			graph_egos["tree1"]['links'].append({"source": paper_node_idx.index(paper), "target": paper_node_idx.index(author), "value": color_cat[paper_color]})
+			graph_egos["tree2"]['links'].append({"source": paper_node_idx.index(paper), "target": paper_node_idx.index(author), "value": color_cat[paper_color]})
+
+	# graph_egos["tree1"]['nodes'][0]["size"] = total_pub
+	# graph_egos["tree2"]['nodes'][0]["size"] = total_pub
+	return_json = simplejson.dumps(graph_egos, indent=4, use_decimal=True)
+	with open("./ctree_dblp/media/data/research_graph_test.json", "wb") as json_file:
+		json_file.write(return_json)
+
+
+def matrix_mapping(publication, coauthors, ego, sy, ey):
+	matrix_egos = dict()
+	matrix_egos["tree1"] = []
+	matrix_egos["tree2"] = []
+	matrix_egos["tree3"] = []
+	matrix_egos["tree4"] = []
+	period = ey - sy + 1
+
+	return_json = simplejson.dumps(matrix_egos, indent=4, use_decimal=True)
+	# with open("./ctree_dblp/media/data/research_matrix_test.json", "wb") as json_file:
+	# 	json_file.write(return_json)
