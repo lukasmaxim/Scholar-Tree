@@ -107,7 +107,7 @@ var MyApp = function MyApp(){
     finish.click(function(){
         console.log("click finish");
         finish.attr("disabled", true);
-        $("#other_design").show();
+        // $("#other_design").show();
         $("#feedback").removeAttr("disabled");
         $("#loading").show();
         $("#tree_result").hide();
@@ -136,7 +136,7 @@ var MyApp = function MyApp(){
         ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
         ga('send', 'event', DBLP_researcher, "create", sy + "-" + ey);
 
-        var request_array = [resercher, sy, ey, timeline];
+        var request_array = [resercher, sy, ey, timeline, user_ip];
         var request = JSON.stringify(request_array);
 
         self.model.generate_tree_structure(request);   

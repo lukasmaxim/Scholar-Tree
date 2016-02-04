@@ -890,7 +890,7 @@ var RenderingView = Backbone.View.extend({
 
         }
         else{ // no branch
-            tree_points[self.current_ego][layer]["left"]["type"] = "branch";
+            tree_points[self.current_ego][layer]["left"]["type"] = "nobranch";
             tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl - 10 + layer*1.5, this.start_y - this.stick_length + layer*15, this.start_x - this.dl - 50, this.start_y - this.stick_length - 100 + layer*15);
             tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl - 25, this.start_y - this.stick_length - 150 + layer*15, this.start_x + this.dr, this.start_y + this.temp_height);
             tree_points[self.current_ego][layer]["left"]["trunk"].push(this.start_x - this.dl, this.start_y + this.temp_height);

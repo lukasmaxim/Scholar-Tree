@@ -43,16 +43,31 @@ var colNumber = 0;
 var cellValue = new Array();
 // var cellNumber = 0;
 var egos;
-d3.json("../data/research_matrix.json", function(error, mydata) {
-  if (error) throw error;
-  egos = mydata
-  ego_matrix = mydata.tree1;
-  set_color_value(ego_matrix);
-  set_row_value(ego_matrix);
-  set_col_value(ego_matrix);
-  draw_matrix();
-  click_event()
-});
+var ipaddress = "";
+var fn;
+function get_ip(){
+  $.getJSON("http://jsonip.com?callback=?", function (data) {
+      // alert("Your ip: " + data.ip);
+      ipaddress = data.ip.replace(/\./g, '');
+      fn = "../data/research_matrix_" + ipaddress + ".json";
+      get_data();
+  });
+}
+
+function get_data(){
+  d3.json(fn, function(error, mydata) {
+    if (error) throw error;
+    egos = mydata
+    ego_matrix = mydata.tree1;
+    set_color_value(ego_matrix);
+    set_row_value(ego_matrix);
+    set_col_value(ego_matrix);
+    draw_matrix();
+    click_event()
+  });
+}
+
+get_ip();
 
 
 var click_event = function(){

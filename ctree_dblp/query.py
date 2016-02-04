@@ -64,6 +64,7 @@ def get_tree_structure(request):
 		sy = final_setting[1]
 		ey = final_setting[2]
 		career_period = final_setting[3]
+		user_ip = final_setting[4].replace('.','')
 		# http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu
     	# http://dblp.uni-trier.de/pers/xx/m/Ma:Kwan=Liu.xml 
     	# http://dblp.uni-trier.de/pers/hd/s/Shneiderman:Ben
@@ -166,7 +167,7 @@ def get_tree_structure(request):
 				print "<<<", p_title
 	    # sys.exit()
 		tree_egos, branches, legends = tree_mapping(career_period, publication, coauthorship, author, sy, ey)
-		graph_mapping(career_period, publication, coauthorship, author, sy, ey)
+		graph_mapping(career_period, publication, coauthorship, author, sy, ey, user_ip)
 		final_structure = dict()
 		final_structure["all"] = dict()
 		
@@ -668,7 +669,7 @@ def tree_structure(tree_ego, branch_layer):
 
 
 color_cat = ["#ffffff","#e39ac5","#b04d84","#821b54"] # conf, others, jour 
-def graph_mapping(career_period, publication, coauthors, ego, sy, ey):
+def graph_mapping(career_period, publication, coauthors, ego, sy, ey, user_ip):
 	graph_egos = dict()
 	graph_egos["tree1"] = {'nodes': [], 'links': []}
 	graph_egos["tree2"] = {'nodes': [], 'links': []}
@@ -690,12 +691,15 @@ def graph_mapping(career_period, publication, coauthors, ego, sy, ey):
 	graph_egos["tree1"]['nodes'].append({"type": "diamond", "size": 5, "group": 0, "label": ego[0]})
 	graph_egos["tree2"]['nodes'].append({"type": "diamond", "size": 5, "group": 0, "label": ego[0]})
 	paper_node_idx.append(ego[0])
+	matrix_data = {'pub':{}, 'coau':{}}
+	matrix_data['coau'][ego[0]] = coauthors[ego[0]]
 	total_pub = 0;
 	for paper in publication:
 		total_pub += 1
 		if publication[paper]["year"] > ey or publication[paper]["year"] < sy:
 				continue
-		
+		matrix_data['pub'][paper] = publication[paper]
+
 		paper_node_idx.append(paper)
 		paper_color = 1
 		
@@ -732,6 +736,8 @@ def graph_mapping(career_period, publication, coauthors, ego, sy, ey):
 				paper_node_idx.append(author)
 
 				first_collaborated = coauthors[author][1]
+				matrix_data['coau'][author] = coauthors[author]
+
 				if first_collaborated < color_gap[0]:
 					au_group = 0
 					au_group = 0
@@ -753,13 +759,13 @@ def graph_mapping(career_period, publication, coauthors, ego, sy, ey):
 	# graph_egos["tree1"]['nodes'][0]["size"] = total_pub
 	# graph_egos["tree2"]['nodes'][0]["size"] = total_pub
 	return_json = simplejson.dumps(graph_egos, indent=4, use_decimal=True)
-	with open("./ctree_dblp/media/data/research_graph.json", "wb") as json_file:
+	with open("./ctree_dblp/media/data/research_graph_" + user_ip + ".json", "wb") as json_file:
 		json_file.write(return_json)
 
-	matrix_mapping(career_period, publication, coauthors, ego, sy, ey)
+	matrix_mapping(career_period, matrix_data['pub'], matrix_data['coau'], ego, sy, ey, user_ip)
 
 
-def matrix_mapping(career_period, publication, coauthors, ego, sy, ey):
+def matrix_mapping(career_period, publication, coauthors, ego, sy, ey, user_ip):
 	matrix_egos = dict()
 	matrix_egos["tree1"] = {'column': [], 'row': [], 'color': []}
 	matrix_egos["tree2"] = {'column': [], 'row': [], 'color': []}
@@ -812,5 +818,5 @@ def matrix_mapping(career_period, publication, coauthors, ego, sy, ey):
 		paper_data += 1
 		
 	return_json = simplejson.dumps(matrix_egos, indent=4, use_decimal=True)
-	with open("./ctree_dblp/media/data/research_matrix.json", "wb") as json_file:
+	with open("./ctree_dblp/media/data/research_matrix_" + user_ip + ".json", "wb") as json_file:
 		json_file.write(return_json)

@@ -24,14 +24,30 @@ var svg = d3.select("#nl_canvas").append("svg")
 var mydata = {};
 var force = d3.layout.force();
 var nodes, links;
-d3.json("../data/research_graph.json", function(error, alldata) {
-  if (error) throw error;
-  mydata = alldata;
-  
-  init();
-  draw_graph(mydata.tree1);
-  click_event();
-});
+
+var ipaddress = "";
+var fn;
+function get_ip(){
+  $.getJSON("http://jsonip.com?callback=?", function (data) {
+      // alert("Your ip: " + data.ip);
+      ipaddress = data.ip.replace(/\./g, '');
+      fn = "../data/research_graph_" + ipaddress + ".json";
+      get_data();
+  });
+}
+
+function get_data(){
+  d3.json(fn, function(error, alldata) {
+    if (error) throw error;
+    mydata = alldata;
+    
+    init();
+    draw_graph(mydata.tree1);
+    click_event();
+  });
+}
+
+get_ip();
 
 var click_event = function(){
   $("#tree1").click(function(){
