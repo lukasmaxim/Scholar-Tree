@@ -41,6 +41,9 @@ var colName = new Array();
 var colNumber = 0;
 
 var cellValue = new Array();
+var cellWidth = new Array();
+var cellHeight = new Array();
+
 // var cellNumber = 0;
 var egos;
 var ipaddress = "";
@@ -59,9 +62,10 @@ function get_data(){
     if (error) throw error;
     egos = mydata
     ego_matrix = mydata.tree1;
-    set_color_value(ego_matrix);
+    
     set_row_value(ego_matrix);
     set_col_value(ego_matrix);
+    set_cell_value(ego_matrix);
     draw_matrix();
     click_event()
   });
@@ -78,9 +82,9 @@ var click_event = function(){
     .attr("width", width)
     .attr("height", height);
    
-    set_color_value(egos.tree1);
     set_row_value(egos.tree1);
     set_col_value(egos.tree1);
+    set_cell_value(egos.tree1);
     draw_matrix();
   });
   $("#tree2").click(function(){
@@ -90,9 +94,9 @@ var click_event = function(){
     .attr("width", width)
     .attr("height", height);
     
-    set_color_value(egos.tree2);
     set_row_value(egos.tree2);
     set_col_value(egos.tree2);
+    set_cell_value(egos.tree2);
     draw_matrix();
   });
   $("#tree3").click(function(){
@@ -102,9 +106,9 @@ var click_event = function(){
     .attr("width", width)
     .attr("height", height);
     
-    set_color_value(egos.tree1);
     set_row_value(egos.tree1);
     set_col_value(egos.tree1);
+    set_cell_value(egos.tree1);
     draw_matrix();
   });
   $("#tree4").click(function(){
@@ -113,20 +117,33 @@ var click_event = function(){
     svg = d3.select("#nl_canvas").append("svg")
     .attr("width", width)
     .attr("height", height);
-    set_color_value(egos.tree2);
+  
     set_row_value(egos.tree2);
     set_col_value(egos.tree2);
+    set_cell_value(egos.tree2);
     draw_matrix();
   });
 };
 
 // Read in cell value
-function set_color_value(ego) {
+function set_cell_value(ego) {
   cellValue = [];
+  // cellPosy = [];
+  // cellPosx = [];
   var s = 0;
   for(s = 0; s < ego.color.length; s++){
-    cellValue[s] = ego.color[s];
+    // cellPosx[s] = 0;
+    // cellPosy[s] = 0;
+    cellValue[s] = [ego.color[s], 0, 30];
+
+    for (var t = 0; t < (Math.floor(s/colNumber)); ++t) {
+      cellValue[s][2] += rowValue[t];
+    }
+    for (var t = 0; t < (s%colNumber); ++t) {
+      cellValue[s][1] += colValue[t];
+    }
   } 
+  console.log("Total cell number:", s);
 }
 
 var colScaleNumber = 2;
@@ -136,13 +153,13 @@ function set_row_value(ego) {
   colName = [];
   colValue = [];
   colMark = [];
- 
+  matrixWidth = 0;
   for(colNumber = 0; colNumber < ego.column.length; colNumber++){
     // colName[colNumber] = "";
     colName[colNumber] = ego.column[colNumber][0];
     colValue[colNumber] = ego.column[colNumber][1] * colScaleNumber;
     colMark[colNumber] = ego.column[colNumber][2] * 3;
-    
+    matrixWidth += colValue[colNumber];
   }
 }
 
@@ -150,22 +167,24 @@ function set_row_value(ego) {
 function set_col_value(ego) {
   rowName = [];
   rowValue = [];
-  
+  matrixHeight = 0;
+
   for(rowNumber = 0; rowNumber < ego.row.length; rowNumber++){
     rowName[rowNumber] = ego.row[rowNumber][0];
     // if(ego.row[rowNumber][0] == 'None')
     //   rowName[rowNumber] = 30;
     rowValue[rowNumber] = ego.row[rowNumber][1] * rowScaleNumber;
+    matrixHeight += rowValue[rowNumber]
   }
 
 }
 
 function draw_matrix(){
-  for (var i = 0; i < rowNumber; ++i)
-      matrixHeight += rowValue[i];
+  // for (var i = 0; i < rowNumber; ++i)
+  //   matrixHeight += rowValue[i];
 
-    for (var i = 0; i < colNumber; ++i)
-      matrixWidth += colValue[i];
+  // for (var i = 0; i < colNumber; ++i)
+  //   matrixWidth += colValue[i];
 
   width = matrixWidth + 100;
   height = matrixHeight;
@@ -226,19 +245,21 @@ function draw_matrix(){
   var heatMap = svg.selectAll(".hit")
   .data(cellValue)
   .enter().append("rect")
-  .attr("x", function(d, i) {
-    var len = 0;
-    for (var t = 0; t < (i%colNumber); ++t) {
-      len += colValue[t];
-    }
-    return len;
+  .attr("x", function(d) {
+    return d[1];
+    // var len = 0;
+    // for (var t = 0; t < (i%colNumber); ++t) {
+    //   len += colValue[t];
+    // }
+    // return len;
   })
-  .attr("y", function(d, i) {
-    var len = 30;
-    for (var t = 0; t < (Math.floor(i/colNumber)); ++t) {
-      len += rowValue[t];
-    }
-    return len;
+  .attr("y", function(d) {
+    return d[2];
+    // var len = 30;
+    // for (var t = 0; t < (Math.floor(i/colNumber)); ++t) {
+    //   len += rowValue[t];
+    // }
+    // return len;
   })
   .attr("class", "hour bordered")
   // .attr("class", "legend")
@@ -251,7 +272,7 @@ function draw_matrix(){
 
   heatMap //.transition().duration(1000)
   .style("fill", function(d, i) {
-    return colors[d];
+    return colors[d[0]];
   });
 
   heatMap.append("title")
