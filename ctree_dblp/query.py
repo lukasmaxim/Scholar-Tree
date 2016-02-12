@@ -8,10 +8,47 @@ import hashlib
 import xml.etree.ElementTree as ET
 import json
 from operator import *
+import MySQLdb
+import MySQLdb.cursors
 
 rand_str = str(random.random()).encode('utf8')
 google_id = hashlib.md5(rand_str).hexdigest()[:16]
 HEADERS = {'User-Agent': 'Mozilla/5.0', 'Cookie': 'GSP=ID=%s' % google_id}
+
+class DB:
+  conn = None
+  def connect(self):
+    # self.conn = MySQLdb.connect(host="localhost", user="root", passwd="vidim", db="ctree_eu", use_unicode=True, charset="utf8", cursorclass=MySQLdb.cursors.DictCursor)
+    self.conn = MySQLdb.connect(host="localhost", user="root", passwd="vidim", db="dblp_behaviors", use_unicode=True, charset="utf8", cursorclass=MySQLdb.cursors.DictCursor)
+  def query(self, sql):
+    try:
+      cursor = self.conn.cursor()
+      cursor.execute(sql)
+      self.conn.commit()
+    except (AttributeError, MySQLdb.OperationalError):
+      self.connect()
+      cursor = self.conn.cursor()
+      cursor.execute(sql)
+      self.conn.commit()
+    return cursor
+
+
+def collecting_data(request):
+	db = DB()
+	if request.GET.get('behavior'):
+		db.query('INSERT INTO system_usage (userIP, action, value) VALUES \
+			("' + data_table + '", ' + session + ', "' + column+ '");')
+	else:
+		raise Http404
+            
+	return HttpResponse({"reslut":"finished"})
+
+
+def collecting_search(info):
+	db = DB()
+	db.query('INSERT INTO system_usage (userIP, action, value, others) VALUES \
+		("' + info[2] + '", "search", "' + info[0] + '", "' + info[1] + '");')
+	
 
 def check_searching(request):
 	period = []
@@ -88,6 +125,8 @@ def get_tree_structure(request):
 		# 	retuen_structure = json.load(json_file)
 
 		print author
+		collecting_search([author[0], str(sy)+"-"+str(ey), user_ip])
+
 		unique_author_list = []
 		unique_paper_list = []
 		for y in soup.findAll('r'):
