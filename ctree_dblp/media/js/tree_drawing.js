@@ -186,6 +186,7 @@ var DrawView = Backbone.View.extend({
 
 
     draw_static: function(){
+        var imageObj = document.getElementById("wood");
         var self = this;
         $("#click_info").hide();
         $('#tree_forward').attr("disabled", true);
@@ -196,6 +197,8 @@ var DrawView = Backbone.View.extend({
     	clearInterval(mytimer.anim_timer);
     	clearInterval(mytimer.blinking_timer);
     	var context = drawing_canvas.anim_canvas.getContext('2d');
+        var pattern = context.createPattern(imageObj, 'repeat');
+        
         // console.log(ego, tree_points[ego]);
 
         var ego = self.model.get("current_ego");
@@ -237,10 +240,13 @@ var DrawView = Backbone.View.extend({
         for(layer in tree_points[ego]){ 
         	if(layer == "all_leaves")
         		continue;
-        	mapping_color.trunk = "rgb(" + (125-(height+1)*3).toString() + "," + (96-(height+1)*3).toString() + "," + (65-(height+1)*3).toString() + ")";
+        	// mapping_color.trunk = "rgb(" + (125-(height+1)*3).toString() + "," + (96-(height+1)*3).toString() + "," + (65-(height+1)*3).toString() + ")";
             var obj_trunk = {"type":"trunk", "pos":{"left":[], "right":[]}};
-        	context.fillStyle = mapping_color.trunk;
-            context.strokeStyle = mapping_color.trunk;
+        	// context.fillStyle = mapping_color.trunk;
+            // context.strokeStyle = mapping_color.trunk;
+            context.fillStyle = pattern;
+            context.strokeStyle = pattern;
+
             context.lineCap = 'round';
             context.lineWidth = 5;
             context.beginPath();

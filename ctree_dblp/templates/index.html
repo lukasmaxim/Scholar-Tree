@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Academic Tree</title>
+        <title>Scholar Tree</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
         <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
         <meta name="robots" content="noindex"><!-- jQuery -->
@@ -49,7 +49,7 @@
             </div>
             <div class="left">
                 <h1 class="myfont1" style="margin:15px 0 2px 10px;">
-                Academic Tree
+                Scholar Tree
                 </h1>
             </div>
         </div>
@@ -58,18 +58,15 @@
                 <div id="introduction" class="row relative">
                     <!-- <span class="relative myfont3"><b>How to Make Researcher Trees:</b></span> -->
                     <div style="text-align: justify;">
-                        <!-- <span class="relative myfont3">
-                            Researcher Tree is an online tool to generate 4 unique trees with different mapping. You can download each tree individually. Process steps are shown in following. <br>
-                            1. Searching a researcher in <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a> website. <br>
-                            2. Copy the URL of the result of that target researcher and paste the URL into our website. <br>
-                            3. Retrieve the informaion of the researcher and select the period to generate trees. <br>
-                        </span> -->
-                        <span class="relative myfont3"><b>Academic Tree</b> is a visualization characterizing a researcher's academic career in terms of his/her publications. To create a researcher tree, do the following:<br>
+                        <!-- <span class="relative myfont3"><b>Academic Tree</b> is a visualization characterizing a researcher's academic career in terms of his/her publications. To create a researcher tree, do the following:<br>
                             1. Find a researcher at <a href="http://dblp.uni-trier.de/db/" target="_blank">DBLP</a><br>
                             2. Copy the URL of the researcher's page and paste it into the URL box on the interface displayed next<br>
                             3. Selected a time period of the publication data to use and press the Create Tree button.<br>
                             Four trees will be generated and displayed.<br>
-                        You may repeat this process to visualize a different researcher.<br></span>
+                        You may repeat this process to visualize a different researcher.<br></span> -->
+                        <span class="relative myfont3"><b>Scholar Tree</b> is a visualization of a researcher’s academic career in terms of his/her publication record.<br>
+                        Three trees each of which highlights a particular aspect of the record will be generated and displayed.
+                        </span>
                     </div><!-- <div style="width:100%; height:300px; background:gainsboro;"></div> -->
                     <button id="start_btn" title="Enter the system page" class="btn btn-default myfont3 left" style="margin:10px 0; padding:0 10px; height:30px; z-index:150;">Start</button>
                 </div>
@@ -79,8 +76,18 @@
                 <div id="search_engine_cnt" class="left relative" style="width:23%;">
                     <div id="search_engine" style="width:100%; display:none;">
                         <div id="form" class="row relative" style="margin:0 1px 0 10px;">
-                            <span class="relative myfont3">DBLP URL:</span> <input type="text" id="dblp_url" value="http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu" title="Copy the searching result URL of DBLP" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"> <button id="check_url" title="Retrieve information of this researcher" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Retrieve</button>
-                        </div><img id="progress" src="media/img/progress-bar.gif" style="display:none; width:50%;">
+                            <!-- <span class="relative myfont3">DBLP URL:</span> <input type="text" id="dblp_url" value="http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu" title="Copy the searching result URL of DBLP" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"> <button id="check_url" title="Retrieve information of this researcher" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Retrieve Data</button>
+                            <br><br><br> -->
+                            <span class="relative myfont3">Scholar Name:</span>
+                            <input type="text" id="scholar" title="Search scholar's full name" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"></input> 
+                            <button id="search_name" title="Search researcher by the name" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Searcher Scholar</button>
+                            <!-- <br><br><br> -->
+                            <div id="search_res" style="margin-top:40px; display:none;">
+                                <span class="relative myfont3">Possible Scholars:</span> 
+                                <div id="candidates"></div>
+                            </div>
+                        </div>
+                        <img id="progress" src="media/img/progress-bar.gif" style="display:none; width:50%;">
                         <div id="detail" class="row relative" style="margin:10px; display:none;">
                             <div style="margin:10px 0;">
                                 <span class="relative myfont3">Researcher:</span> <span id="researcher_name" class="relative myfont3">Kwan-Liu Ma</span>
@@ -108,7 +115,7 @@
                         </div><br>
                     </div>
                     <div id="highlight_panel" style='/*margin:0 10px; width:100%;*/margin:0 1px 0 10px;'>
-                        <b style="font-size:16px;">Highlight Selector</b><br>
+                        <b style="font-size:16px;">Highlight Selection</b><br>
                         <select id="tree1_select" title="Choose a co-author to highlight all the correlations" class="highlight_selector">
                             <option value="None">
                                 None
@@ -206,12 +213,12 @@
                                     <b>Stick:</b> paper<br>
                                     <b>Trunk Side:</b> Conference paper (left)<br>
                                     <b>Branches:</b> Published year<br>
-                                    <b>Branch Gap:</b>
+                                    <b>Branch Interval:</b>
                                     <p class="b_gap">
                                         0
                                     </p><br>
                                     <b>Branch Side:</b> First authored papers (down)<br>
-                                    <b>Fruit:</b> Paper length (&gt; 4)<br>
+                                    <b>Fruit:</b> Paper length (&gt; 4 pages)<br>
                                     <b>Leaf:</b> Co-author<br>
                                     <b>Leaf Color:</b> First co-authored year<br>
                                     <b>Leaf Size:</b> Total co-authored papers<br>
@@ -227,7 +234,7 @@
                                     <b>Stick:</b> paper<br>
                                     <b>Trunk Side:</b> First authored papers (left)<br>
                                     <b>Branches:</b> Published year<br>
-                                    <b>Branch Gap:</b>
+                                    <b>Branch Interval:</b>
                                     <p class="b_gap">
                                         0
                                     </p><br>
@@ -247,7 +254,7 @@
                                     <b>Stick:</b> Co-author<br>
                                     <b>Trunk Side:</b> Total co-authored papers (left: &lt; 5)<br>
                                     <b>Branches:</b> First co-authored year<br>
-                                    <b>Branch Gap:</b>
+                                    <b>Branch Interval:</b>
                                     <p class="b_gap">
                                         0
                                     </p><br>
@@ -268,7 +275,7 @@
                                     <b>Stick:</b> Co-author<br>
                                     <b>Trunk Side:</b> Total co-authored papers (left: &lt; 5)<br>
                                     <b>Branches:</b> First co-authored year<br>
-                                    <b>Branch Gap:</b>
+                                    <b>Branch Interval:</b>
                                     <p class="b_gap">
                                         0
                                     </p><br>
@@ -316,12 +323,14 @@
             
         </div>
         <!-- footer -->
-        <div id="footer" class="row" style="text-align:center; width:100%;">
-            © 2016 Visualization &amp; Interface Design Innovation Labs, University of California, Davis
+        <div id="footer" class="row" style="text-align:center; width:100%; margin-top:3px;">
+            <!-- © 2016 Visualization &amp; Interface Design Innovation Labs, University of California, Davis -->
+            @2016 VIDI Labs, University of California, Davis
         </div>
         <div id='save_container' class='left' style="position:absolute; overflow:hidden; height:50px; width:50px; left:50px; top:150px; display:none; z-index:-10;">
             <canvas id='save_tree' style="background:white;"></canvas> <!-- <a id="custom_download_link" download="mytree.png" href=""></a> -->
         </div>
+        <div style="display:none;"><img id="wood" src="media/img/wood.jpg"></div>
 
         <div id="survey_dialog" title="Survey for Academic Tree" class="popup_window_title">
         </div>

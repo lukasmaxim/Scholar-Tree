@@ -391,3 +391,7 @@ $.getJSON("http://jsonip.com?callback=?", function (data) {
     // alert("Your ip: " + data.ip);
     user_ip = data.ip;
 });
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

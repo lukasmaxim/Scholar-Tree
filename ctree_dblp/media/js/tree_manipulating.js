@@ -11,7 +11,7 @@ var InteractView = Backbone.View.extend({
         this.click = false;
         this.dragStart = null;
         this.dragged = false;
-        this.info_label = ["<b>Stick id: </b>", "<b>Trunk side: </b>", "<b>Branch layer: </b>", "<b>Branch side: </b>", "<b>Leaves: </b>"];
+        this.info_label = ["<b>Stick: </b>", "<b>Trunk side: </b>", "<b>Branch layer: </b>", "<b>Branch side: </b>", "<b>Leaves: </b>"];
 
         this.myCanvas = drawing_canvas.anim_canvas;
         this.translate = [];
@@ -135,8 +135,10 @@ var InteractView = Backbone.View.extend({
                 
                 self.dragStart = self.getMousePos(self.myCanvas, evt);//mousePos.x,mousePos.y
             }
-            else if( self.stay == 0 && grid_point[0] < self.grid.length && grid_point[1] < self.grid[0].length){
+            else if( self.stay == 0 && grid_point[0] >= 0 && grid_point[1] >= 0 && grid_point[0] < self.grid.length-1 && grid_point[1] < self.grid[0].length-1){
                 // var grid_point = [Math.round(canvas_point[0]*0.15), Math.round(canvas_point[1]*0.15)];
+                console.log(grid_point[0], grid_point[1]);
+                console.log(self.grid);
                 var point_idx = self.grid[grid_point[0]][grid_point[1]];
                 var point_info = self.detail[point_idx];
                 if(point_idx != -1){

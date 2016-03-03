@@ -22,6 +22,9 @@ var Tree_Model = Backbone.Model.extend({
     check_researcher: function(request){
         var self = this;
         console.log("get request", request);
+        $("#search_res").hide();
+        $("#progress").show();
+        DBLP_url = request;
         var request_url = "check_searching/?researcher=" + encodeURIComponent(request);
         d3.json(request_url, function(result){
             console.log(result);
@@ -33,6 +36,47 @@ var Tree_Model = Backbone.Model.extend({
             else{
                 self.set({"time_period": result});
                 self.trigger('change:time_period');
+            }
+            
+        });
+    },
+
+    search_researcher: function(request){
+        var self = this;
+        console.log("get request", request);
+        var result_cnt = $("#candidates");
+        result_cnt.empty();
+        $("#search_res").hide();
+        var request_url = "search_searching/?researcher=" + encodeURIComponent(request);
+        d3.json(request_url, function(result){
+            console.log(result);
+            if(result[0] == -1){
+               // alert("Please get the CORRECT and EXACT MATCHED URL!");
+               alert("No Matched!");
+               $("#progress").hide();
+            }
+            else{
+                // for(var a in result){
+                for(var a = 0, len = result.length; a < len; a++){
+                    // console.log(result[a]);
+                    var row = $('<span style="cursor:pointer;"></span>');
+                    row.html("&#9654; " + result[a][0]).attr('name', result[a][1]);//prop("href",result[a]);
+                    
+                    row.click(function(){
+                        self.check_researcher($(this).attr('name'));
+                    });
+                    row.hover(function(){
+                        $(this).attr('style', 'color: #428BCA; cursor:pointer;');
+                        // $(this).prop('style', 'color: #428BCA;');
+                    });
+                    row.mouseout(function(){
+                        $(this).attr('style', 'color: black; cursor:pointer;');
+                    });
+                    result_cnt.append(row);
+                    result_cnt.append($('</br>'));
+                }
+                $("#progress").hide();
+                $("#search_res").show();
             }
             
         });

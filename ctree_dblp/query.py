@@ -94,6 +94,46 @@ def check_searching(request):
 	return HttpResponse(return_json)
 
 
+def search_searching(request):
+	result = []
+	if request.GET.get('researcher'):
+		ori_url = request.GET.get('researcher')
+		# http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu
+		# http://dblp.uni-trier.de/pers/xx/m/Ma:Kwan=Liu.xml 
+		# http://dblp.uni-trier.de/pers/hd/s/Shneiderman:Ben
+		# print "request", request
+		# ori_url = ori_url.encode('utf8')
+		print ori_url
+		request = Request(ori_url, headers=HEADERS)
+		try:
+			response = urlopen(request)
+			html = response.read()
+			html = html.decode('utf8')
+			# print html
+			parsed_html = Soup(html)
+			outside = parsed_html.body.find('div', attrs={'id':'completesearch-authors'})
+			container = outside.find('div', attrs={'class':'body hide-body'})
+			print container
+			for s in container.findAll('li'):
+				# print "***", s
+				link = s.find('a').get('href')
+				name = u''.join(s.find('span').findAll(text=True)) #s.find('span').text
+				print link
+				print name
+				result.append([name, link])
+			# result = [all_year[-1], all_year[0], author]
+		except Exception:
+			result = [-1]
+	else:
+		raise Http404
+
+	return_json = simplejson.dumps(result, indent=4, use_decimal=True)
+	# with open("./ctree_dblp/media/data/research_graph.json", "wb") as json_file:
+	# 	json_file.write(return_json)
+
+	return HttpResponse(return_json)
+
+
 def get_tree_structure(request):
 	if request.GET.get('final_setting'): 
 		final_setting = json.loads(request.GET.get('final_setting'))
@@ -125,7 +165,7 @@ def get_tree_structure(request):
 		# 	retuen_structure = json.load(json_file)
 
 		print author
-		collecting_search([author[0], str(sy)+"-"+str(ey), user_ip])
+		# collecting_search([author[0], str(sy)+"-"+str(ey), user_ip]) !!!
 
 		unique_author_list = []
 		unique_paper_list = []
@@ -273,9 +313,13 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 	for x in range(start+t_gap, end, t_gap):
 		# print x
 		color_gap.append(int(x))
-	
+
 	for y in range(sy+gap, ey, gap):
 		year_gap.append(int(y))
+
+	if not year_gap:
+		year_gap.append(start)
+		color_gap.append(start)
 
 	print gap, year_gap, len(year_gap)
 	branch_layer = len(year_gap) + 1
@@ -726,6 +770,9 @@ def graph_mapping(career_period, publication, coauthors, ego, sy, ey, user_ip):
 	for x in range(start+t_gap, end, t_gap):
 		# print x
 		color_gap.append(int(x))
+
+	if not color_gap:
+		color_gap.append(start)
 	
 	graph_egos["tree1"]['nodes'].append({"type": "diamond", "size": 5, "group": 0, "label": ego[0]})
 	graph_egos["tree2"]['nodes'].append({"type": "diamond", "size": 5, "group": 0, "label": ego[0]})

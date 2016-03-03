@@ -45,10 +45,10 @@ var MyApp = function MyApp(){
     });
 
     // update display container size
-    $("#system_page").css({'height': $(window).height()-20-$("#header").height()-$("#footer").height()});
+    $("#system_page").css({'height': $(window).height()-23-$("#header").height()-$("#footer").height()});
     $("#tree_result").css({'height': $("#system_page").height()});
     $(".thumb_cnt").css({'height': $("#tree_result").height()});
-    $(".snap_view").css({'height': $(".snap_view").width()+20});
+    $(".snap_view").css({'height': $(".snap_view").width()+23});
     $("#anim_container").css({'height': $("#tree_result").height()});
  
     $("#click_info").css({'max-height': $("#system_page").height()-390});
@@ -56,20 +56,24 @@ var MyApp = function MyApp(){
     $("#click_info").css({'overflow-x': 'hidden'});
 
     $("#system_page").hide();
-    $("#main_display").css({'min-height': $(window).height()-20-$("#header").height()-$("#footer").height()});
+    $("#main_display").css({'min-height': $(window).height()-23-$("#header").height()-$("#footer").height()});
    
     // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
     window.onresize = function(event) {
-        $("#main_display").css({'min-height': $(window).height()-20-$("#header").height()-$("#footer").height()});
-        $("#system_page").css({'height': $(window).height()-20-$("#header").height()-$("#footer").height()});
+        $("#main_display").css({'min-height': $(window).height()-23-$("#header").height()-$("#footer").height()});
+        $("#system_page").css({'height': $(window).height()-23-$("#header").height()-$("#footer").height()});
         $("#tree_result").css({'height': $("#system_page").height()});
         $(".thumb_cnt").css({'height': $("#tree_result").height()});
         $(".snap_view").css({'height': $(".snap_view").width()+20});
         $("#anim_container").css({'height': $("#tree_result").height()});
         // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
+        $("#click_info").css({'max-height': $("#system_page").height()-390});
+        $("#click_info").css({'overflow-y': 'auto'});
+        $("#click_info").css({'overflow-x': 'hidden'});
+
         for(var e in tree_egos){
-            var img_id = "#" + e;
-            tree_util.set_anim_canvas(img_id);
+            // var img_id = "#" + e;
+            tree_util.set_anim_canvas(e);
         }
         self.model.trigger('change:current_ego');
     }
@@ -79,9 +83,10 @@ var MyApp = function MyApp(){
     //     // other options
     // });
 
-    var search = $('#check_url');
+    var retrieve = $('#check_url');
     var finish = $('#draw_tree');
     var start = $('#start_btn');
+    var search = $('#search_name');
 
     start.click(function(){
         console.log("click start");
@@ -92,10 +97,25 @@ var MyApp = function MyApp(){
         $('#highlight_panel').hide();        
     });
 
-    search.click(function(){
+    retrieve.click(function(){
         console.log("click search");
         var resercher = $("#dblp_url").val();
         self.model.check_researcher(resercher);
+        $("#progress").show();
+        $("#detail").hide();
+        $("#tree_result").hide();
+        $('#anim_panel').hide();
+        $('#highlight_panel').hide();
+        $("#other_design").hide();
+    });
+
+    search.click(function(){
+        console.log("click search");
+        var resercher = $("#scholar").val();
+        // var dblp_url = "http://dblp.uni-trier.de/pers/hd/";
+        var dblp_url = "http://dblp.uni-trier.de/search?q=" + encodeURIComponent(resercher);
+        
+        self.model.search_researcher(dblp_url);
         $("#progress").show();
         $("#detail").hide();
         $("#tree_result").hide();
@@ -114,7 +134,8 @@ var MyApp = function MyApp(){
         $("#tree1_cnt")[0].click();
 
         var slider = $("#period_slider").data("ionRangeSlider");
-        var resercher = $("#dblp_url").val();
+        // var resercher = $("#dblp_url").val();
+        var resercher = DBLP_url;
         sy = slider.result.from;
         ey = slider.result.to;
         var gap = ey - sy + 1;
@@ -130,7 +151,11 @@ var MyApp = function MyApp(){
             gap = 5
         else
             gap = 6
-        $(".b_gap").text(gap);
+        if(gap == 1)
+            $(".b_gap").text(gap + " year");
+        else
+            $(".b_gap").text(gap + " years");
+
 
         ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
         ga('send', 'event', DBLP_researcher, "render", "end_year", ey);

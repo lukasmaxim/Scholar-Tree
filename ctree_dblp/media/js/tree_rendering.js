@@ -10,6 +10,8 @@ var RenderingView = Backbone.View.extend({
 
         this.saveCanvas = drawing_canvas.save_canvas;
         this.context =  this.saveCanvas.getContext('2d');
+        this.imageObj = document.getElementById("wood");
+        this.pattern = this.context.createPattern(this.imageObj, 'repeat');
 
         // this.scale = 0.3;
         this.save_scale = 0.3;
@@ -161,8 +163,8 @@ var RenderingView = Backbone.View.extend({
                 for(var height = 0; height < self.total_layer; height++){
                     mapping_color.trunk = "rgb(" + (125-(height+1)*3).toString() + "," + (96-(height+1)*3).toString() + "," + (65-(height+1)*3).toString() + ")";
                                         
-                    this.context.fillStyle = mapping_color.trunk;
-                    this.context.strokeStyle = mapping_color.trunk;
+                    this.context.fillStyle = self.pattern; //mapping_color.trunk
+                    this.context.strokeStyle = self.pattern; //mapping_color.trunk
                     this.context.beginPath();
 
                    
@@ -193,8 +195,8 @@ var RenderingView = Backbone.View.extend({
                         used_dr = this.draw_right_branch(height, layer_total_alter["right"][real_height], ego["right"][real_height]["level"]);
                         
                     // draw left tree
-                    this.context.fillStyle = mapping_color.trunk;
-                    this.context.strokeStyle = mapping_color.trunk;
+                    this.context.fillStyle = self.pattern; //mapping_color.trunk
+                    this.context.strokeStyle = self.pattern; //mapping_color.trunk
                     this.context.beginPath();
                     if((real_height == self.total_layer-1 && layer_total_alter["left"][real_height] == 0) || ((count_dr-layer_total_alter["right"][real_height]) <= 0)){
                         used_dl = this.draw_left_branch(height, layer_total_alter["left"][real_height], ego["left"][real_height]["level"]);
@@ -273,7 +275,6 @@ var RenderingView = Backbone.View.extend({
             if(stick_pos["down"].length < alters["down"].length){
             	console.log(alters);
             	console.log(n);
-                console.log("fuck uuuuuu!");
             }
             stick_pos["down"].sort( function(a, b){return a-b} );
             long_stick = "up";
@@ -546,8 +547,8 @@ var RenderingView = Backbone.View.extend({
                 tree_points[self.current_ego][layer]["right"]["sticks"].push(tree_rstpoint[begin_index[long_stick][0]], tree_rstpoint[begin_index[long_stick][1]]);
                 tree_points[self.current_ego][layer]["right"]["sticks"].push(tree_rstpoint[begin_index[long_stick][0]]+stick_slope[long_stick][0]*stick_len, tree_rstpoint[begin_index[long_stick][1]]+stick_slope[long_stick][1]*stick_len);
                 tree_points[self.current_ego][layer]["right"]["sticks"].push("none", "none", "none", "none");
-                this.context.fillStyle = mapping_color.trunk;
-                this.context.strokeStyle = mapping_color.trunk;
+                this.context.fillStyle = self.pattern; //mapping_color.trunk
+                this.context.strokeStyle = self.pattern; //mapping_color.trunk
                 this.context.lineWidth = 8;
                 this.context.lineCap = 'round';
                 this.context.beginPath();
@@ -588,8 +589,8 @@ var RenderingView = Backbone.View.extend({
                     stick_len = (this.stick_d + this.stick_variation[count_short_stick%2])*len_scale;
                 }
                 
-                this.context.fillStyle = mapping_color.trunk;
-                this.context.strokeStyle = mapping_color.trunk;
+                this.context.fillStyle = self.pattern; //mapping_color.trunk
+                this.context.strokeStyle = self.pattern; //mapping_color.trunk
                 this.context.lineWidth = 8;
                 this.context.lineCap = 'round';
                 this.context.beginPath();
@@ -643,8 +644,8 @@ var RenderingView = Backbone.View.extend({
             
             if(total_draw_stick > 1){ 
                 this.context.lineWidth = 5;
-                this.context.fillStyle = mapping_color.trunk;
-                this.context.strokeStyle = mapping_color.trunk;
+                this.context.fillStyle = self.pattern; //mapping_color.trunk
+                this.context.strokeStyle = self.pattern; //mapping_color.trunk
                 this.context.lineCap = 'round';
                 this.context.beginPath();
 
@@ -990,8 +991,8 @@ var RenderingView = Backbone.View.extend({
                 tree_points[self.current_ego][layer]["left"]["sticks"].push(tree_lstpoint[begin_index[long_stick][0]]+stick_slope[long_stick][0]*stick_len, tree_lstpoint[begin_index[long_stick][1]]+stick_slope[long_stick][1]*stick_len);
                 tree_points[self.current_ego][layer]["left"]["sticks"].push("none", "none", "none", "none");
                 this.context.lineWidth = 8;
-                this.context.fillStyle = mapping_color.trunk;
-                this.context.strokeStyle = mapping_color.trunk;
+                this.context.fillStyle = self.pattern; //mapping_color.trunk
+                this.context.strokeStyle = self.pattern; //mapping_color.trunk
                 this.context.lineCap = 'round';
                 this.context.beginPath();
                 this.context.moveTo(tree_lstpoint[begin_index[long_stick][0]], tree_lstpoint[begin_index[long_stick][1]]);
@@ -1033,8 +1034,8 @@ var RenderingView = Backbone.View.extend({
                 tree_points[self.current_ego][layer]["left"]["sticks"].push(tree_lstpoint[begin_index[short_stick][0]]+stick_slope[short_stick][0]*stick_len, tree_lstpoint[begin_index[short_stick][1]]+stick_slope[short_stick][1]*stick_len);
                 tree_points[self.current_ego][layer]["left"]["sticks"].push("none", "none", "none", "none");
                 
-                this.context.fillStyle = mapping_color.trunk;
-                this.context.strokeStyle = mapping_color.trunk;
+                this.context.fillStyle = self.pattern; //mapping_color.trunk
+                this.context.strokeStyle = self.pattern; //mapping_color.trunk
                 this.context.lineWidth = 8;
                 this.context.lineCap = 'round';
                 this.context.beginPath();
@@ -1089,8 +1090,8 @@ var RenderingView = Backbone.View.extend({
                 tree_lstpoint[3] = tree_lstpoint[3]+w/2-this.sub_slop-nature/(len/2);
 
                 this.context.lineCap = 'round';
-                this.context.fillStyle = mapping_color.trunk;
-                this.context.strokeStyle = mapping_color.trunk;
+                this.context.fillStyle = self.pattern; //mapping_color.trunk
+                this.context.strokeStyle = self.pattern; //mapping_color.trunk
                 this.context.beginPath();
                 this.context.moveTo(ori_lstpoint[0],ori_lstpoint[1]);
                 this.context.lineTo(tree_lstpoint[0], tree_lstpoint[1]);
@@ -1163,8 +1164,8 @@ var RenderingView = Backbone.View.extend({
             cluster = 1000;
         }
 
-        this.context.fillStyle = mapping_color.trunk;
-        this.context.strokeStyle = mapping_color.trunk;
+        this.context.fillStyle = self.pattern; //mapping_color.trunk
+        this.context.strokeStyle = self.pattern; //mapping_color.trunk
         this.context.lineCap = 'round';
         this.context.lineWidth = 8;
         var random_angle_option = [(Math.PI/4), -(Math.PI/4)];
@@ -1382,8 +1383,8 @@ var RenderingView = Backbone.View.extend({
                 }
                                            
                 if(sub%3 > 0 || (sub%3 == 0 && sub>0 && len-g>0)){
-                    this.context.fillStyle = mapping_color.trunk;
-                    this.context.strokeStyle = mapping_color.trunk;
+                    this.context.fillStyle = self.pattern; //mapping_color.trunk
+                    this.context.strokeStyle = self.pattern; //mapping_color.trunk
                     tree_points[self.current_ego][self.current_layer][self.current_side]["sticks"].push(p[0], p[1], point_x, point_y, "none", "none", "none", "none");
                     
                     this.context.beginPath();
@@ -1626,8 +1627,8 @@ var RenderingView = Backbone.View.extend({
                 for(var height = 0; height < self.total_layer; height++){
                     mapping_color.trunk = "rgb(" + (125-(height+1)*3).toString() + "," + (96-(height+1)*3).toString() + "," + (65-(height+1)*3).toString() + ")";
                                         
-                    this.context.fillStyle = mapping_color.trunk;
-                    this.context.strokeStyle = mapping_color.trunk;
+                    this.context.fillStyle = self.pattern; //mapping_color.trunk
+                    this.context.strokeStyle = self.pattern; //mapping_color.trunk
                     this.context.beginPath();
 
                    
@@ -1659,8 +1660,8 @@ var RenderingView = Backbone.View.extend({
                         used_dr = this.draw_right_branch(height, layer_total_alter["right"][real_height], ego["right"][real_height]["level"]);
                         
                     // draw left tree
-                    this.context.fillStyle = mapping_color.trunk;
-                    this.context.strokeStyle = mapping_color.trunk;
+                    this.context.fillStyle = self.pattern; //mapping_color.trunk
+                    this.context.strokeStyle = self.pattern; //mapping_color.trunk
                     this.context.beginPath();
                     if((real_height == self.total_layer-1 && layer_total_alter["left"][real_height] == 0) || ((count_dr-layer_total_alter["right"][real_height]) <= 0)){
                         used_dl = this.draw_left_branch(height, layer_total_alter["left"][real_height], ego["left"][real_height]["level"]);

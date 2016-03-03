@@ -125,9 +125,11 @@ var AnimView = Backbone.View.extend({
 
     anim_render: function(ego, idx){
         var self = this;
+        var imageObj = document.getElementById("wood");
         clearInterval(mytimer.blinking_timer);
     	var amin_frame = tree_amin_frame[ego];
     	var context =  drawing_canvas.anim_canvas.getContext('2d');
+        var pattern = context.createPattern(imageObj, 'repeat');
 
         context.lineWidth = 5; // set the style
 
@@ -199,12 +201,12 @@ var AnimView = Backbone.View.extend({
 			this.tree_height = 0;
         	for(var f = 0; f < idx; f++){
         		var frame = amin_frame[f];
-        		mapping_color.trunk = "rgb(" + (125-(this.tree_height+1)*3).toString() + "," + (96-(this.tree_height+1)*3).toString() + "," + (65-(this.tree_height+1)*3).toString() + ")";
+        		// mapping_color.trunk = "rgb(" + (125-(this.tree_height+1)*3).toString() + "," + (96-(this.tree_height+1)*3).toString() + "," + (65-(this.tree_height+1)*3).toString() + ")";
             
 				switch(frame["type"]) {
 					case 'trunk':
-		                context.fillStyle = mapping_color.trunk;
-			            context.strokeStyle = mapping_color.trunk;
+		                context.fillStyle = pattern;
+			            context.strokeStyle = pattern;
 			            context.lineCap = 'round';
 			            context.lineWidth = 5;
 			            context.beginPath();
@@ -220,8 +222,8 @@ var AnimView = Backbone.View.extend({
 			            this.tree_height ++;
 		                break;
 		            case 'sticks':
-		                context.fillStyle = mapping_color.trunk;
-			            context.strokeStyle = mapping_color.trunk;
+		                context.fillStyle = pattern;
+			            context.strokeStyle = pattern;
 			            context.lineCap = 'round';
 		                context.lineWidth = 8;
 
@@ -267,12 +269,12 @@ var AnimView = Backbone.View.extend({
 				this.current_idx = amin_frame.length;
 			}
 			// var action = frame["type"];
-			mapping_color.trunk = "rgb(" + (125-(this.tree_height+1)*3).toString() + "," + (96-(this.tree_height+1)*3).toString() + "," + (65-(this.tree_height+1)*3).toString() + ")";
+			// mapping_color.trunk = "rgb(" + (125-(this.tree_height+1)*3).toString() + "," + (96-(this.tree_height+1)*3).toString() + "," + (65-(this.tree_height+1)*3).toString() + ")";
             
 			switch(frame["type"]) {
 				case 'trunk':
-	                context.fillStyle = mapping_color.trunk;
-		            context.strokeStyle = mapping_color.trunk;
+	                context.fillStyle = pattern;
+		            context.strokeStyle = pattern;
 		            context.lineCap = 'round';
 		            context.lineWidth = 5;
 		            context.beginPath();
@@ -288,8 +290,8 @@ var AnimView = Backbone.View.extend({
 		            this.tree_height ++;
 	                break;
 	            case 'sticks':
-	                context.fillStyle = mapping_color.trunk;
-		            context.strokeStyle = mapping_color.trunk;
+	                context.fillStyle = pattern;
+		            context.strokeStyle = pattern;
 		            context.lineCap = 'round';
 	                context.lineWidth = 8;
 
