@@ -4,3 +4,4 @@ ctree_dblp/__init__.pyc
 ctree_dblp/settings.pyc
 ctree_dblp/view.pyc
 ctree_dblp/wsgi.pyc
+ctree_dblp/media/data/
