@@ -135,7 +135,7 @@ var InteractView = Backbone.View.extend({
                 
                 self.dragStart = self.getMousePos(self.myCanvas, evt);//mousePos.x,mousePos.y
             }
-            else if( self.stay == 0 && grid_point[0] >= 0 && grid_point[1] >= 0 && grid_point[0] < self.grid.length-1 && grid_point[1] < self.grid[0].length-1){
+            else if( grid_point[0] >= 0 && grid_point[1] >= 0 && grid_point[0] < self.grid.length-1 && grid_point[1] < self.grid[0].length-1){
                 // var grid_point = [Math.round(canvas_point[0]*0.15), Math.round(canvas_point[1]*0.15)];
                 console.log(grid_point[0], grid_point[1]);
                 console.log(self.grid);
@@ -143,7 +143,8 @@ var InteractView = Backbone.View.extend({
                 var point_info = self.detail[point_idx];
                 if(point_idx != -1){
                     self.el_main_canvas.css("cursor", "pointer");
-                    self.display_info(point_info);
+                    if(self.stay == 0)
+                        self.display_info(point_info);
                     // console.log(point_idx, [Math.round((mousePos.x-self.translate[0]))/self.scale, Math.round((mousePos.y-self.translate[1]))/self.scale], [canvas_point[0], canvas_point[1]]);
                     // self.testGrid(canvas_point[0], canvas_point[1], point_idx);
                 }
@@ -256,11 +257,15 @@ var InteractView = Backbone.View.extend({
     display_info: function (info) {
         var self = this;
         var info_page = $("#click_info");
-        var info_text = "";
+        var info_text = "<b>Stick:</b> " + info[0] + "<br>" ;
         info_page.show();
 
-        for(var t = 0; t < 4; t++){
-            info_text += this.info_label[t] + info[t] + "<br>" ;
+        // for(var t = 0; t < 4; t++){
+        //     info_text += this.info_label[t] + info[t] + "<br>" ;
+        // }
+        var viewing_alter = actual_info[view_ego][info[0]]
+        for(var attr in viewing_alter){
+            info_text += '<b>' + attr + ':</b> ' + viewing_alter[attr] + "<br>" ;
         }
         info_text += this.info_label[4];
         for(var t = 4; t < info.length; t++){

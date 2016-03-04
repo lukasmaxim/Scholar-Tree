@@ -245,7 +245,7 @@ def get_tree_structure(request):
 			else:
 				print "<<<", p_title
 	    # sys.exit()
-		tree_egos, branches, legends = tree_mapping(career_period, publication, coauthorship, author, sy, ey)
+		tree_egos, branches, legends, final_info_table = tree_mapping(career_period, publication, coauthorship, author, sy, ey)
 		graph_mapping(career_period, publication, coauthorship, author, sy, ey, user_ip)
 		final_structure = dict()
 		final_structure["all"] = dict()
@@ -275,7 +275,7 @@ def get_tree_structure(request):
 	final_unique_paper_list = ["None"] + sorted(unique_paper_list)
 	# print final_unique_author_list
 	# print final_unique_paper_list
-	final_return = [final_structure, final_unique_author_list, final_unique_paper_list, legends]
+	final_return = [final_structure, final_unique_author_list, final_unique_paper_list, legends, final_info_table]
 	return_json = simplejson.dumps(final_return, indent=4, use_decimal=True)
 
 	return HttpResponse(return_json)
@@ -287,6 +287,12 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 	tree_egos["tree2"] = []
 	tree_egos["tree3"] = []
 	tree_egos["tree4"] = []
+
+	tree_info = dict()
+	tree_info["tree1"] = {}
+	tree_info["tree2"] = {}
+	tree_info["tree3"] = {}
+
 	period = ey - sy + 1
 	# gap = 1
 	year_gap = []
@@ -329,6 +335,9 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 	for paper in publication:
 		if publication[paper]["year"] > ey or publication[paper]["year"] < sy:
 				continue
+
+		tree_info["tree1"][paper] = {"Publish year": publication[paper]["year"], "Paper type": publication[paper]["type"], "Author order": publication[paper]["author_order"]}
+		tree_info["tree2"][paper] = {"Publish year": publication[paper]["year"], "Paper type": publication[paper]["type"], "Author order": publication[paper]["author_order"]}
 		# solo paper
 		if publication[paper]["author_count"] == 0:
 			# print paper
@@ -502,6 +511,8 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 		# data4 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
 		data3_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
 		data4_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
+
+		tree_info["tree3"][coauthor] = {"Total collaboration": coauthors[coauthor][0], "First collaboration": coauthors[coauthor][1]}
 		
 		# trunk: first co-authored year
 		if coauthors[coauthor][1] >= year_gap[len(year_gap)/2-1]:
@@ -611,7 +622,7 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 			# tree_egos["tree4"].append(data4)
 			
 			
-	return tree_egos, branch_layer, color_gap
+	return tree_egos, branch_layer, color_gap, tree_info
 
 
 def tree_structure(tree_ego, branch_layer):

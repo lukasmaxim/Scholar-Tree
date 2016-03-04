@@ -99,6 +99,7 @@ var Tree_Model = Backbone.Model.extend({
             self.trigger('change:tree_structure');
             highlight_list["authors"] = result[1];
             highlight_list["papers"] = result[2];
+            actual_info = result[4];
             util.set_highlight_list();
             util.set_legend(result[3]);
         });
