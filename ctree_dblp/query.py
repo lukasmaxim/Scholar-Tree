@@ -398,8 +398,8 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 				continue
 			first_real_year = int(coauthors[author][1]) - sy
 			paper_real_year = int(publication[paper]["year"]) - sy
-			data1 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, first_real_year, paper_real_year] # stick, leaf
-			data2 = [paper, author, "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, first_real_year, paper_real_year]
+			data1 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, first_real_year, paper_real_year] # stick, leaf
+			data2 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, first_real_year, paper_real_year]
 			
 			# trunk
 			if publication[paper]["author_order"] > 1:
@@ -493,16 +493,18 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 
 	for coauthor in coauthors:
 		# solo paper
-		if coauthor == "none":
-			print coauthor
-			print coauthors[coauthor]
+		fruit_val = 0
+		
+		if coauthor in ego:
+			print "***********", coauthor
+			fruit_val = 3
 		# data3 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
 		# data4 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
 		data3_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
 		data4_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
 		
-		# trunk
-		if coauthors[coauthor][0] >= 5:
+		# trunk: first co-authored year
+		if coauthors[coauthor][1] >= year_gap[len(year_gap)/2-1]:
 			data3_stick[2] = 1
 			data4_stick[2] = 1
 		else:
@@ -510,37 +512,48 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 			data4_stick[2] = 0
 
         # branch as year
-		if coauthors[coauthor][1] < year_gap[0]:
-			data3_stick[3] = 0
-			data4_stick[3] = 0
-		elif coauthors[coauthor][1] >= year_gap[-1]:
-			data3_stick[3] = len(year_gap)
-			data4_stick[3] = len(year_gap)
-		else:
-			for g in range(len(year_gap)-1):
-				if year_gap[g] <= coauthors[coauthor][1] < year_gap[g+1]:
-					data3_stick[3] = g+1
-					data4_stick[3] = g+1
+		# if coauthors[coauthor][1] < year_gap[0]:
+		# 	data3_stick[3] = 0
+		# 	data4_stick[3] = 0
+		# elif coauthors[coauthor][1] >= year_gap[-1]:
+		# 	data3_stick[3] = len(year_gap)
+		# 	data4_stick[3] = len(year_gap)
+		# else:
+		# 	for g in range(len(year_gap)-1):
+		# 		if year_gap[g] <= coauthors[coauthor][1] < year_gap[g+1]:
+		# 			data3_stick[3] = g+1
+		# 			data4_stick[3] = g+1
 
 		co_period = coauthors[coauthor][2] - coauthors[coauthor][1] + 1
-		co_frequency = float(coauthors[coauthor][0]) / float(co_period)
+		# co_frequency = float(coauthors[coauthor][0]) / float(co_period)
 		# print co_frequency
-		if co_frequency > 1:
-			data3_stick[4] = 0
-			data4_stick[4] = 0
-		else:
+		if coauthors[coauthor][0] > 1:
 			data3_stick[4] = 1
 			data4_stick[4] = 1
+		else:
+			data3_stick[4] = 0
+			data4_stick[4] = 0
 
-		fruit_val = 0
-		if coauthor == "none":
-			fruit_val = 5
+			
 
 		first_real_year = int(coauthors[coauthor][1]) - sy
 		for paper in coauthors[coauthor][3]:
 			if publication[paper]["year"] > ey or publication[paper]["year"] < sy:
 				continue
-			paper_real_year = int(publication[paper]["year"]) - sy
+
+			if publication[paper]["year"] < year_gap[0]:
+				data3_stick[3] = 0
+				data4_stick[3] = 0
+			elif publication[paper]["year"] >= year_gap[-1]:
+				data3_stick[3] = len(year_gap)
+				data4_stick[3] = len(year_gap)
+			else:
+				for g in range(len(year_gap)-1):
+					if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
+						data3_stick[3] = g+1
+						data4_stick[3] = g+1
+
+			# paper_real_year = int(publication[paper]["year"]) - sy
 			data3 = data3_stick + ["leaf_color", "leaf_size"] + [fruit_val, paper, paper_real_year, first_real_year]
 			data4 = data4_stick + ["leaf_color", "leaf_size", 0, paper, paper_real_year, first_real_year]
 			
@@ -557,54 +570,45 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 			# co-author order
 			# leaf size
 			order = publication[paper]["author_order"]
-			if order >= 5:
-				data4[6] = 1
+			# order = publication[paper]["coauthor"].index(coauthor)
+			if order >= 4:
+				data3[6] = 1
 			elif order <= 1:
-				data4[6] = 5
+				data3[6] = 5
 			elif order == 2:
-				data4[6] = 4
+				data3[6] = 3
 			elif order == 3:
-				data4[6] = 3
-			elif order == 4:
-				data4[6] = 2
-			# if order <= 1:
-			# 	data4[6] = 1
-			# elif order >= 5:
-			# 	data4[6] = 5
-			# else:
-			# 	data4[6] = order
+				data3[6] = 2
 			
-
-			p_length = int(publication[paper]["pages"])
+			
+			# p_length = int(publication[paper]["pages"])
 			
 			# leaf size
-			if p_length == 1:
-				data3[6] = 1
-			elif 1 < p_length <= 4:
-				data3[6] = 2
-			elif 4 < p_length <= 8:
-				data3[6] = 3
-			elif 8 < p_length <= 12:
-				data3[6] = 4
-			elif 12 < p_length:
-				data3[6] = 5
+			# if p_length == 1:
+			# 	data3[6] = 1
+			# elif 1 < p_length <= 4:
+			# 	data3[6] = 2
+			# elif 4 < p_length <= 8:
+			# 	data3[6] = 3
+			# elif 8 < p_length <= 12:
+			# 	data3[6] = 4
+			# elif 12 < p_length:
+			# 	data3[6] = 5
 
 			# leaf color
-			if publication[paper]["year"] < color_gap[0]:
-				data4[5] = 0
-			elif publication[paper]["year"] >= color_gap[-1]:
-				data4[5] = len(color_gap) 
-			else:
-				for g in range(len(color_gap)-1):
-					if color_gap[g] <= publication[paper]["year"] < color_gap[g+1]:
-						data4[5] = g+1
-			if len(color_gap) <= 6:
-				data4[5] += 2
-			# if coauthor == "none":
-			# 	print data4
-
+			# if publication[paper]["year"] < color_gap[0]:
+			# 	data4[5] = 0
+			# elif publication[paper]["year"] >= color_gap[-1]:
+			# 	data4[5] = len(color_gap) 
+			# else:
+			# 	for g in range(len(color_gap)-1):
+			# 		if color_gap[g] <= publication[paper]["year"] < color_gap[g+1]:
+			# 			data4[5] = g+1
+			# if len(color_gap) <= 6:
+			# 	data4[5] += 2
+			
 			tree_egos["tree3"].append(data3)
-			tree_egos["tree4"].append(data4)
+			# tree_egos["tree4"].append(data4)
 			
 			
 	return tree_egos, branch_layer, color_gap

@@ -42,6 +42,7 @@
         </script>
     </head>
     <body>
+        <div style="display:none;"><img id="wood" src="media/img/wood.jpg"></div>
         <!-- header -->
         <div id="header" class="row relative" style="margin:10px 10px;">
             <div class="left" style="margin-right:25px;">
@@ -80,7 +81,7 @@
                             <br><br><br> -->
                             <span class="relative myfont3">Scholar Name:</span>
                             <input type="text" id="scholar" title="Search scholar's full name" class="row" autocomplete="off" style="width:100%; margin:5px 0 10px 0;"></input> 
-                            <button id="search_name" title="Search researcher by the name" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Searcher Scholar</button>
+                            <button id="search_name" title="Search researcher by the name" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px;">Search Scholar</button>
                             <!-- <br><br><br> -->
                             <div id="search_res" style="margin-top:40px; display:none;">
                                 <span class="relative myfont3">Possible Scholars:</span> 
@@ -188,7 +189,7 @@
                                         <img id="tree3" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;">
                                     </div>
                                 </div>
-                                <div id="tree4_cnt" title="Tree4" class="snap_view" name="4">
+                                <div id="tree4_cnt" title="Tree4" class="snap_view" name="4" style="display:none;">
                                     <div>
                                         <img id="tree4" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;">
                                     </div>
@@ -252,17 +253,20 @@
                                 <div id="tree3_text" style="display:none;">
                                     <a id="tree3_save" href="#" name="3" style="display:none;">Save</a> 
                                     <b>Stick:</b> Co-author<br>
-                                    <b>Trunk Side:</b> Total co-authored papers (left: &lt; 5)<br>
-                                    <b>Branches:</b> First co-authored year<br>
+                                    <!-- <b>Trunk Side:</b> Total co-authored papers (left: &lt; 5)<br> -->
+                                    <b>Trunk Side:</b> First co-authored year (left: earlier)<br>
+                                    <!-- <b>Branches:</b> First co-authored year<br> -->
+                                    <b>Branches:</b> Published year<br>
                                     <b>Branch Interval:</b>
                                     <p class="b_gap">
                                         0
                                     </p><br>
-                                    <b>Branch Side:</b> Collaboration frequency (up: &gt; 1)<br>
+                                    <b>Branch Side:</b> Collaboration frequency (down: one-time)<br>
                                     <!-- <b>Fruit:</b> Researcher itself<br> -->
                                     <b>Leaf:</b> Paper<br>
                                     <b>Leaf Color:</b> Paper types<br>
-                                    <b>Leaf Size:</b> Paper length<br>
+                                    <!-- <b>Leaf Size:</b> Paper length<br> -->
+                                    <b>Leaf Size:</b> Author order (first: bigger)<br>
                                     <!-- <b>Highlight Selection:</b><br> -->
                                    <!--  <select id="tree3_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
                                         <option value="None">
@@ -330,8 +334,7 @@
         <div id='save_container' class='left' style="position:absolute; overflow:hidden; height:50px; width:50px; left:50px; top:150px; display:none; z-index:-10;">
             <canvas id='save_tree' style="background:white;"></canvas> <!-- <a id="custom_download_link" download="mytree.png" href=""></a> -->
         </div>
-        <div style="display:none;"><img id="wood" src="media/img/wood.jpg"></div>
-
+        
         <div id="survey_dialog" title="Survey for Academic Tree" class="popup_window_title">
         </div>
         <script type="text/javascript" src="media/js/settings.js">
