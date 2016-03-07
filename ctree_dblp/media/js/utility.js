@@ -162,7 +162,7 @@ var util = {
                 }
             }
             else{
-                for (var i = 0; i < legend_info.length; i++){
+                for (var i = 0; i < legend_info.length-1; i++){
                     var cnt = $('<div style="display:table-row; height:30px;"></div>');
                     var box = $('<div class="legend_box"></div>');
                     var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"> <b>&lt; ' + legend_info[i] + '</b></span>');
@@ -173,7 +173,8 @@ var util = {
                 }
                 var cnt = $('<div style="display:table-row; height:30px;"></div>');
                 var box = $('<div class="legend_box"></div>');
-                var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b> &lt;= ' + timeline[1] + '</b></span>');
+                // var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b> &lt;= ' + timeline[1] + '</b></span>');
+                var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b> &lt;= ' + legend_info[i] + '</b></span>');
                 box.css({"background": mapping_color.render_leaf_color[legend_info.length+extra]});
                 cnt.append(box)
                 cnt.append(label)

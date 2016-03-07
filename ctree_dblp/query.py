@@ -316,11 +316,11 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 	end = int(career_period[1])
 	t_gap = int(career_period[2])
 	
-	for x in range(start+t_gap, end, t_gap):
+	for x in range(start+t_gap, end+1, t_gap):
 		# print x
 		color_gap.append(int(x))
 
-	for y in range(sy+gap, ey, gap):
+	for y in range(sy+gap, ey+1, gap):
 		year_gap.append(int(y))
 
 	if not year_gap:
@@ -350,18 +350,22 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 			# trunk			
 			data1[4] = 0
 			data2[2] = 0
-            # branch as year
-			if publication[paper]["year"] < year_gap[0]:
+			# branch as year
+			if len(year_gap) > 1:
+				if publication[paper]["year"] < year_gap[0]:
+					data1[3] = 0
+					data2[3] = 0
+				elif publication[paper]["year"] >= year_gap[-1]:
+					data1[3] = len(year_gap)
+					data2[3] = len(year_gap)
+				else:
+					for g in range(len(year_gap)-1):
+						if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
+							data1[3] = g+1
+							data2[3] = g+1
+			else:
 				data1[3] = 0
 				data2[3] = 0
-			elif publication[paper]["year"] >= year_gap[-1]:
-				data1[3] = len(year_gap)
-				data2[3] = len(year_gap)
-			else:
-				for g in range(len(year_gap)-1):
-					if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
-						data1[3] = g+1
-						data2[3] = g+1
 			# branch as author order
 			# branch side
 			if publication[paper]["type"] == "conf":
@@ -419,17 +423,21 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 				data2[2] = 0
 
 			# branch as year
-			if publication[paper]["year"] < year_gap[0]:
+			if len(year_gap) > 1:
+				if publication[paper]["year"] < year_gap[0]:
+					data1[3] = 0
+					data2[3] = 0
+				elif publication[paper]["year"] >= year_gap[-1]:
+					data1[3] = len(year_gap)
+					data2[3] = len(year_gap)
+				else:
+					for g in range(len(year_gap)-1):
+						if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
+							data1[3] = g+1
+							data2[3] = g+1
+			else:
 				data1[3] = 0
 				data2[3] = 0
-			elif publication[paper]["year"] >= year_gap[-1]:
-				data1[3] = len(year_gap)
-				data2[3] = len(year_gap)
-			else:
-				for g in range(len(year_gap)-1):
-					if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
-						data1[3] = g+1
-						data2[3] = g+1
 
 			# branch side
 			if publication[paper]["type"] == "conf":
@@ -445,17 +453,22 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 			total_collaborate_paper = coauthors[author][0]
 			first_collaborated = coauthors[author][1]
 			
-			if first_collaborated < color_gap[0]:
+			if len(color_gap) > 1:
+				if first_collaborated < color_gap[0]:
+					data1[5] = 0
+					data2[5] = 0
+				elif first_collaborated >= color_gap[-1]:
+					data1[5] = len(color_gap)
+					data2[5] = len(color_gap)
+				else:
+					for g in range(len(color_gap)-1):
+						if color_gap[g] <= first_collaborated < color_gap[g+1]:
+							data1[5] = g+1
+							data2[5] = g+1
+			else:
 				data1[5] = 0
 				data2[5] = 0
-			elif first_collaborated >= color_gap[-1]:
-				data1[5] = len(color_gap)
-				data2[5] = len(color_gap)
-			else:
-				for g in range(len(color_gap)-1):
-					if color_gap[g] <= first_collaborated < color_gap[g+1]:
-						data1[5] = g+1
-						data2[5] = g+1
+
 			if len(color_gap) <= 6:
 				data1[5] += 2
 				data2[5] += 2
@@ -503,10 +516,9 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 	for coauthor in coauthors:
 		# solo paper
 		fruit_val = 0
-		
 		if coauthor in ego:
 			print "***********", coauthor
-			fruit_val = 3
+			# fruit_val = 3
 		# data3 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
 		# data4 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
 		data3_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
@@ -544,7 +556,6 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 		else:
 			data3_stick[4] = 0
 			data4_stick[4] = 0
-
 			
 
 		first_real_year = int(coauthors[coauthor][1]) - sy
@@ -552,18 +563,31 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 			if publication[paper]["year"] > ey or publication[paper]["year"] < sy:
 				continue
 
-			if publication[paper]["year"] < year_gap[0]:
-				data3_stick[3] = 0
-				data4_stick[3] = 0
-			elif publication[paper]["year"] >= year_gap[-1]:
-				data3_stick[3] = len(year_gap)
-				data4_stick[3] = len(year_gap)
-			else:
-				for g in range(len(year_gap)-1):
-					if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
-						data3_stick[3] = g+1
-						data4_stick[3] = g+1
+			
+			if len(year_gap) > 1:
+				if publication[paper]["year"] < year_gap[0]:
+					data3_stick[3] = 0
+					data4_stick[3] = 0
+					cat_time = [sy, year_gap[0]]
+				elif publication[paper]["year"] >= year_gap[-1]:
+					data3_stick[3] = len(year_gap)
+					data4_stick[3] = len(year_gap)
+					cat_time = [year_gap[-1], ey+1]
+				else:
+					for g in range(len(year_gap)-1):
+						if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
+							data3_stick[3] = g+1
+							data4_stick[3] = g+1
+							cat_time = [year_gap[g], year_gap[g+1]]
+							break
 
+				if cat_time[0] <= coauthors[coauthor][1] < cat_time[1]:
+					data3_stick[2] = 0
+				else:
+					data3_stick[2] = 1
+			else:
+				data3_stick[3] = 0
+				data3_stick[2] = 0
 			# paper_real_year = int(publication[paper]["year"]) - sy
 			data3 = data3_stick + ["leaf_color", "leaf_size"] + [fruit_val, paper, paper_real_year, first_real_year]
 			data4 = data4_stick + ["leaf_color", "leaf_size", 0, paper, paper_real_year, first_real_year]
@@ -580,16 +604,22 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 
 			# co-author order
 			# leaf size
-			order = publication[paper]["author_order"]
-			# order = publication[paper]["coauthor"].index(coauthor)
-			if order >= 4:
-				data3[6] = 1
-			elif order <= 1:
+			# order = publication[paper]["author_order"]
+			# # order = publication[paper]["coauthor"].index(coauthor)
+			# if order >= 4:
+			# 	data3[6] = 1
+			# elif order <= 1:
+			# 	data3[6] = 5
+			# elif order == 2:
+			# 	data3[6] = 3
+			# elif order == 3:
+			# 	data3[6] = 2
+
+			total_author = len(publication[paper]["coauthor"])
+			if total_author > 5:
 				data3[6] = 5
-			elif order == 2:
-				data3[6] = 3
-			elif order == 3:
-				data3[6] = 2
+			else:
+				data3[6] = total_author
 			
 			
 			# p_length = int(publication[paper]["pages"])
