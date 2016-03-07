@@ -289,9 +289,8 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 	tree_egos["tree4"] = []
 
 	tree_info = dict()
-	tree_info["tree1"] = {}
-	tree_info["tree2"] = {}
-	tree_info["tree3"] = {}
+	tree_info["paper_tree"] = {}
+	tree_info["author_tree"] = {}
 
 	period = ey - sy + 1
 	# gap = 1
@@ -336,8 +335,8 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 		if publication[paper]["year"] > ey or publication[paper]["year"] < sy:
 				continue
 
-		tree_info["tree1"][paper] = {"Publish year": publication[paper]["year"], "Paper type": publication[paper]["type"], "Author order": publication[paper]["author_order"]}
-		tree_info["tree2"][paper] = {"Publish year": publication[paper]["year"], "Paper type": publication[paper]["type"], "Author order": publication[paper]["author_order"]}
+		tree_info["paper_tree"][paper] = {"Published year": publication[paper]["year"], "Paper type": publication[paper]["type"], "Author order": publication[paper]["author_order"], "Leaves": []}
+		# tree_info["tree2"][paper] = {"Published year": publication[paper]["year"], "Paper type": publication[paper]["type"], "Author order": publication[paper]["author_order"], "Leaves": []}
 		# solo paper
 		if publication[paper]["author_count"] == 0:
 			# print paper
@@ -347,6 +346,7 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 			data1 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", ego[0], first_real_year, paper_real_year]
 			data2 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", ego[0], first_real_year, paper_real_year]
 			
+			tree_info["paper_tree"][paper]["Leaves"].append(ego[0]);
 			# trunk			
 			data1[4] = 0
 			data2[2] = 0
@@ -407,8 +407,11 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 		coauthor_order = 1
 		for author in publication[paper]["coauthor"]:
 			if author in ego:
+				tree_info["paper_tree"][paper]["Leaves"].append(ego[0]);
 				coauthor_order += 1
 				continue
+			tree_info["paper_tree"][paper]["Leaves"].append(author);
+
 			first_real_year = int(coauthors[author][1]) - sy
 			paper_real_year = int(publication[paper]["year"]) - sy
 			data1 = [paper, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", author, first_real_year, paper_real_year] # stick, leaf
@@ -524,7 +527,7 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 		data3_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
 		data4_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
 
-		tree_info["tree3"][coauthor] = {"Total collaboration": coauthors[coauthor][0], "First collaboration": coauthors[coauthor][1]}
+		# tree_info["paper_tree"][coauthor] = {"Total collaboration": coauthors[coauthor][0], "First collaboration": coauthors[coauthor][1], "Leaves": []}
 		
 		# trunk: first co-authored year
 		if coauthors[coauthor][1] >= year_gap[len(year_gap)/2-1]:
@@ -562,23 +565,32 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 		for paper in coauthors[coauthor][3]:
 			if publication[paper]["year"] > ey or publication[paper]["year"] < sy:
 				continue
-
 			
+			published_time = publication[paper]["year"]
 			if len(year_gap) > 1:
-				if publication[paper]["year"] < year_gap[0]:
+				if published_time < year_gap[0]:
 					data3_stick[3] = 0
 					data4_stick[3] = 0
 					cat_time = [sy, year_gap[0]]
-				elif publication[paper]["year"] >= year_gap[-1]:
+					if coauthor+"0" not in tree_info["author_tree"]:
+						tree_info["author_tree"][coauthor+"0"] = {"Co-authored paper count": coauthors[coauthor][0], "First co-authored year": coauthors[coauthor][1], "Leaves": []}
+					tree_info["author_tree"][coauthor+"0"]["Leaves"].append(paper+' (' +  str(published_time) + ')')
+				elif published_time >= year_gap[-1]:
 					data3_stick[3] = len(year_gap)
 					data4_stick[3] = len(year_gap)
 					cat_time = [year_gap[-1], ey+1]
+					if coauthor+str(len(year_gap)) not in tree_info["author_tree"]:
+						tree_info["author_tree"][coauthor+str(len(year_gap))] = {"Co-authored paper count": coauthors[coauthor][0], "First co-authored year": coauthors[coauthor][1], "Leaves": []}
+					tree_info["author_tree"][coauthor+str(len(year_gap))]["Leaves"].append(paper+' (' +  str(published_time) + ')')
 				else:
 					for g in range(len(year_gap)-1):
-						if year_gap[g] <= publication[paper]["year"] < year_gap[g+1]:
+						if year_gap[g] <= published_time < year_gap[g+1]:
 							data3_stick[3] = g+1
 							data4_stick[3] = g+1
 							cat_time = [year_gap[g], year_gap[g+1]]
+							if coauthor+str(g+1) not in tree_info["author_tree"]:
+								tree_info["author_tree"][coauthor+str(g+1)] = {"Co-authored paper count": coauthors[coauthor][0], "First co-authored year": coauthors[coauthor][1], "Leaves": []}
+							tree_info["author_tree"][coauthor+str(g+1)]["Leaves"].append(paper+' (' + str(published_time) + ')')
 							break
 
 				if cat_time[0] <= coauthors[coauthor][1] < cat_time[1]:
@@ -591,7 +603,7 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 			# paper_real_year = int(publication[paper]["year"]) - sy
 			data3 = data3_stick + ["leaf_color", "leaf_size"] + [fruit_val, paper, paper_real_year, first_real_year]
 			data4 = data4_stick + ["leaf_color", "leaf_size", 0, paper, paper_real_year, first_real_year]
-			
+
 			if publication[paper]["type"] == "journals":# "conf":
 				data3[5] = 4
 				# data4[4] = 0

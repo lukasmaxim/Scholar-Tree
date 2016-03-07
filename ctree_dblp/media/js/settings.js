@@ -58,6 +58,8 @@ var tree_img_url = {
   "tree4": ""
 };
 
+var tree_type = { "tree1": "paper_tree", "tree2": "paper_tree", "tree3": "author_tree"};
+
 var actual_info;
 
 var tree_egos = {"tree1": ["all"], "tree2": ["all"], "tree3": ["all"]};

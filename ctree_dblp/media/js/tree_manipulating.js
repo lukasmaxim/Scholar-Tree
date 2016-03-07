@@ -12,6 +12,7 @@ var InteractView = Backbone.View.extend({
         this.dragStart = null;
         this.dragged = false;
         this.info_label = ["<b>Stick: </b>", "<b>Trunk side: </b>", "<b>Branch layer: </b>", "<b>Branch side: </b>", "<b>Leaves: </b>"];
+        this.leaves_label = {"paper_tree": "<b>Authors: </b>", "author_tree": "<b>Papers: </b>"};
 
         this.myCanvas = drawing_canvas.anim_canvas;
         this.translate = [];
@@ -137,7 +138,7 @@ var InteractView = Backbone.View.extend({
             }
             else if( grid_point[0] >= 0 && grid_point[1] >= 0 && grid_point[0] < self.grid.length-1 && grid_point[1] < self.grid[0].length-1){
                 // var grid_point = [Math.round(canvas_point[0]*0.15), Math.round(canvas_point[1]*0.15)];
-                console.log(grid_point[0], grid_point[1]);
+                // console.log(grid_point[0], grid_point[1]);
                 // console.log(self.grid);
                 var point_idx = self.grid[grid_point[0]][grid_point[1]];
                 var point_info = self.detail[point_idx];
@@ -257,19 +258,31 @@ var InteractView = Backbone.View.extend({
     display_info: function (info) {
         var self = this;
         var info_page = $("#click_info");
-        var info_text = "<b>Stick:</b> " + info[0] + "<br>" ;
         info_page.show();
 
         // for(var t = 0; t < 4; t++){
         //     info_text += this.info_label[t] + info[t] + "<br>" ;
         // }
-        var viewing_alter = actual_info[view_ego][info[0]]
-        for(var attr in viewing_alter){
-            info_text += '<b>' + attr + ':</b> ' + viewing_alter[attr] + "<br>" ;
+        var tree_cat = tree_type[view_ego];
+        var tree_id = info[0];
+        var info_text = "<b>Paper:</b> " + info[0] + "<br>" ;
+        if (tree_cat == "author_tree"){
+            tree_id += info[2]-1;
+            info_text = "<b>Co-author:</b> " + info[0] + "<br>" ;
         }
-        info_text += this.info_label[4];
-        for(var t = 4; t < info.length; t++){
-            info_text += "<br> &bull; " + info[t];
+        var viewing_alter = actual_info[tree_cat][tree_id];
+
+        for(var attr in viewing_alter){
+            if(attr != "Leaves")
+                info_text += '<b>' + attr + ':</b> ' + viewing_alter[attr] + "<br>" ;
+        }
+        // info_text += this.info_label[4];
+        // for(var t = 4; t < info.length; t++){
+        //     info_text += "<br> &bull; " + info[t];
+        // }
+        info_text += this.leaves_label[tree_cat];
+        for(var t = 0; t < viewing_alter['Leaves'].length; t++){
+            info_text += "<br> &bull; " + viewing_alter['Leaves'][t];
         }
         info_page.html(info_text);
     }
