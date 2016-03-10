@@ -174,6 +174,10 @@ def get_tree_structure(request):
 			p_title = y.title.string
 			p_year = y.year.string
 			# print p_title
+			if p_title == None:
+				new_title = u''.join(y.find('title').findAll(text=True)) #s.find('span').text
+				p_title = new_title
+				
 			if int(p_year) <= ey and int(p_year) >= sy:
 				unique_paper_list.append(p_title)
 			# if int(p_year) > ey or int(p_year) < sy:
@@ -581,7 +585,7 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 					cat_time = [year_gap[-1], ey+1]
 					if coauthor+str(len(year_gap)) not in tree_info["author_tree"]:
 						tree_info["author_tree"][coauthor+str(len(year_gap))] = {"Co-authored paper count": coauthors[coauthor][0], "First co-authored year": coauthors[coauthor][1], "Leaves": []}
-					tree_info["author_tree"][coauthor+str(len(year_gap))]["Leaves"].append(paper+' (' +  str(published_time) + ')')
+					tree_info["author_tree"][coauthor+str(len(year_gap))]["Leaves"].append(paper +' (' +  str(published_time) + ')')
 				else:
 					for g in range(len(year_gap)-1):
 						if year_gap[g] <= published_time < year_gap[g+1]:

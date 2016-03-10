@@ -86,6 +86,7 @@ var AnimView = Backbone.View.extend({
             self.forward = 0;
             self.current_idx -= 1;
             info_page.hide();
+            self.block.show();
             self.anim_render(view_ego, self.current_idx);
         });
 
@@ -97,6 +98,7 @@ var AnimView = Backbone.View.extend({
             self.forward = 1;
             self.backword = 0;
             info_page.hide();
+            self.block.show();
             self.anim_render(view_ego, self.current_idx);
         });
 
@@ -265,7 +267,7 @@ var AnimView = Backbone.View.extend({
                 $('#tree_pause').attr("disabled", true);
                 $(".highlight_selector").removeAttr("disabled");
 				clearInterval(mytimer.anim_timer);
-				$('#tree_forward').attr("disabled", true);
+				
 				this.current_idx = amin_frame.length;
 			}
 			// var action = frame["type"];
@@ -319,6 +321,7 @@ var AnimView = Backbone.View.extend({
 				this.current_idx = idx;
 				idx++;
 			}
+            /*
 			else{
                 self.block.hide();
                 $('#tree_forward').attr("disabled", true);
@@ -327,6 +330,7 @@ var AnimView = Backbone.View.extend({
                 $(".highlight_selector").removeAttr("disabled");
 				clearInterval(mytimer.anim_timer);
             }
+            */
 			
 			if(idx === amin_frame.length){
                 if(highlight_list["selected"] != "None" && highlight_list["on"] == 0){
