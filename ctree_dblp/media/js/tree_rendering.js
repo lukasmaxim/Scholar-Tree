@@ -78,7 +78,9 @@ var RenderingView = Backbone.View.extend({
         }
         this.sub_stick_length = 55;
         this.sub_slop = 0;
-        
+        // this.imageObj = document.getElementById("wood");
+        // this.pattern = this.context.createPattern(this.imageObj, 'repeat');
+
         var total_tree = 0;        
         for(var e in tree_egos){
         	// console.log(e);
@@ -1540,6 +1542,10 @@ var RenderingView = Backbone.View.extend({
         this.sub_slop = 0;
         var structure = self.model.get("tree_structure");
         // console.log(self.tree_size);
+
+        this.imageObj = document.getElementById("wood");
+        this.pattern = this.context.createPattern(this.imageObj, 'repeat');
+        
 
         var total_tree = 0;        
         for(var e in tree_egos){

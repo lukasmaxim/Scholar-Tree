@@ -314,7 +314,7 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 	else:
 		gap = 6
 	# print gap
-
+	
 	start =  int(career_period[0])
 	end = int(career_period[1])
 	t_gap = int(career_period[2])
