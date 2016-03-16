@@ -133,6 +133,143 @@ def search_searching(request):
 
 	return HttpResponse(return_json)
 
+def update_tree_structure(request):
+	if request.GET.get('final_setting'): 
+		final_setting = json.loads(request.GET.get('final_setting'))
+		ori_url = final_setting[0]
+		sy = final_setting[1]
+		ey = final_setting[2]
+		career_period = final_setting[3]
+		setting_gap = final_setting[4]
+		target = final_setting[5]
+		user_ip = final_setting[6].replace('.','')
+
+		print "in update tree structure"
+		print final_setting
+		print sy, ey, setting_gap, target
+
+		xml_url = ori_url.replace("/hd/", "/xx/")
+		xml_url += ".xml"
+
+		request = Request(xml_url, headers=HEADERS)
+		response = urlopen(request)
+		html = response.read()
+		html = html.decode('utf8')
+		soup = Soup(html)
+		author_name =  soup.person.findAll('author')
+		author = []
+		for n in author_name:
+			author.append(n.string)
+		display_author = soup.person.author.string
+		coauthorship = dict()
+		publication = dict()
+		coauthorship[author[0]] = [1, int(sy), int(ey), []]
+		# with open("./ctree_dblp/data/dblp_test.json", "rb") as json_file:
+		# 	retuen_structure = json.load(json_file)
+
+		print author
+		# collecting_search([author[0], str(sy)+"-"+str(ey), user_ip]) !!!
+
+		unique_author_list = []
+		unique_paper_list = []
+		for y in soup.findAll('r'):
+			co_author_list = []
+			p_title = y.title.string
+			p_year = y.year.string
+			# print p_title
+			if p_title == None:
+				new_title = u''.join(y.find('title').findAll(text=True)) #s.find('span').text
+				p_title = new_title
+				
+			if int(p_year) <= ey and int(p_year) >= sy:
+				unique_paper_list.append(p_title)
+			# if int(p_year) > ey or int(p_year) < sy:
+			# 	continue
+			paper_type = str(y.contents[0]).split('key="')[1].split("/")[0]
+			for a in y.findAll('author'):
+				co_author_list.append(a.string)
+				if len(y.findAll('author')) == 1:
+					coauthorship[author[0]][0] += 1 
+					coauthorship[author[0]][3].append(p_title)
+				if a.string not in author and a.string not in coauthorship:
+					coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
+					if int(p_year) <= ey and int(p_year) >= sy:
+						unique_author_list.append(a.string)
+				elif a.string not in author:
+					coauthorship[a.string][0] += 1
+					coauthorship[a.string][3].append(p_title)
+					if int(p_year) < coauthorship[a.string][1]:
+						coauthorship[a.string][1] = int(p_year)
+					elif int(p_year) > coauthorship[a.string][2]:
+						coauthorship[a.string][2] = int(p_year)
+
+			if len(co_author_list) == 0:
+				for a in y.findAll('editor'):
+					co_author_list.append(a.string)
+					if len(y.findAll('editor')) == 1:
+						coauthorship[author[0]][0] += 1 
+						coauthorship[author[0]][3].append(p_title)
+					if a.string not in author and a.string not in coauthorship:
+						coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
+						if int(p_year) <= ey and int(p_year) >= sy:
+							unique_author_list.append(a.string)
+					elif a.string not in author:
+						coauthorship[a.string][0] += 1
+						coauthorship[a.string][3].append(p_title)
+						if int(p_year) < coauthorship[a.string][1]:
+							coauthorship[a.string][1] = int(p_year)
+						elif int(p_year) > coauthorship[a.string][2]:
+							coauthorship[a.string][2] = int(p_year)
+			if y.pages:
+				page_info = str(y.pages.string).split("-")
+				if len(page_info) > 1:
+					try:
+						pages = int(page_info[1]) - int(page_info[0]) + 1
+					except:
+						pages = 1
+				else:
+					pages = 1
+			else:
+				pages = 1
+
+			for a in author:
+				try:
+					author_order = co_author_list.index(a) + 1
+					break
+				except ValueError:
+					continue
+
+			# author_order = co_author_list.index(author) + 1
+
+			if p_title not in publication:
+				publication[p_title] = dict()
+				publication[p_title]["coauthor"] = co_author_list
+				publication[p_title]["author_count"] = len(co_author_list)-1
+				publication[p_title]["author_order"] = int(author_order)
+				publication[p_title]["year"] = int(p_year)
+				publication[p_title]["type"] = paper_type
+				publication[p_title]["pages"] = int(pages)
+			else:
+				print "<<<", p_title
+	    # sys.exit()
+		tree_egos, branches = tree_mapping(career_period, publication, coauthorship, author, sy, ey, setting_gap)
+		
+		one_tree = tree_structure(tree_egos[target], branches)
+
+		for layer in one_tree['right']:
+			layer['level']['down'] = sorted(layer['level']['down'], key=lambda k: k['sorting'])
+			layer['level']['up'] = sorted(layer['level']['up'], key=lambda k: k['sorting'])
+		for layer in one_tree['left']:
+			layer['level']['down'] = sorted(layer['level']['down'], key=lambda k: k['sorting'])
+			layer['level']['up'] = sorted(layer['level']['up'], key=lambda k: k['sorting'])
+
+	else:
+		raise Http404
+
+	return_json = simplejson.dumps([one_tree, target], indent=4, use_decimal=True)
+
+	return HttpResponse(return_json)
+
 
 def get_tree_structure(request):
 	if request.GET.get('final_setting'): 
@@ -285,7 +422,7 @@ def get_tree_structure(request):
 	return HttpResponse(return_json)
 
 
-def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
+def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap = None):
 	tree_egos = dict()
 	tree_egos["tree1"] = []
 	tree_egos["tree2"] = []
@@ -313,8 +450,10 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 		gap = 5
 	else:
 		gap = 6
-	# print gap
-	
+
+	if setting_gap:
+		gap = int(setting_gap)
+
 	start =  int(career_period[0])
 	end = int(career_period[1])
 	t_gap = int(career_period[2])
@@ -667,7 +806,9 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey):
 			tree_egos["tree3"].append(data3)
 			# tree_egos["tree4"].append(data4)
 			
-			
+	if setting_gap:
+		return tree_egos, branch_layer
+
 	return tree_egos, branch_layer, color_gap, tree_info
 
 

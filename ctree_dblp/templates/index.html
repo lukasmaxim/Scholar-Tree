@@ -167,7 +167,9 @@
                 <!-- result -->
                 <div id="result" class="left relative" style="width:77%; height:100%; overflow:auto; min-width:900px;">
                     <img id="loading" src="media/img/loader.gif" class="relative" style="display:none; height:50px; margin-left:50%; margin-top:30px;">
-                    <div id="block_page" style="position:absolute; top:0; left:0; height:100%; width:75%; z-index:100; display:none;"></div>
+                    <div id="block_page" style="position:absolute; top:0; left:0; height:100%; width:75%; z-index:100; display:none;">
+                        <img id="updating" src="media/img/loader.gif" class="relative" style="display:none; height:50px; margin-left:57%; margin-top:150px;">
+                    </div>
                     <h1 id="no_preview" style="text-align: center; top:10%; position:relative; color:gainsboro; display:none;">
                         <b>NO PREVIEW<br>AVAILABLE</b>
                     </h1>
@@ -215,9 +217,12 @@
                                     <b>Trunk Side:</b> Conference paper (left)<br>
                                     <b>Branches:</b> Published year<br>
                                     <b>Branch Interval:</b>
-                                    <p class="b_gap">
+                                    <select id="tree1_gap_select" title="Choose different branch interval">
+                                    </select>
+                                    <p id="tree1_gap" class="b_gap">
                                         0
-                                    </p><br>
+                                    </p>
+                                    <br>
                                     <b>Branch Side:</b> First authored papers (down)<br>
                                     <b>Fruit:</b> Paper length (&gt; 4 pages)<br>
                                     <b>Leaf:</b> Co-author<br>
@@ -236,7 +241,9 @@
                                     <b>Trunk Side:</b> First authored papers (left)<br>
                                     <b>Branches:</b> Published year<br>
                                     <b>Branch Interval:</b>
-                                    <p class="b_gap">
+                                    <select id="tree2_gap_select" title="Choose different branch interval">
+                                    </select>
+                                    <p id="tree2_gap" class="b_gap">
                                         0
                                     </p><br>
                                     <b>Branch Side:</b> Conference paper (down)<br>
@@ -258,7 +265,9 @@
                                     <!-- <b>Branches:</b> First co-authored year<br> -->
                                     <b>Branches:</b> Published year<br>
                                     <b>Branch Interval:</b>
-                                    <p class="b_gap">
+                                    <select id="tree3_gap_select" title="Choose different branch interval">
+                                    </select>
+                                    <p id="tree3_gap" class="b_gap">
                                         0
                                     </p><br>
                                     <b>Branch Side:</b> One-time collaboration (down)<br>
@@ -281,7 +290,7 @@
                                     <b>Trunk Side:</b> Total co-authored papers (left: &lt; 5)<br>
                                     <b>Branches:</b> First co-authored year<br>
                                     <b>Branch Interval:</b>
-                                    <p class="b_gap">
+                                    <p id="tree4_gap" class="b_gap">
                                         0
                                     </p><br>
                                     <b>Branch Side:</b> Collaboration frequency (up: &gt; 1)<br>

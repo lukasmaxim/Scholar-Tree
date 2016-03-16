@@ -103,5 +103,22 @@ var Tree_Model = Backbone.Model.extend({
             util.set_highlight_list();
             util.set_legend(result[3]);
         });
+    },
+
+    updata_tree_structure: function(request){
+        var self = this;
+        $("#block_page").show();
+        $("#updating").show();        
+        console.log("get update request", request);
+        var request_url = "update_tree_structure/?final_setting=" + encodeURIComponent(request);
+        d3.json(request_url, function(result){
+            console.log(result);
+            tree_structure = self.get("tree_structure");
+            tree_structure['all'][result[1]] = result[0];
+            self.set({"tree_structure": tree_structure}, {silent: true});
+            self.trigger('change:tree_structure');
+            $("#block_page").hide();
+            $("#updating").hide();
+        });
     }
 });

@@ -87,6 +87,9 @@ var MyApp = function MyApp(){
     var finish = $('#draw_tree');
     var start = $('#start_btn');
     var search = $('#search_name');
+    var gap1 = $('#tree1_gap_select');
+    var gap2 = $('#tree2_gap_select');
+    var gap3 = $('#tree3_gap_select');
 
     start.click(function(){
         console.log("click start");
@@ -139,6 +142,7 @@ var MyApp = function MyApp(){
         sy = slider.result.from;
         ey = slider.result.to;
         var gap = ey - sy + 1;
+        var max_gap = Math.ceil(gap/3);
         if (gap <= 10)
             gap = 1
         else if (10 < gap && gap <= 20)
@@ -151,11 +155,8 @@ var MyApp = function MyApp(){
             gap = 5
         else
             gap = 6
-        if(gap == 1)
-            $(".b_gap").text(gap + " year");
-        else
-            $(".b_gap").text(gap + " years");
 
+        util.set_gap_list(gap, max_gap);
 
         ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
         ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
@@ -166,6 +167,36 @@ var MyApp = function MyApp(){
 
         self.model.generate_tree_structure(request);   
 
+    });
+
+    gap1.change(function(){
+        var new_gap = this.value;
+        var tree_id = this.id.split("_")[0];
+        
+        var request_array = [DBLP_url, sy, ey, timeline, new_gap, tree_id, user_ip];
+        var request = JSON.stringify(request_array);
+        // console.log(request);
+        self.model.updata_tree_structure(request);
+    });
+
+    gap2.change(function(){
+        var new_gap = this.value;
+        var tree_id = this.id.split("_")[0];
+        
+        var request_array = [DBLP_url, sy, ey, timeline, new_gap, tree_id, user_ip];
+        var request = JSON.stringify(request_array);
+        // console.log(request);
+        self.model.updata_tree_structure(request);
+    });
+
+    gap3.change(function(){
+        var new_gap = this.value;
+        var tree_id = this.id.split("_")[0];
+        
+        var request_array = [DBLP_url, sy, ey, timeline, new_gap, tree_id, user_ip];
+        var request = JSON.stringify(request_array);
+        // console.log(request);
+        self.model.updata_tree_structure(request);
     });
 
     // open the dialog
