@@ -22,7 +22,7 @@ var RenderingView = Backbone.View.extend({
 
         this.start_x = 500; //_glx
         this.start_y = 1000; //_gly
-        this.tree_tall = 2120; //ori _dist
+        this.tree_tall = 2200; //ori _dist
         this.temp_height = 0;
 
         this.x_dist = 350;
@@ -509,21 +509,21 @@ var RenderingView = Backbone.View.extend({
         var begin_index = {"up": [2, 3], "down":[0, 1]};
 
         for(var n = 0, len = stick_pos[long_stick].length; n < len; n++){
-            var nature = n*(Math.abs(d-u)/stick_scale);
+            var nature = n*10 + layer*1.5; //n*(Math.abs(d-u)/stick_scale);
             var stick_len = (this.stick_d + this.stick_variation[n%6])*len_scale;
             if(alters[long_stick][n]["leaf"].length > 10){
                 stick_len = (this.stick_d + this.stick_variation[n%2])*len_scale;
             }
             
-            if(Math.abs(d-u)<len/2){
-                nature = n*((this.sub_slop/10)+1)*2;
-            }
-            else if(len>20 && Math.abs(d-u)/stick_scale>(layer+1)*2){
-                nature = n*((this.sub_slop/10)+2)*2;
-            }
-            nature = n*10 + layer*1.5;
-            if(layer > 6 && num_alter > 50)
-                nature = n*10 + layer*1.5 + 50;
+            // if(Math.abs(d-u)<len/2){
+            //     nature = n*((this.sub_slop/10)+1)*2;
+            // }
+            // else if(len>20 && Math.abs(d-u)/stick_scale>(layer+1)*2){
+            //     nature = n*((this.sub_slop/10)+2)*2;
+            // }
+            // nature = n*10 + layer*1.5;
+            if(layer > 6 && len > 45)
+                nature = n*15 + layer*1.6 + 50;
             nature = nature*nature_scale;
 
             // using rotation matrix to find the stick vector (45 degree)
@@ -652,14 +652,18 @@ var RenderingView = Backbone.View.extend({
                 this.context.beginPath();
 
                 var ori_rstpoint = [0, 0, 0, 0];
+                var space_scale = 1;
+                if(stick_leaf >= 12)
+                    space_scale = 2;
+
                 ori_rstpoint[0] = tree_rstpoint[0];
                 ori_rstpoint[1] = tree_rstpoint[1];
                 ori_rstpoint[2] = tree_rstpoint[2];
                 ori_rstpoint[3] = tree_rstpoint[3];
-                tree_rstpoint[0] = tree_rstpoint[0]+this.sub_stick_length-nature/(len/2);
-                tree_rstpoint[1] = tree_rstpoint[1]-w/2-this.sub_slop-nature/(len/2);
-                tree_rstpoint[2] = tree_rstpoint[2]+this.sub_stick_length-nature/(len/2);
-                tree_rstpoint[3] = tree_rstpoint[3]+w/2-this.sub_slop-nature/(len/2);
+                tree_rstpoint[0] = tree_rstpoint[0]+(this.sub_stick_length-nature/(len/2))*space_scale;
+                tree_rstpoint[1] = tree_rstpoint[1]-w/2-(this.sub_slop+nature/(len/2))*space_scale;
+                tree_rstpoint[2] = tree_rstpoint[2]+(this.sub_stick_length-nature/(len/2))*space_scale;
+                tree_rstpoint[3] = tree_rstpoint[3]+w/2-(this.sub_slop+nature/(len/2))*space_scale;
 
                 this.context.moveTo(ori_rstpoint[0],ori_rstpoint[1]);
                 this.context.lineTo(tree_rstpoint[0], tree_rstpoint[1]);
@@ -947,22 +951,21 @@ var RenderingView = Backbone.View.extend({
         var begin_index = {"up": [2, 3], "down":[0, 1]};
 
         for(var n = 0, len = stick_pos[long_stick].length; n < len; n++){
-            var nature = n*(Math.abs(d-u)/stick_scale);
+            var nature = n*10 + layer*1.5; //n*(Math.abs(d-u)/stick_scale);
             var stick_len = (this.stick_d + this.stick_variation[n%6])*len_scale;
             if(alters[long_stick][n]["leaf"].length > 10){
                 stick_len = (this.stick_d + this.stick_variation[n%2])*len_scale;
             }
             
-            if(Math.abs(d-u)<len/2){
-                nature = n*((this.sub_slop/10)+1)*2;
-            }
-            else if(len>20 && Math.abs(d-u)/stick_scale>(layer+1)*2){
-                nature = n*((this.sub_slop/10)+2)*2;
-            }
-
-            nature = n*10 + layer*1.5;
-            if(layer > 6 && num_alter > 50)
-                nature = n*10 + layer*1.5 + 50;
+            // if(Math.abs(d-u)<len/2){
+            //     nature = n*((this.sub_slop/10)+1)*2;
+            // }
+            // else if(len>20 && Math.abs(d-u)/stick_scale>(layer+1)*2){
+            //     nature = n*((this.sub_slop/10)+2)*2;
+            // }
+            // nature = n*10 + layer*1.5;
+            if(layer > 6 && len > 45)
+                nature = n*15 + layer*1.6 + 50;
             nature = nature*nature_scale;
 
             // using rotation matrix to find the stick vector (45 degree)
@@ -1082,14 +1085,19 @@ var RenderingView = Backbone.View.extend({
             if(total_draw_stick > 1){
                 this.context.lineWidth = 5;
                 var ori_lstpoint = [0, 0, 0, 0];
+
+                var space_scale = 1;
+                if(stick_leaf >= 12)
+                    space_scale = 2;
+
                 ori_lstpoint[0] = tree_lstpoint[0];
                 ori_lstpoint[1] = tree_lstpoint[1];
                 ori_lstpoint[2] = tree_lstpoint[2];
                 ori_lstpoint[3] = tree_lstpoint[3];
-                tree_lstpoint[0] = tree_lstpoint[0]-this.sub_stick_length+nature/(len/2);
-                tree_lstpoint[1] = tree_lstpoint[1]-w/2-this.sub_slop-nature/(len/2);
-                tree_lstpoint[2] = tree_lstpoint[2]-this.sub_stick_length+nature/(len/2);
-                tree_lstpoint[3] = tree_lstpoint[3]+w/2-this.sub_slop-nature/(len/2);
+                tree_lstpoint[0] = tree_lstpoint[0]+(-this.sub_stick_length+nature/(len/2))*space_scale;
+                tree_lstpoint[1] = tree_lstpoint[1]-w/2-(this.sub_slop+nature/(len/2))*space_scale;
+                tree_lstpoint[2] = tree_lstpoint[2]+(-this.sub_stick_length+nature/(len/2))*space_scale;
+                tree_lstpoint[3] = tree_lstpoint[3]+w/2-(this.sub_slop+nature/(len/2))*space_scale;
 
                 this.context.lineCap = 'round';
                 this.context.fillStyle = self.pattern; //mapping_color.trunk
