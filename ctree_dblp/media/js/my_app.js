@@ -158,9 +158,9 @@ var MyApp = function MyApp(){
 
         util.set_gap_list(gap, max_gap);
 
-        ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
-        ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
-        ga('send', 'event', DBLP_researcher, "create", sy + "-" + ey);
+        // ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
+        // ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
+        ga('send', 'event', DBLP_researcher, "create", sy + "-" + ey, sy-ey+1);
 
         var request_array = [resercher, sy, ey, timeline, user_ip];
         var request = JSON.stringify(request_array);

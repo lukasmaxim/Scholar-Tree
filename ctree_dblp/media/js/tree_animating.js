@@ -50,7 +50,7 @@ var AnimView = Backbone.View.extend({
             $("#tree_forward").removeAttr("disabled");
             $("#tree_pause").removeAttr("disabled");
             $(".highlight_selector").attr("disabled", true);            
-            
+            ga('send', 'event', DBLP_researcher, "animation", sy + "-" + ey);
             // highlight_list["selected"] = "None";
             highlight_list["on"] = 0;
             self.block.show();
@@ -113,6 +113,7 @@ var AnimView = Backbone.View.extend({
                 info_page.hide();
                 if(this.value != 'None'){
                     tree_util.fadeout = 0.25;
+                    ga('send', 'event', DBLP_researcher, "highlight", this.value);
                     // self.block.show();
                 }
                 else{
