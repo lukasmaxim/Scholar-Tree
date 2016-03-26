@@ -196,7 +196,7 @@
                                         <img id="tree4" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;">
                                     </div>
                                 </div>
-                                <button id="feedback" class="btn btn-default myfont3 row" style="padding:0 10px; height:30px; margin:10px 0 5px 0;" disabled>Quick Survey</button>
+                                <button id="feedback" class="btn btn-default myfont3 row" style="padding:0 10px; height:50px; width:98%; margin:10px 0 5px 0; background:#F9D2D2; font-size:20px;" disabled>Quick Survey</button>
                             </div>
                             <div id='anim_container' class="col-md-7 relative" style="padding:0; border:1.5px solid gray; border-radius:10px; height:500px; /*border-bottom-width:10px;*/">
                                 <canvas id='anim_tree' style="position:absolute; top:0; left:0; /*background:white;*/ width:100%; height:100%;"></canvas> <span id="save_icon" title="Save this image" class="glyphicon glyphicon-save" style="position:absolute; top:5px; right:5px; font-size:large; color:#B3B3B3;"></span>
@@ -223,7 +223,7 @@
                                         0
                                     </p>
                                     <br>
-                                    <b>Branch Side:</b> First authored papers (down)<br>
+                                    <b>Branch Side:</b> First authored papers (lower side)<br>
                                     <b>Fruit:</b> Paper length (&gt; 4 pages)<br>
                                     <b>Leaf:</b> Co-author<br>
                                     <b>Leaf Color:</b> First co-authored year<br>
@@ -246,7 +246,7 @@
                                     <p id="tree2_gap" class="b_gap">
                                         0
                                     </p><br>
-                                    <b>Branch Side:</b> Conference paper (down)<br>
+                                    <b>Branch Side:</b> Conference paper (lower side)<br>
                                     <b>Leaf:</b> Co-author<br>
                                     <b>Leaf Color:</b> First co-authored year<br>
                                     <b>Leaf Size:</b> Total co-authored papers<br>
@@ -270,7 +270,7 @@
                                     <p id="tree3_gap" class="b_gap">
                                         0
                                     </p><br>
-                                    <b>Branch Side:</b> One-time collaboration (down)<br>
+                                    <b>Branch Side:</b> One-time collaboration (lower side)<br>
                                     <!-- <b>Branch Side:</b> First co-authored year (down: earlier)<br> -->
                                     <!-- <b>Fruit:</b> First-authored count<br> -->
                                     <b>Leaf:</b> Paper<br>
@@ -278,7 +278,7 @@
                                     <!-- <b>Leaf Size:</b> Paper length<br> -->
                                     <b>Leaf Size:</b> Paper co-author count<br>
                                     <!-- <b>Highlight Selection:</b><br> -->
-                                   <!--  <select id="tree3_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
+                                    <!--  <select id="tree3_select" title="Choose a publication to highlight all the correlations" class="highlight_selector">
                                         <option value="None">
                                             None
                                         </option>
@@ -345,7 +345,22 @@
             <canvas id='save_tree' style="background:white;"></canvas> <!-- <a id="custom_download_link" download="mytree.png" href=""></a> -->
         </div>
         
-        <div id="survey_dialog" title="Survey for Academic Tree" class="popup_window_title">
+        <div id="survey_dialog" title="Survey for Scholar Tree" class="popup_window_title">
+            <span class="relative myfont3 row">
+                This survey is about evaluating this visualization and will only take about 5 minutes. <br>
+                We would love to hear the feedback from you. <br>
+                If you are willing to help us to do the survey, please click the button below.
+                <!-- Are you willing to do a short survey for us about this visualization? -->
+            </span>
+            <!-- <form id="agreement">
+                <input type="radio" name="agreement" value="y">Yes</input>
+                <input type="radio" name="agreement" value="n">No</input><br>
+            </form> -->
+            <br>
+            <a href="https://docs.google.com/forms/d/1djQdhMYO8FNAN3y8fsaRtE9v7xKG1IgF5vy9oo3no64/viewform" target="_blank">
+                <button id="survey" class="btn btn-default myfont3 row" style="padding:0 10px; height:30px; margin:10px 0 5px 0;">Go to the Survey</button>
+            </a>
+            
         </div>
         <script type="text/javascript" src="media/js/settings.js">
         </script><script type="text/javascript" src="media/js/labels.js">

@@ -5,6 +5,7 @@ var drawing_canvas = {
 };
 
 var user_ip = "";
+var unique_search = "";
 
 var mapping_color = {
     // leaf_color: ["#927007", "#CF9D00", "#C2B208", "#699B1A", "#2E7523", "#214E33", "#1F4230", "#184E35", "#19432F"],

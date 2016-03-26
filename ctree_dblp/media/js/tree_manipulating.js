@@ -30,7 +30,8 @@ var InteractView = Backbone.View.extend({
         self.myCanvas.addEventListener('mousewheel', function(evt) {
             self.translate = self.model.get("canvas_translate");
             self.scale = self.model.get("canvas_scale");
-           
+            ga('send', 'event', unique_search, "detail", "zoom");
+
             var scaleFactor = 1.1;
             // get mouse position
             var mousePos = self.getMousePos(self.myCanvas, evt);//mousePos.x,mousePos.y
@@ -68,7 +69,8 @@ var InteractView = Backbone.View.extend({
         self.myCanvas.addEventListener('DOMMouseScroll', function(evt) {
             self.translate = self.model.get("canvas_translate");
             self.scale = self.model.get("canvas_scale");
-           
+            ga('send', 'event', unique_search, "detail", "zoom");
+
             var scaleFactor = 1.1;
             var mousePos = self.getMousePos(self.myCanvas, evt);//mousePos.x,mousePos.y
             var tx = (mousePos.x - self.translate[0]) / self.scale;
@@ -198,7 +200,9 @@ var InteractView = Backbone.View.extend({
                     }
                 }
             }
-            
+            else if(self.dragged){
+                ga('send', 'event', unique_search, "detail", "drag");
+            }
             self.dragStart = null;
         }, true);
         
@@ -206,7 +210,7 @@ var InteractView = Backbone.View.extend({
         self.myCanvas.addEventListener('mousedown', function(evt) {
             // self.grid = self.model.get("canvas_grid");
             // self.model.set({"moving": 0});
-        
+            
             self.dragStart = self.getMousePos(self.myCanvas, evt);//mousePos.x,mousePos.y
             self.dragged = false;
             // if(self.dragged){
@@ -259,6 +263,7 @@ var InteractView = Backbone.View.extend({
         var self = this;
         var info_page = $("#click_info");
         info_page.show();
+        ga('send', 'event', unique_search, "detail", "click");
 
         // for(var t = 0; t < 4; t++){
         //     info_text += this.info_label[t] + info[t] + "<br>" ;

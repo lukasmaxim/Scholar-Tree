@@ -160,7 +160,7 @@ var MyApp = function MyApp(){
 
         // ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
         // ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
-        ga('send', 'event', DBLP_researcher, "create", sy + "-" + ey, sy-ey+1);
+        ga('send', 'event', unique_search, "create", sy + "-" + ey, sy-ey+1);
 
         var request_array = [resercher, sy, ey, timeline, user_ip];
         var request = JSON.stringify(request_array);
@@ -202,7 +202,7 @@ var MyApp = function MyApp(){
     // open the dialog
     $( "#survey_dialog" ).dialog({
         autoOpen: false,
-        height: $(window).height()*0.5,
+        height: $(window).height()*0.25,
         width: $(window).width()*0.5,
         modal: true,
         resizable: false
@@ -212,6 +212,9 @@ var MyApp = function MyApp(){
         $("#survey_dialog").dialog( "open" );
     });
 
+    $( "#survey" ).click(function() {
+        ga('send', 'event', user_ip, "survey");
+    });
 
     // util.set_events();
 

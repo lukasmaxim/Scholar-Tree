@@ -20,6 +20,7 @@ var util = {
     set_slider: function(researcher_period){
         $("#researcher_name").html(researcher_period[2]);
         DBLP_researcher = researcher_period[2];
+        unique_search = user_ip + "_" + DBLP_researcher;
         // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue], [fieldsObject]);
         ga('send', 'event', "researcher", "search", DBLP_researcher);
         
