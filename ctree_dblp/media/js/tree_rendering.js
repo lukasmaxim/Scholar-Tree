@@ -22,7 +22,8 @@ var RenderingView = Backbone.View.extend({
 
         this.start_x = 500; //_glx
         this.start_y = 1000; //_gly
-        this.tree_tall = 2200; //ori _dist
+        // this.tree_tall = 2200; //ori _dist
+        this.tree_tall = 3000; //ori _dist
         this.temp_height = 0;
 
         this.x_dist = 350;
@@ -522,7 +523,7 @@ var RenderingView = Backbone.View.extend({
             //     nature = n*((this.sub_slop/10)+2)*2;
             // }
             // nature = n*10 + layer*1.5;
-            if(layer > 6 && len > 45)
+            if(layer > 6 && len > 40)
                 nature = n*15 + layer*1.6 + 50;
             nature = nature*nature_scale;
 
@@ -964,7 +965,7 @@ var RenderingView = Backbone.View.extend({
             //     nature = n*((this.sub_slop/10)+2)*2;
             // }
             // nature = n*10 + layer*1.5;
-            if(layer > 6 && len > 45)
+            if(layer > 6 && len > 40)
                 nature = n*15 + layer*1.6 + 50;
             nature = nature*nature_scale;
 
