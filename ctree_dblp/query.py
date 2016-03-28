@@ -163,7 +163,7 @@ def update_tree_structure(request):
 		display_author = soup.person.author.string
 		coauthorship = dict()
 		publication = dict()
-		coauthorship[author[0]] = [1, int(sy), int(ey), []]
+		coauthorship[author[0]] = [1, int(sy), int(ey), [], 0]
 		# with open("./ctree_dblp/data/dblp_test.json", "rb") as json_file:
 		# 	retuen_structure = json.load(json_file)
 
@@ -191,10 +191,14 @@ def update_tree_structure(request):
 				if len(y.findAll('author')) == 1:
 					coauthorship[author[0]][0] += 1 
 					coauthorship[author[0]][3].append(p_title)
+					if paper_type == "journals":
+						coauthorship[author[0]][4] += 1
 				if a.string not in author and a.string not in coauthorship:
-					coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
+					coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title], 0]
 					if int(p_year) <= ey and int(p_year) >= sy:
 						unique_author_list.append(a.string)
+					if paper_type == "journals":
+						coauthorship[a.string][4] += 1
 				elif a.string not in author:
 					coauthorship[a.string][0] += 1
 					coauthorship[a.string][3].append(p_title)
@@ -202,6 +206,8 @@ def update_tree_structure(request):
 						coauthorship[a.string][1] = int(p_year)
 					elif int(p_year) > coauthorship[a.string][2]:
 						coauthorship[a.string][2] = int(p_year)
+					if paper_type == "journals":
+						coauthorship[a.string][4] += 1
 
 			if len(co_author_list) == 0:
 				for a in y.findAll('editor'):
@@ -209,10 +215,14 @@ def update_tree_structure(request):
 					if len(y.findAll('editor')) == 1:
 						coauthorship[author[0]][0] += 1 
 						coauthorship[author[0]][3].append(p_title)
+						if paper_type == "journals":
+							coauthorship[author[0]][4] += 1
 					if a.string not in author and a.string not in coauthorship:
-						coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
+						coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title], 0]
 						if int(p_year) <= ey and int(p_year) >= sy:
 							unique_author_list.append(a.string)
+							if paper_type == "journals":
+								coauthorship[a.string][4] += 1
 					elif a.string not in author:
 						coauthorship[a.string][0] += 1
 						coauthorship[a.string][3].append(p_title)
@@ -220,6 +230,8 @@ def update_tree_structure(request):
 							coauthorship[a.string][1] = int(p_year)
 						elif int(p_year) > coauthorship[a.string][2]:
 							coauthorship[a.string][2] = int(p_year)
+						if paper_type == "journals":
+							coauthorship[a.string][4] += 1
 			if y.pages:
 				page_info = str(y.pages.string).split("-")
 				if len(page_info) > 1:
@@ -297,7 +309,7 @@ def get_tree_structure(request):
 		display_author = soup.person.author.string
 		coauthorship = dict()
 		publication = dict()
-		coauthorship[author[0]] = [1, int(sy), int(ey), []]
+		coauthorship[author[0]] = [1, int(sy), int(ey), [], 0]
 		# with open("./ctree_dblp/data/dblp_test.json", "rb") as json_file:
 		# 	retuen_structure = json.load(json_file)
 
@@ -325,10 +337,14 @@ def get_tree_structure(request):
 				if len(y.findAll('author')) == 1:
 					coauthorship[author[0]][0] += 1 
 					coauthorship[author[0]][3].append(p_title)
+					if paper_type == "journals":
+						coauthorship[author[0]][4] += 1
 				if a.string not in author and a.string not in coauthorship:
-					coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
+					coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title], 0]
 					if int(p_year) <= ey and int(p_year) >= sy:
 						unique_author_list.append(a.string)
+					if paper_type == "journals":
+						coauthorship[a.string][4] += 1
 				elif a.string not in author:
 					coauthorship[a.string][0] += 1
 					coauthorship[a.string][3].append(p_title)
@@ -336,6 +352,8 @@ def get_tree_structure(request):
 						coauthorship[a.string][1] = int(p_year)
 					elif int(p_year) > coauthorship[a.string][2]:
 						coauthorship[a.string][2] = int(p_year)
+					if paper_type == "journals":
+						coauthorship[a.string][4] += 1
 
 			if len(co_author_list) == 0:
 				for a in y.findAll('editor'):
@@ -343,10 +361,14 @@ def get_tree_structure(request):
 					if len(y.findAll('editor')) == 1:
 						coauthorship[author[0]][0] += 1 
 						coauthorship[author[0]][3].append(p_title)
+						if paper_type == "journals":
+							coauthorship[author[0]][4] += 1
 					if a.string not in author and a.string not in coauthorship:
-						coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title]]
+						coauthorship[a.string] = [1, int(p_year), int(p_year), [p_title], 0]
 						if int(p_year) <= ey and int(p_year) >= sy:
 							unique_author_list.append(a.string)
+							if paper_type == "journals":
+								coauthorship[a.string][4] += 1
 					elif a.string not in author:
 						coauthorship[a.string][0] += 1
 						coauthorship[a.string][3].append(p_title)
@@ -354,6 +376,8 @@ def get_tree_structure(request):
 							coauthorship[a.string][1] = int(p_year)
 						elif int(p_year) > coauthorship[a.string][2]:
 							coauthorship[a.string][2] = int(p_year)
+						if paper_type == "journals":
+							coauthorship[a.string][4] += 1
 			if y.pages:
 				page_info = str(y.pages.string).split("-")
 				if len(page_info) > 1:
@@ -387,7 +411,7 @@ def get_tree_structure(request):
 				print "<<<", p_title
 	    # sys.exit()
 		tree_egos, branches, legends, final_info_table = tree_mapping(career_period, publication, coauthorship, author, sy, ey)
-		graph_mapping(career_period, publication, coauthorship, author, sy, ey, user_ip)
+		# graph_mapping(career_period, publication, coauthorship, author, sy, ey, user_ip)
 		final_structure = dict()
 		final_structure["all"] = dict()
 		
@@ -432,6 +456,7 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap
 	tree_info = dict()
 	tree_info["paper_tree"] = {}
 	tree_info["author_tree"] = {}
+	tree_info["unique_author_tree"] = {}
 
 	period = ey - sy + 1
 	# gap = 1
@@ -598,6 +623,7 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap
 
 			total_collaborate_paper = coauthors[author][0]
 			first_collaborated = coauthors[author][1]
+			co_period = coauthors[author][2] - coauthors[author][1] + 1
 			
 			if len(color_gap) > 1:
 				if first_collaborated < color_gap[0]:
@@ -621,22 +647,21 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap
 			
 			if total_collaborate_paper == 1:
 				data1[6] = 1 # leaf size
-				data2[6] = 1
 			elif 1 < total_collaborate_paper <= 3:
 				data1[6] = 2 # leaf size
-				data2[6] = 2
 			elif 3 < total_collaborate_paper <= 5:
 				data1[6] = 3 # leaf size
-				data2[6] = 3
 			elif 5 < total_collaborate_paper <= 10:
 				data1[6] = 4 # leaf size
-				data2[6] = 4
 			elif 10 < total_collaborate_paper <= 20:
 				data1[6] = 5 # leaf size
-				data2[6] = 5
 			elif 20 < total_collaborate_paper:
 				data1[6] = 6 # leaf size
+
+			data2[6] = co_period/t_gap + 1 # leaf size
+			if data2[6] > 6:
 				data2[6] = 6
+
 
 			p_length = int(publication[paper]["pages"])
 			
@@ -664,147 +689,142 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap
 		fruit_val = 0
 		if coauthor in ego:
 			print "***********", coauthor
-			# fruit_val = 3
+
 		# data3 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
 		# data4 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
 		data3_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
 		data4_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]
 
-		# tree_info["paper_tree"][coauthor] = {"Total collaboration": coauthors[coauthor][0], "First collaboration": coauthors[coauthor][1], "Leaves": []}
+		tree_info["unique_author_tree"][coauthor] = {"Total collaboration": coauthors[coauthor][0], "First collaboration": coauthors[coauthor][1], "Leaves": []}
 		
-		# trunk: first co-authored year
-		if coauthors[coauthor][1] >= year_gap[len(year_gap)/2-1]:
-			data3_stick[2] = 1
+		# trunk: one-time co-authorship
+		if coauthors[coauthor][0] == 1:
 			data4_stick[2] = 1
+			data3_stick[4] = 0
+			data4_stick[4] = random.randint(0, 1)
 		else:
-			data3_stick[2] = 0
 			data4_stick[2] = 0
+			data3_stick[4] = 1
+			if coauthors[coauthor][0] > 3:
+				data4_stick[4] = 1
+			else:
+				data4_stick[4] = 0
 
-        # branch as year
-		# if coauthors[coauthor][1] < year_gap[0]:
-		# 	data3_stick[3] = 0
-		# 	data4_stick[3] = 0
-		# elif coauthors[coauthor][1] >= year_gap[-1]:
-		# 	data3_stick[3] = len(year_gap)
-		# 	data4_stick[3] = len(year_gap)
-		# else:
-		# 	for g in range(len(year_gap)-1):
-		# 		if year_gap[g] <= coauthors[coauthor][1] < year_gap[g+1]:
-		# 			data3_stick[3] = g+1
-		# 			data4_stick[3] = g+1
+
+        # branch as first time coauthored
+		if coauthors[coauthor][1] < year_gap[0]:
+			data3_stick[3] = 0
+			data4_stick[3] = 0
+		elif coauthors[coauthor][1] >= year_gap[-1]:
+			data3_stick[3] = len(year_gap)
+			data4_stick[3] = len(year_gap)
+		else:
+			for g in range(len(year_gap)-1):
+				if year_gap[g] <= coauthors[coauthor][1] < year_gap[g+1]:
+					data3_stick[3] = g+1
+					data4_stick[3] = g+1
 
 		co_period = coauthors[coauthor][2] - coauthors[coauthor][1] + 1
-		# co_frequency = float(coauthors[coauthor][0]) / float(co_period)
-		# print co_frequency
-		if coauthors[coauthor][0] > 1:
-			data3_stick[4] = 1
-			data4_stick[4] = 1
-		else:
-			data3_stick[4] = 0
-			data4_stick[4] = 0
-			
+		jour_cnt = coauthors[coauthor][4]
 
-		first_real_year = int(coauthors[coauthor][1]) - sy
+		if co_period > t_gap:
+			data3_stick[2] = 1
+		else:
+			data3_stick[2] = 0
+
+		if co_period > 6:
+			co_period = 6 # fruit
+		if jour_cnt > 6:
+			jour_cnt = 6 # fruit
+		# co_frequency = float(coauthors[coauthor][0]) / float(co_period)
+		# fruit_val = co_period # fruit
+
+		# first_real_year = int(coauthors[coauthor][1]) - sy
 		for paper in coauthors[coauthor][3]:
 			if publication[paper]["year"] > ey or publication[paper]["year"] < sy:
 				continue
 			
 			published_time = publication[paper]["year"]
-			if len(year_gap) > 1:
-				if published_time < year_gap[0]:
-					data3_stick[3] = 0
-					data4_stick[3] = 0
-					cat_time = [sy, year_gap[0]]
-					if coauthor+"0" not in tree_info["author_tree"]:
-						tree_info["author_tree"][coauthor+"0"] = {"Co-authored paper count": coauthors[coauthor][0], "First co-authored year": coauthors[coauthor][1], "Leaves": []}
-					tree_info["author_tree"][coauthor+"0"]["Leaves"].append(paper+' (' +  str(published_time) + ')')
-				elif published_time >= year_gap[-1]:
-					data3_stick[3] = len(year_gap)
-					data4_stick[3] = len(year_gap)
-					cat_time = [year_gap[-1], ey+1]
-					if coauthor+str(len(year_gap)) not in tree_info["author_tree"]:
-						tree_info["author_tree"][coauthor+str(len(year_gap))] = {"Co-authored paper count": coauthors[coauthor][0], "First co-authored year": coauthors[coauthor][1], "Leaves": []}
-					tree_info["author_tree"][coauthor+str(len(year_gap))]["Leaves"].append(paper +' (' +  str(published_time) + ')')
-				else:
-					for g in range(len(year_gap)-1):
-						if year_gap[g] <= published_time < year_gap[g+1]:
-							data3_stick[3] = g+1
-							data4_stick[3] = g+1
-							cat_time = [year_gap[g], year_gap[g+1]]
-							if coauthor+str(g+1) not in tree_info["author_tree"]:
-								tree_info["author_tree"][coauthor+str(g+1)] = {"Co-authored paper count": coauthors[coauthor][0], "First co-authored year": coauthors[coauthor][1], "Leaves": []}
-							tree_info["author_tree"][coauthor+str(g+1)]["Leaves"].append(paper+' (' + str(published_time) + ')')
-							break
+			# if len(year_gap) > 1:
+			# 	if published_time < year_gap[0]:
+			# 		data3_stick[3] = 0
+			# 		cat_time = [sy, year_gap[0]]
+			# 		if coauthor+"0" not in tree_info["author_tree"]:
+			# 			tree_info["author_tree"][coauthor+"0"] = {"Co-authored paper count": coauthors[coauthor][0], "First co-authored year": coauthors[coauthor][1], "Leaves": []}
+			# 		tree_info["author_tree"][coauthor+"0"]["Leaves"].append(paper+' (' +  str(published_time) + ')')
+			# 	elif published_time >= year_gap[-1]:
+			# 		data3_stick[3] = len(year_gap)
+			# 		cat_time = [year_gap[-1], ey+1]
+			# 		if coauthor+str(len(year_gap)) not in tree_info["author_tree"]:
+			# 			tree_info["author_tree"][coauthor+str(len(year_gap))] = {"Co-authored paper count": coauthors[coauthor][0], "First co-authored year": coauthors[coauthor][1], "Leaves": []}
+			# 		tree_info["author_tree"][coauthor+str(len(year_gap))]["Leaves"].append(paper +' (' +  str(published_time) + ')')
+			# 	else:
+			# 		for g in range(len(year_gap)-1):
+			# 			if year_gap[g] <= published_time < year_gap[g+1]:
+			# 				data3_stick[3] = g+1
+			# 				cat_time = [year_gap[g], year_gap[g+1]]
+			# 				if coauthor+str(g+1) not in tree_info["author_tree"]:
+			# 					tree_info["author_tree"][coauthor+str(g+1)] = {"Co-authored paper count": coauthors[coauthor][0], "First co-authored year": coauthors[coauthor][1], "Leaves": []}
+			# 				tree_info["author_tree"][coauthor+str(g+1)]["Leaves"].append(paper+' (' + str(published_time) + ')')
+			# 				break
 
-				if cat_time[0] <= coauthors[coauthor][1] < cat_time[1]:
-					data3_stick[2] = 0
-				else:
-					data3_stick[2] = 1
-			else:
-				data3_stick[3] = 0
-				data3_stick[2] = 0
-			# paper_real_year = int(publication[paper]["year"]) - sy
-			data3 = data3_stick + ["leaf_color", "leaf_size"] + [fruit_val, paper, paper_real_year, first_real_year]
-			data4 = data4_stick + ["leaf_color", "leaf_size", 0, paper, paper_real_year, first_real_year]
+			# 	if cat_time[0] <= coauthors[coauthor][1] < cat_time[1]:
+			# 		data3_stick[2] = 0
+			# 	else:
+			# 		data3_stick[2] = 1
+			# else:
+			# 	data3_stick[3] = 0
+			# 	data3_stick[2] = 0
+			tree_info["unique_author_tree"][coauthor]["Leaves"].append(paper+' (' +  str(published_time) + ')')
 
-			if publication[paper]["type"] == "journals":# "conf":
-				data3[5] = 4
-				# data4[4] = 0
+			data3 = data3_stick + ["leaf_color", "leaf_size"] + [jour_cnt, paper, paper_real_year, first_real_year]
+			data4 = data4_stick + ["leaf_color", "leaf_size", co_period, paper, paper_real_year, first_real_year]
+
+			# leaf color
+			if publication[paper]["type"] == "journals": # "conf":
+				data4[5] = 4
 			elif publication[paper]["type"] == "conf":
-				data3[5] = 6
-				# data4[4] = 1
+				data4[5] = 6
 			else:
-				# print "*", publication[paper]["type"]
-				data3[5] = 0
+				data4[5] = 0
 
 			# co-author order
-			# leaf size
-			# order = publication[paper]["author_order"]
-			# # order = publication[paper]["coauthor"].index(coauthor)
-			# if order >= 4:
-			# 	data3[6] = 1
-			# elif order <= 1:
-			# 	data3[6] = 5
-			# elif order == 2:
-			# 	data3[6] = 3
-			# elif order == 3:
-			# 	data3[6] = 2
+			# order = publication[paper]["author_order"]			
 
 			total_author = len(publication[paper]["coauthor"])
 			if total_author > 5:
 				data3[6] = 5
+				# data4[6] = 5
 			else:
 				data3[6] = total_author
+				# data4[6] = total_author			
+			
+			p_length = int(publication[paper]["pages"])
+			if p_length < 5:
+				data4[6] = 1
+			if 5 <= p_length < 8:
+				data4[6] = 2
+			else:
+				data4[6] = 3
 			
 			
-			# p_length = int(publication[paper]["pages"])
-			
-			# leaf size
-			# if p_length == 1:
-			# 	data3[6] = 1
-			# elif 1 < p_length <= 4:
-			# 	data3[6] = 2
-			# elif 4 < p_length <= 8:
-			# 	data3[6] = 3
-			# elif 8 < p_length <= 12:
-			# 	data3[6] = 4
-			# elif 12 < p_length:
-			# 	data3[6] = 5
-
 			# leaf color
-			# if publication[paper]["year"] < color_gap[0]:
-			# 	data4[5] = 0
-			# elif publication[paper]["year"] >= color_gap[-1]:
-			# 	data4[5] = len(color_gap) 
-			# else:
-			# 	for g in range(len(color_gap)-1):
-			# 		if color_gap[g] <= publication[paper]["year"] < color_gap[g+1]:
-			# 			data4[5] = g+1
-			# if len(color_gap) <= 6:
-			# 	data4[5] += 2
+			if publication[paper]["year"] < color_gap[0]:
+				data3[5] = 0
+				# data4[6] = len(color_gap)
+			elif publication[paper]["year"] >= color_gap[-1]:
+				data3[5] = len(color_gap) 
+				# data4[6] = 0
+			else:
+				for g in range(len(color_gap)-1):
+					if color_gap[g] <= publication[paper]["year"] < color_gap[g+1]:
+						data3[5] = g+1
+						# data4[6] = len(color_gap)-g-1
+			if len(color_gap) <= 6:
+				data3[5] += 2
 			
 			tree_egos["tree3"].append(data3)
-			# tree_egos["tree4"].append(data4)
+			tree_egos["tree4"].append(data4)
 			
 	if setting_gap:
 		return tree_egos, branch_layer

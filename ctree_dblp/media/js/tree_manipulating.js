@@ -12,7 +12,7 @@ var InteractView = Backbone.View.extend({
         this.dragStart = null;
         this.dragged = false;
         this.info_label = ["<b>Stick: </b>", "<b>Trunk side: </b>", "<b>Branch layer: </b>", "<b>Branch side: </b>", "<b>Leaves: </b>"];
-        this.leaves_label = {"paper_tree": "<b>Authors: </b>", "author_tree": "<b>Papers: </b>"};
+        this.leaves_label = {"paper_tree": "<b>Authors: </b>", "unique_author_tree": "<b>Papers: </b>"};
 
         this.myCanvas = drawing_canvas.anim_canvas;
         this.translate = [];
@@ -271,8 +271,11 @@ var InteractView = Backbone.View.extend({
         var tree_cat = tree_type[view_ego];
         var tree_id = info[0];
         var info_text = "<b>Paper:</b> " + info[0] + "<br>" ;
-        if (tree_cat == "author_tree"){
-            tree_id += info[2]-1;
+        // if (tree_cat == "author_tree"){
+        //     tree_id += info[2]-1;
+        //     info_text = "<b>Co-author:</b> " + info[0] + "<br>" ;
+        // }
+        if (tree_cat != "paper_tree"){
             info_text = "<b>Co-author:</b> " + info[0] + "<br>" ;
         }
         var viewing_alter = actual_info[tree_cat][tree_id];

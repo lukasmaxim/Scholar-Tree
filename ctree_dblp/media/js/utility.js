@@ -50,6 +50,13 @@ var util = {
             // step: 1,
             // min_interval: 3
         });
+
+        if(timeline_gap == 1)
+            $(".t_gap").text(timeline_gap + " year");
+        else
+            $(".t_gap").text(timeline_gap + " years");
+        
+
         $("#detail").show();
         $("#progress").hide();
         // $("#no_preview").show();
@@ -61,25 +68,30 @@ var util = {
         var cnt1 = $('#tree1_gap_select');
         var cnt2 = $('#tree2_gap_select');
         var cnt3 = $('#tree3_gap_select');
+        var cnt4 = $('#tree4_gap_select');
         cnt1.empty();
         cnt2.empty();
         cnt3.empty();
+        cnt4.empty();
         for (var i=1; i<max_gap; i++){
             var opt1, opt2, opt3;
             if (i == gap){
                 opt1 = util.create_option(i, i, 'row', true);
                 opt2 = util.create_option(i, i, 'row', true);
                 opt3 = util.create_option(i, i, 'row', true);
+                opt4 = util.create_option(i, i, 'row', true);
             }
             else{
                 opt1 = util.create_option(i, i, 'row', false);
                 opt2 = util.create_option(i, i, 'row', false);
                 opt3 = util.create_option(i, i, 'row', false);
+                opt4 = util.create_option(i, i, 'row', false);
             }
                 
             cnt1.append(opt1);
             cnt2.append(opt2);
             cnt3.append(opt3);
+            cnt4.append(opt4);
         }
 
         if(gap == 1)
@@ -182,7 +194,7 @@ var util = {
         }
         for(var e in legend_list){
             legend_list[e].show();
-            if( e == "tree3"){
+            if( e == "tree4"){
                 for (var i = 0; i < 3; i++){
                     var cnt = $('<div style="display:table-row; height:30px;"></div>');
                     var box = $('<div class="legend_box"></div>');

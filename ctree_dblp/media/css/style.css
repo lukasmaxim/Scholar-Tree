@@ -63,6 +63,10 @@ table, th, td {
     display:inline;
 }
 
+.t_gap{
+    display:inline;
+}
+
 img.mfp-img{
   background: whitesmoke;
   background-clip: content-box;
