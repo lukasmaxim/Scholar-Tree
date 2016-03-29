@@ -115,7 +115,7 @@ img.mfp-img{
 
 .display_legend{
   /*position: relative;*/
-  margin:0 15px; 
+  /*margin:0 15px; */
   width:100%;
   display:none;
 }
@@ -130,4 +130,14 @@ img.mfp-img{
 
 .legend_label{
   margin: 10px;
+}
+
+.title{
+  font-size:16px;
+}
+
+.parameter{
+  font-size:16px;
+  float: left;
+  margin-top: 10px;
 }

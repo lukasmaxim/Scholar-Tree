@@ -22,6 +22,51 @@ var InteractView = Backbone.View.extend({
         this.stay = 0;
 
         this.set_mouse_event();
+        this.slider_event();
+
+    },
+
+    slider_event: function(){
+        // var slider = $("#l_scale").data("ionRangeSlider");
+        $("#l_scale").ionRangeSlider({
+            min: 0.5, 
+            max: 3,
+            from: 1, 
+            // to: 2015,
+            type: 'single',
+            step: 0.1,
+            onFinish: function(obj) {
+                console.log(obj.from);
+                // $("#no_preview").show();
+                // $("#tree_result").hide();
+            }
+        });
+        $("#f_scale").ionRangeSlider({
+            min: 0.5, 
+            max: 3,
+            from: 1, 
+            // to: 2015,
+            type: 'single',
+            step: 0.1,
+            onFinish: function(obj) {
+                console.log(obj.from);
+                // $("#no_preview").show();
+                // $("#tree_result").hide();
+            }
+        });
+        $("#s_scale").ionRangeSlider({
+            min: 0.5, 
+            max: 3,
+            from: 1, 
+            // to: 2015,
+            type: 'single',
+            step: 0.1,
+            onFinish: function(obj) {
+                console.log(obj.from);
+                // $("#no_preview").show();
+                // $("#tree_result").hide();
+            }
+        });
     },
 
     set_mouse_event: function(){

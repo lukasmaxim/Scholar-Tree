@@ -90,6 +90,7 @@ var MyApp = function MyApp(){
     var gap1 = $('#tree1_gap_select');
     var gap2 = $('#tree2_gap_select');
     var gap3 = $('#tree3_gap_select');
+    var gap4 = $('#tree4_gap_select');
 
     start.click(function(){
         console.log("click start");
@@ -190,6 +191,16 @@ var MyApp = function MyApp(){
     });
 
     gap3.change(function(){
+        var new_gap = this.value;
+        var tree_id = this.id.split("_")[0];
+        
+        var request_array = [DBLP_url, sy, ey, timeline, new_gap, tree_id, user_ip];
+        var request = JSON.stringify(request_array);
+        // console.log(request);
+        self.model.updata_tree_structure(request);
+    });
+
+    gap4.change(function(){
         var new_gap = this.value;
         var tree_id = this.id.split("_")[0];
         

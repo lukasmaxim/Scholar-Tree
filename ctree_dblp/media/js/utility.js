@@ -73,6 +73,7 @@ var util = {
         cnt2.empty();
         cnt3.empty();
         cnt4.empty();
+        if(max_gap == 1) max_gap += 1
         for (var i=1; i<max_gap; i++){
             var opt1, opt2, opt3;
             if (i == gap){

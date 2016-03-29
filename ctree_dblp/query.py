@@ -724,10 +724,10 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap
 					data3_stick[3] = g+1
 					data4_stick[3] = g+1
 
-		co_period = coauthors[coauthor][2] - coauthors[coauthor][1] + 1
+		co_period = coauthors[coauthor][2] - coauthors[coauthor][1]
 		jour_cnt = coauthors[coauthor][4]
 
-		if co_period > t_gap:
+		if co_period+1 > t_gap:
 			data3_stick[2] = 1
 		else:
 			data3_stick[2] = 0

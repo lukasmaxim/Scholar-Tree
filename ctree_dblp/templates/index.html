@@ -210,7 +210,7 @@
                                     <button type="button" title="Stop and set to default" id="tree_pic" value="1" class="btn btn-default"><span class="glyphicon glyphicon-stop"></span></button>
                                     <button type="button" title="Go to next step" id="tree_forward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
                                 </div><br> -->
-                                <b style="font-size:16px;">Tree Feature Mappings:</b><br>
+                                <b class="title">Tree Feature Mappings:</b><br>
                                 <div id="tree1_text">
                                     <a id="tree1_save" href="#" name="1" style="display:none;">Save</a> 
                                     <b>Stick:</b> Paper<br>
@@ -310,31 +310,41 @@
                                         </option>
                                     </select> -->
                                 </div>
-                                <!-- <div>
-                                    <div id="highlight_info">
-                                        leaf size: 3 out of 6<br>
-                                        leaf count: 30
+                                
+                                <!-- legend -->
+                                <div id="legend_cnt" style='margin-top:10px; display:table;'> 
+                                    <b class="title">Leaf Color Legend:</b><br>
+                                    <div id="tree1_legend" class="display_legend">
+                                        Legend here
                                     </div>
-                                    <div id="click_info" style="display:none;">
-                                        Trunk side: Up<br>
+                                    <div id="tree2_legend" class="display_legend">
+                                        Legend here
                                     </div>
-                                </div> -->
+                                    <div id="tree3_legend" class="display_legend">
+                                        Legend here
+                                    </div>
+                                    <div id="tree4_legend" class="display_legend">
+                                        Legend here
+                                    </div>
+                                </div>
+                                <!-- parameters panel-->
+                                <div title="Change leave scale" style="margin-top:10px;">
+                                    <!-- <span class="glyphicon glyphicon-leaf left" style="font-size:large; width:20px; margin-top:10px;"></span> -->
+                                    <b class="parameter">Leaf</b>
+                                    <div style="margin-left:45px;"><input type="text" id="l_scale"></div>
+                                </div>
+                                <div title="Change fruit scale" style="margin-top:5px;">
+                                    <!-- <span class="glyphicon glyphicon-leaf left" style="font-size:large; width:20px; margin-top:10px;"></span> -->
+                                    <b class="parameter">Fruit</b>
+                                    <div style="margin-left:45px;"><input type="text" id="f_scale"></div>
+                                </div>
+                                <div title="Change stick length" style="margin-top:5px;">
+                                    <!-- <span class="glyphicon glyphicon-leaf left" style="font-size:large; width:20px; margin-top:10px;"></span> -->
+                                    <b class="parameter">Stick</b>
+                                    <div style="margin-left:45px;"><input type="text" id="s_scale"></div>
+                                </div>
                             </div>
-                            <div id="legend_cnt" style='margin-left:10px; display:table;'> 
-                                <b style="font-size:16px; margin-left:15px;">Leaf Color Legend:</b><br>
-                                <div id="tree1_legend" class="display_legend">
-                                    Legend here
-                                </div>
-                                <div id="tree2_legend" class="display_legend">
-                                    Legend here
-                                </div>
-                                <div id="tree3_legend" class="display_legend">
-                                    Legend here
-                                </div>
-                                <div id="tree4_legend" class="display_legend">
-                                    Legend here
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
             
