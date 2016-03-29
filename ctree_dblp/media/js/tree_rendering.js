@@ -69,6 +69,7 @@ var RenderingView = Backbone.View.extend({
 		var self = this;
 		this.context =  this.saveCanvas.getContext('2d');
 		var structure = self.model.get("tree_structure");
+        var update_egos = self.model.get("render_tree_egos");
 		this.approx_size = 0; // havent get the exact boundary
 		this.save_img = 0;
 		// console.log(structure);
@@ -83,7 +84,7 @@ var RenderingView = Backbone.View.extend({
         // this.pattern = this.context.createPattern(this.imageObj, 'repeat');
 
         var total_tree = 0;        
-        for(var e in tree_egos){
+        for(var e in update_egos){
         	// console.log(e);
             self.current_ego = e;
             this.snap_idx = -1;
@@ -1550,6 +1551,7 @@ var RenderingView = Backbone.View.extend({
 		this.sub_stick_length = 75;
         this.sub_slop = 0;
         var structure = self.model.get("tree_structure");
+        var update_egos = self.model.get("render_tree_egos");
         // console.log(self.tree_size);
 
         this.imageObj = document.getElementById("wood");
@@ -1557,7 +1559,7 @@ var RenderingView = Backbone.View.extend({
         
 
         var total_tree = 0;        
-        for(var e in tree_egos){
+        for(var e in update_egos){
             self.current_ego = e;
             this.snap_idx = 0;
             tree_info[e] = [];
@@ -1713,27 +1715,6 @@ var RenderingView = Backbone.View.extend({
         self.model.set({"new_researcher": this.total_alter}, {silent: true});
         self.model.trigger('change:new_researcher');
 
-        /*
-        for(var e in tree_egos){
-            var img_src = tree_img_url[e];
-            var img_id = "#" + e;
-            self..set_tree_img(img_id, img_src);
-            // $(img_id).attr('src', img_src);
-        }
-
-        var img_src = tree_img_url[view_ego];
-        $("#tree_display").attr('src', img_src);
-        $("#tree_display").attr('href', img_src);
-        $("#tree_display").css({'height': '100%'});
-
-        var tree_width = $("#tree_display").width();
-        var cnt_width = $("#tree_cnt").width();
-        if (tree_width > cnt_width){
-            $("#tree_display").css({'width': '100%'});
-            $("#tree_display").height('auto');
-        }
-        */
-        // anim.anim_render(view_ego);
         
         $("#loading").hide();
         

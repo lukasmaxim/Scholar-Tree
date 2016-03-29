@@ -9,7 +9,8 @@ var Tree_Model = Backbone.Model.extend({
         canvas_translate: [0.5, 0.5],
         canvas_scale: 3,
         current_ego: "tree1",
-        new_researcher: 0
+        new_researcher: 0,
+        render_tree_egos: {"tree1": ["all"], "tree2": ["all"], "tree3": ["all"], "tree4": ["all"]}
     },
     initialize: function(args) {
         var self = this;
@@ -96,6 +97,7 @@ var Tree_Model = Backbone.Model.extend({
         d3.json(request_url, function(result){
             console.log(result);
             self.set({"tree_structure": result[0]}, {silent: true});
+            self.set({"render_tree_egos": tree_egos}, {silent: true});
             self.trigger('change:tree_structure');
             highlight_list["authors"] = result[1];
             highlight_list["papers"] = result[2];
@@ -111,11 +113,14 @@ var Tree_Model = Backbone.Model.extend({
         $("#updating").show();        
         console.log("get update request", request);
         var request_url = "update_tree_structure/?final_setting=" + encodeURIComponent(request);
+        var update_e = {};
         d3.json(request_url, function(result){
             console.log(result);
+            update_e[result[1]] = ['all'];
             tree_structure = self.get("tree_structure");
             tree_structure['all'][result[1]] = result[0];
             self.set({"tree_structure": tree_structure}, {silent: true});
+            self.set({"render_tree_egos": update_e}, {silent: true});
             self.trigger('change:tree_structure');
             $("#block_page").hide();
             $("#updating").hide();
