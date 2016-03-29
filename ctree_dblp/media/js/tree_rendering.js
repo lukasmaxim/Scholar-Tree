@@ -77,7 +77,7 @@ var RenderingView = Backbone.View.extend({
 			$("#tree_result").hide();
             return 0;
         }
-        this.sub_stick_length = 55;
+        this.sub_stick_length = 75;
         this.sub_slop = 0;
         // this.imageObj = document.getElementById("wood");
         // this.pattern = this.context.createPattern(this.imageObj, 'repeat');
@@ -368,7 +368,7 @@ var RenderingView = Backbone.View.extend({
         tree_rstpoint[3] = this.start_y - this.y_dist - this.stick_length - this.extra_y - stick_width;
 
         // find control point
-        var m = this.sub_slop/55;
+        var m = this.sub_slop/this.sub_stick_length;
         // y = m(x-x1)+y1
         var c1 = m*(tree_rstpoint[0] - (this.start_x + this.dr)) + tree_rstpoint[1];
         var c2 = m*(tree_rstpoint[2] - this.start_x) + tree_rstpoint[3];
@@ -833,8 +833,8 @@ var RenderingView = Backbone.View.extend({
         tree_lstpoint[3] = this.start_y - this.y_dist - this.stick_length - this.extra_y - stick_width;
 
         // find control point
-        // var m = -(layer*10)/55;
-        var m = -this.sub_slop/55;
+        // var m = -(layer*10)/this.sub_stick_length;
+        var m = -this.sub_slop/this.sub_stick_length;
         // y = m(x-x1)+y1
         var c1 = m*(tree_lstpoint[0] - (this.start_x - this.dl)) + tree_lstpoint[1];
         var c2 = m*(tree_lstpoint[2] - this.start_x) + tree_lstpoint[3];
@@ -1547,7 +1547,7 @@ var RenderingView = Backbone.View.extend({
         console.log("in draw4save");
 		this.save_img = 1;
 		this.context =  this.saveCanvas.getContext('2d');
-		this.sub_stick_length = 55;
+		this.sub_stick_length = 75;
         this.sub_slop = 0;
         var structure = self.model.get("tree_structure");
         // console.log(self.tree_size);

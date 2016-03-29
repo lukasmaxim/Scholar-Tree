@@ -4,7 +4,7 @@ var Tree_Model = Backbone.Model.extend({
         time_period: [],
         leaf_scale: 2.5,
         fruit_scale: 2,
-        sub_leaf_len_scale: 1,
+        sub_leaf_len_scale: 1.25,
         dtl_branch_curve: 1,
         canvas_translate: [0.5, 0.5],
         canvas_scale: 3,
