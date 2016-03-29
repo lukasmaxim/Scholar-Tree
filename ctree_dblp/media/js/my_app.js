@@ -158,6 +158,7 @@ var MyApp = function MyApp(){
             gap = 6
 
         util.set_gap_list(gap, max_gap);
+        util.set_default_scale();
 
         // ga('send', 'event', DBLP_researcher, "render", "start_year", sy);
         // ga('send', 'event', DBLP_researcher, "render", "end_year", ey);
@@ -167,7 +168,6 @@ var MyApp = function MyApp(){
         var request = JSON.stringify(request_array);
 
         self.model.generate_tree_structure(request);   
-
     });
 
     gap1.change(function(){
@@ -227,7 +227,7 @@ var MyApp = function MyApp(){
         ga('send', 'event', user_ip, "survey");
     });
 
-    // util.set_events();
+    util.set_default_event();
 
     this.render = new RenderingView({model: this.model, containerID: "#rendering"});
     this.animation = new AnimView({model: this.model, containerID: "#animating"});

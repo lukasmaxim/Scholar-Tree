@@ -17,6 +17,27 @@ var util = {
         return option;
     },
 
+    set_default_scale: function(){
+        for(var e in tree_egos){
+            var l_id = "#l_scale_" + e;
+            var f_id = "#f_scale_" + e;
+            var s_id = "#s_scale_" + e;
+            $(".para_" + e).show();
+            $(l_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            $(f_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            $(s_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            if(e != view_ego){
+                $(".para_" + e).hide();
+            }
+        }
+    },
+
     set_slider: function(researcher_period){
         $("#researcher_name").html(researcher_period[2]);
         DBLP_researcher = researcher_period[2];
@@ -275,6 +296,38 @@ var util = {
         $('#anim_panel').show();
         $('#highlight_panel').show();
 
+    },
+
+    set_default_event: function(){
+        var default_mapping = $("#default_scale");
+        // var save = $('#save_icon');
+
+        default_mapping.click(function(){           
+            var l_id = "#l_scale_" + view_ego;
+            var f_id = "#f_scale_" + view_ego;
+            var s_id = "#s_scale_" + view_ego;
+            $(l_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            $(f_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            $(s_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            
+            return false;
+        });
+
+        default_mapping.hover(function(){
+            default_mapping.css("cursor", "pointer");
+            return false;
+        });
+
+        default_mapping.mouseout(function(){
+            default_mapping.css("cursor", "");
+            return false;
+        });
     }
 
 };

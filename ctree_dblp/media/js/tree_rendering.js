@@ -7,6 +7,7 @@ var RenderingView = Backbone.View.extend({
         console.log("in rendering initialize");
         _.bindAll(this, 'redraw');
         this.model.bind('change:tree_structure', this.redraw);
+        this.model.bind('change:render_tree_egos', this.redraw);
 
         this.saveCanvas = drawing_canvas.save_canvas;
         this.context =  this.saveCanvas.getContext('2d');
@@ -61,7 +62,8 @@ var RenderingView = Backbone.View.extend({
         this.select_leaf = "-1";
         this.snap_info = [];
         this.snap_idx = 0;
-        this.total_alter = {"tree1": 0, "tree2": 0, "tree3": 0, "tree4": 0}; 
+        this.total_alter = {"tree1": 0, "tree2": 0, "tree3": 0, "tree4": 0};
+        this.scale_set;
 	},
 
 	// caculate the boundary
@@ -70,6 +72,7 @@ var RenderingView = Backbone.View.extend({
 		this.context =  this.saveCanvas.getContext('2d');
 		var structure = self.model.get("tree_structure");
         var update_egos = self.model.get("render_tree_egos");
+        var ego_scale = self.model.get("scale_para");
 		this.approx_size = 0; // havent get the exact boundary
 		this.save_img = 0;
 		// console.log(structure);
@@ -78,7 +81,7 @@ var RenderingView = Backbone.View.extend({
 			$("#tree_result").hide();
             return 0;
         }
-        this.sub_stick_length = 75;
+        
         this.sub_slop = 0;
         // this.imageObj = document.getElementById("wood");
         // this.pattern = this.context.createPattern(this.imageObj, 'repeat');
@@ -88,6 +91,8 @@ var RenderingView = Backbone.View.extend({
         	// console.log(e);
             self.current_ego = e;
             this.snap_idx = -1;
+            this.scale_set = ego_scale[e]; 
+            this.sub_stick_length = 55*this.scale_set["sub_leaf_len_scale"];
         	for(var t = 0; t < tree_egos[e].length; t++){ // all the ego
         		// console.log(tree_egos[e][t]);
 		        this.context.setTransform(1, 0, 0, 1, 0, 0);
@@ -497,8 +502,10 @@ var RenderingView = Backbone.View.extend({
 
 
         var nature_scale = self.model.get("dtl_branch_curve");
+
         var w = weight/total_draw_stick;
-        var len_scale = self.model.get("sub_leaf_len_scale");
+        // var len_scale = self.model.get("sub_leaf_len_scale");
+        var len_scale = self.scale_set["sub_leaf_len_scale"];
         var end_p = [(tree_rstpoint[2]+tree_rstpoint[0])/2, (tree_rstpoint[3]+tree_rstpoint[1])/2];
         var start_p = [(cp2[0]+cp3[0])/2, (cp2[1]+cp3[1])/2];
 
@@ -940,7 +947,8 @@ var RenderingView = Backbone.View.extend({
 
         var nature_scale = self.model.get("dtl_branch_curve");
         var w = weight/total_draw_stick;
-        var len_scale = self.model.get("sub_leaf_len_scale");
+        // var len_scale = self.model.get("sub_leaf_len_scale");
+        var len_scale = self.scale_set["sub_leaf_len_scale"];
         var end_p = [(tree_lstpoint[2]+tree_lstpoint[0])/2, (tree_lstpoint[3]+tree_lstpoint[1])/2];
         var start_p = [(cp2[0]+cp3[0])/2, (cp2[1]+cp3[1])/2];
 
@@ -1146,10 +1154,11 @@ var RenderingView = Backbone.View.extend({
         var self = this;
         var next = 0;
         
-        var leaf_scale = self.model.get("leaf_scale");
-        var fruit_scale = self.model.get("fruit_scale");
+        var leaf_scale = self.scale_set["leaf_scale"];
+        var fruit_scale = self.scale_set["fruit_scale"];
         
-        var len_scale = self.model.get("sub_leaf_len_scale");
+        // var len_scale = self.model.get("sub_leaf_len_scale");
+        var len_scale = self.scale_set["sub_leaf_len_scale"];
         var leaf_table = [];
         for(var i=0; i<mapping_size.leaf_size_table.length; i++){
             leaf_table.push(mapping_size.leaf_size_table[i]*leaf_scale);
@@ -1483,7 +1492,8 @@ var RenderingView = Backbone.View.extend({
             tree_points[self.current_ego]["all_leaves"][l_id].push(cx, cy, angle, radius, color);        
         }
 
-        this.context.lineWidth = 1*self.model.get("leaf_scale");
+        this.context.lineWidth = 1*self.scale_set["leaf_scale"];
+
         if(l_id != "none" && this.select_leaf == l_id){
             this.context.lineWidth = 25;
         }
@@ -1526,7 +1536,8 @@ var RenderingView = Backbone.View.extend({
         context.fillStyle = mapping_color.fruit;//fill color
         // context.strokeStyle = mapping_color.fruit;;//line's color
         context.strokeStyle = '#ED3C3C';
-        context.lineWidth = 1*self.model.get("fruit_scale");
+        // context.lineWidth = 1*self.model.get("fruit_scale");
+        context.lineWidth = 1*self.scale_set["fruit_scale"];
         context.beginPath();
         var cx = posx;
         var cy = posy;
@@ -1548,7 +1559,7 @@ var RenderingView = Backbone.View.extend({
         console.log("in draw4save");
 		this.save_img = 1;
 		this.context =  this.saveCanvas.getContext('2d');
-		this.sub_stick_length = 75;
+		// this.sub_stick_length = 75;
         this.sub_slop = 0;
         var structure = self.model.get("tree_structure");
         var update_egos = self.model.get("render_tree_egos");
@@ -1563,6 +1574,8 @@ var RenderingView = Backbone.View.extend({
             self.current_ego = e;
             this.snap_idx = 0;
             tree_info[e] = [];
+            // this.scale_set = ego_scale[e];
+            this.sub_stick_length = 55*this.scale_set["sub_leaf_len_scale"];
         	for(var t = 0; t < tree_egos[e].length; t++){ // all the ego
         		// this.saveCanvas = drawing_canvas[e];
         		// this.context =   this.saveCanvas.getContext('2d');

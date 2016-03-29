@@ -5,6 +5,10 @@ var Tree_Model = Backbone.Model.extend({
         leaf_scale: 2.5,
         fruit_scale: 2,
         sub_leaf_len_scale: 1.25,
+        scale_para: {"tree1":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25}, 
+                     "tree2":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25}, 
+                     "tree3":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25}, 
+                     "tree4":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25}},
         dtl_branch_curve: 1,
         canvas_translate: [0.5, 0.5],
         canvas_scale: 3,
@@ -98,6 +102,7 @@ var Tree_Model = Backbone.Model.extend({
             console.log(result);
             self.set({"tree_structure": result[0]}, {silent: true});
             self.set({"render_tree_egos": tree_egos}, {silent: true});
+            self.set({"scale_para": default_scale_para}, {silent: true});
             self.trigger('change:tree_structure');
             highlight_list["authors"] = result[1];
             highlight_list["papers"] = result[2];

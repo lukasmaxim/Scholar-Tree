@@ -201,7 +201,7 @@
                             <div id='anim_container' class="col-md-7 relative" style="padding:0; border:1.5px solid gray; border-radius:10px; height:500px; /*border-bottom-width:10px;*/">
                                 <canvas id='anim_tree' style="position:absolute; top:0; left:0; /*background:white;*/ width:100%; height:100%;"></canvas> <span id="save_icon" title="Save this image" class="glyphicon glyphicon-save" style="position:absolute; top:5px; right:5px; font-size:large; color:#B3B3B3;"></span>
                             </div>
-                            <div class="col-md-3" style="margin-bottom: 10px;">
+                            <div class="col-md-3" style="margin-bottom:10px; padding-right:5px;">
                                 <!-- <b style="font-size:16px;">Animation Control</b><br>
                                 <div class="btn-group" style="margin-bottom:15px;">
                                     <button type="button" title="Back to previous step" id="tree_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
@@ -312,7 +312,7 @@
                                 </div>
                                 
                                 <!-- legend -->
-                                <div id="legend_cnt" style='margin-top:10px; display:table;'> 
+                                <div id="legend_cnt" style='margin:10px 0; display:table;'> 
                                     <b class="title">Leaf Color Legend:</b><br>
                                     <div id="tree1_legend" class="display_legend">
                                         Legend here
@@ -328,20 +328,31 @@
                                     </div>
                                 </div>
                                 <!-- parameters panel-->
-                                <div title="Change leave scale" style="margin-top:10px;">
+                                <b class="title">Scale Parameters:</b>
+                                <span id="default_scale" title="Reset to default" class="glyphicon glyphicon-paperclip right" style="margin-top:3px; color:#B3B3B3;"></span><br>
+                                <div title="Change leave scale" style="margin-top:5px;">
                                     <!-- <span class="glyphicon glyphicon-leaf left" style="font-size:large; width:20px; margin-top:10px;"></span> -->
                                     <b class="parameter">Leaf</b>
-                                    <div style="margin-left:45px;"><input type="text" id="l_scale"></div>
+                                    <div class="para_tree1" style="margin-left:45px;"><input type="text" id="l_scale_tree1"></div>
+                                    <div class="para_tree2" style="margin-left:45px;"><input type="text" id="l_scale_tree2"></div>
+                                    <div class="para_tree3" style="margin-left:45px;"><input type="text" id="l_scale_tree3"></div>
+                                    <div class="para_tree4" style="margin-left:45px;"><input type="text" id="l_scale_tree4"></div>
                                 </div>
                                 <div title="Change fruit scale" style="margin-top:5px;">
                                     <!-- <span class="glyphicon glyphicon-leaf left" style="font-size:large; width:20px; margin-top:10px;"></span> -->
                                     <b class="parameter">Fruit</b>
-                                    <div style="margin-left:45px;"><input type="text" id="f_scale"></div>
+                                    <div class="para_tree1" style="margin-left:45px;"><input type="text" id="f_scale_tree1"></div>
+                                    <div class="para_tree2" style="margin-left:45px;"><input type="text" id="f_scale_tree2"></div>
+                                    <div class="para_tree3" style="margin-left:45px;"><input type="text" id="f_scale_tree3"></div>
+                                    <div class="para_tree4" style="margin-left:45px;"><input type="text" id="f_scale_tree4"></div>                                    
                                 </div>
                                 <div title="Change stick length" style="margin-top:5px;">
                                     <!-- <span class="glyphicon glyphicon-leaf left" style="font-size:large; width:20px; margin-top:10px;"></span> -->
                                     <b class="parameter">Stick</b>
-                                    <div style="margin-left:45px;"><input type="text" id="s_scale"></div>
+                                    <div class="para_tree1" style="margin-left:45px;"><input type="text" id="s_scale_tree1"></div>
+                                    <div class="para_tree2" style="margin-left:45px;"><input type="text" id="s_scale_tree2"></div>
+                                    <div class="para_tree3" style="margin-left:45px;"><input type="text" id="s_scale_tree3"></div>
+                                    <div class="para_tree4" style="margin-left:45px;"><input type="text" id="s_scale_tree4"></div>
                                 </div>
                             </div>
                             

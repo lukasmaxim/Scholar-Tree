@@ -139,6 +139,8 @@ var DrawView = Backbone.View.extend({
             var show_snap = "#" + view_ego + "_cnt";
             var hide_snap = "#" + this.id.slice(0,5) + "_cnt";
             var hide_text = "#" + view_ego + "_text";
+            var hide_scale = ".para_" + view_ego;
+            var show_scale = ".para_" + this.id.slice(0,5);
             var show_text = "#" + this.id.slice(0,5) + "_text";
             var hide_selector = "#" + view_ego + "_select";
             var show_selector = "#" + this.id.slice(0,5) + "_select";
@@ -149,6 +151,8 @@ var DrawView = Backbone.View.extend({
             $(show_text).show();
             $(hide_legend).hide();
             $(show_legend).show();
+            $(hide_scale).hide();
+            $(show_scale).show();            
             // $(show_snap).show();
             // $(hide_snap).hide();
             tree_util.fadeout = 1;
