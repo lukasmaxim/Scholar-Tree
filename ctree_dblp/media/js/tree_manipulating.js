@@ -21,14 +21,74 @@ var InteractView = Backbone.View.extend({
         this.detail = [];
         this.stay = 0;
 
+        this.gap1 = $('#tree1_gap_select');
+        this.gap2 = $('#tree2_gap_select');
+        this.gap3 = $('#tree3_gap_select');
+        this.gap4 = $('#tree4_gap_select');
+
         this.set_mouse_event();
         this.slider_event();
+        this.gaps_event();
+
+    },
+
+    gaps_event: function(){
+        var self = this;
+        this.gap1.change(function(){
+            var new_gap = this.value;
+            var tree_id = this.id.split("_")[0];
+            
+            var request_array = [DBLP_url, sy, ey, timeline, new_gap, tree_id, user_ip];
+            var request = JSON.stringify(request_array);
+            // console.log(request);
+            self.model.updata_tree_structure(request);
+        });
+
+        this.gap2.change(function(){
+            var new_gap = this.value;
+            var tree_id = this.id.split("_")[0];
+            
+            var request_array = [DBLP_url, sy, ey, timeline, new_gap, tree_id, user_ip];
+            var request = JSON.stringify(request_array);
+            // console.log(request);
+            self.model.updata_tree_structure(request);
+        });
+
+        this.gap3.change(function(){
+            var new_gap = this.value;
+            var tree_id = this.id.split("_")[0];
+            
+            var request_array = [DBLP_url, sy, ey, timeline, new_gap, tree_id, user_ip];
+            var request = JSON.stringify(request_array);
+            // console.log(request);
+            self.model.updata_tree_structure(request);
+        });
+
+        this.gap4.change(function(){
+            var new_gap = this.value;
+            var tree_id = this.id.split("_")[0];
+            
+            var request_array = [DBLP_url, sy, ey, timeline, new_gap, tree_id, user_ip];
+            var request = JSON.stringify(request_array);
+            // console.log(request);
+            self.model.updata_tree_structure(request);
+        });
 
     },
 
     slider_event: function(){
         var self = this;
         // var slider = $("#l_scale").data("ionRangeSlider");
+        var setting_changes = function(base, comp, from){
+            var update_e = {};
+            var all_scale = self.model.get("scale_para");
+            update_e[view_ego] = ['all'];
+            all_scale[view_ego][comp] = base*from;
+            self.model.set({"scale_para": all_scale}, {silent: true});
+            self.model.set({"render_tree_egos": update_e}, {silent: true});
+            self.model.trigger('change:render_tree_egos');
+        };
+
         for(var e in tree_egos){
             var l_id = "#l_scale_" + e;
             var f_id = "#f_scale_" + e;
@@ -40,14 +100,9 @@ var InteractView = Backbone.View.extend({
                 type: 'single',
                 step: 0.1,
                 onFinish: function(obj) {
-                    console.log(obj.from);
-                    var update_e = {};
-                    var all_scale = self.model.get("scale_para");
-                    update_e[view_ego] = ['all'];
-                    all_scale[view_ego]["leaf_scale"] = 2.5*obj.from;
-                    self.model.set({"scale_para": all_scale}, {silent: true});
-                    self.model.set({"render_tree_egos": update_e}, {silent: true});
-                    self.model.trigger('change:render_tree_egos');
+                    $("#block_page").show();
+                    $("#updating").show();    
+                    setting_changes(2.5, "leaf_scale", obj.from); 
                 }
             });
             $(f_id).ionRangeSlider({
@@ -57,14 +112,9 @@ var InteractView = Backbone.View.extend({
                 type: 'single',
                 step: 0.1,
                 onFinish: function(obj) {
-                    console.log(obj.from);
-                    var update_e = {};
-                    var all_scale = self.model.get("scale_para");
-                    update_e[view_ego] = ['all'];
-                    all_scale[view_ego]["fruit_scale"] = 2*obj.from;
-                    self.model.set({"scale_para": all_scale}, {silent: true});
-                    self.model.set({"render_tree_egos": update_e}, {silent: true});
-                    self.model.trigger('change:render_tree_egos');
+                    $("#block_page").show();
+                    $("#updating").show();
+                    setting_changes(2, "fruit_scale", obj.from); 
                 }
             });
             $(s_id).ionRangeSlider({
@@ -74,14 +124,9 @@ var InteractView = Backbone.View.extend({
                 type: 'single',
                 step: 0.1,
                 onFinish: function(obj) {
-                    console.log(obj.from);
-                    var update_e = {};
-                    var all_scale = self.model.get("scale_para");
-                    update_e[view_ego] = ['all'];
-                    all_scale[view_ego]["sub_leaf_len_scale"] = 1.25*obj.from;
-                    self.model.set({"scale_para": all_scale}, {silent: true});
-                    self.model.set({"render_tree_egos": update_e}, {silent: true});
-                    self.model.trigger('change:render_tree_egos');
+                    $("#block_page").show();
+                    $("#updating").show();  
+                    setting_changes(1.25, "sub_leaf_len_scale", obj.from);
                 }
             });
             if(e == view_ego){
@@ -91,6 +136,46 @@ var InteractView = Backbone.View.extend({
                 $(".para_" + e).hide();
             }
         }
+
+        var default_mapping = $("#default_scale");
+
+        default_mapping.click(function(){           
+            var l_id = "#l_scale_" + view_ego;
+            var f_id = "#f_scale_" + view_ego;
+            var s_id = "#s_scale_" + view_ego;
+            
+            var all_scale = self.model.get("scale_para");
+            all_scale[view_ego] = {"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25};
+            
+            $("#block_page").show();
+            $("#updating").show();
+            var update_e = {};
+            update_e[view_ego] = ['all'];
+            $(l_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            $(f_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            $(s_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            self.model.set({"scale_para": all_scale}, {silent: true});
+            self.model.set({"render_tree_egos": update_e}, {silent: true});
+            self.model.trigger('change:render_tree_egos');
+            return false;
+        });
+        
+        default_mapping.hover(function(){
+            default_mapping.css("cursor", "pointer");
+            return false;
+        });
+
+        default_mapping.mouseout(function(){
+            default_mapping.css("cursor", "");
+            return false;
+        });
+        
     },
 
     set_mouse_event: function(){

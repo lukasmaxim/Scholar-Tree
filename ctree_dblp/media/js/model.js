@@ -98,6 +98,10 @@ var Tree_Model = Backbone.Model.extend({
         var self = this;
         console.log("get request", request);
         var request_url = "get_tree_structure/?final_setting=" + encodeURIComponent(request);
+        var default_scale_para = {"tree1":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25},
+                          "tree2":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25}, 
+                          "tree3":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25}, 
+                          "tree4":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25}};
         d3.json(request_url, function(result){
             console.log(result);
             self.set({"tree_structure": result[0]}, {silent: true});

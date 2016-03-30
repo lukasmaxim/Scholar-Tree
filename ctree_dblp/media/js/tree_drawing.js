@@ -18,7 +18,8 @@ var DrawView = Backbone.View.extend({
 
     set_tree_info: function(){
         var self = this;
-        for(var e in tree_egos){
+        var update_egos = self.model.get("render_tree_egos");
+        for(var e in update_egos){
             var img_src = tree_img_url[e];
             var img_id = "#" + e;
             self.set_tree_img(img_id, img_src);
@@ -106,6 +107,7 @@ var DrawView = Backbone.View.extend({
         var alters = self.model.get("new_researcher");
         // $(img_id).attr('href', img_src);
         $(img_id).css({'height': '100%'});
+        $(img_id).width('auto');
         $(img_id).attr('src', img_src).load(function(){
             var tree_width = $(this).width();
             var cnt_width = $(cnt_id).width();
@@ -399,6 +401,8 @@ var DrawView = Backbone.View.extend({
         }
 
         context.restore();
+        $("#block_page").hide();
+        $("#updating").hide();
 
     }
 

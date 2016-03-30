@@ -77,7 +77,6 @@ var RenderingView = Backbone.View.extend({
 		this.save_img = 0;
 		// console.log(structure);
 		if(jQuery.isEmptyObject(self.model.get("tree_structure"))){
-			$("#no_preview").show();
 			$("#tree_result").hide();
             return 0;
         }
@@ -1723,7 +1722,6 @@ var RenderingView = Backbone.View.extend({
         }
 
         $("#tree_result").show();
-        $("#no_preview").hide();
 
         self.model.set({"new_researcher": this.total_alter}, {silent: true});
         self.model.trigger('change:new_researcher');
