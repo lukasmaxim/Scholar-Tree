@@ -176,8 +176,8 @@ var RenderingView = Backbone.View.extend({
                     this.context.beginPath();
 
                    
-                    this.dr = (ori_dr/t_scale)*1.5;//1.5;
-                    this.dl = (ori_dl/t_scale)*1.5;
+                    this.dr = (ori_dr/t_scale)*1.5*this.scale_set["sub_leaf_len_scale"];;//1.5;
+                    this.dl = (ori_dl/t_scale)*1.5*this.scale_set["sub_leaf_len_scale"];;
                     
                     
                     this.temp_height = 30*height; //_d
@@ -250,6 +250,7 @@ var RenderingView = Backbone.View.extend({
                 stick_scale = 1;
             }
         }
+        stick_scale = stick_scale/this.scale_set["sub_leaf_len_scale"];
         this.current_side = "right";
         this.current_layer = layer;
 
@@ -722,7 +723,7 @@ var RenderingView = Backbone.View.extend({
                 stick_scale = 1;
             }
         }
-
+        stick_scale = stick_scale/this.scale_set["sub_leaf_len_scale"];
         this.current_side = "left";
         this.current_layer = layer;
         
@@ -1661,8 +1662,8 @@ var RenderingView = Backbone.View.extend({
                     this.context.beginPath();
 
                    
-                    this.dr = (ori_dr/t_scale)*1.5;//1.5;
-                    this.dl = (ori_dl/t_scale)*1.5;
+                    this.dr = (ori_dr/t_scale)*1.5*this.scale_set["sub_leaf_len_scale"];;//1.5;
+                    this.dl = (ori_dl/t_scale)*1.5*this.scale_set["sub_leaf_len_scale"];;
                     
                     
                     this.temp_height = 30*height; //_d

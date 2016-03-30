@@ -118,8 +118,8 @@ var InteractView = Backbone.View.extend({
                 }
             });
             $(s_id).ionRangeSlider({
-                min: 0.5, 
-                max: 3,
+                min: 0.7, 
+                max: 2,
                 from: 1,
                 type: 'single',
                 step: 0.1,
