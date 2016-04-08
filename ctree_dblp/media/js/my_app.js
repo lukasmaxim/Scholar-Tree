@@ -171,10 +171,10 @@ var MyApp = function MyApp(){
     // open the dialog
     $( "#survey_dialog" ).dialog({
         autoOpen: false,
-        height: $(window).height()*0.25,
-        width: $(window).width()*0.5,
+        height: 300,
+        width: 500,
         modal: true,
-        resizable: false
+        resizable: true
     });
 
     $( "#feedback" ).click(function() {
