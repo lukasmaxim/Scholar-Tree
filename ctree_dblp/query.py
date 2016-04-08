@@ -494,7 +494,7 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap
 		year_gap.append(start)
 		color_gap.append(start)
 
-	print gap, year_gap, len(year_gap)
+	print gap, year_gap, len(year_gap), color_gap
 	branch_layer = len(year_gap) + 1
 	# color_gap = year_gap
     # sys.exit()
@@ -712,17 +712,21 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap
 
 
         # branch as first time coauthored
-		if coauthors[coauthor][1] < year_gap[0]:
+		if len(year_gap) > 1:
+			if coauthors[coauthor][1] < year_gap[0]:
+				data3_stick[3] = 0
+				data4_stick[3] = 0
+			elif coauthors[coauthor][1] >= year_gap[-1]:
+				data3_stick[3] = len(year_gap)
+				data4_stick[3] = len(year_gap)
+			else:
+				for g in range(len(year_gap)-1):
+					if year_gap[g] <= coauthors[coauthor][1] < year_gap[g+1]:
+						data3_stick[3] = g+1
+						data4_stick[3] = g+1
+		else:
 			data3_stick[3] = 0
 			data4_stick[3] = 0
-		elif coauthors[coauthor][1] >= year_gap[-1]:
-			data3_stick[3] = len(year_gap)
-			data4_stick[3] = len(year_gap)
-		else:
-			for g in range(len(year_gap)-1):
-				if year_gap[g] <= coauthors[coauthor][1] < year_gap[g+1]:
-					data3_stick[3] = g+1
-					data4_stick[3] = g+1
 
 		co_period = coauthors[coauthor][2] - coauthors[coauthor][1]
 		jour_cnt = coauthors[coauthor][4]
@@ -809,17 +813,20 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap
 			
 			
 			# leaf color
-			if publication[paper]["year"] < color_gap[0]:
-				data3[5] = 0
-				# data4[6] = len(color_gap)
-			elif publication[paper]["year"] >= color_gap[-1]:
-				data3[5] = len(color_gap) 
-				# data4[6] = 0
+			if len(color_gap) > 1:
+				if publication[paper]["year"] < color_gap[0]:
+					data3[5] = 0
+					# data4[6] = len(color_gap)
+				elif publication[paper]["year"] >= color_gap[-1]:
+					data3[5] = len(color_gap) 
+					# data4[6] = 0
+				else:
+					for g in range(len(color_gap)-1):
+						if color_gap[g] <= publication[paper]["year"] < color_gap[g+1]:
+							data3[5] = g+1
+							# data4[6] = len(color_gap)-g-1
 			else:
-				for g in range(len(color_gap)-1):
-					if color_gap[g] <= publication[paper]["year"] < color_gap[g+1]:
-						data3[5] = g+1
-						# data4[6] = len(color_gap)-g-1
+				data3[5] = 0
 			if len(color_gap) <= 6:
 				data3[5] += 2
 			

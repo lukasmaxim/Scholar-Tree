@@ -213,7 +213,7 @@ var util = {
         var type_color = ['#6C1904', '#94AE0F', '#1F861D']
         var extra = 0;
         if (legend_info.length <= 6){
-            extra = 2;
+            extra = 1;
         }
         for(var e in legend_list){
             legend_list[e].show();
