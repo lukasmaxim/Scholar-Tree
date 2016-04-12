@@ -144,4 +144,9 @@ img.mfp-img{
   border-radius: 0px 8px 8px 0px;
   padding: 3px;
   background: #E6E6E6;
+  /*width: 48px;*/
+}
+
+.para{
+  margin-left:50px;
 }

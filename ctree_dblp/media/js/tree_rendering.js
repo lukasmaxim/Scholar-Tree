@@ -501,7 +501,7 @@ var RenderingView = Backbone.View.extend({
         }
 
 
-        var nature_scale = self.model.get("dtl_branch_curve");
+        var nature_scale = this.scale_set["dtl_branch_curve"];
 
         var w = weight/total_draw_stick;
         // var len_scale = self.model.get("sub_leaf_len_scale");
@@ -945,7 +945,7 @@ var RenderingView = Backbone.View.extend({
             return 0;
         }
 
-        var nature_scale = self.model.get("dtl_branch_curve");
+        var nature_scale = this.scale_set["dtl_branch_curve"];
         var w = weight/total_draw_stick;
         // var len_scale = self.model.get("sub_leaf_len_scale");
         var len_scale = self.scale_set["sub_leaf_len_scale"];

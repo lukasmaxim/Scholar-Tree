@@ -93,6 +93,7 @@ var InteractView = Backbone.View.extend({
             var l_id = "#l_scale_" + e;
             var f_id = "#f_scale_" + e;
             var s_id = "#s_scale_" + e;
+            var c_id = "#c_scale_" + e;
             $(l_id).ionRangeSlider({
                 min: 0.5, 
                 max: 3,
@@ -129,6 +130,18 @@ var InteractView = Backbone.View.extend({
                     setting_changes(1.25, "sub_leaf_len_scale", obj.from);
                 }
             });
+            $(c_id).ionRangeSlider({
+                min: 0, 
+                max: 3,
+                from: 1,
+                type: 'single',
+                step: 0.1,
+                onFinish: function(obj) {
+                    $("#block_page").show();
+                    $("#updating").show();  
+                    setting_changes(1, "dtl_branch_curve", obj.from);
+                }
+            });
             if(e == view_ego){
                 $(".para_" + e).show();
             }
@@ -143,9 +156,10 @@ var InteractView = Backbone.View.extend({
             var l_id = "#l_scale_" + view_ego;
             var f_id = "#f_scale_" + view_ego;
             var s_id = "#s_scale_" + view_ego;
-            
+            var c_id = "#c_scale_" + view_ego;
+
             var all_scale = self.model.get("scale_para");
-            all_scale[view_ego] = {"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25};
+            all_scale[view_ego] = {"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25, "dtl_branch_curve": 1};
             
             $("#block_page").show();
             $("#updating").show();
@@ -158,6 +172,9 @@ var InteractView = Backbone.View.extend({
                 from: 1,
             });
             $(s_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            $(c_id).data("ionRangeSlider").update({
                 from: 1,
             });
             self.model.set({"scale_para": all_scale}, {silent: true});

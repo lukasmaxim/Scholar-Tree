@@ -22,6 +22,7 @@ var util = {
             var l_id = "#l_scale_" + e;
             var f_id = "#f_scale_" + e;
             var s_id = "#s_scale_" + e;
+            var c_id = "#c_scale_" + e;
             $(".para_" + e).show();
             $("#block_page").show();
             $("#updating").show();
@@ -32,6 +33,9 @@ var util = {
                 from: 1,
             });
             $(s_id).data("ionRangeSlider").update({
+                from: 1,
+            });
+            $(c_id).data("ionRangeSlider").update({
                 from: 1,
             });
             if(e != view_ego){

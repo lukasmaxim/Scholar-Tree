@@ -139,7 +139,7 @@ var highlight_list = {
     "on": 0,
 };
 
-// var default_scale_para = {"tree1":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25},
-//                           "tree2":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25}, 
-//                           "tree3":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25}, 
-//                           "tree4":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25}}
+// var default_scale_para = {"tree1":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25, "dtl_branch_curve": 1},
+//                           "tree2":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25, "dtl_branch_curve": 1}, 
+//                           "tree3":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25, "dtl_branch_curve": 1}, 
+//                           "tree4":{"leaf_scale": 2.5, "fruit_scale": 2, "sub_leaf_len_scale": 1.25, "dtl_branch_curve": 1}}
