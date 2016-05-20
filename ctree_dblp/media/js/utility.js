@@ -50,6 +50,7 @@ var util = {
         unique_search = user_ip + "_" + DBLP_researcher;
         // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue], [fieldsObject]);
         ga('send', 'event', "researcher", "search", DBLP_researcher);
+        ga('send', 'event', user_ip, "search", DBLP_researcher);
         
         var slider = $("#period_slider").data("ionRangeSlider");
 

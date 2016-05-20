@@ -132,7 +132,7 @@ var DrawView = Backbone.View.extend({
 
         $(cnt_id).unbind();
         $(save_id).click(function(){
-            ga('send', 'event', DBLP_researcher, "save", sy + "-" + ey, this.name);
+            ga('send', 'event', unique_search, "save", sy + "-" + ey, this.name);
             console.log("triggle save click of", this.name);
         });
         
