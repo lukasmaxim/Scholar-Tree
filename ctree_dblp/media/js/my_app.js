@@ -105,7 +105,7 @@ var MyApp = function MyApp(){
         $("#tree_result").hide();
         $('#anim_panel').hide();
         $('#highlight_panel').hide();
-        $("#other_design").hide();
+        // $("#other_design").hide();
     });
 
     search.click(function(){
@@ -120,13 +120,13 @@ var MyApp = function MyApp(){
         $("#tree_result").hide();
         $('#anim_panel').hide();
         $('#highlight_panel').hide();
-        $("#other_design").hide();
+        // $("#other_design").hide();
     });
 
     finish.click(function(){
         console.log("click finish");
         finish.attr("disabled", true);
-        // $("#other_design").show();
+        $("#other_design").show();
         $("#feedback").removeAttr("disabled");
         $("#loading").show();
         $("#tree_result").hide();

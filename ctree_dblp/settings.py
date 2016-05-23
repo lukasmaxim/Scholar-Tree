@@ -18,6 +18,7 @@ BASE_DIR = './ctree_dblp/'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'vo(prxn*!i!)k96o-5$_8-bvc)(3u#8&*d*%ss@98s^q*u=qgb'
+# SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

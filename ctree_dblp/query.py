@@ -411,7 +411,7 @@ def get_tree_structure(request):
 				print "<<<", p_title
 	    # sys.exit()
 		tree_egos, branches, legends, final_info_table = tree_mapping(career_period, publication, coauthorship, author, sy, ey)
-		# graph_mapping(career_period, publication, coauthorship, author, sy, ey, user_ip)
+		graph_mapping(career_period, publication, coauthorship, author, sy, ey, user_ip)
 		final_structure = dict()
 		final_structure["all"] = dict()
 		
@@ -1077,7 +1077,7 @@ def graph_mapping(career_period, publication, coauthors, ego, sy, ey, user_ip):
 	with open("./ctree_dblp/media/data/research_graph_" + user_ip + ".json", "wb") as json_file:
 		json_file.write(return_json)
 
-	matrix_mapping(career_period, matrix_data['pub'], matrix_data['coau'], ego, sy, ey, user_ip)
+	# matrix_mapping(career_period, matrix_data['pub'], matrix_data['coau'], ego, sy, ey, user_ip)
 
 
 def matrix_mapping(career_period, publication, coauthors, ego, sy, ey, user_ip):
