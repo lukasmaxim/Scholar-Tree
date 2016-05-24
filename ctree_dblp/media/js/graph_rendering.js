@@ -22,9 +22,9 @@ function get_graph_data(mydata){
   d3.select("svg").remove();
   width = $(window).width()*0.35 - 14;
   height = $(window).width()*0.35 - 14;
-  graph_scale = 80/mydata.tree1.nodes.length;
-  dist = 15*graph_scale;
-  if (graph_scale > 3) graph_scale = 3;
+  graph_scale = 100/mydata.tree1.nodes.length;
+  dist = 20*graph_scale;
+  if (graph_scale > 2) graph_scale = 2;
   svg = d3.select("#nl_canvas").append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -45,12 +45,9 @@ function init(){
   var drag = force.drag()
     .on("dragstart", dragstart);
   
-  // nodes = graph.nodes;
-  // links = graph.links;
 }
 
 function draw_graph(graph){
-  // graph = mydata.Wijk
   console.log(graph);
   force
     .nodes(graph.nodes)
@@ -93,16 +90,15 @@ function draw_graph(graph){
 
   
   force.on("tick", function() {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
-
-    // node.attr("cx", function(d) { return d.x; })
-    //     .attr("cy", function(d) { return d.y; });
+      node.attr("cx", function(d) { return d.x = Math.max(10, Math.min(d.x, width-10)); })
+        .attr("cy", function(d) { return d.y = Math.max(10, Math.min(d.y, height-10)); });
       node.attr("transform", function setPosition(d) {
         return "translate(" + d.x + "," + d.y +")";
       });
+      link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
   });
 
 }
@@ -115,11 +111,12 @@ function dragstart(d) {
 function interactions(){
   $('svg').hover(function(){
       $('#remove_graph').show();
-      return false;
+      // return false;
   });
 
   $('svg').mouseout(function(){
       $('#remove_graph').hide();
-      return false;
+      // return false;
   });
+
 }
