@@ -1729,6 +1729,7 @@ var RenderingView = Backbone.View.extend({
 
         
         $("#loading").hide();
+        $('#nodelink').removeAttr("disabled");
         
 	}
 

@@ -74,6 +74,7 @@
             </div>
             <div id="system_page" style="overflow:auto; min-width:1200px; min-height:750px;">
                 <!-- search -->
+                <div id="nl_canvas" style="width:100%; z-index:100; display:none; background:gray;"></div>
                 <div id="search_engine_cnt" class="left relative" style="width:23%;">
                     <div id="search_engine" style="width:100%; display:none;">
                         <div id="form" class="row relative" style="margin:0 1px 0 10px;">
@@ -96,11 +97,12 @@
                             <div title="Choosing an interesting period" class="row" style="margin:0 1px 0 8px;">
                                 <input type="text" id="period_slider" class="row" style="margin:10px 0;">
                             </div>
-                            <button id="draw_tree" class="btn btn-default myfont3 row" style="padding:0 10px; height:30px; margin:10px 0 5px 0;">Create Trees</button>
+                            <button id="draw_tree" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px; margin:10px 0 5px 0;">Create Trees</button>
+                            <button id="nodelink" class="btn btn-default myfont3" style="padding:0 10px; height:30px; margin:10px 0 5px 10px;">Graph</button>
                             <br>
-                            <div id = "other_design">
+                            <div id = "other_design" style="display:none;">
                                 <a href="media/html/forcedirect.html" target="_blank">[Node-link]</a>
-                                <!-- <a href="media/html/matrix.html" target="_blank" style="margin-left:10px;">[Matrix]</a> -->
+                                <a href="media/html/matrix.html" target="_blank" style="margin-left:10px;">[Matrix]</a>
                             </div>
                             <!-- <a href="media/html/forcedirect.html" target="_blank" class="row" style="margin-left:10px;">Survey</a> -->
                         </div>
@@ -402,6 +404,7 @@
         </script><!--script type="text/javascript" src="media/js/anim_rendering.js"></script-->
         <script type="text/javascript" src="media/js/utility.js">
         </script><script type="text/javascript" src="media/js/model.js">
+        </script><script type="text/javascript" src="media/js/graph_rendering.js">
         </script><script type="text/javascript" src="media/js/my_app.js">
         </script><script type="text/javascript" src="media/js/tree_rendering.js">
         </script><script type="text/javascript" src="media/js/tree_animating.js">

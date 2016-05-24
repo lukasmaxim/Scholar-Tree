@@ -39,6 +39,7 @@ var MyApp = function MyApp(){
         min_interval: 4,
         onChange: function(obj) {
             $("#draw_tree").removeAttr("disabled");
+            $('#nodelink').attr("disabled", true);
         }
     });
 
@@ -85,6 +86,7 @@ var MyApp = function MyApp(){
     var finish = $('#draw_tree');
     var start = $('#start_btn');
     var search = $('#search_name');
+    var graph = $('#nodelink');
     
 
     start.click(function(){
@@ -106,6 +108,7 @@ var MyApp = function MyApp(){
         $('#anim_panel').hide();
         $('#highlight_panel').hide();
         // $("#other_design").hide();
+        graph.attr("disabled", true);
     });
 
     search.click(function(){
@@ -121,12 +124,19 @@ var MyApp = function MyApp(){
         $('#anim_panel').hide();
         $('#highlight_panel').hide();
         // $("#other_design").hide();
+        graph.attr("disabled", true);
+    });
+
+    graph.click(function(){
+        console.log("click nodelink link");
+        window.open('media/html/forcedirect.html', '_blank');
     });
 
     finish.click(function(){
         console.log("click finish");
         finish.attr("disabled", true);
-        $("#other_design").show();
+        // graph.removeAttr("disabled");
+        // $("#other_design").show();
         $("#feedback").removeAttr("disabled");
         $("#loading").show();
         $("#tree_result").hide();
