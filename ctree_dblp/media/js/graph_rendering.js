@@ -23,11 +23,12 @@ var nodes, links;
 
 function get_graph_data(mydata){
   d3.select("svg").remove();
-  width = $(window).width()*0.35;
-  height = $(window).width()*0.35;
+  width = $(window).width()*0.35 - 14;
+  height = $(window).width()*0.35 - 14;
   svg = d3.select("#nl_canvas").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("class", "graph_svg");
   init();
   draw_graph(mydata.tree1);
 }
@@ -36,7 +37,7 @@ function init(){
   force
     .charge(-120)
     .size([width, height])
-    .linkDistance(80);
+    .linkDistance(30); //80
     // .start();
 
   var drag = force.drag()
