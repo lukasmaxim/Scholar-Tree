@@ -75,7 +75,7 @@ var MyApp = function MyApp(){
             tree_util.set_anim_canvas(e);
         }
         self.model.trigger('change:current_ego');
-    }
+    };
 
     // $('.popup-link').magnificPopup({
     //     type: 'image'
@@ -95,7 +95,7 @@ var MyApp = function MyApp(){
         $("#search_engine").show();
         $("#start_page").hide();
         $('#anim_panel').hide();
-        $('#highlight_panel').hide();        
+        $('#highlight_panel').hide();
     });
 
     retrieve.click(function(){
@@ -129,7 +129,19 @@ var MyApp = function MyApp(){
 
     graph.click(function(){
         console.log("click nodelink link");
-        window.open('media/html/forcedirect.html', '_blank');
+        // window.open('media/html/forcedirect.html', '_blank');
+        $('#graph_cnt').show();
+
+    });
+
+    $('#remove_graph').click(function(){
+        $('#graph_cnt').hide();
+        return false;
+    });
+
+    $('#remove_graph').hover(function(){
+        $('#remove_graph').show();
+        return false;
     });
 
     finish.click(function(){

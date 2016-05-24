@@ -3,15 +3,12 @@ var color = d3.scale.category20(); // stander color scale
 var color_cat = ["#f45e00","#e39ac5","#b04d84","#821b54",
                  "#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"];
 
-var width, height, svg;
+var width, height, svg, dist, graph_scale;
 
 // var force = d3.layout.force()
 //     .charge(-120)
 //     .linkDistance(30)
 //     .size([width, height]);
-
-
-
 
 // var scale = d3.scale.linear()
 //     .domain([0, 500])
@@ -25,19 +22,24 @@ function get_graph_data(mydata){
   d3.select("svg").remove();
   width = $(window).width()*0.35 - 14;
   height = $(window).width()*0.35 - 14;
+  graph_scale = 80/mydata.tree1.nodes.length;
+  dist = 15*graph_scale;
+  if (graph_scale > 3) graph_scale = 3;
   svg = d3.select("#nl_canvas").append("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("class", "graph_svg");
+
   init();
   draw_graph(mydata.tree1);
+  interactions();
 }
 
 function init(){
   force
-    .charge(-120)
+    .charge(-dist*10)
     .size([width, height])
-    .linkDistance(30); //80
+    .linkDistance(dist); //80
     // .start();
 
   var drag = force.drag()
@@ -83,7 +85,7 @@ function draw_graph(graph){
 
   node.append("path")
       .attr("d", d3.svg.symbol()
-        .size(function(d) { return d.size*50; })
+        .size(function(d) { return d.size*50*graph_scale; })
         .type(function(d) { return d.type; }))
       .style("fill", function(d) { return color_cat[d.group];});
 
@@ -108,4 +110,16 @@ function draw_graph(graph){
 
 function dragstart(d) {
   d3.select(this).classed("fixed", d.fixed = true);
+}
+
+function interactions(){
+  $('svg').hover(function(){
+      $('#remove_graph').show();
+      return false;
+  });
+
+  $('svg').mouseout(function(){
+      $('#remove_graph').hide();
+      return false;
+  });
 }
