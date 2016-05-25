@@ -46,6 +46,11 @@ function setlegend(legend_info){
   // var paper_node = $('<svg><rext width="150" height="150" color="#821b54"></rect></svg>');
   // var au_node = $('<svg><circle  r="10" color="#7fcdbb"></circle></svg>');
   var circle_cnt = $('#circle_node');
+  var extra = 0;
+  if(legend_info.length <= 6){
+      extra = 2;
+      if(legend_info.length == 1) extra = 3;
+  }
   circle_cnt.empty();
   for (var i = 0; i < legend_info.length-1; i++){
       if(i == 5){
@@ -54,7 +59,7 @@ function setlegend(legend_info){
       var cnt = $('<div class="left"></div>');
       var box = $('<div class="legend_circle_box"></div>');
       var label = $('<span class"myfont3" style="margin:5px; font-size:15px;"> &lt; ' + legend_info[i] + '</span>');
-      box.css({"background": color_cat[i+4]});
+      box.css({"background": color_cat[i+4+extra]});
       cnt.append(box);
       cnt.append(label);
       circle_cnt.append(cnt);
@@ -63,7 +68,7 @@ function setlegend(legend_info){
   var box = $('<div class="legend_circle_box"></div>');
   // var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b> &lt;= ' + timeline[1] + '</b></span>');
   var label = $('<span class"myfont3" style="margin:5px; font-size:15px;"> &lt;= ' + legend_info[i] + '</span>');
-  box.css({"background": color_cat[legend_info.length+3]});
+  box.css({"background": color_cat[legend_info.length+3+extra]});
   cnt.append(box);
   cnt.append(label);
   circle_cnt.append(cnt);
@@ -124,8 +129,8 @@ function draw_graph(graph){
 
   
   force.on("tick", function() {
-      node.attr("cx", function(d) { return d.x = Math.max(10, Math.min(d.x, width-10)); })
-        .attr("cy", function(d) { return d.y = Math.max(10, Math.min(d.y, height-10)); });
+      node.attr("cx", function(d) { return d.x = Math.max(10, Math.min(d.x, width-10*graph_scale)); })
+        .attr("cy", function(d) { return d.y = Math.max(10, Math.min(d.y, height-10*graph_scale)); });
       node.attr("transform", function setPosition(d) {
         return "translate(" + d.x + "," + d.y +")";
       });

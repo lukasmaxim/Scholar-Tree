@@ -1066,6 +1066,8 @@ def graph_mapping(career_period, publication, coauthors, ego, sy, ey, user_ip):
 							au_group = g+1
 							au_group = g+1
 
+				if len(color_gap) <= 6:
+					au_group += 2
 				graph_egos["tree1"]['nodes'].append({"type": "circle", "size": coauthors[author][0], "group": au_group + 4, "label": author})
 				# graph_egos["tree2"]['nodes'].append({"type": "circle", "size": coauthors[author][0], "group": au_group + 4, "label": author})
 
