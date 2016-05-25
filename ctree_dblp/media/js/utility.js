@@ -214,8 +214,8 @@ var util = {
         console.log('In set legend');
         // console.log(legend_info);
         $(".display_legend").empty();
-        var paper_type = ['Others', 'Journal', 'Conference']
-        var type_color = ['#6C1904', '#94AE0F', '#1F861D']
+        var paper_type = ['Others', 'Journal', 'Conference'];
+        var type_color = ['#6C1904', '#94AE0F', '#1F861D'];
         var extra = 0;
         if (legend_info.length <= 6){
             extra = 1;
@@ -228,9 +228,9 @@ var util = {
                     var box = $('<div class="legend_box"></div>');
                     var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b>' + paper_type[i] + '</b></span>');
                     box.css({"background": type_color[i]});
-                    cnt.append(box)
-                    cnt.append(label)
-                    legend_list[e].append(cnt)
+                    cnt.append(box);
+                    cnt.append(label);
+                    legend_list[e].append(cnt);
                 }
             }
             else{
@@ -239,21 +239,21 @@ var util = {
                     var box = $('<div class="legend_box"></div>');
                     var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"> <b>&lt; ' + legend_info[i] + '</b></span>');
                     box.css({"background": mapping_color.render_leaf_color[i+extra]});
-                    cnt.append(box)
-                    cnt.append(label)
-                    legend_list[e].append(cnt)
+                    cnt.append(box);
+                    cnt.append(label);
+                    legend_list[e].append(cnt);
                 }
                 var cnt = $('<div style="display:table-row; height:30px;"></div>');
                 var box = $('<div class="legend_box"></div>');
                 // var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b> &lt;= ' + timeline[1] + '</b></span>');
                 var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b> &lt;= ' + legend_info[i] + '</b></span>');
-                box.css({"background": mapping_color.render_leaf_color[legend_info.length+extra]});
-                cnt.append(box)
-                cnt.append(label)
-                legend_list[e].append(cnt)
+                box.css({"background": mapping_color.render_leaf_color[legend_info.length+extra-1]});
+                cnt.append(box);
+                cnt.append(label);
+                legend_list[e].append(cnt);
             }            
             
-            legend_list[e].hide();      
+            legend_list[e].hide();
         }
         legend_list[view_ego].show();
         $('#legend_cnt').show();

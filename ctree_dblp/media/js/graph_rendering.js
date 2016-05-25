@@ -3,6 +3,9 @@ var color = d3.scale.category20(); // stander color scale
 var color_cat = ["#f45e00","#e39ac5","#b04d84","#821b54",
                  "#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"];
 
+// color_cat = ["#f45e00","#e39ac5","#b04d84","#821b54",
+// "#6C1904", "#D37A10", "#C2B208", "#8C8616", "#94AE0F", "#5F9915", "#1F861D", "#1C6324", "#123F24", "#1F3848"];
+
 var width, height, svg, dist, graph_scale;
 
 // var force = d3.layout.force()
@@ -18,7 +21,7 @@ var force = d3.layout.force();
 var nodes, links;
 
 
-function get_graph_data(mydata){
+function get_graph_data(mydata, legend_info){
   d3.select("svg").remove();
   width = $(window).width()*0.35 - 14;
   height = $(window).width()*0.35 - 14;
@@ -30,9 +33,40 @@ function get_graph_data(mydata){
     .attr("height", height)
     .attr("class", "graph_svg");
 
+  setlegend(legend_info);
   init();
   draw_graph(mydata.tree1);
   interactions();
+}
+
+function setlegend(legend_info){
+  var pos = height+110;
+  var legend_cnt = $('#graph_legend');
+  legend_cnt.css({'top': pos});
+  // var paper_node = $('<svg><rext width="150" height="150" color="#821b54"></rect></svg>');
+  // var au_node = $('<svg><circle  r="10" color="#7fcdbb"></circle></svg>');
+  var circle_cnt = $('#circle_node');
+  circle_cnt.empty();
+  for (var i = 0; i < legend_info.length-1; i++){
+      if(i == 5){
+        circle_cnt.append($('<br style="line-height:175%;">'));
+      }
+      var cnt = $('<div class="left"></div>');
+      var box = $('<div class="legend_circle_box"></div>');
+      var label = $('<span class"myfont3" style="margin:5px; font-size:15px;"> &lt; ' + legend_info[i] + '</span>');
+      box.css({"background": color_cat[i+4]});
+      cnt.append(box);
+      cnt.append(label);
+      circle_cnt.append(cnt);
+  }
+  var cnt = $('<div class="left"></div>');
+  var box = $('<div class="legend_circle_box"></div>');
+  // var label = $('<span class"myfont3" style="margin:10px; font-size:15px;"><b> &lt;= ' + timeline[1] + '</b></span>');
+  var label = $('<span class"myfont3" style="margin:5px; font-size:15px;"> &lt;= ' + legend_info[i] + '</span>');
+  box.css({"background": color_cat[legend_info.length+3]});
+  cnt.append(box);
+  cnt.append(label);
+  circle_cnt.append(cnt);
 }
 
 function init(){
@@ -103,6 +137,9 @@ function draw_graph(graph){
 
 }
 
+function updatedata(graph, scale){
+
+}
 
 function dragstart(d) {
   d3.select(this).classed("fixed", d.fixed = true);

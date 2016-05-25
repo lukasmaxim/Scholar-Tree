@@ -158,3 +158,20 @@ img.mfp-img{
   position:fixed;
   top:initial;
 }
+
+.legend_gbox{
+  height: 20px;
+  width: 20px;
+  background: gray;
+  /*margin: 5px 0;*/
+  float: left;
+}
+
+.legend_circle_box{
+  height: 20px;
+  width: 20px;
+  background: gray;
+  /*margin: 5px 0;*/
+  float: left;
+  border-radius:50%;
+}

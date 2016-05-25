@@ -113,7 +113,7 @@ var Tree_Model = Backbone.Model.extend({
             actual_info = result[4];
             util.set_highlight_list();
             util.set_legend(result[3]);
-            get_graph_data(result[5])
+            get_graph_data(result[5], result[3]);
         });
     },
 
