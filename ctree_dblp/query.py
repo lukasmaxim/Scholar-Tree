@@ -94,39 +94,84 @@ def check_searching(request):
 	return HttpResponse(return_json)
 
 
+def open_webpage(url):
+	print "-", url
+	request = Request(url, headers=HEADERS)
+	result = []
+	try:
+		response = urlopen(request)
+		html = response.read()
+		html = html.decode('utf8')
+		# print html
+		parsed_html = Soup(html)
+		outside = parsed_html.body.find('div', attrs={'id':'completesearch-authors'})
+		container = outside.find('div', attrs={'class':'body hide-body'})
+		# print container
+		# print container.findAll('ul')[0]
+		# print container.findAll('ul')[0].findAll('li')
+		for s in container.findAll('ul')[0].findAll('li'):
+			# print "***", s
+			link = s.find('a').get('href')
+			name = u''.join(s.find('span').findAll(text=True)) #s.find('span').text
+			print link
+			print name
+			if s.find('br'):
+				extra = s.find('small').text
+				result.append([name, link, extra])
+			else:
+				result.append([name, link])
+		# result = [all_year[-1], all_year[0], author]
+	except Exception:
+		result = [-1]
+
+	return result
+
+
 def search_searching(request):
 	result = []
 	if request.GET.get('researcher'):
 		ori_url = request.GET.get('researcher')
+		new_url = ori_url.replace('/author', "")
 		# http://dblp.uni-trier.de/pers/hd/m/Ma:Kwan=Liu
 		# http://dblp.uni-trier.de/pers/xx/m/Ma:Kwan=Liu.xml 
 		# http://dblp.uni-trier.de/pers/hd/s/Shneiderman:Ben
 		# print "request", request
 		# ori_url = ori_url.encode('utf8')
-		print ori_url
-		request = Request(ori_url, headers=HEADERS)
-		try:
-			response = urlopen(request)
-			html = response.read()
-			html = html.decode('utf8')
-			# print html
-			parsed_html = Soup(html)
-			outside = parsed_html.body.find('div', attrs={'id':'completesearch-authors'})
-			container = outside.find('div', attrs={'class':'body hide-body'})
-			print container
-			for s in container.findAll('li'):
-				# print "***", s
-				link = s.find('a').get('href')
-				name = u''.join(s.find('span').findAll(text=True)) #s.find('span').text
-				print link
-				print name
-				result.append([name, link])
-			# result = [all_year[-1], all_year[0], author]
-		except Exception:
-			result = [-1]
+		# print "-", ori_url, "->", new_url
+		result = open_webpage(ori_url)
+		if result[0] == -1:
+			result = open_webpage(new_url)
+		# request = Request(ori_url, headers=HEADERS)
+
+		# try:
+		# 	response = urlopen(request)
+		# 	html = response.read()
+		# 	html = html.decode('utf8')
+		# 	# print html
+		# 	parsed_html = Soup(html)
+		# 	outside = parsed_html.body.find('div', attrs={'id':'completesearch-authors'})
+		# 	container = outside.find('div', attrs={'class':'body hide-body'})
+		# 	# print container
+		# 	# print container.findAll('ul')[0]
+		# 	# print container.findAll('ul')[0].findAll('li')
+		# 	for s in container.findAll('ul')[0].findAll('li'):
+		# 		# print "***", s
+		# 		link = s.find('a').get('href')
+		# 		name = u''.join(s.find('span').findAll(text=True)) #s.find('span').text
+		# 		print link
+		# 		print name
+		# 		if s.find('br'):
+		# 			extra = s.find('small').text
+		# 			result.append([name, link, extra])
+		# 		else:
+		# 			result.append([name, link])
+		# 	# result = [all_year[-1], all_year[0], author]
+		# except Exception:
+		# 	result = [-1]
+
 	else:
 		raise Http404
-
+	print "*", result
 	return_json = simplejson.dumps(result, indent=4, use_decimal=True)
 	# with open("./ctree_dblp/media/data/research_graph.json", "wb") as json_file:
 	# 	json_file.write(return_json)

@@ -53,6 +53,9 @@ var MyApp = function MyApp(){
     $("#click_info").css({'max-height': $("#system_page").height()-390});
     $("#click_info").css({'overflow-y': 'auto'});
     $("#click_info").css({'overflow-x': 'hidden'});
+    $("#candidates").css({'max-height': $("#system_page").height()-150});
+    $("#candidates").css({'overflow-y': 'auto'});
+    $("#candidates").css({'overflow-x': 'hidden'});
 
     $("#system_page").hide();
     $("#main_display").css({'min-height': $(window).height()-23-$("#header").height()-$("#footer").height()});
@@ -69,6 +72,9 @@ var MyApp = function MyApp(){
         $("#click_info").css({'max-height': $("#system_page").height()-390});
         $("#click_info").css({'overflow-y': 'auto'});
         $("#click_info").css({'overflow-x': 'hidden'});
+        $("#candidates").css({'max-height': $("#system_page").height()-150});
+        $("#candidates").css({'overflow-y': 'auto'});
+        $("#candidates").css({'overflow-x': 'hidden'});
 
         for(var e in tree_egos){
             // var img_id = "#" + e;
@@ -115,7 +121,8 @@ var MyApp = function MyApp(){
         console.log("click search");
         var resercher = $("#scholar").val();
         // var dblp_url = "http://dblp.uni-trier.de/pers/hd/";
-        var dblp_url = "http://dblp.uni-trier.de/search?q=" + encodeURIComponent(resercher);
+        // var dblp_url = "http://dblp.uni-trier.de/search?q=" + encodeURIComponent(resercher);
+        var dblp_url = "http://dblp.uni-trier.de/search/author?q=" + encodeURIComponent(resercher);
         
         self.model.search_researcher(dblp_url);
         $("#progress").show();

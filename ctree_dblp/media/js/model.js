@@ -79,6 +79,12 @@ var Tree_Model = Backbone.Model.extend({
                     });
                     result_cnt.append(row);
                     result_cnt.append($('</br>'));
+                    if(result[a].length == 3){
+                        var small = $('<small></small>').html(result[a][2]);
+                        result_cnt.append(small);
+                        result_cnt.append($('</br>'));
+                    }
+                    
                 }
                 $("#progress").hide();
                 $("#search_res").show();

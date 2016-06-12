@@ -46,6 +46,10 @@ table, th, td {
   border: 1px solid gray;
 }
 
+small{
+  color: gray;
+}
+
 .clear,.clearer {clear: both;}
 .clearer {
   display: block;
