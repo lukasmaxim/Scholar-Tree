@@ -307,7 +307,15 @@ def update_tree_structure(request):
 				publication[p_title]["type"] = paper_type
 				publication[p_title]["pages"] = int(pages)
 			else:
-				print "<<<", p_title
+				p_title = p_title + " (" + paper_type + ")"
+				# print "<<<", p_title
+				publication[p_title] = dict()
+				publication[p_title]["coauthor"] = co_author_list
+				publication[p_title]["author_count"] = len(co_author_list)-1
+				publication[p_title]["author_order"] = int(author_order)
+				publication[p_title]["year"] = int(p_year)
+				publication[p_title]["type"] = paper_type
+				publication[p_title]["pages"] = int(pages)
 	    # sys.exit()
 		tree_egos, branches = tree_mapping(career_period, publication, coauthorship, author, sy, ey, setting_gap)
 		
@@ -454,7 +462,15 @@ def get_tree_structure(request):
 				publication[p_title]["type"] = paper_type
 				publication[p_title]["pages"] = int(pages)
 			else:
-				print "<<<", p_title
+				p_title = p_title + " (" + paper_type + ")"
+				# print "<<<", p_title
+				publication[p_title] = dict()
+				publication[p_title]["coauthor"] = co_author_list
+				publication[p_title]["author_count"] = len(co_author_list)-1
+				publication[p_title]["author_order"] = int(author_order)
+				publication[p_title]["year"] = int(p_year)
+				publication[p_title]["type"] = paper_type
+				publication[p_title]["pages"] = int(pages)
 	    # sys.exit()
 		tree_egos, branches, legends, final_info_table = tree_mapping(career_period, publication, coauthorship, author, sy, ey)
 		graph = graph_mapping(career_period, publication, coauthorship, author, sy, ey, user_ip)
