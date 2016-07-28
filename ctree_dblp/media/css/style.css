@@ -26,6 +26,19 @@ a:focus{ outline: none; }
   position: relative;
 }
 
+
+body {
+  background-image: url("../img/background.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+.col {
+  display: inline-block;
+  vertical-align: top;
+  /*float: left;*/
+}
+
 .absolute{
   position: absolute;
 }
@@ -178,4 +191,15 @@ img.mfp-img{
   /*margin: 5px 0;*/
   float: left;
   border-radius:50%;
+}
+
+.user_btn{
+  padding:0 8px; 
+  height:35px; 
+  width:98%; 
+  margin:5px 0; 
+  background:#555555; 
+  font-size:19px; 
+  color:white;
+  stroke: none;
 }

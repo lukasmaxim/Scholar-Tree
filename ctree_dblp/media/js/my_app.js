@@ -208,6 +208,7 @@ var MyApp = function MyApp(){
         // graph.removeAttr("disabled");
         // $("#other_design").show();
         $("#feedback").removeAttr("disabled");
+        $("#more").removeAttr("disabled");
         $("#loading").show();
         $("#tree_result").hide();
         $("#tree1_cnt")[0].click();
