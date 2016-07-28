@@ -49,7 +49,9 @@ var MyApp = function MyApp(){
     $(".thumb_cnt").css({'height': $("#tree_result").height()});
     $(".snap_view").css({'height': $(".snap_view").width()+23});
     $("#anim_container").css({'height': $("#tree_result").height()});
- 
+    $("#anim_container").css({'width': ($("#result").width()*0.99)*7/12});
+    $("#mapping_container").css({'width': ($("#result").width()*0.99)*3/12-20});
+    
     $("#click_info").css({'max-height': $("#system_page").height()-390});
     $("#click_info").css({'overflow-y': 'auto'});
     $("#click_info").css({'overflow-x': 'hidden'});
@@ -58,8 +60,10 @@ var MyApp = function MyApp(){
     $("#candidates").css({'overflow-x': 'hidden'});
 
     $("#system_page").hide();
-    $("#main_display").css({'min-height': $(window).height()-23-$("#header").height()-$("#footer").height()});
-   
+    // $("#example").css({'height': window.innerHeight});
+    $("#main_display").css({'min-height': $(window).innerHeight()-43-$("#header").height()-$("#footer").height()});
+    $("#help_page").css({'height': window.innerHeight, 'width': window.innerWidth});
+
     // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
     window.onresize = function(event) {
         $("#main_display").css({'min-height': $(window).height()-23-$("#header").height()-$("#footer").height()});
@@ -68,7 +72,9 @@ var MyApp = function MyApp(){
         $(".thumb_cnt").css({'height': $("#tree_result").height()});
         $(".snap_view").css({'height': $(".snap_view").width()+20});
         $("#anim_container").css({'height': $("#tree_result").height()});
-        // $("#anim_container").css({'width': $("#tree_cnt").width()-10});
+        $("#anim_container").css({'width': ($("#result").width()*0.99)*7/12});
+        $("#mapping_container").css({'width': ($("#result").width()*0.99)*3/12-20});
+
         $("#click_info").css({'max-height': $("#system_page").height()-390});
         $("#click_info").css({'overflow-y': 'auto'});
         $("#click_info").css({'overflow-x': 'hidden'});
@@ -76,6 +82,7 @@ var MyApp = function MyApp(){
         $("#candidates").css({'overflow-y': 'auto'});
         $("#candidates").css({'overflow-x': 'hidden'});
 
+        $("#help_page").css({'height': window.innerHeight, 'width': window.innerWidth});
         for(var e in tree_egos){
             // var img_id = "#" + e;
             tree_util.set_anim_canvas(e);
@@ -93,10 +100,55 @@ var MyApp = function MyApp(){
     var start = $('#start_btn');
     var search = $('#search_name');
     var graph = $('#nodelink');
+    var tutorial = $('.tutorial');
+    var helps = $('#help_page');
+    var el_slide = $('#help_slide');
+    var el_slide_next = $('#slide_next');
+    var el_slide_previous = $('#slide_previous'); 
     
+    tutorial.click(function(){
+        console.log("in tutorial");
+        helps.show();        
+        if(el_slide.height() > $(window).height()){
+            el_slide.removeAttr("width");
+            el_slide.attr("height", "90%");
+        } 
+        el_slide.center();
+
+    });
+
+    // for slides
+    el_slide_next.click(function(){
+        var num_slide =  parseInt(el_slide.attr('value'));
+        if(num_slide < 15){
+            el_slide.attr('src', 'media/img/help/Slide' + (num_slide+1) +'.jpg');
+            el_slide.attr('value', (num_slide+1)); 
+        }
+        else{
+            helps.hide();
+        }
+        return false;
+    });
+
+    el_slide_previous.click(function(){
+        var num_slide =  parseInt(el_slide.attr('value'));
+        if(num_slide > 1){
+            el_slide.attr('src', 'media/img/help/Slide' + (num_slide-1) +'.jpg');
+            el_slide.attr('value', (num_slide-1)); 
+        }
+        return false;
+    });
+
+    helps.click(function(){
+        helps.hide();
+    }); 
 
     start.click(function(){
         console.log("click start");
+        $('body').css('background-image', 'none');
+        $('#help_link').show();
+        $('#help_slide').attr('value', '1');
+        $('#help_slide').attr('src', 'media/img/help/Slide1.jpg');
         $("#system_page").show();
         $("#search_engine").show();
         $("#start_page").hide();
@@ -113,7 +165,6 @@ var MyApp = function MyApp(){
         $("#tree_result").hide();
         $('#anim_panel').hide();
         $('#highlight_panel').hide();
-        // $("#other_design").hide();
         graph.attr("disabled", true);
     });
 

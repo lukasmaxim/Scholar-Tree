@@ -59,7 +59,7 @@ def check_searching(request):
 		# http://dblp.uni-trier.de/pers/hd/s/Shneiderman:Ben
 		# print "request", request
 		# ori_url = ori_url.encode('utf8')
-		print "ori_url", ori_url
+		# print "ori_url", ori_url
 		if ori_url.find("/hd/") != -1:
 			xml_url = ori_url.replace("/hd/", "/xx/")
 			xml_url += ".xml"
@@ -95,7 +95,7 @@ def check_searching(request):
 
 
 def open_webpage(url):
-	print "-", url
+	# print "-", url
 	request = Request(url, headers=HEADERS)
 	result = []
 	try:
@@ -113,8 +113,8 @@ def open_webpage(url):
 			# print "***", s
 			link = s.find('a').get('href')
 			name = u''.join(s.find('span').findAll(text=True)) #s.find('span').text
-			print link
-			print name
+			# print link
+			# print name
 			if s.find('br'):
 				extra = s.find('small').text
 				result.append([name, link, extra])
@@ -171,7 +171,7 @@ def search_searching(request):
 
 	else:
 		raise Http404
-	print "*", result
+	# print "*", result
 	return_json = simplejson.dumps(result, indent=4, use_decimal=True)
 	# with open("./ctree_dblp/media/data/research_graph.json", "wb") as json_file:
 	# 	json_file.write(return_json)
@@ -212,7 +212,7 @@ def update_tree_structure(request):
 		# with open("./ctree_dblp/data/dblp_test.json", "rb") as json_file:
 		# 	retuen_structure = json.load(json_file)
 
-		print author
+		# print author
 		# collecting_search([author[0], str(sy)+"-"+str(ey), user_ip]) !!!
 
 		unique_author_list = []
@@ -366,7 +366,7 @@ def get_tree_structure(request):
 		# with open("./ctree_dblp/data/dblp_test.json", "rb") as json_file:
 		# 	retuen_structure = json.load(json_file)
 
-		print author
+		# print author
 		# collecting_search([author[0], str(sy)+"-"+str(ey), user_ip]) !!!
 
 		unique_author_list = []
@@ -478,7 +478,7 @@ def get_tree_structure(request):
 		final_structure["all"] = dict()
 		
 		for one_ego in tree_egos:
-			print one_ego
+			# print one_ego
 			one_tree = tree_structure(tree_egos[one_ego], branches)
 			final_structure["all"][one_ego] = one_tree
 
@@ -556,7 +556,8 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap
 		year_gap.append(start)
 		color_gap.append(start)
 
-	print gap, year_gap, len(year_gap), color_gap
+	print "*****", ego[0], "*****"
+	print "Gap: ", gap, " Year_gap: ", year_gap, "Color_gap: ", color_gap
 	branch_layer = len(year_gap) + 1
 	# color_gap = year_gap
     # sys.exit()
@@ -749,9 +750,7 @@ def tree_mapping(career_period, publication, coauthors, ego, sy, ey, setting_gap
 	for coauthor in coauthors:
 		# solo paper
 		fruit_val = 0
-		if coauthor in ego:
-			print "***********", coauthor
-
+		
 		# data3 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
 		# data4 = [coauthor, ego[0], "trunk", "branch", "b_side", "leaf_color", "leaf_size", "fruit", "leafid"]
 		data3_stick = [coauthor, ego[0], "trunk", "branch", "b_side"]

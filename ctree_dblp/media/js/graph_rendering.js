@@ -142,9 +142,6 @@ function draw_graph(graph){
 
 }
 
-function updatedata(graph, scale){
-
-}
 
 function dragstart(d) {
   d3.select(this).classed("fixed", d.fixed = true);

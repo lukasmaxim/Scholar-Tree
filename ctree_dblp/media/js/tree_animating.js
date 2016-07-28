@@ -71,7 +71,7 @@ var AnimView = Backbone.View.extend({
             self.model.set({"canvas_scale": tree_snap_scale[view_ego]}, {silent: true});
             self.model.set({"canvas_translate": [0.5, 0.5]}, {silent: true});
             // self.model.trigger('change:new_researcher');
-            self.model.trigger('change:current_ego');
+            self.model.trigger('change:current_ego');            
         });
 
         tree_pause.click(function(){
@@ -129,6 +129,8 @@ var AnimView = Backbone.View.extend({
 
     anim_render: function(ego, idx){
         var self = this;
+        self.model.set({"canvas_translate": [0.5, 0.5]}, {silent: true});
+        self.model.set({"canvas_scale": tree_snap_scale[ego]}, {silent: true});
         var imageObj = document.getElementById("wood");
         clearInterval(mytimer.blinking_timer);
     	var amin_frame = tree_amin_frame[ego];
@@ -357,7 +359,7 @@ var AnimView = Backbone.View.extend({
     highlight_anim: function(ego){
     	var self = this;
     	// this.static_img(ego);
-    	// this.model.set({"current_ego": view_ego});
+    	// this.model.set({"current_ego": ego});
     	self.model.trigger('change:current_ego');
         clearInterval(mytimer.blinking_timer);
     	if(highlight_list["selected"] == "None" || highlight_list["on"] == 0){
