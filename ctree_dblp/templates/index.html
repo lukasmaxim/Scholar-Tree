@@ -5,6 +5,7 @@
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
         <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
         <meta name="robots" content="noindex"><!-- jQuery -->
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
         <script type="text/javascript" src="media/libs/jquery-ui/js/jquery-1.10.2.js">
         </script><!-- backbone -->
         <script type="text/javascript" src="media/libs/underscore-min.js">
@@ -13,8 +14,8 @@
         </script><!-- d3 -->
         <script type="text/javascript" src="media/libs/d3.v3.min.js">
         </script><!-- Bootstrap -->
-        <link href="media/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="media/libs/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+        <link href="media/libs/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="media/libs/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="media/libs/bootstrap/js/bootstrap.min.js">
         </script><!-- jQuery UI -->
         <link href="media/libs/jquery-ui/css/overcast/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
@@ -37,11 +38,13 @@
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-69937489-1', 'auto');
+            // ga('create', 'UA-69937489-1', 'auto');
+            ga('create', 'UA-81020365-1', 'auto');
             ga('send', 'pageview');
         </script>
+        
     </head>
-    <body>
+    <body style="min-width:1200px;">
         <div style="display:none;"><img id="wood" src="media/img/wood.jpg"/></div>
         <!-- header -->
         <div id="header" class="row relative" style="margin:10px 10px;">
@@ -52,6 +55,9 @@
                 <h1 class="myfont1" style="margin:15px 0 2px 10px;">
                 Scholar Tree
                 </h1>
+            </div>
+            <div class="right" style="display:flex;">
+                <p><a id="help_link" class="tutorial" href="#" style="display: none; margin-left:10px;">Tutorial</a></p>
             </div>
         </div>
         <div id="main_display" class="row relative" style="margin:0 10px;">
@@ -66,13 +72,15 @@
                             Four trees will be generated and displayed.<br>
                         You may repeat this process to visualize a different researcher.<br></span> -->
                         <span class="relative myfont3"><b>Scholar Tree</b> is a visualization of a researcher’s academic career in terms of his/her publication record.<br>
-                        Three trees each of which highlights a particular aspect of the record will be generated and displayed.
+                        After a scholar is selected, four trees, each of which highlights a particular aspect of <br>
+                        the scholar's publication record, will be generated and displayed.
                         </span>
                     </div><!-- <div style="width:100%; height:300px; background:gainsboro;"></div> -->
                     <button id="start_btn" title="Enter the system page" class="btn btn-default myfont3 left" style="margin:10px 0; padding:0 10px; height:30px; z-index:150;">Start</button>
+                    <button id="help_btn" title="Watch the mapping tutorial" class="tutorial btn btn-default myfont3 left" style="margin:10px 10px; padding:0 10px; height:30px; z-index:150;">Tutorial</button>
                 </div>
             </div>
-            <div id="system_page" style="overflow:auto; min-width:1200px; min-height:750px;">
+            <div id="system_page" style="overflow:auto; min-width:1200px; min-height:780px;">
                 <!-- search -->
                 <div id="graph_cnt" style="width:35%; height:100%; position:absolute; z-index:100; display:none; background:white;">
                     <span id="remove_graph" class="glyphicon glyphicon-remove-circle" style="font-size:large; position:fixed; left:34%; top:100px; z-index:150; background:white; display:none;"></span>
@@ -110,7 +118,7 @@
                                 <input type="text" id="period_slider" class="row" style="margin:10px 0;">
                             </div>
                             <button id="draw_tree" class="btn btn-default myfont3 left" style="padding:0 10px; height:30px; margin:10px 0 5px 0;">Create Trees</button>
-                            <button id="nodelink" class="btn btn-default myfont3" style="padding:0 10px; height:30px; margin:10px 0 5px 10px;">Graph</button>
+                            <button id="nodelink" class="btn btn-default myfont3" style="padding:0 10px; height:30px; margin:10px 0 5px 10px; display:none;">Graph</button>
                             <br>
                             <div id = "other_design" style="display:none;">
                                 <a href="media/html/forcedirect.html" target="_blank">[Node-link]</a>
@@ -179,7 +187,7 @@
                     </div> -->
                 </div>                
                 <!-- result -->
-                <div id="result" class="left relative" style="width:77%; height:100%; overflow:auto; min-width:900px;">
+                <div id="result" class="left relative" style="width:77%; height:100%; overflow-y: hidden; min-width:924px;">
                     <img id="loading" src="media/img/loader.gif" class="relative" style="display:none; height:50px; margin-left:50%; margin-top:30px;">
                     <div id="block_page" style="position:absolute; top:0; left:0; height:100%; width:75%; z-index:100; display:none;">
                         <img id="updating" src="media/img/loader.gif" class="relative" style="display:none; height:50px; margin-left:57%; margin-top:150px;">
@@ -187,9 +195,9 @@
                     <!-- <h1 id="no_preview" style="text-align: center; top:10%; position:relative; color:gainsboro; display:none;">
                         <b>NO PREVIEW<br>AVAILABLE</b>
                     </h1> -->
-                    <div id="tree_result" class="container-non-responsive" style="display:none;">
-                        <div class="row" style="margin-left:0; width:99%;">
-                            <div class="col-md-2 thumb_cnt relative">
+                    <div id="tree_result" style="display:none;">
+                        <div class="row" style="margin-left:0; width:100%;">
+                            <div class="col col-md-2 thumb_cnt relative">
                                 <div id="tree1_cnt" title="Tree1" class="snap_view selected" name="1">
                                     <div>
                                         <img id="tree1" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;">
@@ -210,12 +218,16 @@
                                         <img id="tree4" src="media/img/no_preview.jpg" style="position:absolute; bottom:0;">
                                     </div>
                                 </div>
-                                <button id="feedback" class="btn btn-default myfont3 row" style="padding:0 10px; height:50px; width:98%; margin:10px 0 5px 0; background:#F9D2D2; font-size:20px;" disabled>Quick Survey</button>
+                                <button id="feedback" class="btn btn-default myfont3 row user_btn" disabled>Take a Survey</button>
+                                <a href="http://vidi.cs.ucdavis.edu/Projects/PersonalVis" target="_blank" style="width:100%; height:100%;">
+                                    <button id="more" class="btn btn-default myfont3 row user_btn" disabled>Learn More</button>
+                                </a>
+                                
                             </div>
-                            <div id='anim_container' class="col-md-7 relative" style="padding:0; border:1.5px solid gray; border-radius:10px; height:500px; /*border-bottom-width:10px;*/">
+                            <div id='anim_container' class="col col-md-7 relative" style="padding:0; border:1.5px solid gray; border-radius:10px; height:500px; /*border-bottom-width:10px;*/">
                                 <canvas id='anim_tree' style="position:absolute; top:0; left:0; /*background:white;*/ width:100%; height:100%;"></canvas> <span id="save_icon" title="Save this image" class="glyphicon glyphicon-save" style="position:absolute; top:5px; right:5px; font-size:large; color:#B3B3B3;"></span>
                             </div>
-                            <div class="col-md-3" style="margin-bottom:10px; padding-right:5px;">
+                            <div id='mapping_container' class="col col-md-3" style="margin-bottom:10px; padding-right:5px;">
                                 <!-- <b style="font-size:16px;">Animation Control</b><br>
                                 <div class="btn-group" style="margin-bottom:15px;">
                                     <button type="button" title="Back to previous step" id="tree_backward" value="1" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
@@ -386,10 +398,11 @@
             
         </div>
         <!-- footer -->
-        <div id="footer" class="row" style="text-align:center; width:100%; margin-top:3px;">
+        <div id="footer" class="row" style="text-align:center; width:100%; padding-top:3px;">
             <!-- © 2016 Visualization &amp; Interface Design Innovation Labs, University of California, Davis -->
             @2016 VIDI Labs, University of California, Davis
         </div>
+
         <div id='save_container' class='left' style="position:absolute; overflow:hidden; height:50px; width:50px; left:50px; top:150px; display:none; z-index:-10;">
             <canvas id='save_tree' style="background:white;"></canvas> <!-- <a id="custom_download_link" download="mytree.png" href=""></a> -->
         </div>
@@ -411,6 +424,14 @@
             </a>
             
         </div>
+
+        <!-- show user guide slides -->
+        <div id="help_page" style="position:absolute; left:0px; top:0px; z-index:125; background:rgba(128, 128, 128, 0.3); display:none; ">
+            <img id="help_slide" src="media/img/help/Slide1.jpg" value="1" class="instruction" width="77%" style="z-index:150;"></img>
+            <img id="slide_previous" src="media/img/previous.png" width="8%" style="z-index:130; top:43%; position:absolute; left:10px; cursor:pointer;"></img>
+            <img id="slide_next" src="media/img/next.png" width="8%" style="position:absolute; z-index:130; top:43%; right:10px; cursor:pointer;"></img>
+        </div>
+
         <script type="text/javascript" src="media/js/settings.js">
         </script><script type="text/javascript" src="media/js/labels.js">
         </script><!--script type="text/javascript" src="media/js/anim_rendering.js"></script-->
