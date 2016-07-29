@@ -47,10 +47,11 @@ var MyApp = function MyApp(){
     $("#system_page").css({'height': $(window).height()-23-$("#header").height()-$("#footer").height()});
     $("#tree_result").css({'height': $("#system_page").height()});
     $(".thumb_cnt").css({'height': $("#tree_result").height()});
-    $(".snap_view").css({'height': $(".snap_view").width()+23});
+    $(".thumb_cnt").css({'width': ($("#result").width()*0.99)*2/12});
+    $(".snap_view").css({'height': $(".snap_view").width()+20});
     $("#anim_container").css({'height': $("#tree_result").height()});
     $("#anim_container").css({'width': ($("#result").width()*0.99)*7/12});
-    $("#mapping_container").css({'width': ($("#result").width()*0.99)*3/12-20});
+    $("#mapping_container").css({'width': ($("#result").width()*0.99)*3/12-15});
     
     $("#click_info").css({'max-height': $("#system_page").height()-390});
     $("#click_info").css({'overflow-y': 'auto'});
@@ -70,10 +71,11 @@ var MyApp = function MyApp(){
         $("#system_page").css({'height': $(window).height()-23-$("#header").height()-$("#footer").height()});
         $("#tree_result").css({'height': $("#system_page").height()});
         $(".thumb_cnt").css({'height': $("#tree_result").height()});
-        $(".snap_view").css({'height': $(".snap_view").width()+20});
+        $(".thumb_cnt").css({'width': ($("#tree_result").width()*0.99)*2/12});
+        $(".snap_view").css({'height': $(".snap_view").width()+15});
         $("#anim_container").css({'height': $("#tree_result").height()});
-        $("#anim_container").css({'width': ($("#result").width()*0.99)*7/12});
-        $("#mapping_container").css({'width': ($("#result").width()*0.99)*3/12-20});
+        $("#anim_container").css({'width': ($("#tree_result").width()*0.99)*7/12});
+        $("#mapping_container").css({'width': ($("#tree_result").width()*0.99)*3/12-15});
 
         $("#click_info").css({'max-height': $("#system_page").height()-390});
         $("#click_info").css({'overflow-y': 'auto'});
@@ -120,8 +122,8 @@ var MyApp = function MyApp(){
     // for slides
     el_slide_next.click(function(){
         var num_slide =  parseInt(el_slide.attr('value'));
-        if(num_slide < 15){
-            el_slide.attr('src', 'media/img/help/Slide' + (num_slide+1) +'.jpg');
+        if(num_slide < 16){
+            el_slide.attr('src', 'media/img/help/p' + (num_slide+1) +'.png');
             el_slide.attr('value', (num_slide+1)); 
         }
         else{
@@ -133,7 +135,7 @@ var MyApp = function MyApp(){
     el_slide_previous.click(function(){
         var num_slide =  parseInt(el_slide.attr('value'));
         if(num_slide > 1){
-            el_slide.attr('src', 'media/img/help/Slide' + (num_slide-1) +'.jpg');
+            el_slide.attr('src', 'media/img/help/p' + (num_slide-1) +'.png');
             el_slide.attr('value', (num_slide-1)); 
         }
         return false;
@@ -141,14 +143,26 @@ var MyApp = function MyApp(){
 
     helps.click(function(){
         helps.hide();
-    }); 
+    });
+
+    el_slide.click(function(){
+        var num_slide =  parseInt(el_slide.attr('value'));
+        if(num_slide < 16){
+            el_slide.attr('src', 'media/img/help/p' + (num_slide+1) +'.png');
+            el_slide.attr('value', (num_slide+1)); 
+        }
+        else{
+            helps.hide();
+        }
+        return false;
+    });
 
     start.click(function(){
         console.log("click start");
         $('body').css('background-image', 'none');
         $('#help_link').show();
         $('#help_slide').attr('value', '1');
-        $('#help_slide').attr('src', 'media/img/help/Slide1.jpg');
+        $('#help_slide').attr('src', 'media/img/help/p1.png');
         $("#system_page").show();
         $("#search_engine").show();
         $("#start_page").hide();
